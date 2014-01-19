@@ -1,5 +1,7 @@
 package interfaz;
 
+import metodos.Metodos;
+
 public class JFrame extends javax.swing.JFrame {
 
     /**
@@ -8,6 +10,7 @@ public class JFrame extends javax.swing.JFrame {
     public JFrame() {
         initComponents();
     }
+    Metodos metodos=new Metodos();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -18,7 +21,42 @@ public class JFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenu1 = new javax.swing.JMenu();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        Configuracion = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        ConsultaDatos = new javax.swing.JMenuItem();
+
+        jMenu1.setText("jMenu1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jMenu2.setText("Alta");
+
+        Configuracion.setText("Configuracion");
+        Configuracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConfiguracionActionPerformed(evt);
+            }
+        });
+        jMenu2.add(Configuracion);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Consulta");
+
+        ConsultaDatos.setText("Datos Personales");
+        ConsultaDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConsultaDatosActionPerformed(evt);
+            }
+        });
+        jMenu3.add(ConsultaDatos);
+
+        jMenuBar1.add(jMenu3);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -28,11 +66,20 @@ public class JFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 279, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ConsultaDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaDatosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ConsultaDatosActionPerformed
+
+    private void ConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfiguracionActionPerformed
+      Alta alta=new Alta(this,true,metodos);
+      alta.setVisible(true);
+    }//GEN-LAST:event_ConfiguracionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -71,5 +118,11 @@ public class JFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Configuracion;
+    private javax.swing.JMenuItem ConsultaDatos;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
