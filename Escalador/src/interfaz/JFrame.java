@@ -9,6 +9,7 @@ public class JFrame extends javax.swing.JFrame {
      */
     public JFrame() {
         initComponents();
+        setLocationRelativeTo(null);//abre la ventana en el centro de la pantalla
     }
     Metodos metodos=new Metodos();
 
@@ -73,7 +74,8 @@ public class JFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ConsultaDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaDatosActionPerformed
-        // TODO add your handling code here:
+      DatosPersonales datos=new DatosPersonales(this,true,metodos);
+      datos.setVisible(true);
     }//GEN-LAST:event_ConsultaDatosActionPerformed
 
     private void ConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfiguracionActionPerformed
