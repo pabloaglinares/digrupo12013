@@ -2,11 +2,11 @@ package interfaz;
 
 import metodos.Metodos;
 
-public class ConfiguracionConsultaCutre extends javax.swing.JDialog {
+public class PruebaRellenarTabla extends javax.swing.JDialog {
 
     Metodos metodos;
 
-    public ConfiguracionConsultaCutre(java.awt.Frame parent, boolean modal, Metodos metodos) {
+    public PruebaRellenarTabla(java.awt.Frame parent, boolean modal, Metodos metodos) {
         super(parent, modal);
         this.metodos = metodos;
         initComponents();
