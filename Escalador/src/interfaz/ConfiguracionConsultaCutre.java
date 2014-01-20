@@ -4,9 +4,6 @@ import metodos.Metodos;
 
 public class ConfiguracionConsultaCutre extends javax.swing.JDialog {
 
-    /**
-     * Creates new form ConfiguracionConsultaCutre
-     */
     Metodos metodos;
 
     public ConfiguracionConsultaCutre(java.awt.Frame parent, boolean modal, Metodos metodos) {
