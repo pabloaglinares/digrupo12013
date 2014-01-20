@@ -26,14 +26,12 @@ public class PantallaInicial extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         ConsultaDatos = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        Configuracion = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu3.setText("Consultar");
+        jMenu3.setText("Acción");
 
         ConsultaDatos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         ConsultaDatos.setText("Configuración");
@@ -45,19 +43,6 @@ public class PantallaInicial extends javax.swing.JFrame {
         jMenu3.add(ConsultaDatos);
 
         jMenuBar1.add(jMenu3);
-
-        jMenu2.setText("Editar");
-
-        Configuracion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        Configuracion.setText("Configuracion");
-        Configuracion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConfiguracionActionPerformed(evt);
-            }
-        });
-        jMenu2.add(Configuracion);
-
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -76,14 +61,9 @@ public class PantallaInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ConsultaDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaDatosActionPerformed
-        ConfiguracionConsulta datos = new ConfiguracionConsulta(this, true, metodos);
+        ConfiguracionConsultaCutre datos = new ConfiguracionConsultaCutre(this, true, metodos);
         datos.setVisible(true);
     }//GEN-LAST:event_ConsultaDatosActionPerformed
-
-    private void ConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfiguracionActionPerformed
-        ConfiguracionEditar alta = new ConfiguracionEditar(this, true, metodos);
-        alta.setVisible(true);
-    }//GEN-LAST:event_ConfiguracionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -122,10 +102,8 @@ public class PantallaInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem Configuracion;
     private javax.swing.JMenuItem ConsultaDatos;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
