@@ -2,12 +2,12 @@ package interfaz;
 
 import metodos.Metodos;
 
-public class JFrame extends javax.swing.JFrame {
+public class PantallaInicial extends javax.swing.JFrame {
 
     /**
      * Creates new form JFrame
      */
-    public JFrame() {
+    public PantallaInicial() {
         initComponents();
         setLocationRelativeTo(null);//abre la ventana en el centro de la pantalla
     }
@@ -74,12 +74,12 @@ public class JFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ConsultaDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaDatosActionPerformed
-        DatosPersonales datos = new DatosPersonales(this, true, metodos);
+        ConfiguracionConsulta datos = new ConfiguracionConsulta(this, true, metodos);
         datos.setVisible(true);
     }//GEN-LAST:event_ConsultaDatosActionPerformed
 
     private void ConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfiguracionActionPerformed
-        Alta alta = new Alta(this, true, metodos);
+        ConfiguracionEditar alta = new ConfiguracionEditar(this, true, metodos);
         alta.setVisible(true);
     }//GEN-LAST:event_ConfiguracionActionPerformed
 
@@ -100,13 +100,13 @@ public class JFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -114,7 +114,7 @@ public class JFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new JFrame().setVisible(true);
+                new PantallaInicial().setVisible(true);
             }
         });
     }

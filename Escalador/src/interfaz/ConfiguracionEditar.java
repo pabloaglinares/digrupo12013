@@ -2,14 +2,14 @@ package interfaz;
 
 import metodos.Metodos;
 
-public class Alta extends javax.swing.JDialog {
+public class ConfiguracionEditar extends javax.swing.JDialog {
 
     /**
-     * Creates new form Alta
+     * Creates new form ConfiguracionEditar
      */
     Metodos metodos;
 
-    public Alta(java.awt.Frame parent, boolean modal, Metodos metodos) {
+    public ConfiguracionEditar(java.awt.Frame parent, boolean modal, Metodos metodos) {
         super(parent, modal);
         initComponents();
         this.metodos = metodos;

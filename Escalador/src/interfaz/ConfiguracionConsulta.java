@@ -2,14 +2,14 @@ package interfaz;
 
 import metodos.Metodos;
 
-public class DatosPersonales extends javax.swing.JDialog {
+public class ConfiguracionConsulta extends javax.swing.JDialog {
 
     /**
-     * Creates new form DatosPersonales
+     * Creates new form ConfiguracionConsulta
      */
     Metodos metodos;
 
-    public DatosPersonales(java.awt.Frame parent, boolean modal, Metodos metodos) {
+    public ConfiguracionConsulta(java.awt.Frame parent, boolean modal, Metodos metodos) {
         super(parent, modal);
         this.metodos = metodos;
         initComponents();
