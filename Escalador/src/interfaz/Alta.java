@@ -1,27 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package interfaz;
 
 import metodos.Metodos;
 
-/**
- *
- * @author paulina
- */
 public class Alta extends javax.swing.JDialog {
 
     /**
      * Creates new form Alta
      */
     Metodos metodos;
-    public Alta(java.awt.Frame parent, boolean modal,Metodos metodos) {
+
+    public Alta(java.awt.Frame parent, boolean modal, Metodos metodos) {
         super(parent, modal);
         initComponents();
-        this.metodos=metodos;
+        this.metodos = metodos;
     }
 
     /**
@@ -189,19 +180,18 @@ public class Alta extends javax.swing.JDialog {
     }//GEN-LAST:event_inicioActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      String nombre=this.nombre.getText();
-      String apellido=this.apellido.getText();
-      String fecha=this.inicio.getText();
-      String fchFin=this.fin.getText();
-      metodos.insertarTablaEscalador(nombre, apellido, fecha, fchFin);
-      
-      this.nombre.setText("");
-      this.apellido.setText("");
-      this.inicio.setText("");
-      this.fin.setText("");
-      
-      
-      
+        String nombre = this.nombre.getText();
+        String apellido = this.apellido.getText();
+        String fecha = this.inicio.getText();
+        String fchFin = this.fin.getText();
+        metodos.insertarTablaEscalador(nombre, apellido, fecha, fchFin);
+
+        this.nombre.setText("");
+        this.apellido.setText("");
+        this.inicio.setText("");
+        this.fin.setText("");
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoActionPerformed
@@ -215,7 +205,6 @@ public class Alta extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField apellido;

@@ -44,8 +44,7 @@ public class Metodos {
                 JOptionPane.showMessageDialog(null, "Formato de fecha incorrecto", "Escalador", JOptionPane.ERROR_MESSAGE);
                 valido = false;
             }
-            
-            
+
         }
 
         return valido;
@@ -143,17 +142,16 @@ public class Metodos {
 
     public void insertarTablaEscalador(String nombre, String apellido, String fecha, String fechaf) {
 
-        if (comprobarTextos(nombre) && comprobarTextos(apellido)&&comprobarFecha(fecha)&&comprobarFecha(fechaf)) {
-            
-          /*  SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");//dia/mes/año
-            try {
-                Date fechaInicio = formatoFecha.parse(fecha);
-                Date FechaFin = formatoFecha.parse(fechaf);
-                
-            } catch (ParseException ex) {
-               
-            }*/
+        if (comprobarTextos(nombre) && comprobarTextos(apellido) && comprobarFecha(fecha) && comprobarFecha(fechaf)) {
 
+            /*  SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");//dia/mes/año
+             try {
+             Date fechaInicio = formatoFecha.parse(fecha);
+             Date FechaFin = formatoFecha.parse(fechaf);
+                
+             } catch (ParseException ex) {
+               
+             }*/
             conectar();
             String sql = "insert into escalador(nombre,apellido,fecha_inicio,fecha_fin) values('" + nombre + "','" + apellido
                     + "','" + fecha + "','" + fechaf + "')";

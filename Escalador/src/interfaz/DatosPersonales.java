@@ -1,32 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package interfaz;
 
 import metodos.Metodos;
 
-/**
- *
- * @author paulina
- */
 public class DatosPersonales extends javax.swing.JDialog {
 
     /**
      * Creates new form DatosPersonales
      */
     Metodos metodos;
-    public DatosPersonales(java.awt.Frame parent, boolean modal,Metodos metodos) {
+
+    public DatosPersonales(java.awt.Frame parent, boolean modal, Metodos metodos) {
         super(parent, modal);
-        this.metodos=metodos;
+        this.metodos = metodos;
         initComponents();
         metodos.rellenarTablaEscalador(tablaEscalador);
-        
+
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -93,8 +82,6 @@ public class DatosPersonales extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalir;

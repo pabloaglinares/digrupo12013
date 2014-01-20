@@ -11,7 +11,7 @@ public class JFrame extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);//abre la ventana en el centro de la pantalla
     }
-    Metodos metodos=new Metodos();
+    Metodos metodos = new Metodos();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -74,13 +74,13 @@ public class JFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ConsultaDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaDatosActionPerformed
-      DatosPersonales datos=new DatosPersonales(this,true,metodos);
-      datos.setVisible(true);
+        DatosPersonales datos = new DatosPersonales(this, true, metodos);
+        datos.setVisible(true);
     }//GEN-LAST:event_ConsultaDatosActionPerformed
 
     private void ConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfiguracionActionPerformed
-      Alta alta=new Alta(this,true,metodos);
-      alta.setVisible(true);
+        Alta alta = new Alta(this, true, metodos);
+        alta.setVisible(true);
     }//GEN-LAST:event_ConfiguracionActionPerformed
 
     /**
