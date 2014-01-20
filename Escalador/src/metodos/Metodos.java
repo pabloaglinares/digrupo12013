@@ -5,8 +5,14 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,6 +27,55 @@ public class Metodos {
      */
     public Metodos() {
         ruta = System.getProperty("user.dir");
+    }
+
+    //Comprueba que las cajas de textos de las fechas solo tengan fechas en formato dd/MM/yyyy y que no esten vacios
+    public boolean comprobarFecha(String texto) {
+
+        boolean valido = true;
+
+        if (texto.length() == 0) {
+            valido = false;
+            JOptionPane.showMessageDialog(null, "Rellene todos los campos correctamente", "Escalador", JOptionPane.ERROR_MESSAGE);
+        } else {
+            Pattern patron = Pattern.compile("\\d\\d/\\d\\d/\\d\\d\\d\\d");
+            Matcher m = patron.matcher(texto);
+            if (!m.matches()) {
+                JOptionPane.showMessageDialog(null, "Formato de fecha incorrecto", "Escalador", JOptionPane.ERROR_MESSAGE);
+                valido = false;
+            }
+            
+            
+        }
+
+        return valido;
+    }
+
+    //Comprueba que las cajas de textos solo tengan texto y que no esten vacios
+    public boolean comprobarTextos(String texto) {
+
+        boolean valido = true;
+
+        if (texto.length() == 0) {
+            valido = false;
+            JOptionPane.showMessageDialog(null, "Rellene todos los camposcorrectamente", "Escalador", JOptionPane.ERROR_MESSAGE);
+        } else {
+            for (int i = 0; i < texto.length(); i++) {
+
+                try {
+                    Integer.parseInt(String.valueOf(texto.charAt(i)));
+                    valido = false;
+                    JOptionPane.showMessageDialog(null, "Rellene todos los campos correctamente", "Escalador", JOptionPane.ERROR_MESSAGE);
+                    break;
+                } catch (Exception e) {
+
+                }
+
+            }
+        }
+
+        return valido;
+
     }
 
     public void conectar() {
@@ -87,20 +142,35 @@ public class Metodos {
     }
 
     public void insertarTablaEscalador(String nombre, String apellido, String fecha, String fechaf) {
-        conectar();
-        String sql = "insert into escalador(nombre,apellido,fecha_inicio,fecha_fin) values('" + nombre + "','" + apellido
-                + "','" + fecha + "','" + fechaf + "')";
-        try {
-            consulta.executeUpdate(sql);
-        } catch (SQLException e) {
-            e.getMessage();
-        } finally {
+
+        if (comprobarTextos(nombre) && comprobarTextos(apellido)&&comprobarFecha(fecha)&&comprobarFecha(fechaf)) {
+            
+          /*  SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");//dia/mes/año
             try {
-                conexion.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+                Date fechaInicio = formatoFecha.parse(fecha);
+                Date FechaFin = formatoFecha.parse(fechaf);
+                
+            } catch (ParseException ex) {
+               
+            }*/
+
+            conectar();
+            String sql = "insert into escalador(nombre,apellido,fecha_inicio,fecha_fin) values('" + nombre + "','" + apellido
+                    + "','" + fecha + "','" + fechaf + "')";
+            try {
+                consulta.executeUpdate(sql);
+                JOptionPane.showMessageDialog(null, "Registro insertado correctamente", "Escalador", JOptionPane.INFORMATION_MESSAGE);
+            } catch (SQLException e) {
+                e.getMessage();
+                JOptionPane.showMessageDialog(null, "Fallo al insertar registro", "Escalador", JOptionPane.ERROR_MESSAGE);
+            } finally {
+                try {
+                    conexion.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-        }
-    }
+        } //fin if
+    }// fin InsertarTablaEscalador
 
 }

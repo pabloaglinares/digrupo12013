@@ -92,6 +92,11 @@ public class Alta extends javax.swing.JDialog {
         });
 
         jButton2.setText("Salir");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -190,11 +195,22 @@ public class Alta extends javax.swing.JDialog {
       String fchFin=this.fin.getText();
       metodos.insertarTablaEscalador(nombre, apellido, fecha, fchFin);
       
+      this.nombre.setText("");
+      this.apellido.setText("");
+      this.inicio.setText("");
+      this.fin.setText("");
+      
+      
+      
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_apellidoActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
