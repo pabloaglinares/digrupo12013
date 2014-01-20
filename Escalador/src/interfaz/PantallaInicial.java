@@ -27,12 +27,16 @@ public class PantallaInicial extends javax.swing.JFrame {
         menuItemEntrenamientos = new javax.swing.JMenuItem();
         menuItemItinerarios = new javax.swing.JMenuItem();
         menuItemPruebaTabla = new javax.swing.JMenuItem();
+        menuItemNuevaConfiguracion = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        menuItemNuevoEntrenamiento = new javax.swing.JMenuItem();
+        menuItemNuevoItinerario = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu3.setText("Acción");
+        jMenu3.setText("Consulta");
 
         menuItemConfiguracion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         menuItemConfiguracion.setText("Configuración");
@@ -61,6 +65,22 @@ public class PantallaInicial extends javax.swing.JFrame {
         jMenu3.add(menuItemPruebaTabla);
 
         jMenuBar1.add(jMenu3);
+
+        menuItemNuevaConfiguracion.setText("Nuevo");
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setText("Configuración");
+        menuItemNuevaConfiguracion.add(jMenuItem1);
+
+        menuItemNuevoEntrenamiento.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        menuItemNuevoEntrenamiento.setText("Entrenamiento");
+        menuItemNuevaConfiguracion.add(menuItemNuevoEntrenamiento);
+
+        menuItemNuevoItinerario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        menuItemNuevoItinerario.setText("Itinerario");
+        menuItemNuevaConfiguracion.add(menuItemNuevoItinerario);
+
+        jMenuBar1.add(menuItemNuevaConfiguracion);
 
         setJMenuBar(jMenuBar1);
 
@@ -128,9 +148,13 @@ public class PantallaInicial extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem menuItemConfiguracion;
     private javax.swing.JMenuItem menuItemEntrenamientos;
     private javax.swing.JMenuItem menuItemItinerarios;
+    private javax.swing.JMenu menuItemNuevaConfiguracion;
+    private javax.swing.JMenuItem menuItemNuevoEntrenamiento;
+    private javax.swing.JMenuItem menuItemNuevoItinerario;
     private javax.swing.JMenuItem menuItemPruebaTabla;
     // End of variables declaration//GEN-END:variables
 }

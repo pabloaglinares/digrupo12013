@@ -6,7 +6,7 @@ public class ItinerarioNuevo extends javax.swing.JDialog {
 
     Metodos metodos;
     
-    public ItinerarioNuevo(javax.swing.JDialog parent, boolean modal, Metodos metodos) {
+    public ItinerarioNuevo(java.awt.Frame parent, boolean modal, Metodos metodos) {
         super(parent, modal);
         this.metodos = metodos;
         initComponents();

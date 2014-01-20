@@ -6,7 +6,7 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
 
     Metodos metodos;
     
-    public EntrenamientoNuevo(javax.swing.JDialog parent, boolean modal, Metodos metodos) {
+    public EntrenamientoNuevo(java.awt.Frame parent, boolean modal, Metodos metodos) {
         super(parent, modal);
         this.metodos = metodos;
         initComponents();
