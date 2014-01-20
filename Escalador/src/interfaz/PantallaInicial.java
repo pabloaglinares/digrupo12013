@@ -4,14 +4,12 @@ import metodos.Metodos;
 
 public class PantallaInicial extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JFrame
-     */
+    Metodos metodos = new Metodos();
+
     public PantallaInicial() {
         initComponents();
         setLocationRelativeTo(null);//abre la ventana en el centro de la pantalla
     }
-    Metodos metodos = new Metodos();
 
     /**
      * This method is called from within the constructor to initialize the form.
