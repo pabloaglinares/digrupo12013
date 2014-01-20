@@ -24,17 +24,31 @@ public class PantallaInicial extends javax.swing.JFrame {
 
         jMenu1 = new javax.swing.JMenu();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
-        Configuracion = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         ConsultaDatos = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        Configuracion = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu2.setText("Alta");
+        jMenu3.setText("Consultar");
 
+        ConsultaDatos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        ConsultaDatos.setText("Configuración");
+        ConsultaDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConsultaDatosActionPerformed(evt);
+            }
+        });
+        jMenu3.add(ConsultaDatos);
+
+        jMenuBar1.add(jMenu3);
+
+        jMenu2.setText("Editar");
+
+        Configuracion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         Configuracion.setText("Configuracion");
         Configuracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -44,18 +58,6 @@ public class PantallaInicial extends javax.swing.JFrame {
         jMenu2.add(Configuracion);
 
         jMenuBar1.add(jMenu2);
-
-        jMenu3.setText("Consulta");
-
-        ConsultaDatos.setText("Datos Personales");
-        ConsultaDatos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConsultaDatosActionPerformed(evt);
-            }
-        });
-        jMenu3.add(ConsultaDatos);
-
-        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
