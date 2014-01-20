@@ -25,9 +25,10 @@ public class PantallaInicial extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
-        ConsultaDatos = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        menuItemConfiguracion = new javax.swing.JMenuItem();
+        menuItemEntrenamientos = new javax.swing.JMenuItem();
+        menuItemItinerarios = new javax.swing.JMenuItem();
+        menuItemPruebaTabla = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -35,22 +36,31 @@ public class PantallaInicial extends javax.swing.JFrame {
 
         jMenu3.setText("Acción");
 
-        ConsultaDatos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
-        ConsultaDatos.setText("Configuración");
-        ConsultaDatos.addActionListener(new java.awt.event.ActionListener() {
+        menuItemConfiguracion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemConfiguracion.setText("Configuración");
+        menuItemConfiguracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConsultaDatosActionPerformed(evt);
+                menuItemConfiguracionActionPerformed(evt);
             }
         });
-        jMenu3.add(ConsultaDatos);
+        jMenu3.add(menuItemConfiguracion);
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setText("Entrenamientos");
-        jMenu3.add(jMenuItem1);
+        menuItemEntrenamientos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemEntrenamientos.setText("Entrenamientos");
+        jMenu3.add(menuItemEntrenamientos);
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem2.setText("Itinerarios");
-        jMenu3.add(jMenuItem2);
+        menuItemItinerarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemItinerarios.setText("Itinerarios");
+        jMenu3.add(menuItemItinerarios);
+
+        menuItemPruebaTabla.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemPruebaTabla.setText("**prueba*tabla**");
+        menuItemPruebaTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemPruebaTablaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(menuItemPruebaTabla);
 
         jMenuBar1.add(jMenu3);
 
@@ -70,10 +80,15 @@ public class PantallaInicial extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ConsultaDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaDatosActionPerformed
+    private void menuItemConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConfiguracionActionPerformed
         ConfiguracionConsulta configuracion = new ConfiguracionConsulta(this, true, metodos);
         configuracion.setVisible(true);
-    }//GEN-LAST:event_ConsultaDatosActionPerformed
+    }//GEN-LAST:event_menuItemConfiguracionActionPerformed
+
+    private void menuItemPruebaTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemPruebaTablaActionPerformed
+        PruebaRellenarTabla prueba = new PruebaRellenarTabla(this, true, metodos);
+        prueba.setVisible(true);
+    }//GEN-LAST:event_menuItemPruebaTablaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -112,11 +127,12 @@ public class PantallaInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem ConsultaDatos;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem menuItemConfiguracion;
+    private javax.swing.JMenuItem menuItemEntrenamientos;
+    private javax.swing.JMenuItem menuItemItinerarios;
+    private javax.swing.JMenuItem menuItemPruebaTabla;
     // End of variables declaration//GEN-END:variables
 }
