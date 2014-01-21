@@ -109,7 +109,7 @@ public class ItinerarioConsulta extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//falta
 //     private void rellenarTabla() {
 //        List<Itinerario> listaItinerarios = metodos.obtenerListaEntrenamientos();
 //        DefaultTableModel model = (DefaultTableModel) this.TablaItinerario.getModel();
