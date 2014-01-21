@@ -21,31 +21,37 @@ public class PantallaInicial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenu1 = new javax.swing.JMenu();
         jMenuBar1 = new javax.swing.JMenuBar();
-        menuItemNuevaConfiguracion = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        menuItemNuevo = new javax.swing.JMenu();
+        menuItemNuevaConfiguracion = new javax.swing.JMenuItem();
         menuItemNuevoEntrenamiento = new javax.swing.JMenuItem();
         menuItemNuevoItinerario = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        menuItemConfiguracion = new javax.swing.JMenuItem();
-        menuItemEntrenamientos = new javax.swing.JMenuItem();
-        menuItemItinerarios = new javax.swing.JMenuItem();
-        menuItemPruebaTabla = new javax.swing.JMenuItem();
-
-        jMenu1.setText("jMenu1");
+        menuConsulta = new javax.swing.JMenu();
+        menuItemConsultaConfiguracion = new javax.swing.JMenuItem();
+        menuItemConsultaEntrenamientos = new javax.swing.JMenuItem();
+        menuItemConsultaItinerarios = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        menuItemNuevaConfiguracion.setText("Nuevo");
+        menuItemNuevo.setText("Nuevo");
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setText("Configuración");
-        menuItemNuevaConfiguracion.add(jMenuItem1);
+        menuItemNuevaConfiguracion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        menuItemNuevaConfiguracion.setText("Configuración");
+        menuItemNuevaConfiguracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemNuevaConfiguracionActionPerformed(evt);
+            }
+        });
+        menuItemNuevo.add(menuItemNuevaConfiguracion);
 
         menuItemNuevoEntrenamiento.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         menuItemNuevoEntrenamiento.setText("Entrenamiento");
-        menuItemNuevaConfiguracion.add(menuItemNuevoEntrenamiento);
+        menuItemNuevoEntrenamiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemNuevoEntrenamientoActionPerformed(evt);
+            }
+        });
+        menuItemNuevo.add(menuItemNuevoEntrenamiento);
 
         menuItemNuevoItinerario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         menuItemNuevoItinerario.setText("Itinerario");
@@ -54,44 +60,40 @@ public class PantallaInicial extends javax.swing.JFrame {
                 menuItemNuevoItinerarioActionPerformed(evt);
             }
         });
-        menuItemNuevaConfiguracion.add(menuItemNuevoItinerario);
+        menuItemNuevo.add(menuItemNuevoItinerario);
 
-        jMenuBar1.add(menuItemNuevaConfiguracion);
+        jMenuBar1.add(menuItemNuevo);
 
-        jMenu3.setText("Consulta");
+        menuConsulta.setText("Consulta");
 
-        menuItemConfiguracion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
-        menuItemConfiguracion.setText("Configuración");
-        menuItemConfiguracion.addActionListener(new java.awt.event.ActionListener() {
+        menuItemConsultaConfiguracion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemConsultaConfiguracion.setText("Configuración");
+        menuItemConsultaConfiguracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemConfiguracionActionPerformed(evt);
+                menuItemConsultaConfiguracionActionPerformed(evt);
             }
         });
-        jMenu3.add(menuItemConfiguracion);
+        menuConsulta.add(menuItemConsultaConfiguracion);
 
-        menuItemEntrenamientos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
-        menuItemEntrenamientos.setText("Entrenamientos");
-        menuItemEntrenamientos.addActionListener(new java.awt.event.ActionListener() {
+        menuItemConsultaEntrenamientos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemConsultaEntrenamientos.setText("Entrenamientos");
+        menuItemConsultaEntrenamientos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemEntrenamientosActionPerformed(evt);
+                menuItemConsultaEntrenamientosActionPerformed(evt);
             }
         });
-        jMenu3.add(menuItemEntrenamientos);
+        menuConsulta.add(menuItemConsultaEntrenamientos);
 
-        menuItemItinerarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
-        menuItemItinerarios.setText("Itinerarios");
-        jMenu3.add(menuItemItinerarios);
-
-        menuItemPruebaTabla.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        menuItemPruebaTabla.setText("**prueba*tabla**");
-        menuItemPruebaTabla.addActionListener(new java.awt.event.ActionListener() {
+        menuItemConsultaItinerarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemConsultaItinerarios.setText("Itinerarios");
+        menuItemConsultaItinerarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemPruebaTablaActionPerformed(evt);
+                menuItemConsultaItinerariosActionPerformed(evt);
             }
         });
-        jMenu3.add(menuItemPruebaTabla);
+        menuConsulta.add(menuItemConsultaItinerarios);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(menuConsulta);
 
         setJMenuBar(jMenuBar1);
 
@@ -109,25 +111,34 @@ public class PantallaInicial extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuItemConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConfiguracionActionPerformed
-        ConfiguracionConsulta configuracion = new ConfiguracionConsulta(this, true, metodos);
-        configuracion.setVisible(true);
-    }//GEN-LAST:event_menuItemConfiguracionActionPerformed
-
-    private void menuItemPruebaTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemPruebaTablaActionPerformed
-        PruebaRellenarTabla prueba = new PruebaRellenarTabla(this, true, metodos);
-        prueba.setVisible(true);
-    }//GEN-LAST:event_menuItemPruebaTablaActionPerformed
-
     private void menuItemNuevoItinerarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemNuevoItinerarioActionPerformed
-        // TODO add your handling code here:
         ItinerarioNuevo itinerario = new ItinerarioNuevo(this, true, metodos);
         itinerario.setVisible(true);
     }//GEN-LAST:event_menuItemNuevoItinerarioActionPerformed
 
-    private void menuItemEntrenamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemEntrenamientosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_menuItemEntrenamientosActionPerformed
+    private void menuItemNuevaConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemNuevaConfiguracionActionPerformed
+        ConfiguracionNueva configuracionNueva = new ConfiguracionNueva(null, true, metodos);
+        configuracionNueva.setVisible(true);
+    }//GEN-LAST:event_menuItemNuevaConfiguracionActionPerformed
+
+    private void menuItemConsultaEntrenamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConsultaEntrenamientosActionPerformed
+        EntrenamientoConsulta entrenamientoConsulta = new EntrenamientoConsulta(this, false, metodos);
+    }//GEN-LAST:event_menuItemConsultaEntrenamientosActionPerformed
+
+    private void menuItemConsultaConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConsultaConfiguracionActionPerformed
+        ConfiguracionConsulta configuracion = new ConfiguracionConsulta(this, false, metodos);
+        configuracion.setVisible(true);
+    }//GEN-LAST:event_menuItemConsultaConfiguracionActionPerformed
+
+    private void menuItemNuevoEntrenamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemNuevoEntrenamientoActionPerformed
+        EntrenamientoNuevo entrenamientoNuevo = new EntrenamientoNuevo(this, true, metodos);
+        entrenamientoNuevo.setVisible(true);
+    }//GEN-LAST:event_menuItemNuevoEntrenamientoActionPerformed
+
+    private void menuItemConsultaItinerariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConsultaItinerariosActionPerformed
+        ItinerarioConsulta itinerarioConsulta = new ItinerarioConsulta(this, false, metodos);
+        itinerarioConsulta.setVisible(true);
+    }//GEN-LAST:event_menuItemConsultaItinerariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,16 +177,14 @@ public class PantallaInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem menuItemConfiguracion;
-    private javax.swing.JMenuItem menuItemEntrenamientos;
-    private javax.swing.JMenuItem menuItemItinerarios;
-    private javax.swing.JMenu menuItemNuevaConfiguracion;
+    private javax.swing.JMenu menuConsulta;
+    private javax.swing.JMenuItem menuItemConsultaConfiguracion;
+    private javax.swing.JMenuItem menuItemConsultaEntrenamientos;
+    private javax.swing.JMenuItem menuItemConsultaItinerarios;
+    private javax.swing.JMenuItem menuItemNuevaConfiguracion;
+    private javax.swing.JMenu menuItemNuevo;
     private javax.swing.JMenuItem menuItemNuevoEntrenamiento;
     private javax.swing.JMenuItem menuItemNuevoItinerario;
-    private javax.swing.JMenuItem menuItemPruebaTabla;
     // End of variables declaration//GEN-END:variables
 }
