@@ -26,7 +26,6 @@ public class Metodos {
     Connection conexion;
     Statement consulta;
     public String ruta;
-    //paula prueba clase
 
     /**
      * Constructor for objects of class Conexion
@@ -50,7 +49,7 @@ public class Metodos {
     }
 
     public List<Entrenamiento> obtenerListaEntrenamientos() {
-        String sql = "select * from entrenamiento";
+        String sql = "SELECT * FROM entrenamiento";
         ResultSet resultSet;
         conectar();
         Entrenamiento entrenamiento;
@@ -79,6 +78,37 @@ public class Metodos {
         }
         return listaEntrenamientos;
     }
+    
+    /**
+     * Inserta un nuevo entrenamiento en la BD y lo confirma con un booleano.
+     * @param tipo
+     * @param fecha
+     * @param horaInicio
+     * @param horaFin
+     * @param descripcion
+     * @return  true si pudo insertar el nuevo entrenamiento, o false si no pudo.
+     */
+    public boolean insertarEntrenamientoEnDB(String tipo, String fecha, String horaInicio, String horaFin, String descripcion) {
+        boolean pudoInsertarse = false;
+        conectar();
+        String sql = "INSERT INTO entrenamiento(tipo, fecha, hora_inicio, hora_fin, descripcion) " +
+                     "VALUES('" + tipo + "', '" + fecha + "', '" + horaInicio + 
+                     "', '" + horaFin + "', '" + descripcion + "')";
+        try {
+            consulta.executeUpdate(sql);
+            pudoInsertarse = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return pudoInsertarse;
+    }
+    
     //falta itinerarios
 //public List<Entrenamiento> obtenerListaItinerarios() {
 //        String sql = "select * from entrenamiento";
@@ -111,7 +141,9 @@ public class Metodos {
 //        return listaEntrenamientos;
 //    }
 
-    /**
+    
+    /*
+    
     public void rellenarTablaEscalador(JTable tablaEscalador) {
         DefaultTableModel defaultTableModel = new DefaultTableModel();
         defaultTableModel.addColumn("id");
@@ -174,7 +206,10 @@ public class Metodos {
             }
         } //fin if
     }// fin InsertarTablaEscalador
+
     */
+    
+    
 
     public void copiarFotografia(File archivoOrigen, File archivoDestino) {
 
