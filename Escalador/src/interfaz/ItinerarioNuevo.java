@@ -209,7 +209,7 @@ public class ItinerarioNuevo extends javax.swing.JDialog {
         if (!metodos.comprobarFecha(this.fecha.getText())){//devuelve false edl metodo metodos.comprobarFecha        
             c=false;
             
-            this.alta.setEnabled(true); 
+           
        }                   
    
       
