@@ -5,6 +5,16 @@ public class Entrenamiento {
     private int id; // p_entrenamiento
     private String tipo, fecha, horaInicio, horaFin, descripcion;
 
+    // Constructor sin el id
+    public Entrenamiento(String tipo, String fecha, String horaInicio, String horaFin, String descripcion) {
+        this.tipo = tipo;
+        this.fecha = fecha;
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
+        this.descripcion = descripcion;
+    }
+
+    // Constructor con el id
     public Entrenamiento(int id, String tipo, String fecha, String horaInicio, String horaFin, String descripcion) {
         this.id = id;
         this.tipo = tipo;

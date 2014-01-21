@@ -5,6 +5,17 @@ public class Itinerario {
     private String nombre, localizacion, via, dificultad;
     //File fotoItinerario; //?
 
+    // Constructor sin el id
+    // Falta el atributo de la Foto
+    public Itinerario(String nombre, String localizacion, String via, String dificultad) {
+        this.nombre = nombre;
+        this.localizacion = localizacion;
+        this.via = via;
+        this.dificultad = dificultad;
+    }
+
+    // Constructor con el id
+    // Falta el atributo de la Foto
     public Itinerario(int id, String nombre, String localizacion, String via, String dificultad) {
         this.id = id;
         this.nombre = nombre;
