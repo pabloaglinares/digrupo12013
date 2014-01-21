@@ -11,7 +11,7 @@ public class PruebaRellenarTabla extends javax.swing.JDialog {
         this.metodos = metodos;
         this.setResizable(false);
         initComponents();
-        metodos.rellenarTablaEscalador(tablaEscalador);
+        //metodos.rellenarTablaEscalador(tablaEscalador);
     }
     
     /**

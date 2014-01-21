@@ -181,7 +181,7 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
         String apellido = this.apellido.getText();
         String fecha = this.inicio.getText();
         String fchFin = this.fin.getText();
-        metodos.insertarTablaEscalador(nombre, apellido, fecha, fchFin);
+        //metodos.insertarTablaEscalador(nombre, apellido, fecha, fchFin);
 
         this.nombre.setText("");
         this.apellido.setText("");

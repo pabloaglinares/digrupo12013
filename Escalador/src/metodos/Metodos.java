@@ -19,9 +19,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 public class Metodos {
 
@@ -37,54 +34,6 @@ public class Metodos {
         ruta = System.getProperty("user.dir");
     }
 
-    //Comprueba que las cajas de textos de las fechas solo tengan fechas en formato dd/MM/yyyy y que no esten vacios
-    public boolean comprobarFecha(String texto) {
-
-        boolean valido = true;
-
-        if (texto.length() == 0) {
-            valido = false;
-            JOptionPane.showMessageDialog(null, "Rellene todos los campos correctamente", "Escalador", JOptionPane.ERROR_MESSAGE);
-        } else {
-            Pattern patron = Pattern.compile("\\d\\d/\\d\\d/\\d\\d\\d\\d");
-            Matcher m = patron.matcher(texto);
-            if (!m.matches()) {
-                JOptionPane.showMessageDialog(null, "Formato de fecha incorrecto", "Escalador", JOptionPane.ERROR_MESSAGE);
-                valido = false;
-            }
-
-        }
-
-        return valido;
-    }
-
-    //Comprueba que las cajas de textos solo tengan texto y que no esten vacios
-    public boolean comprobarTextos(String texto) {
-
-        boolean valido = true;
-
-        if (texto.length() == 0) {
-            valido = false;
-            JOptionPane.showMessageDialog(null, "Rellene todos los camposcorrectamente", "Escalador", JOptionPane.ERROR_MESSAGE);
-        } else {
-            for (int i = 0; i < texto.length(); i++) {
-
-                try {
-                    Integer.parseInt(String.valueOf(texto.charAt(i)));
-                    valido = false;
-                    JOptionPane.showMessageDialog(null, "Rellene todos los campos correctamente", "Escalador", JOptionPane.ERROR_MESSAGE);
-                    break;
-                } catch (Exception e) {
-
-                }
-
-            }
-        }
-
-        return valido;
-
-    }
-
     public void conectar() {
         try {
             Class.forName("org.sqlite.JDBC");
@@ -98,7 +47,7 @@ public class Metodos {
             System.out.println(e.getMessage());
         }
     }
-    
+
     public List<Entrenamiento> obtenerListaEntrenamientos() {
         String sql = "select * from entrenamiento";
         ResultSet resultSet;
@@ -107,7 +56,7 @@ public class Metodos {
         List<Entrenamiento> listaEntrenamientos = new ArrayList<>();
         try {
             resultSet = consulta.executeQuery(sql);
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 entrenamiento = new Entrenamiento(
                         resultSet.getInt(1),
                         resultSet.getString(2),
@@ -129,25 +78,8 @@ public class Metodos {
         }
         return listaEntrenamientos;
     }
-    
-    public void rellenarTabla(JTable jTable1) {
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        String sql = "select * from entrenamiento";
-        ResultSet res;
-        conectar();
-        try {
-            res = consulta.executeQuery(sql);
 
-            while (res.next()) {
-                model.addRow(new Object[]{res.getString(1), res.getString(2)});
-            }
-            conexion.close();
-        } catch (SQLException e) {
-            System.out.println("Error");
-        }
-    }
-    
-
+    /**
     public void rellenarTablaEscalador(JTable tablaEscalador) {
         DefaultTableModel defaultTableModel = new DefaultTableModel();
         defaultTableModel.addColumn("id");
@@ -184,14 +116,14 @@ public class Metodos {
 
         if (comprobarTextos(nombre) && comprobarTextos(apellido) && comprobarFecha(fecha) && comprobarFecha(fechaf)) {
 
-            /*  SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");//dia/mes/año
-             try {
-             Date fechaInicio = formatoFecha.parse(fecha);
-             Date FechaFin = formatoFecha.parse(fechaf);
-                
-             } catch (ParseException ex) {
-               
-             }*/
+//             SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");//dia/mes/año
+//             try {
+//             Date fechaInicio = formatoFecha.parse(fecha);
+//             Date FechaFin = formatoFecha.parse(fechaf);
+//                
+//             } catch (ParseException ex) {
+//               
+//             }
             conectar();
             String sql = "insert into escalador(nombre,apellido,fecha_inicio,fecha_fin) values('" + nombre + "','" + apellido
                     + "','" + fecha + "','" + fechaf + "')";
@@ -207,38 +139,77 @@ public class Metodos {
                 } catch (SQLException ex) {
                     Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }          
+            }
         } //fin if
     }// fin InsertarTablaEscalador
-    
-    public void copiarFotografia(File archivoOrigen, File archivoDestino){
-   
-        BufferedInputStream in=null;     
-        BufferedOutputStream out=null;            
+    */
+
+    public void copiarFotografia(File archivoOrigen, File archivoDestino) {
+
+        BufferedInputStream in = null;
+        BufferedOutputStream out = null;
         try {
             in = new BufferedInputStream(new FileInputStream(archivoOrigen));
         } catch (FileNotFoundException ex) {
             System.out.println(ex.getMessage());
         }
-        
+
         try {
             out = new BufferedOutputStream(new FileOutputStream(archivoDestino));
         } catch (FileNotFoundException ex) {
-           
+
         }
-        byte buffer[] = new byte[1024];  
-        int leidos;  
+        byte buffer[] = new byte[1024];
+        int leidos;
         try {
-            while((leidos=in.read(buffer,0,1024))!=-1){  
-                out.write(buffer,0,leidos);  
+            while ((leidos = in.read(buffer, 0, 1024)) != -1) {
+                out.write(buffer, 0, leidos);
             }
-            in.close();  
-        out.close(); 
+            in.close();
+            out.close();
         } catch (IOException ex) {
-           
+
         }
-        
+
+    }
+
+    //Comprueba que las cajas de textos de las fechas solo tengan fechas en formato dd/MM/yyyy y que no esten vacios
+    public boolean comprobarFecha(String texto) {
+
+        boolean valido = true;
+
+        if (texto.length() == 0) {
+            valido = false;
+        } else {
+            Pattern patron = Pattern.compile("\\d\\d/\\d\\d/\\d\\d\\d\\d");
+            Matcher m = patron.matcher(texto);
+            if (!m.matches()) {
+                valido = false;
+            }
+        }
+        return valido;
+    }
+
+    //Comprueba que las cajas de textos solo tengan texto y que no esten vacios
+    public boolean comprobarTextos(String texto) {
+
+        boolean valido = true;
+
+        if (texto.length() == 0) {
+            valido = false;
+        } else {
+            for (int i = 0; i < texto.length(); i++) {
+
+                try {
+                    Integer.parseInt(String.valueOf(texto.charAt(i)));
+                    valido = false;
+                    break;
+                } catch (Exception e) {
+
+                }
+
+            }
+        }
+        return valido;
     }
 }
-
-
