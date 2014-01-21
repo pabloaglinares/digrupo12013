@@ -11,7 +11,7 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.metodos = metodos;
-        //this.setResizable(false);
+        this.setResizable(false);
     }
 
     /**
