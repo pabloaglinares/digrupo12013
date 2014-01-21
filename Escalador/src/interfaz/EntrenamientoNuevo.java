@@ -188,7 +188,7 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
         horaInicioValida = metodos.comprobarHora(horaInicio);
         horaFinValida = metodos.comprobarHora(horaFin);
         
-        String mensaje = "";
+        String mensaje;
         
         if(fechaValida && horaInicioValida && horaFinValida) {
             boolean insercionCorrecta = metodos.insertarEntrenamientoEnDB(tipo, fecha, horaInicio, horaFin, descripcion);
