@@ -1,13 +1,17 @@
 package metodos;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -172,5 +176,35 @@ public class Metodos {
             }
         } //fin if
     }// fin InsertarTablaEscalador
-
+    
+    public void copiarFotografia(File archivoOrigen, File archivoDestino){
+   
+        BufferedInputStream in=null;     
+        BufferedOutputStream out=null;      
+        try {
+            in = new BufferedInputStream(new FileInputStream(archivoOrigen));
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        try {
+            out = new BufferedOutputStream(new FileOutputStream(archivoDestino));
+        } catch (FileNotFoundException ex) {
+           
+        }
+        byte buffer[] = new byte[1024];  
+        int leidos;  
+        try {
+            while((leidos=in.read(buffer,0,1024))!=-1){  
+                out.write(buffer,0,leidos);  
+            }
+            in.close();  
+        out.close(); 
+        } catch (IOException ex) {
+           
+        }
+        
+    }
 }
+
+

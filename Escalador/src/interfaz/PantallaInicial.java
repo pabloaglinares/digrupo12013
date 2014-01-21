@@ -79,6 +79,11 @@ public class PantallaInicial extends javax.swing.JFrame {
 
         menuItemNuevoItinerario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         menuItemNuevoItinerario.setText("Itinerario");
+        menuItemNuevoItinerario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemNuevoItinerarioActionPerformed(evt);
+            }
+        });
         menuItemNuevaConfiguracion.add(menuItemNuevoItinerario);
 
         jMenuBar1.add(menuItemNuevaConfiguracion);
@@ -108,6 +113,12 @@ public class PantallaInicial extends javax.swing.JFrame {
         PruebaRellenarTabla prueba = new PruebaRellenarTabla(this, true, metodos);
         prueba.setVisible(true);
     }//GEN-LAST:event_menuItemPruebaTablaActionPerformed
+
+    private void menuItemNuevoItinerarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemNuevoItinerarioActionPerformed
+        // TODO add your handling code here:
+        ItinerarioNuevo itinerario = new ItinerarioNuevo(this, true, metodos);
+        itinerario.setVisible(true);
+    }//GEN-LAST:event_menuItemNuevoItinerarioActionPerformed
 
     /**
      * @param args the command line arguments
