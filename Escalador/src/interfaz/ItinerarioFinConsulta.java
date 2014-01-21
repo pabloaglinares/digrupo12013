@@ -41,7 +41,7 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
 
         jButton1.setText("salir");
 
-        jButton2.setText("foto");
+        jButton2.setText("ver foto");
 
         jButton3.setText("borrar");
 
