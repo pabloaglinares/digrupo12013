@@ -11,6 +11,7 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
 
     public ConfiguracionNueva(javax.swing.JDialog parent, boolean modal, Metodos metodos) {
         super(parent, modal);
+        this.setResizable(false);
         initComponents();
         this.metodos = metodos;
     }

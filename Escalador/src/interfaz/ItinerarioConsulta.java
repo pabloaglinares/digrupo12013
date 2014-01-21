@@ -8,6 +8,7 @@ public class ItinerarioConsulta extends javax.swing.JDialog {
     
     public ItinerarioConsulta(java.awt.Frame parent, boolean modal, Metodos metodos) {
         super(parent, modal);
+        this.setResizable(false);
         this.metodos = metodos;
         initComponents();
     }

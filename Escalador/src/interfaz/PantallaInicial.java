@@ -8,6 +8,7 @@ public class PantallaInicial extends javax.swing.JFrame {
 
     public PantallaInicial() {
         initComponents();
+        this.setResizable(false);
         setLocationRelativeTo(null);//abre la ventana en el centro de la pantalla
     }
 

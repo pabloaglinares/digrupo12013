@@ -9,6 +9,7 @@ public class PruebaRellenarTabla extends javax.swing.JDialog {
     public PruebaRellenarTabla(java.awt.Frame parent, boolean modal, Metodos metodos) {
         super(parent, modal);
         this.metodos = metodos;
+        this.setResizable(false);
         initComponents();
         metodos.rellenarTablaEscalador(tablaEscalador);
     }
