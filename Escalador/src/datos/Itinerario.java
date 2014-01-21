@@ -1,8 +1,8 @@
 package datos;
 
 public class Itinerario {
-    int id; // p_itinerario
-    String nombre, localizacion, via, dificultad;
+    private int id; // p_itinerario
+    private String nombre, localizacion, via, dificultad;
     //File fotoItinerario; //?
 
     public Itinerario(int id, String nombre, String localizacion, String via, String dificultad) {
