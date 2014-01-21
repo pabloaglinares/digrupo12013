@@ -91,8 +91,8 @@ public class Metodos {
     public boolean insertarEntrenamientoEnDB(String tipo, String fecha, String horaInicio, String horaFin, String descripcion) {
         boolean pudoInsertarse = false;
         conectar();
-        String sql = "INSERT INTO entrenamiento(tipo, fecha, hora_inicio, hora_fin, descripcion) " +
-                     "VALUES('" + tipo + "', '" + fecha + "', '" + horaInicio + 
+        String sql = "INSERT INTO entrenamiento (tipo, fecha, hora_inicio, hora_fin, descripcion) " +
+                     "VALUES ('" + tipo + "', '" + fecha + "', '" + horaInicio + 
                      "', '" + horaFin + "', '" + descripcion + "')";
         try {
             consulta.executeUpdate(sql);
