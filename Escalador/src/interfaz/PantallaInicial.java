@@ -26,10 +26,12 @@ public class PantallaInicial extends javax.swing.JFrame {
         menuItemNuevaConfiguracion = new javax.swing.JMenuItem();
         menuItemNuevoEntrenamiento = new javax.swing.JMenuItem();
         menuItemNuevoItinerario = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         menuConsulta = new javax.swing.JMenu();
         menuItemConsultaConfiguracion = new javax.swing.JMenuItem();
         menuItemConsultaEntrenamientos = new javax.swing.JMenuItem();
         menuItemConsultaItinerarios = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,6 +64,10 @@ public class PantallaInicial extends javax.swing.JFrame {
         });
         menuItemNuevo.add(menuItemNuevoItinerario);
 
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setText("Itinerario Realizado");
+        menuItemNuevo.add(jMenuItem1);
+
         jMenuBar1.add(menuItemNuevo);
 
         menuConsulta.setText("Consulta");
@@ -92,6 +98,10 @@ public class PantallaInicial extends javax.swing.JFrame {
             }
         });
         menuConsulta.add(menuItemConsultaItinerarios);
+
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem2.setText("Itinerarios Realizados");
+        menuConsulta.add(jMenuItem2);
 
         jMenuBar1.add(menuConsulta);
 
@@ -179,6 +189,8 @@ public class PantallaInicial extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenu menuConsulta;
     private javax.swing.JMenuItem menuItemConsultaConfiguracion;
     private javax.swing.JMenuItem menuItemConsultaEntrenamientos;
