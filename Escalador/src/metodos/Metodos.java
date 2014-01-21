@@ -1,5 +1,6 @@
 package metodos;
 
+import datos.Entrenamiento;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -12,6 +13,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -97,12 +99,25 @@ public class Metodos {
         }
     }
     
-    public ResultSet obtenerResultSetEntrenamientos() {
+    public List<Entrenamiento> obtenerListaEntrenamientos() {
         String sql = "select * from entrenamiento";
-        ResultSet resultSet = null;
+        ResultSet resultSet;
         conectar();
+        Entrenamiento entrenamiento;
+        List<Entrenamiento> listaEntrenamientos = new ArrayList<>();
         try {
             resultSet = consulta.executeQuery(sql);
+            while(resultSet.next()) {
+                entrenamiento = new Entrenamiento(
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4),
+                        resultSet.getString(5),
+                        resultSet.getString(6)
+                );
+                listaEntrenamientos.add(entrenamiento);
+            }
         } catch (SQLException e) {
             System.out.println("Error SQL.");
         } finally {
@@ -112,7 +127,7 @@ public class Metodos {
                 Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return resultSet;
+        return listaEntrenamientos;
     }
     
     public void rellenarTabla(JTable jTable1) {
