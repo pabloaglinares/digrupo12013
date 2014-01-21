@@ -1,6 +1,7 @@
 package metodos;
 
 import datos.Entrenamiento;
+import datos.Itinerario;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -78,6 +79,37 @@ public class Metodos {
         }
         return listaEntrenamientos;
     }
+    //falta itinerarios
+//public List<Entrenamiento> obtenerListaItinerarios() {
+//        String sql = "select * from entrenamiento";
+//        ResultSet resultSet;
+//        conectar();
+//        Entrenamiento entrenamiento;
+//        List<Itinerario> listaIter = new ArrayList<>();
+//        try {
+//            resultSet = consulta.executeQuery(sql);
+//            while (resultSet.next()) {
+//                entrenamiento = new Entrenamiento(
+//                        resultSet.getInt(1),
+//                        resultSet.getString(2),
+//                        resultSet.getString(3),
+//                        resultSet.getString(4),
+//                        resultSet.getString(5),
+//                        resultSet.getString(6)
+//                );
+//                listaEntrenamientos.add(entrenamiento);
+//            }
+//        } catch (SQLException e) {
+//            System.out.println("Error SQL.");
+//        } finally {
+//            try {
+//                conexion.close();
+//            } catch (SQLException ex) {
+//                Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
+//        return listaEntrenamientos;
+//    }
 
     /**
     public void rellenarTablaEscalador(JTable tablaEscalador) {
