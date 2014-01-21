@@ -12,6 +12,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -35,7 +36,6 @@ public class Metodos {
     }
 
     //Comprueba que las cajas de textos de las fechas solo tengan fechas en formato dd/MM/yyyy y que no esten vacios
-    //miauuuuu
     public boolean comprobarFecha(String texto) {
 
         boolean valido = true;
@@ -97,6 +97,24 @@ public class Metodos {
         }
     }
     
+    public ResultSet obtenerResultSetEntrenamientos() {
+        String sql = "select * from entrenamiento";
+        ResultSet resultSet = null;
+        conectar();
+        try {
+            resultSet = consulta.executeQuery(sql);
+        } catch (SQLException e) {
+            System.out.println("Error SQL.");
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return resultSet;
+    }
+    
     public void rellenarTabla(JTable jTable1) {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         String sql = "select * from entrenamiento";
@@ -113,6 +131,7 @@ public class Metodos {
             System.out.println("Error");
         }
     }
+    
 
     public void rellenarTablaEscalador(JTable tablaEscalador) {
         DefaultTableModel defaultTableModel = new DefaultTableModel();
