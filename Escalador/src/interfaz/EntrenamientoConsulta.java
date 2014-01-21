@@ -14,11 +14,15 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
         this.setResizable(false);
         this.metodos = metodos;
         initComponents();
+        //vaciarTabla();
+        rellenarTabla();
     }
     
     private void rellenarTabla() {
         List<Entrenamiento> listaEntrenamientos = metodos.obtenerListaEntrenamientos();
         DefaultTableModel model = (DefaultTableModel) tablaEntrenamientos.getModel();
+        model.setColumnCount(0); // elimina las columnas de la tabla por defecto
+        model.setRowCount(0); // elimina las filas de la tabla por defecto
         model.addColumn("ID");
         model.addColumn("Tipo");
         model.addColumn("Fecha");

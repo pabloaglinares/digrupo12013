@@ -13,6 +13,8 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
         this.metodos = metodos;
         this.setResizable(false);
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
