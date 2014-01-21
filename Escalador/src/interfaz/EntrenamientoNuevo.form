@@ -32,7 +32,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="Button_Cancelar" min="-2" pref="70" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="Button_Aceptar" min="-2" max="-2" attributes="0"/>
+                      <Component id="Button_AceptarEntrenamiento" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -47,7 +47,7 @@
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="Button_Aceptar" pref="30" max="32767" attributes="0"/>
+                  <Component id="Button_AceptarEntrenamiento" pref="30" max="32767" attributes="0"/>
                   <Component id="Button_Cancelar" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="24" max="32767" attributes="0"/>
@@ -65,9 +65,6 @@
         </Property>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Entrenamiento"/>
-      </AccessibilityProperties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -102,7 +99,7 @@
                           </Group>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="TextFecha" max="32767" attributes="0"/>
-                              <Component id="Text_HoraInicio" alignment="1" max="32767" attributes="0"/>
+                              <Component id="Text_Hora_Inicio" alignment="1" max="32767" attributes="0"/>
                               <Component id="Text_Hora_Fin" alignment="1" max="32767" attributes="0"/>
                               <Component id="jComboBox1" alignment="1" pref="100" max="32767" attributes="0"/>
                           </Group>
@@ -127,7 +124,7 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Text_HoraInicio" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="Text_Hora_Inicio" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
@@ -158,7 +155,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextFechaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="Text_HoraInicio">
+        <Component class="javax.swing.JTextField" name="Text_Hora_Inicio">
           <Properties>
             <Property name="text" type="java.lang.String" value="Hora_Inicio"/>
           </Properties>
@@ -224,7 +221,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="Button_Aceptar">
+    <Component class="javax.swing.JButton" name="Button_AceptarEntrenamiento">
       <Properties>
         <Property name="text" type="java.lang.String" value="Aceptar"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -232,7 +229,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_AceptarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_AceptarEntrenamientoActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Button_Cancelar">

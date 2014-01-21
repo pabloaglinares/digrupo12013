@@ -13,6 +13,7 @@ public class ItinerarioNuevo extends javax.swing.JDialog {
         super(parent, modal);
         this.setResizable(false);
         this.metodos = metodos;
+        this.alta.setEnabled(false);
         initComponents(); 
     }
 
@@ -204,8 +205,15 @@ public class ItinerarioNuevo extends javax.swing.JDialog {
     }//GEN-LAST:event_salirActionPerformed
 
     private void altaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaActionPerformed
-        
-        
+    boolean c=true;
+        if (!metodos.comprobarFecha(this.fecha.getText())){//devuelve false edl metodo metodos.comprobarFecha        
+            c=false;
+            
+           
+       }                   
+   
+      
+   
         
     }//GEN-LAST:event_altaActionPerformed
 
