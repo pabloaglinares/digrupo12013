@@ -1,5 +1,6 @@
 package interfaz;
 
+import javax.swing.JOptionPane;
 import metodos.Metodos;
 
 public class EntrenamientoNuevo extends javax.swing.JDialog {
@@ -175,24 +176,41 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
     }//GEN-LAST:event_botonSalirActionPerformed
 
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
-        boolean c = true;
-
-        if (!metodos.comprobarFecha(this.campoFecha.getText())) {//devuelve false edl metodo metodos.comprobarFecha        
-            c = false;
+        
+        String fecha = this.campoFecha.getText();
+        String horaInicio = this.campoHoraInicio.getText();
+        String horaFin = this.campoHoraFin.getText();
+        String tipo = (String) this.comboTipo.getSelectedItem();
+        String descripcion = this.areaTextoDescripcion.getText();
+        boolean fechaValida, horaInicioValida, horaFinValida;
+        
+        fechaValida = metodos.comprobarFecha(fecha);
+        horaInicioValida = metodos.comprobarHora(horaInicio);
+        horaFinValida = metodos.comprobarHora(horaFin);
+        
+        String mensaje = "";
+        
+        if(fechaValida && horaInicioValida && horaFinValida) {
+            boolean insercionCorrecta = metodos.insertarEntrenamientoEnDB(tipo, fecha, horaInicio, horaFin, descripcion);
+            if(insercionCorrecta) {
+                mensaje = "El entrenamiento se insertó correctamente.";
+            } else {
+                mensaje = "Error: No se ha insertado el entrenamiento.";
+            }
+        } else {
+            mensaje = "Error en los datos introducidos:";
+            if(!fechaValida) {
+                mensaje += "\nLa fecha introducida no cumple el formato dd/mm/aaaa";
+            }
+            if(!horaInicioValida) {
+                mensaje += "\nLa hora de inicio no cumple el formato hh:mm";
+            }
+            if(!horaFinValida) {
+                mensaje += "\nLa hora de fin no cumple el formato hh:mm";
+            }
         }
-        if (!metodos.comprobarFecha(this.campoHoraInicio.getText())) {//devuelve false edl metodo metodos.comprobarFecha        
-            c = false;
-        }
-        if (!metodos.comprobarFecha(this.campoHoraFin.getText())) {//devuelve false edl metodo metodos.comprobarFecha        
-            c = false;
-        }
-
-        if (c == true) {
-            //insertarTablaEntrenamiento todavia por crear, quien se anima?
-            //metodos.insertarTablaEntrenamiento(null, null, null, null)
-            //y de paso insertarTablaItinerarios :D
-        }
-        c = true;
+        JOptionPane.showMessageDialog(this, mensaje);
+        
     }//GEN-LAST:event_botonAceptarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

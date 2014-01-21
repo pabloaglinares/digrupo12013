@@ -260,10 +260,15 @@ public class Metodos {
      * @param texto
      * @return 
      */
-    public boolean comprobarCaracteresPalabras(String texto) {
+    public boolean comprobarLetras(String texto) {
         if(texto.length() == 0) {
             return false;
         }
         return texto.matches("[a-zA-Z]*");
+    }
+    
+    // Comprueba que la hora se componga de dos pares de dígitos separados por el caracter dos puntos.
+    public boolean comprobarHora(String hora) {
+        return hora.matches("\\d\\d:\\d\\d");
     }
 }
