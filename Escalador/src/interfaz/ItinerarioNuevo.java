@@ -13,7 +13,7 @@ public class ItinerarioNuevo extends javax.swing.JDialog {
         super(parent, modal);
         this.setResizable(false);
         this.metodos = metodos;
-        this.alta.setEnabled(false);
+        //this.alta.setEnabled(false);
         initComponents(); 
     }
 

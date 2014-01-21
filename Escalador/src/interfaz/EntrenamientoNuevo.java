@@ -10,6 +10,7 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
         super(parent, modal);
         this.setResizable(false);
         this.metodos = metodos;
+        
         initComponents();
     }
 
@@ -51,6 +52,11 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
         });
 
         Text_Hora_Inicio.setText("Hora_Inicio");
+        Text_Hora_Inicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Text_Hora_InicioActionPerformed(evt);
+            }
+        });
 
         Text_Hora_Fin.setText("Hora_Fin");
 
@@ -180,9 +186,12 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+boolean f1,f2,f3,combo;
 
     private void TextFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFechaActionPerformed
-        // TODO add your handling code here:
+//       if(this.TextFecha.getText()!=null){
+//       f1=true;
+//       }
     }//GEN-LAST:event_TextFechaActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -207,10 +216,16 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
        }               
        
        if(c==true){
-            
+           //insertarTablaEntrenamiento todavia por crear, quien se anima?
+         //metodos.insertarTablaEntrenamiento(null, null, null, null)
+           //y de paso insertarTablaItinerarios :D
        }
        c=true;
     }//GEN-LAST:event_Button_AceptarEntrenamientoActionPerformed
+
+    private void Text_Hora_InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Text_Hora_InicioActionPerformed
+        
+    }//GEN-LAST:event_Text_Hora_InicioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button_AceptarEntrenamiento;
