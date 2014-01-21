@@ -24,7 +24,7 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         TextFecha = new javax.swing.JTextField();
-        Text_HoraInicio = new javax.swing.JTextField();
+        Text_Hora_Inicio = new javax.swing.JTextField();
         Text_Hora_Fin = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -34,7 +34,7 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        Button_Aceptar = new javax.swing.JButton();
+        Button_AceptarEntrenamiento = new javax.swing.JButton();
         Button_Cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -50,7 +50,7 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
             }
         });
 
-        Text_HoraInicio.setText("Hora_Inicio");
+        Text_Hora_Inicio.setText("Hora_Inicio");
 
         Text_Hora_Fin.setText("Hora_Fin");
 
@@ -102,7 +102,7 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(TextFecha)
-                            .addComponent(Text_HoraInicio)
+                            .addComponent(Text_Hora_Inicio)
                             .addComponent(Text_Hora_Fin)
                             .addComponent(jComboBox1, 0, 100, Short.MAX_VALUE))))
                 .addContainerGap())
@@ -120,7 +120,7 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Text_HoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Text_Hora_Inicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(11, 11, 11)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -137,11 +137,11 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        Button_Aceptar.setText("Aceptar");
-        Button_Aceptar.setPreferredSize(new java.awt.Dimension(75, 23));
-        Button_Aceptar.addActionListener(new java.awt.event.ActionListener() {
+        Button_AceptarEntrenamiento.setText("Aceptar");
+        Button_AceptarEntrenamiento.setPreferredSize(new java.awt.Dimension(75, 23));
+        Button_AceptarEntrenamiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_AceptarActionPerformed(evt);
+                Button_AceptarEntrenamientoActionPerformed(evt);
             }
         });
 
@@ -162,7 +162,7 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(Button_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Button_Aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Button_AceptarEntrenamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -173,12 +173,10 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Button_Aceptar, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(Button_AceptarEntrenamiento, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(Button_Cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
-
-        jPanel1.getAccessibleContext().setAccessibleName("Entrenamiento");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -195,16 +193,31 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_Button_CancelarActionPerformed
 
-    private void Button_AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_AceptarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Button_AceptarActionPerformed
+    private void Button_AceptarEntrenamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_AceptarEntrenamientoActionPerformed
+      boolean c=true;
+      
+       if (!metodos.comprobarFecha(this.TextFecha.getText())){//devuelve false edl metodo metodos.comprobarFecha        
+            c=false;
+       }                   
+       if (!metodos.comprobarFecha(this.Text_Hora_Inicio.getText())){//devuelve false edl metodo metodos.comprobarFecha        
+            c=false;
+       }         
+       if (!metodos.comprobarFecha(this.Text_Hora_Fin.getText())){//devuelve false edl metodo metodos.comprobarFecha        
+            c=false;
+       }               
+       
+       if(c==true){
+            
+       }
+       c=true;
+    }//GEN-LAST:event_Button_AceptarEntrenamientoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Button_Aceptar;
+    private javax.swing.JButton Button_AceptarEntrenamiento;
     private javax.swing.JButton Button_Cancelar;
     private javax.swing.JTextField TextFecha;
-    private javax.swing.JTextField Text_HoraInicio;
     private javax.swing.JTextField Text_Hora_Fin;
+    private javax.swing.JTextField Text_Hora_Inicio;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

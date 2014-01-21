@@ -23,49 +23,19 @@ public class PantallaInicial extends javax.swing.JFrame {
 
         jMenu1 = new javax.swing.JMenu();
         jMenuBar1 = new javax.swing.JMenuBar();
+        menuItemNuevaConfiguracion = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        menuItemNuevoEntrenamiento = new javax.swing.JMenuItem();
+        menuItemNuevoItinerario = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         menuItemConfiguracion = new javax.swing.JMenuItem();
         menuItemEntrenamientos = new javax.swing.JMenuItem();
         menuItemItinerarios = new javax.swing.JMenuItem();
         menuItemPruebaTabla = new javax.swing.JMenuItem();
-        menuItemNuevaConfiguracion = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        menuItemNuevoEntrenamiento = new javax.swing.JMenuItem();
-        menuItemNuevoItinerario = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jMenu3.setText("Consulta");
-
-        menuItemConfiguracion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
-        menuItemConfiguracion.setText("Configuración");
-        menuItemConfiguracion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemConfiguracionActionPerformed(evt);
-            }
-        });
-        jMenu3.add(menuItemConfiguracion);
-
-        menuItemEntrenamientos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
-        menuItemEntrenamientos.setText("Entrenamientos");
-        jMenu3.add(menuItemEntrenamientos);
-
-        menuItemItinerarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
-        menuItemItinerarios.setText("Itinerarios");
-        jMenu3.add(menuItemItinerarios);
-
-        menuItemPruebaTabla.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        menuItemPruebaTabla.setText("**prueba*tabla**");
-        menuItemPruebaTabla.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemPruebaTablaActionPerformed(evt);
-            }
-        });
-        jMenu3.add(menuItemPruebaTabla);
-
-        jMenuBar1.add(jMenu3);
 
         menuItemNuevaConfiguracion.setText("Nuevo");
 
@@ -87,6 +57,41 @@ public class PantallaInicial extends javax.swing.JFrame {
         menuItemNuevaConfiguracion.add(menuItemNuevoItinerario);
 
         jMenuBar1.add(menuItemNuevaConfiguracion);
+
+        jMenu3.setText("Consulta");
+
+        menuItemConfiguracion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemConfiguracion.setText("Configuración");
+        menuItemConfiguracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemConfiguracionActionPerformed(evt);
+            }
+        });
+        jMenu3.add(menuItemConfiguracion);
+
+        menuItemEntrenamientos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemEntrenamientos.setText("Entrenamientos");
+        menuItemEntrenamientos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemEntrenamientosActionPerformed(evt);
+            }
+        });
+        jMenu3.add(menuItemEntrenamientos);
+
+        menuItemItinerarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemItinerarios.setText("Itinerarios");
+        jMenu3.add(menuItemItinerarios);
+
+        menuItemPruebaTabla.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemPruebaTabla.setText("**prueba*tabla**");
+        menuItemPruebaTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemPruebaTablaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(menuItemPruebaTabla);
+
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -119,6 +124,10 @@ public class PantallaInicial extends javax.swing.JFrame {
         ItinerarioNuevo itinerario = new ItinerarioNuevo(this, true, metodos);
         itinerario.setVisible(true);
     }//GEN-LAST:event_menuItemNuevoItinerarioActionPerformed
+
+    private void menuItemEntrenamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemEntrenamientosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuItemEntrenamientosActionPerformed
 
     /**
      * @param args the command line arguments
