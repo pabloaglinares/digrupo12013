@@ -96,7 +96,7 @@ public class Metodos {
             System.out.println(e.getMessage());
         }
     }
-
+    
     public void rellenarTabla(JTable jTable1) {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         String sql = "select * from entrenamiento";
