@@ -1,13 +1,18 @@
 package interfaz;
 
+import metodos.Metodos;
+
 public class ItinerarioFinNuevo extends javax.swing.JDialog {
 
+    Metodos metodos;
+    
     /**
      * Creates new form ItinerarioFinNuevo
      */
-    public ItinerarioFinNuevo(java.awt.Frame parent, boolean modal) {
+    public ItinerarioFinNuevo(java.awt.Frame parent, boolean modal, Metodos metodos) {
         super(parent, modal);
         initComponents();
+        this.metodos = metodos;
     }
 
     /**

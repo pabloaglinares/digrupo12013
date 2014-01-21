@@ -1,5 +1,6 @@
 package interfaz;
 
+import datos.ItinerarioFin;
 import metodos.Metodos;
 
 public class PantallaInicial extends javax.swing.JFrame {
@@ -66,6 +67,11 @@ public class PantallaInicial extends javax.swing.JFrame {
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setText("Itinerario Realizado");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         menuItemNuevo.add(jMenuItem1);
 
         jMenuBar1.add(menuItemNuevo);
@@ -101,6 +107,11 @@ public class PantallaInicial extends javax.swing.JFrame {
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setText("Itinerarios Realizados");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         menuConsulta.add(jMenuItem2);
 
         jMenuBar1.add(menuConsulta);
@@ -150,6 +161,16 @@ public class PantallaInicial extends javax.swing.JFrame {
         ItinerarioConsulta itinerarioConsulta = new ItinerarioConsulta(this, false, metodos);
         itinerarioConsulta.setVisible(true);
     }//GEN-LAST:event_menuItemConsultaItinerariosActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        ItinerarioFinNuevo itinerarioFinNuevo = new ItinerarioFinNuevo(this, true, metodos);
+        itinerarioFinNuevo.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        ItinerarioFinConsulta itinerarioFinConsulta = new ItinerarioFinConsulta(this, false, metodos);
+        itinerarioFinConsulta.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments

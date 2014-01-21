@@ -1,10 +1,15 @@
 package interfaz;
 
-public class ItinerarioFinConsulta extends javax.swing.JDialog {
+import metodos.Metodos;
 
-    public ItinerarioFinConsulta(java.awt.Frame parent, boolean modal) {
+public class ItinerarioFinConsulta extends javax.swing.JDialog {
+    
+    Metodos metodos;
+
+    public ItinerarioFinConsulta(java.awt.Frame parent, boolean modal, Metodos metodos) {
         super(parent, modal);
         initComponents();
+        this.metodos = metodos;
     }
 
     /**
