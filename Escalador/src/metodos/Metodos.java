@@ -173,14 +173,14 @@ public class Metodos {
                 } catch (SQLException ex) {
                     Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
+            }          
         } //fin if
     }// fin InsertarTablaEscalador
     
     public void copiarFotografia(File archivoOrigen, File archivoDestino){
    
         BufferedInputStream in=null;     
-        BufferedOutputStream out=null;      
+        BufferedOutputStream out=null;            
         try {
             in = new BufferedInputStream(new FileInputStream(archivoOrigen));
         } catch (FileNotFoundException ex) {
