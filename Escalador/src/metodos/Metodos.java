@@ -31,7 +31,7 @@ public class Metodos {
     }
 
     //Comprueba que las cajas de textos de las fechas solo tengan fechas en formato dd/MM/yyyy y que no esten vacios
-    //miau
+    //miauuuuu
     public boolean comprobarFecha(String texto) {
 
         boolean valido = true;
