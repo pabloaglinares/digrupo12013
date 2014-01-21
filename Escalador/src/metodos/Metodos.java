@@ -1,7 +1,6 @@
 package metodos;
 
 import datos.Entrenamiento;
-import datos.ItinerarioFin;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -140,76 +139,6 @@ public class Metodos {
 //        }
 //        return listaEntrenamientos;
 //    }
-
-    
-    /*
-    
-    public void rellenarTablaEscalador(JTable tablaEscalador) {
-        DefaultTableModel defaultTableModel = new DefaultTableModel();
-        defaultTableModel.addColumn("id");
-        defaultTableModel.addColumn("Nombre");
-        defaultTableModel.addColumn("Apellidos");
-        defaultTableModel.addColumn("fecha inicio");
-        defaultTableModel.addColumn("fecha fin");
-        tablaEscalador.setModel(defaultTableModel);
-        String sql = "select * from escalador";
-        ResultSet res;
-        conectar();
-        try {
-            res = consulta.executeQuery(sql);
-
-            while (res.next()) {
-                defaultTableModel.addRow(new Object[]{res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5)});
-            }
-            conexion.close();
-        } catch (SQLException e) {
-            System.out.println("Error");
-        }
-    }
-
-    public void vaciarTabla(JTable jTable1) {
-
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        int filas = jTable1.getRowCount();
-        for (int i = 0; filas > i; i++) {
-            modelo.removeRow(0);
-        }
-    }
-
-    public void insertarTablaEscalador(String nombre, String apellido, String fecha, String fechaf) {
-
-        if (comprobarTextos(nombre) && comprobarTextos(apellido) && comprobarFecha(fecha) && comprobarFecha(fechaf)) {
-
-//             SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");//dia/mes/año
-//             try {
-//             Date fechaInicio = formatoFecha.parse(fecha);
-//             Date FechaFin = formatoFecha.parse(fechaf);
-//                
-//             } catch (ParseException ex) {
-//               
-//             }
-            conectar();
-            String sql = "insert into escalador(nombre,apellido,fecha_inicio,fecha_fin) values('" + nombre + "','" + apellido
-                    + "','" + fecha + "','" + fechaf + "')";
-            try {
-                consulta.executeUpdate(sql);
-                JOptionPane.showMessageDialog(null, "Registro insertado correctamente", "Escalador", JOptionPane.INFORMATION_MESSAGE);
-            } catch (SQLException e) {
-                e.getMessage();
-                JOptionPane.showMessageDialog(null, "Fallo al insertar registro", "Escalador", JOptionPane.ERROR_MESSAGE);
-            } finally {
-                try {
-                    conexion.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        } //fin if
-    }// fin InsertarTablaEscalador
-
-    */
-    
-    
 
     public void copiarFotografia(File archivoOrigen, File archivoDestino) {
 
