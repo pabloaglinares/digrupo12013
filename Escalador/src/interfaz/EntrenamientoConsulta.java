@@ -11,7 +11,7 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
     
     public EntrenamientoConsulta(java.awt.Frame parent, boolean modal, Metodos metodos) {
         super(parent, modal);
-        this.setResizable(false);
+        // this.setResizable(false);
         this.metodos = metodos;
         initComponents();
     }
