@@ -21,6 +21,7 @@ public class Metodos {
     Connection conexion;
     Statement consulta;
     public String ruta;
+    //paula prueba clase
 
     /**
      * Constructor for objects of class Conexion
