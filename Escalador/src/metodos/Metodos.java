@@ -1,7 +1,7 @@
 package metodos;
 
 import datos.Entrenamiento;
-import datos.Itinerario;
+import datos.ItinerarioFin;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;

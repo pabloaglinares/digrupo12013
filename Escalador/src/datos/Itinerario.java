@@ -1,42 +1,55 @@
 package datos;
 
-import java.io.Serializable;
-import java.sql.Date;
+public class Itinerario {
+    int id; // p_itinerario
+    String nombre, localizacion, via, dificultad;
+    //File fotoItinerario; //?
 
-/**
- *
- */
-public class Itinerario implements Serializable{
-    private String itinerario;
-    private Date fecha_fin;
-
-    public Itinerario(String itinerario, Date fecha_fin) {
-        this.itinerario = itinerario;
-        this.fecha_fin = fecha_fin;
+    public Itinerario(int id, String nombre, String localizacion, String via, String dificultad) {
+        this.id = id;
+        this.nombre = nombre;
+        this.localizacion = localizacion;
+        this.via = via;
+        this.dificultad = dificultad;
     }
 
-    public Itinerario() {
+    public int getId() {
+        return id;
     }
 
-    public String getItinerario() {
-        return itinerario;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setItinerario(String itinerario) {
-        this.itinerario = itinerario;
+    public String getNombre() {
+        return nombre;
     }
 
-    public Date getFecha_fin() {
-        return fecha_fin;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void setFecha_fin(Date fecha_fin) {
-        this.fecha_fin = fecha_fin;
+    public String getLocalizacion() {
+        return localizacion;
     }
 
-    @Override
-    public String toString() {
-        return "Itinerario{" + "itinerario=" + itinerario + ", fecha_fin=" + fecha_fin + '}';
+    public void setLocalizacion(String localizacion) {
+        this.localizacion = localizacion;
     }
-    
+
+    public String getVia() {
+        return via;
+    }
+
+    public void setVia(String via) {
+        this.via = via;
+    }
+
+    public String getDificultad() {
+        return dificultad;
+    }
+
+    public void setDificultad(String dificultad) {
+        this.dificultad = dificultad;
+    }
 }
