@@ -242,41 +242,28 @@ public class Metodos {
 
     //Comprueba que las cajas de textos de las fechas solo tengan fechas en formato dd/MM/yyyy y que no esten vacios
     public boolean comprobarFecha(String texto) {
-
-        boolean valido = true;
-
+        boolean valido = false;
         if (texto.length() == 0) {
             valido = false;
         } else {
             Pattern patron = Pattern.compile("\\d\\d/\\d\\d/\\d\\d\\d\\d");
             Matcher m = patron.matcher(texto);
-            if (!m.matches()) {
-                valido = false;
+            if (m.matches()) {
+                valido = true;
             }
         }
         return valido;
     }
 
-    //Comprueba que las cajas de textos solo tengan texto y que no esten vacios
-    public boolean comprobarTextos(String texto) {
-
-        boolean valido = true;
-
-        if (texto.length() == 0) {
-            valido = false;
-        } else {
-            for (int i = 0; i < texto.length(); i++) {
-
-                try {
-                    Integer.parseInt(String.valueOf(texto.charAt(i)));
-                    valido = false;
-                    break;
-                } catch (Exception e) {
-
-                }
-
-            }
+    /**
+     * Comprueba que las palabras sólo contienen letras.
+     * @param texto
+     * @return 
+     */
+    public boolean comprobarCaracteresPalabras(String texto) {
+        if(texto.length() == 0) {
+            return false;
         }
-        return valido;
+        return texto.matches("[a-zA-Z]*");
     }
 }
