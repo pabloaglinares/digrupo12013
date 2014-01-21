@@ -5,13 +5,13 @@ import metodos.Metodos;
 public class EntrenamientoNuevo extends javax.swing.JDialog {
 
     Metodos metodos;
-    
+    boolean f1, f2, f3, combo;
+
     public EntrenamientoNuevo(java.awt.Frame parent, boolean modal, Metodos metodos) {
         super(parent, modal);
-        this.setResizable(false);
-        this.metodos = metodos;
-        
         initComponents();
+        this.metodos = metodos;
+        //this.setResizable(false);
     }
 
     /**
@@ -39,7 +39,6 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
         Button_Cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(259, 320));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Entrenamiento"));
         jPanel1.setToolTipText("");
@@ -175,18 +174,17 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Button_AceptarEntrenamiento, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(Button_Cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                    .addComponent(Button_AceptarEntrenamiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Button_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-boolean f1,f2,f3,combo;
 
     private void TextFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFechaActionPerformed
 //       if(this.TextFecha.getText()!=null){
@@ -203,28 +201,28 @@ boolean f1,f2,f3,combo;
     }//GEN-LAST:event_Button_CancelarActionPerformed
 
     private void Button_AceptarEntrenamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_AceptarEntrenamientoActionPerformed
-      boolean c=true;
-      
-       if (!metodos.comprobarFecha(this.TextFecha.getText())){//devuelve false edl metodo metodos.comprobarFecha        
-            c=false;
-       }                   
-       if (!metodos.comprobarFecha(this.Text_Hora_Inicio.getText())){//devuelve false edl metodo metodos.comprobarFecha        
-            c=false;
-       }         
-       if (!metodos.comprobarFecha(this.Text_Hora_Fin.getText())){//devuelve false edl metodo metodos.comprobarFecha        
-            c=false;
-       }               
-       
-       if(c==true){
-           //insertarTablaEntrenamiento todavia por crear, quien se anima?
-         //metodos.insertarTablaEntrenamiento(null, null, null, null)
-           //y de paso insertarTablaItinerarios :D
-       }
-       c=true;
+        boolean c = true;
+
+        if (!metodos.comprobarFecha(this.TextFecha.getText())) {//devuelve false edl metodo metodos.comprobarFecha        
+            c = false;
+        }
+        if (!metodos.comprobarFecha(this.Text_Hora_Inicio.getText())) {//devuelve false edl metodo metodos.comprobarFecha        
+            c = false;
+        }
+        if (!metodos.comprobarFecha(this.Text_Hora_Fin.getText())) {//devuelve false edl metodo metodos.comprobarFecha        
+            c = false;
+        }
+
+        if (c == true) {
+            //insertarTablaEntrenamiento todavia por crear, quien se anima?
+            //metodos.insertarTablaEntrenamiento(null, null, null, null)
+            //y de paso insertarTablaItinerarios :D
+        }
+        c = true;
     }//GEN-LAST:event_Button_AceptarEntrenamientoActionPerformed
 
     private void Text_Hora_InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Text_Hora_InicioActionPerformed
-        
+
     }//GEN-LAST:event_Text_Hora_InicioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -8,7 +8,7 @@ public class PantallaInicial extends javax.swing.JFrame {
 
     public PantallaInicial() {
         initComponents();
-        this.setResizable(false);
+        //this.setResizable(false);
         setLocationRelativeTo(null);//abre la ventana en el centro de la pantalla
     }
 
@@ -123,6 +123,7 @@ public class PantallaInicial extends javax.swing.JFrame {
 
     private void menuItemConsultaEntrenamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConsultaEntrenamientosActionPerformed
         EntrenamientoConsulta entrenamientoConsulta = new EntrenamientoConsulta(this, false, metodos);
+        entrenamientoConsulta.setVisible(true);
     }//GEN-LAST:event_menuItemConsultaEntrenamientosActionPerformed
 
     private void menuItemConsultaConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConsultaConfiguracionActionPerformed
