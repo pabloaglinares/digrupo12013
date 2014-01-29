@@ -40,7 +40,8 @@ public class Metodos {
             System.out.println(e.getMessage());
         }
         try {
-            conexion = DriverManager.getConnection("jdbc:sqlite:" + ruta + "/escalada.db");//aqui
+           
+            //conexion = DriverManager.getConnection("jdbc:hsqldb:file"+()+"");//aqui
             consulta = conexion.createStatement();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
