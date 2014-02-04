@@ -40,7 +40,7 @@ public class Metodos {
             System.out.println(e.getMessage());
         }
         try {
-           
+            
             //conexion = DriverManager.getConnection("jdbc:hsqldb:file"+()+"");//aqui
             consulta = conexion.createStatement();
         } catch (SQLException e) {
@@ -59,11 +59,10 @@ public class Metodos {
             while (resultSet.next()) {
                 entrenamiento = new Entrenamiento(
                         resultSet.getInt(1),
-                        resultSet.getString(2),
+                        resultSet.getString(2),   
                         resultSet.getString(3),
-                        resultSet.getString(4),
-                        resultSet.getString(5),
-                        resultSet.getString(6)
+                        resultSet.getDate(4),
+                        resultSet.getDate(5)                                           
                 );
                 listaEntrenamientos.add(entrenamiento);
             }
@@ -176,7 +175,7 @@ public class Metodos {
         if (texto.length() == 0) {
             valido = false;
         } else {
-            Pattern patron = Pattern.compile("\\d\\d/\\d\\d/\\d\\d\\d\\d");
+            Pattern patron = Pattern.compile("\\d\\d\\d\\d-\\d\\d-\\d\\d");
             Matcher m = patron.matcher(texto);
             if (m.matches()) {
                 valido = true;
@@ -199,6 +198,7 @@ public class Metodos {
     
     // Comprueba que la hora se componga de dos pares de dígitos separados por el caracter dos puntos.
     public boolean comprobarHora(String hora) {
-        return hora.matches("\\d\\d:\\d\\d");
+        return hora.matches("\\d\\d:\\d\\d:\\d\\d");
+    //para meter los segundos añadir +00 tras el getText();
     }
 }

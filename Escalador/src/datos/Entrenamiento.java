@@ -1,29 +1,33 @@
 package datos;
 
+import java.sql.Date;
+
 public class Entrenamiento {
     
     private int id; // p_entrenamiento
-    private String tipo, fecha, horaInicio, horaFin, descripcion;
+    private String tipo,  descripcion;
+    private Date fechaInicio, fechaFin;
 
-    // Constructor sin el id
-    public Entrenamiento(String tipo, String fecha, String horaInicio, String horaFin, String descripcion) {
-        this.tipo = tipo;
-        this.fecha = fecha;
-        this.horaInicio = horaInicio;
-        this.horaFin = horaFin;
-        this.descripcion = descripcion;
-    }
-
-    // Constructor con el id
-    public Entrenamiento(int id, String tipo, String fecha, String horaInicio, String horaFin, String descripcion) {
+    public Entrenamiento(int id, String tipo, String descripcion, Date fechaInicio, Date fechaFin) {
         this.id = id;
         this.tipo = tipo;
-        this.fecha = fecha;
-        this.horaInicio = horaInicio;
-        this.horaFin = horaFin;
         this.descripcion = descripcion;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
     }
 
+    public Entrenamiento(String tipo, String descripcion, Date fechaInicio, Date fechaFin) {
+        this.tipo = tipo;
+        this.descripcion = descripcion;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+    }
+
+    @Override
+    public String toString() {
+        return "Entrenamiento{" + "id=" + id + ", tipo=" + tipo + ", descripcion=" + descripcion + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + '}';
+    }
+  
     public int getId() {
         return id;
     }
@@ -40,30 +44,6 @@ public class Entrenamiento {
         this.tipo = tipo;
     }
 
-    public String getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
-
-    public String getHoraInicio() {
-        return horaInicio;
-    }
-
-    public void setHoraInicio(String horaInicio) {
-        this.horaInicio = horaInicio;
-    }
-
-    public String getHoraFin() {
-        return horaFin;
-    }
-
-    public void setHoraFin(String horaFin) {
-        this.horaFin = horaFin;
-    }
-
     public String getDescripcion() {
         return descripcion;
     }
@@ -72,4 +52,21 @@ public class Entrenamiento {
         this.descripcion = descripcion;
     }
 
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Date getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+   
 }

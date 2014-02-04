@@ -1,6 +1,7 @@
 package interfaz;
 
 import datos.Entrenamiento;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import metodos.Metodos;
@@ -19,6 +20,8 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
     }
     
     private void rellenarTabla() {
+        String inicio, fin;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         List<Entrenamiento> listaEntrenamientos = metodos.obtenerListaEntrenamientos();
         DefaultTableModel model = (DefaultTableModel) tablaEntrenamientos.getModel();
         model.setColumnCount(0); // elimina las columnas de la tabla por defecto
@@ -30,8 +33,11 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
         model.addColumn("Hora Fin");
         model.addColumn("Descripcion");
         for(Entrenamiento e : listaEntrenamientos) {
-            model.addRow(new Object[] {e.getId(), e.getTipo(), e.getFecha(), 
-                e.getHoraInicio(), e.getHoraFin(), e.getDescripcion()});
+            
+            inicio = sdf.format(e.getFechaInicio());
+            fin = sdf.format(e.getFechaFin());
+            model.addRow(new Object[] {e.getId(), e.getTipo(), inicio, 
+                fin, e.getDescripcion()});
         }
     }
 
