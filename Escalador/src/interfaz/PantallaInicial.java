@@ -1,14 +1,20 @@
 package interfaz;
 
 import datos.ItinerarioFin;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import metodos.Metodos;
+import org.jvnet.substance.SubstanceLookAndFeel;
+import org.jvnet.substance.watermark.SubstanceImageWatermark;
 
 public class PantallaInicial extends javax.swing.JFrame {
-
+    
     Metodos metodos = new Metodos();
-
+    
     public PantallaInicial() {
         initComponents();
+        //this.
         //this.setResizable(false);
         setLocationRelativeTo(null);//abre la ventana en el centro de la pantalla
     }
@@ -200,10 +206,19 @@ public class PantallaInicial extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        JFrame.setDefaultLookAndFeelDecorated(true);//permite a la libreria substance decorar
+        // SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.CremeSkin");//sentencia q aplica skin
+        SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.GreenMagicSkin");//sentencia q aplica skin
+        //        //"./src/fotos/climbing1.jpg"
+
+        SubstanceLookAndFeel.setCurrentWatermark(new SubstanceImageWatermark("./src/fotos/climbing1.jpg"));//marca de agua
+        SubstanceLookAndFeel.setImageWatermarkOpacity(new Float(0.8));//opacidad de marca de agua
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
                 new PantallaInicial().setVisible(true);
+                
             }
         });
     }

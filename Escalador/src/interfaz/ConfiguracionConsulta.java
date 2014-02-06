@@ -1,6 +1,8 @@
 package interfaz;
 
 import metodos.Metodos;
+import org.jvnet.substance.SubstanceLookAndFeel;
+import org.jvnet.substance.button.StandardButtonShaper;
 
 public class ConfiguracionConsulta extends javax.swing.JDialog {
 
@@ -10,6 +12,7 @@ public class ConfiguracionConsulta extends javax.swing.JDialog {
         super(parent, modal);
         this.setResizable(false);//no se pueda cambiar tamaño
         this.metodos = metodos;
+        //this.botonSalir.putClientProperty(SubstanceLookAndFeel.BUTTON_SHAPER_PROPERTY,new StandardButtonShaper());
         initComponents();
     }
 

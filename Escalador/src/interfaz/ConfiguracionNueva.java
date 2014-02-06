@@ -1,6 +1,11 @@
 package interfaz;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import metodos.Metodos;
+import org.jvnet.substance.SubstanceLookAndFeel;
+import org.jvnet.substance.button.StandardButtonShaper;
+import org.jvnet.substance.watermark.SubstanceImageWatermark;
 
 public class ConfiguracionNueva extends javax.swing.JDialog {
 
@@ -14,6 +19,10 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
         this.setResizable(false);
         initComponents();
         this.metodos = metodos;
+        this.btnGuardar.putClientProperty(SubstanceLookAndFeel.BUTTON_SHAPER_PROPERTY,new StandardButtonShaper());//boton redondo
+        
+        
+//this.jButton2.putClientProperty(SubstanceLookAndFeel.setCurrentWatermark(new SubstanceImageWatermark("./src/fotos/climbing1.jpg")),new StandardButtonShaper());
     }
 
     /**
@@ -35,7 +44,7 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
         apellido = new javax.swing.JTextField();
         inicio = new javax.swing.JTextField();
         fin = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         jMenuItem1.setText("jMenuItem1");
@@ -121,10 +130,10 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Guardar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnGuardarActionPerformed(evt);
             }
         });
 
@@ -146,7 +155,7 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(btnGuardar)))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -157,7 +166,7 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -176,7 +185,7 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_inicioActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         String nombre = this.nombre.getText();
         String apellido = this.apellido.getText();
         String fecha = this.inicio.getText();
@@ -189,7 +198,7 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
         this.fin.setText("");
 
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoActionPerformed
         // TODO add your handling code here:
@@ -205,9 +214,9 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField apellido;
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JTextField fin;
     private javax.swing.JTextField inicio;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
