@@ -35,13 +35,13 @@ public class Metodos {
 
     public void conectar() {
         try {
-            Class.forName("org.sqlite.JDBC");
+            Class.forName("org.hsqldb.jdbcDriver");
         } catch (ClassNotFoundException e) {
             System.out.println(e.getMessage());
         }
         try {
             
-            //conexion = DriverManager.getConnection("jdbc:hsqldb:file"+()+"");//aqui
+            conexion = DriverManager.getConnection("jdbc:hsqldb:hsql://file/database/escalador.script.txt");//aqui
             consulta = conexion.createStatement();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
