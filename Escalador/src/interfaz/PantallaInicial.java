@@ -17,6 +17,8 @@ public class PantallaInicial extends javax.swing.JFrame {
         //this.
         //this.setResizable(false);
         setLocationRelativeTo(null);//abre la ventana en el centro de la pantalla
+    this.menuConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/file-search.png")));
+    this.menuConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/file-search.png")));
     }
 
     /**
@@ -42,9 +44,12 @@ public class PantallaInicial extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        menuItemNuevo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        menuItemNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/anadir-lapiz.png"))); // NOI18N
         menuItemNuevo.setText("Nuevo");
 
         menuItemNuevaConfiguracion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        menuItemNuevaConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/anadir-usuario1.png"))); // NOI18N
         menuItemNuevaConfiguracion.setText("Configuración");
         menuItemNuevaConfiguracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,6 +59,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         menuItemNuevo.add(menuItemNuevaConfiguracion);
 
         menuItemNuevoEntrenamiento.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        menuItemNuevoEntrenamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/editar-mapa.png"))); // NOI18N
         menuItemNuevoEntrenamiento.setText("Entrenamiento");
         menuItemNuevoEntrenamiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,6 +69,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         menuItemNuevo.add(menuItemNuevoEntrenamiento);
 
         menuItemNuevoItinerario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        menuItemNuevoItinerario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/mapa-anadir.png"))); // NOI18N
         menuItemNuevoItinerario.setText("Itinerario");
         menuItemNuevoItinerario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +79,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         menuItemNuevo.add(menuItemNuevoItinerario);
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/fecha.png"))); // NOI18N
         jMenuItem1.setText("Itinerario Realizado");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,9 +90,12 @@ public class PantallaInicial extends javax.swing.JFrame {
 
         jMenuBar1.add(menuItemNuevo);
 
-        menuConsulta.setText("Consulta");
+        menuConsulta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        menuConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/file-search.png"))); // NOI18N
+        menuConsulta.setText(" Consulta");
 
         menuItemConsultaConfiguracion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemConsultaConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/anadir-la-tabla.png"))); // NOI18N
         menuItemConsultaConfiguracion.setText("Configuración");
         menuItemConsultaConfiguracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +105,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         menuConsulta.add(menuItemConsultaConfiguracion);
 
         menuItemConsultaEntrenamientos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemConsultaEntrenamientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/guardar-imagen.png"))); // NOI18N
         menuItemConsultaEntrenamientos.setText("Entrenamientos");
         menuItemConsultaEntrenamientos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,6 +115,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         menuConsulta.add(menuItemConsultaEntrenamientos);
 
         menuItemConsultaItinerarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemConsultaItinerarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/mostrar-la-lista.png"))); // NOI18N
         menuItemConsultaItinerarios.setText("Itinerarios");
         menuItemConsultaItinerarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,6 +125,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         menuConsulta.add(menuItemConsultaItinerarios);
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/mundo.png"))); // NOI18N
         jMenuItem2.setText("Itinerarios Realizados");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,18 +146,22 @@ public class PantallaInicial extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGap(0, 246, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuItemNuevoItinerarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemNuevoItinerarioActionPerformed
+        
+        
         ItinerarioNuevo itinerario = new ItinerarioNuevo(this, true, metodos);
         itinerario.setVisible(true);
     }//GEN-LAST:event_menuItemNuevoItinerarioActionPerformed
 
     private void menuItemNuevaConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemNuevaConfiguracionActionPerformed
+       
+        
         ConfiguracionNueva configuracionNueva = new ConfiguracionNueva(null, true, metodos);
         configuracionNueva.setVisible(true);
     }//GEN-LAST:event_menuItemNuevaConfiguracionActionPerformed
@@ -174,6 +192,7 @@ public class PantallaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        
         ItinerarioFinConsulta itinerarioFinConsulta = new ItinerarioFinConsulta(this, false, metodos);
         itinerarioFinConsulta.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
@@ -208,7 +227,9 @@ public class PantallaInicial extends javax.swing.JFrame {
         /* Create and display the form */
         JFrame.setDefaultLookAndFeelDecorated(true);//permite a la libreria substance decorar
         // SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.CremeSkin");//sentencia q aplica skin
-        SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.GreenMagicSkin");//sentencia q aplica skin
+        //skins;BusinessBlackSteelSkin,
+        SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.RavenGraphiteSkin");//sentencia q aplica skin
+        SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceEbonyTheme");
         //        //"./src/fotos/climbing1.jpg"
 
         SubstanceLookAndFeel.setCurrentWatermark(new SubstanceImageWatermark("./src/fotos/climbing1.jpg"));//marca de agua
