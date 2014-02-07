@@ -17,8 +17,8 @@ public class PantallaInicial extends javax.swing.JFrame {
         //this.
         //this.setResizable(false);
         setLocationRelativeTo(null);//abre la ventana en el centro de la pantalla
-    this.menuConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/file-search.png")));
-    this.menuConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/file-search.png")));
+    this.menuConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/buscar.png")));
+    this.menuConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/buscar.png")));
     }
 
     /**
