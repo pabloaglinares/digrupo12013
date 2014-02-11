@@ -17,6 +17,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         //this.
         //this.setResizable(false);
         setLocationRelativeTo(null);//abre la ventana en el centro de la pantalla
+        setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
     this.menuConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/buscar.png")));
     this.menuConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/buscar.png")));
     }
@@ -233,7 +234,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         //        //"./src/fotos/climbing1.jpg"
 
         SubstanceLookAndFeel.setCurrentWatermark(new SubstanceImageWatermark("./src/fotos/climbing1.jpg"));//marca de agua
-        SubstanceLookAndFeel.setImageWatermarkOpacity(new Float(0.8));//opacidad de marca de agua
+        SubstanceLookAndFeel.setImageWatermarkOpacity(new Float(0.4));//opacidad de marca de agua
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
