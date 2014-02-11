@@ -2,6 +2,9 @@ package interfaz;
 
 import datos.ItinerarioFin;
 import java.awt.Image;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import metodos.Metodos;
@@ -168,7 +171,12 @@ public class PantallaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemNuevaConfiguracionActionPerformed
 
     private void menuItemConsultaEntrenamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConsultaEntrenamientosActionPerformed
-        EntrenamientoConsulta entrenamientoConsulta = new EntrenamientoConsulta(this, false, metodos);
+        EntrenamientoConsulta entrenamientoConsulta = null;
+        try {
+            entrenamientoConsulta = new EntrenamientoConsulta(this, false, metodos);
+        } catch (SQLException ex) {
+            Logger.getLogger(PantallaInicial.class.getName()).log(Level.SEVERE, null, ex);
+        }
         entrenamientoConsulta.setVisible(true);
     }//GEN-LAST:event_menuItemConsultaEntrenamientosActionPerformed
 

@@ -10,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,12 +20,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class Metodos {
 
     Connection conexion;
     Statement consulta;
+    ResultSet resultSet;
     public String ruta;
+     List<Entrenamiento> listaEntrenamientos;
 
     /**
      * Constructor for objects of class Conexion
@@ -47,15 +52,17 @@ public class Metodos {
             System.out.println(e.getMessage());
         }
     }
-
-    public List<Entrenamiento> obtenerListaEntrenamientos() {
-        String sql = "SELECT * FROM entrenamiento";
-        ResultSet resultSet;
-        conectar();
+       
+    public List<Entrenamiento> obtenerListaEntrenamientos() throws SQLException {
+        //String sql = "SELECT * FROM entrenamiento";
+        PreparedStatement ps = conexion.prepareStatement("select * from ENTRENAMIENTO");
         Entrenamiento entrenamiento;
         List<Entrenamiento> listaEntrenamientos = new ArrayList<>();
+        conectar();
+        
+        resultSet = ps.executeQuery();
         try {
-            resultSet = consulta.executeQuery(sql);
+      
             while (resultSet.next()) {
                 entrenamiento = new Entrenamiento(
                         resultSet.getInt(1),
@@ -65,6 +72,7 @@ public class Metodos {
                         resultSet.getDate(5)                                           
                 );
                 listaEntrenamientos.add(entrenamiento);
+                
             }
         } catch (SQLException e) {
             System.out.println("Error SQL.");
@@ -76,7 +84,9 @@ public class Metodos {
             }
         }
         return listaEntrenamientos;
+        //CATCH SQL EXCEPTION
     }
+    
     
     /**
      * Inserta un nuevo entrenamiento en la BD y lo confirma con un booleano.
@@ -201,4 +211,30 @@ public class Metodos {
         return hora.matches("\\d\\d:\\d\\d:\\d\\d");
     //para meter los segundos añadir +00 tras el getText();
     }
+
+    public void rellenarTablaEntrenamiento(JTable tablaEntrenamientos) {
+        DefaultTableModel model = (DefaultTableModel) tablaEntrenamientos.getModel();
+        String sql = "select * from ENTRENAMIENTO";
+        ResultSet res;
+        conectar();
+        try {
+            res = consulta.executeQuery(sql);
+
+            while (res.next()) {
+                model.addRow(new Object[]{
+                                            res.getInt(1), 
+                                            res.getString(2),
+                                            res.getString(3),
+                                            res.getDate(4),
+                                            res.getDate(5)
+                                            });
+            } 
+        } catch (SQLException e) {
+            System.out.println("Error");
+        }
+
+    
+    }
+
+  
 }

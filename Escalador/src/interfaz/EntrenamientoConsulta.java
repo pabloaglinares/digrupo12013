@@ -1,8 +1,12 @@
 package interfaz;
 
 import datos.Entrenamiento;
+import java.sql.Date;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import metodos.Metodos;
 
@@ -10,36 +14,48 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
 
     Metodos metodos;
     
-    public EntrenamientoConsulta(java.awt.Frame parent, boolean modal, Metodos metodos) {
+    public EntrenamientoConsulta(java.awt.Frame parent, boolean modal, Metodos metodos) throws SQLException {
         super(parent, modal);
         this.setResizable(false);
         this.metodos = metodos;
         initComponents();
-        //vaciarTabla();
-        rellenarTabla();
+        tabla();
+        //vaciarTabla();           
+        
     }
-    
-    private void rellenarTabla() {
-        String inicio, fin;
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        List<Entrenamiento> listaEntrenamientos = metodos.obtenerListaEntrenamientos();
-        DefaultTableModel model = (DefaultTableModel) tablaEntrenamientos.getModel();
-        model.setColumnCount(0); // elimina las columnas de la tabla por defecto
-        model.setRowCount(0); // elimina las filas de la tabla por defecto
-        model.addColumn("ID");
-        model.addColumn("Tipo");
-        model.addColumn("Fecha");
-        model.addColumn("Hora Incicio");
-        model.addColumn("Hora Fin");
-        model.addColumn("Descripcion");
-        for(Entrenamiento e : listaEntrenamientos) {
-            
-            inicio = sdf.format(e.getFechaInicio());
-            fin = sdf.format(e.getFechaFin());
-            model.addRow(new Object[] {e.getId(), e.getTipo(), inicio, 
-                fin, e.getDescripcion()});
+    private void tabla()
+    {
+        DefaultTableModel defaultTableModel = new DefaultTableModel();
+        defaultTableModel.addColumn("Id");
+        defaultTableModel.addColumn("Tipo");
+        defaultTableModel.addColumn("Descripcion");
+        defaultTableModel.addColumn("Fecha Inicio");
+        defaultTableModel.addColumn("Fecha Fin");
+        
+        tablaEntrenamientos.setModel(defaultTableModel);
+        metodos.rellenarTablaEntrenamiento(tablaEntrenamientos);
+        List<Entrenamiento> listaEntrenamientos = null;
+        try {
+            listaEntrenamientos = metodos.obtenerListaEntrenamientos();
+        } catch (SQLException ex) {
+            System.out.println("Error SQL.");
+            Logger.getLogger(EntrenamientoConsulta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        int id;
+        String tipo, descripcion;
+        Date fechaInicio, fechaFin;
+        for(Entrenamiento e: listaEntrenamientos)
+        {
+            id=e.getId();
+            tipo=e.getTipo();
+            descripcion=e.getDescripcion();
+            fechaInicio=e.getFechaInicio();
+            fechaFin=e.getFechaFin();
+                   
         }
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
