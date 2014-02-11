@@ -51,7 +51,9 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
             descripcion=e.getDescripcion();
             fechaInicio=e.getFechaInicio();
             fechaFin=e.getFechaFin();
-                   
+            //formatear todos los datos a String
+            //String[] fila = {id, tipo, descripcion, fechaInicio,fechaFin};
+            //defaultTableModel.addRow(fila);
         }
     }
     
