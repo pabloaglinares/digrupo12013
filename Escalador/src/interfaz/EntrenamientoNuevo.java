@@ -1,5 +1,6 @@
 package interfaz;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import metodos.Metodos;
 
@@ -12,6 +13,8 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
         initComponents();
         this.metodos = metodos;
         this.setResizable(false);
+        setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
+        this.setTitle("Nuevo entrenamiento");
     }
     
     

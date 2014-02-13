@@ -1,5 +1,6 @@
 package interfaz;
 
+import javax.swing.ImageIcon;
 import metodos.Metodos;
 
 public class ItinerarioFinNuevo extends javax.swing.JDialog {
@@ -13,6 +14,8 @@ public class ItinerarioFinNuevo extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.metodos = metodos;
+        setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
+        this.setTitle("Itinerario terminado");
     }
 
     /**

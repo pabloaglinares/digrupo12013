@@ -1,5 +1,6 @@
 package interfaz;
 
+import javax.swing.ImageIcon;
 import metodos.Metodos;
 
 public class PruebaRellenarTabla extends javax.swing.JDialog {
@@ -10,6 +11,7 @@ public class PruebaRellenarTabla extends javax.swing.JDialog {
         super(parent, modal);
         this.metodos = metodos;
         this.setResizable(false);
+        setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         initComponents();
         //metodos.rellenarTablaEscalador(tablaEscalador);
     }

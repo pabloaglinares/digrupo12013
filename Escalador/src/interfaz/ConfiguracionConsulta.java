@@ -1,5 +1,6 @@
 package interfaz;
 
+import javax.swing.ImageIcon;
 import metodos.Metodos;
 import org.jvnet.substance.SubstanceLookAndFeel;
 import org.jvnet.substance.button.StandardButtonShaper;
@@ -14,6 +15,8 @@ public class ConfiguracionConsulta extends javax.swing.JDialog {
         this.metodos = metodos;
         //this.botonSalir.putClientProperty(SubstanceLookAndFeel.BUTTON_SHAPER_PROPERTY,new StandardButtonShaper());
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
+        this.setTitle("Consulta configuración");
     }
 
     /**

@@ -1,6 +1,7 @@
 package interfaz;
 
 import java.io.File;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import metodos.Metodos;
@@ -15,6 +16,8 @@ public class ItinerarioNuevo extends javax.swing.JDialog {
         this.metodos = metodos;
         //this.alta.setEnabled(false);
         initComponents(); 
+        this.setTitle("Nuevo itinerario");
+        setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
     }
 
     /**

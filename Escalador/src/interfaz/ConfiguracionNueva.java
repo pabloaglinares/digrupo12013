@@ -20,7 +20,8 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
         initComponents();
         this.metodos = metodos;
         this.btnGuardar.putClientProperty(SubstanceLookAndFeel.BUTTON_SHAPER_PROPERTY,new StandardButtonShaper());//boton redondo
-        
+        setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
+        this.setTitle("Editar configuración");
         
 //this.jButton2.putClientProperty(SubstanceLookAndFeel.setCurrentWatermark(new SubstanceImageWatermark("./src/fotos/climbing1.jpg")),new StandardButtonShaper());
     }

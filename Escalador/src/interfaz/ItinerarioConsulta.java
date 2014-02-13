@@ -3,6 +3,7 @@ package interfaz;
 import datos.Entrenamiento;
 import datos.ItinerarioFin;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import metodos.Metodos;
 
@@ -15,6 +16,8 @@ public class ItinerarioConsulta extends javax.swing.JDialog {
         this.setResizable(false);
         this.metodos = metodos;
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
+        this.setTitle("Consulta de itinerarios");
     }
 
     /**

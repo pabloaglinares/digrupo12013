@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import metodos.Metodos;
 
@@ -20,6 +21,8 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
         this.metodos = metodos;
         initComponents();
         tabla();
+        setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
+        this.setTitle("Consulta entrenamientos realizados");
         //vaciarTabla();           
         
     }
