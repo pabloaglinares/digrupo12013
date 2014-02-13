@@ -20,7 +20,7 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
         this.setResizable(false);
         this.metodos = metodos;
         initComponents();
-        tabla();
+        //tabla();
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         this.setTitle("Consulta entrenamientos realizados");
         //vaciarTabla();           
