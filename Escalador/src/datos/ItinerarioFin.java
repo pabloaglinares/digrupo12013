@@ -2,41 +2,35 @@ package datos;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  *
  */
-public class ItinerarioFin implements Serializable{
-    private String itinerario;
-    private Date fecha_fin;
+public class ItinerarioFin implements Serializable {
 
-    public ItinerarioFin(String itinerario, Date fecha_fin) {
-        this.itinerario = itinerario;
-        this.fecha_fin = fecha_fin;
+    private int id;
+    private Timestamp fecha;
+
+    public ItinerarioFin(int id, Timestamp fecha) {
+        this.id = id;
+        this.fecha = fecha;
     }
 
-    public ItinerarioFin() {
+    public int getId() {
+        return id;
     }
 
-    public String getItinerario() {
-        return itinerario;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setItinerario(String itinerario) {
-        this.itinerario = itinerario;
+    public Timestamp getFecha() {
+        return fecha;
     }
 
-    public Date getFecha_fin() {
-        return fecha_fin;
+    public void setFecha(Timestamp fecha) {
+        this.fecha = fecha;
     }
 
-    public void setFecha_fin(Date fecha_fin) {
-        this.fecha_fin = fecha_fin;
-    }
-
-    @Override
-    public String toString() {
-        return "Itinerario{" + "itinerario=" + itinerario + ", fecha_fin=" + fecha_fin + '}';
-    }
-    
 }

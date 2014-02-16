@@ -1,10 +1,17 @@
 package interfaz;
 
+import datos.Entrenamiento;
+import datos.ItinerarioFin;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
 import metodos.Metodos;
 
 public class ItinerarioFinConsulta extends javax.swing.JDialog {
-    
+
     Metodos metodos;
 
     public ItinerarioFinConsulta(java.awt.Frame parent, boolean modal, Metodos metodos) {
@@ -13,6 +20,37 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
         this.metodos = metodos;
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         this.setTitle("Consulta itinerarios realizados");
+        tabla();
+    }
+
+    private void tabla() {
+        DefaultTableModel defaultTableModel = new DefaultTableModel();
+        defaultTableModel.addColumn("a_itinerario");
+        defaultTableModel.addColumn("Fecha");
+        jTable1.setModel(defaultTableModel);
+
+        List<ItinerarioFin> listaItinerarioFin= null;
+        
+         try {
+            listaItinerarioFin = metodos.obtenerListaItinerFin();
+        
+        
+       
+        String fk_key, fecha;
+        
+        for(ItinerarioFin e: listaItinerarioFin){
+            fk_key=Integer.toString(e.getId());
+            fecha=e.getFecha().toString();
+            String[] fila = {fk_key,fecha};
+            defaultTableModel.addRow(fila);
+        }   
+            //formatear todos los datos a String
+            
+            //defaultTableModel.addRow(fila);
+            } catch (SQLException ex) {
+            System.out.println("Error SQL.");
+            Logger.getLogger(EntrenamientoConsulta.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
