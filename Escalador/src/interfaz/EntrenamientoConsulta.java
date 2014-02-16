@@ -20,7 +20,7 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
         this.setResizable(false);
         this.metodos = metodos;
         initComponents();
-        //tabla();
+        tabla();
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         this.setTitle("Consulta entrenamientos realizados");
         //vaciarTabla();           
@@ -29,35 +29,37 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
     private void tabla()
     {
         DefaultTableModel defaultTableModel = new DefaultTableModel();
-        defaultTableModel.addColumn("Id");
+        defaultTableModel.addColumn("Fecha");
+        defaultTableModel.addColumn("Hora inicio");
+        defaultTableModel.addColumn("Hora fin");
         defaultTableModel.addColumn("Tipo");
-        defaultTableModel.addColumn("Descripcion");
-        defaultTableModel.addColumn("Fecha Inicio");
-        defaultTableModel.addColumn("Fecha Fin");
-        
+        defaultTableModel.addColumn("Descripcion");   
         tablaEntrenamientos.setModel(defaultTableModel);
-        metodos.rellenarTablaEntrenamiento(tablaEntrenamientos);
-        List<Entrenamiento> listaEntrenamientos = null;
-        try {
-            listaEntrenamientos = metodos.obtenerListaEntrenamientos();
-        } catch (SQLException ex) {
-            System.out.println("Error SQL.");
-            Logger.getLogger(EntrenamientoConsulta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        int id;
-        String tipo, descripcion;
-        Date fechaInicio, fechaFin;
-        for(Entrenamiento e: listaEntrenamientos)
-        {
-            id=e.getId();
-            tipo=e.getTipo();
-            descripcion=e.getDescripcion();
-            fechaInicio=e.getFechaInicio();
-            fechaFin=e.getFechaFin();
-            //formatear todos los datos a String
-            //String[] fila = {id, tipo, descripcion, fechaInicio,fechaFin};
-            //defaultTableModel.addRow(fila);
-        }
+ 
+        
+//        metodos.rellenarTablaEntrenamiento(tablaEntrenamientos);
+        
+//        List<Entrenamiento> listaEntrenamientos = null;
+//        try {
+//            listaEntrenamientos = metodos.obtenerListaEntrenamientos();
+//        } catch (SQLException ex) {
+//            System.out.println("Error SQL.");
+//            Logger.getLogger(EntrenamientoConsulta.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        int id;
+//        String tipo, descripcion;
+//        Date fechaInicio, fechaFin;
+//        for(Entrenamiento e: listaEntrenamientos)
+//        {
+//            id=e.getId();
+//            tipo=e.getTipo();
+//            descripcion=e.getDescripcion();
+//            fechaInicio=e.getFechaInicio();
+//            fechaFin=e.getFechaFin();
+//            //formatear todos los datos a String
+//            //String[] fila = {id, tipo, descripcion, fechaInicio,fechaFin};
+//            //defaultTableModel.addRow(fila);
+//        }
     }
     
     
@@ -122,6 +124,11 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
         botonBorrar.setText("Borrar");
 
         botonEditar.setText("Editar");
+        botonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEditarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -158,6 +165,10 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_botonSalirActionPerformed
+
+    private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
+       
+    }//GEN-LAST:event_botonEditarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonBorrar;

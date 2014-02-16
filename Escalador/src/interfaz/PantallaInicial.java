@@ -231,7 +231,7 @@ public class PantallaInicial extends javax.swing.JFrame {
     private void menuItemConsultaEntrenamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConsultaEntrenamientosActionPerformed
         EntrenamientoConsulta entrenamientoConsulta = null;
         try {
-            entrenamientoConsulta = new EntrenamientoConsulta(this, false, metodos);
+            entrenamientoConsulta = new EntrenamientoConsulta(this, true, metodos);
         } catch (SQLException ex) {
             Logger.getLogger(PantallaInicial.class.getName()).log(Level.SEVERE, null, ex);
         }
