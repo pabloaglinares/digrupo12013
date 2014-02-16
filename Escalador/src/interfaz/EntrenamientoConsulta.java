@@ -3,6 +3,7 @@ package interfaz;
 import datos.Entrenamiento;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.logging.Level;
@@ -26,7 +27,7 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
         //vaciarTabla();           
         
     }
-    private void tabla()
+    private void tabla() throws SQLException
     {
         DefaultTableModel defaultTableModel = new DefaultTableModel();
         defaultTableModel.addColumn("Fecha");
@@ -36,30 +37,32 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
         defaultTableModel.addColumn("Descripcion");   
         tablaEntrenamientos.setModel(defaultTableModel);
  
+         
+        List<Entrenamiento> listaEntrenamientos = null;
+        try {
+            listaEntrenamientos = metodos.obtenerListaEntrenamientos();
         
-//        metodos.rellenarTablaEntrenamiento(tablaEntrenamientos);
         
-//        List<Entrenamiento> listaEntrenamientos = null;
-//        try {
-//            listaEntrenamientos = metodos.obtenerListaEntrenamientos();
-//        } catch (SQLException ex) {
-//            System.out.println("Error SQL.");
-//            Logger.getLogger(EntrenamientoConsulta.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        int id;
-//        String tipo, descripcion;
-//        Date fechaInicio, fechaFin;
-//        for(Entrenamiento e: listaEntrenamientos)
-//        {
-//            id=e.getId();
-//            tipo=e.getTipo();
-//            descripcion=e.getDescripcion();
-//            fechaInicio=e.getFechaInicio();
-//            fechaFin=e.getFechaFin();
-//            //formatear todos los datos a String
-//            //String[] fila = {id, tipo, descripcion, fechaInicio,fechaFin};
-//            //defaultTableModel.addRow(fila);
-//        }
+       
+        String tipo, descripcion,horaInicio, horaFin,fecha;
+        
+        for(Entrenamiento e: listaEntrenamientos){
+            fecha=e.getFecha().toString();
+            tipo=e.getTipo();
+            descripcion=e.getDescripcion();
+            horaInicio=e.getHoraComienzo().toString();
+            horaFin=e.getHoraFin().toString();
+            String[] fila = {fecha, tipo, descripcion, horaInicio,horaFin};
+            defaultTableModel.addRow(fila);
+        }   
+            //formatear todos los datos a String
+            
+            //defaultTableModel.addRow(fila);
+            } catch (SQLException ex) {
+            System.out.println("Error SQL.");
+            Logger.getLogger(EntrenamientoConsulta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
     
