@@ -52,7 +52,7 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
             descripcion=e.getDescripcion();
             horaInicio=e.getHoraComienzo().toString();
             horaFin=e.getHoraFin().toString();
-            String[] fila = {fecha, tipo, descripcion, horaInicio,horaFin};
+            String[] fila = {fecha,horaInicio,horaFin, tipo, descripcion};
             defaultTableModel.addRow(fila);
         }   
             //formatear todos los datos a String

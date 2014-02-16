@@ -1,23 +1,24 @@
 package datos;
 
-public class Configuracion {
-    private int id; // p_escalador
-    private String nombreEscalador, apellidosEscalador, fechaInicio, fechaFin;
+import java.sql.Timestamp;
 
-    // Constructor sin el id
-    public Configuracion(String nombreEscalador, String apellidosEscalador, String fechaInicio, String fechaFin) {
-        this.nombreEscalador = nombreEscalador;
-        this.apellidosEscalador = apellidosEscalador;
-        this.fechaInicio = fechaInicio;
+public class Configuracion {
+   private int id;
+   private String nombre, apellido;
+   private Timestamp fechaIni,fechaFin;
+
+    public Configuracion(int id, String nombre, String apellido, Timestamp fechaIni, Timestamp fechaFin) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaIni = fechaIni;
         this.fechaFin = fechaFin;
     }
 
-    // Constructor con el id
-    public Configuracion(int id, String nombreEscalador, String apellidosEscalador, String fechaInicio, String fechaFin) {
-        this.id = id;
-        this.nombreEscalador = nombreEscalador;
-        this.apellidosEscalador = apellidosEscalador;
-        this.fechaInicio = fechaInicio;
+    public Configuracion(String nombre, String apellido, Timestamp fechaIni, Timestamp fechaFin) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaIni = fechaIni;
         this.fechaFin = fechaFin;
     }
 
@@ -29,35 +30,36 @@ public class Configuracion {
         this.id = id;
     }
 
-    public String getNombreEscalador() {
-        return nombreEscalador;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreEscalador(String nombreEscalador) {
-        this.nombreEscalador = nombreEscalador;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getApellidosEscalador() {
-        return apellidosEscalador;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setApellidosEscalador(String apellidosEscalador) {
-        this.apellidosEscalador = apellidosEscalador;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
-    public String getFechaInicio() {
-        return fechaInicio;
+    public Timestamp getFechaIni() {
+        return fechaIni;
     }
 
-    public void setFechaInicio(String fechaInicio) {
-        this.fechaInicio = fechaInicio;
+    public void setFechaIni(Timestamp fechaIni) {
+        this.fechaIni = fechaIni;
     }
 
-    public String getFechaFin() {
+    public Timestamp getFechaFin() {
         return fechaFin;
     }
 
-    public void setFechaFin(String fechaFin) {
+    public void setFechaFin(Timestamp fechaFin) {
         this.fechaFin = fechaFin;
     }
+   
 }

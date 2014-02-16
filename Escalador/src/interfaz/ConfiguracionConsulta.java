@@ -1,5 +1,11 @@
 package interfaz;
 
+import datos.Configuracion;
+import datos.Entrenamiento;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import metodos.Metodos;
 import org.jvnet.substance.SubstanceLookAndFeel;
@@ -8,7 +14,7 @@ import org.jvnet.substance.button.StandardButtonShaper;
 public class ConfiguracionConsulta extends javax.swing.JDialog {
 
     Metodos metodos;
-    
+
     public ConfiguracionConsulta(java.awt.Frame parent, boolean modal, Metodos metodos) {
         super(parent, modal);
         this.setResizable(false);//no se pueda cambiar tamaño
@@ -17,6 +23,25 @@ public class ConfiguracionConsulta extends javax.swing.JDialog {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         this.setTitle("Consulta configuración");
+        // metodos.mostrarConfiguracion(jLabel1, labelApellidos,labelFechaInicio,labelFechaFin);
+        mostrarUsuario();
+    }
+
+    private void mostrarUsuario() {
+        List<Configuracion> usuarioList = null;
+        try {
+            usuarioList = metodos.obtenerUsuario();
+            for (Configuracion c : usuarioList) {
+                labelNombre.setText(c.getNombre());
+                labelApellidos.setText(c.getApellido());
+                labelFechaInicio.setText(c.getFechaFin().toString());
+                labelFechaFin.setText(c.getFechaFin().toString());
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ConfiguracionConsulta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     /**

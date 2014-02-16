@@ -1,5 +1,6 @@
 package metodos;
 
+import datos.Configuracion;
 import datos.Entrenamiento;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -20,11 +21,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class Metodos {
-    
+
     Connection conexion;
     Statement consulta;
     ResultSet resultSet;
@@ -37,7 +39,7 @@ public class Metodos {
     public Metodos() {
         ruta = System.getProperty("user.dir");
     }
-    
+
     public void conectar() {
         try {
             Class.forName("org.hsqldb.jdbcDriver");
@@ -45,23 +47,23 @@ public class Metodos {
             System.out.println(e.getMessage());
         }
         try {
-            
-            conexion = DriverManager.getConnection("jdbc:hsqldb:file:/database/escalada","sa","");//aqui
+
+            conexion = DriverManager.getConnection("jdbc:hsqldb:file:database/escalada", "sa", "");//aqui
             consulta = conexion.createStatement();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
-    
+
     public List<Entrenamiento> obtenerListaEntrenamientos() throws SQLException {
-        
+
         Entrenamiento entrenamiento;
         List<Entrenamiento> listaEntrenamientos = new ArrayList<>();
         conectar();
-        
+
         resultSet = consulta.executeQuery("select * from ENTRENAMIENTO");
         try {
-            
+
             while (resultSet.next()) {
                 entrenamiento = new Entrenamiento(
                         resultSet.getDate(1),
@@ -71,7 +73,7 @@ public class Metodos {
                         resultSet.getString(5)
                 );
                 listaEntrenamientos.add(entrenamiento);
-                
+
             }
         } catch (SQLException e) {
             System.out.println("Error SQL.");
@@ -149,7 +151,7 @@ public class Metodos {
 //        return listaEntrenamientos;
 //    }
     public void copiarFotografia(File archivoOrigen, File archivoDestino) {
-        
+
         BufferedInputStream in = null;
         BufferedOutputStream out = null;
         try {
@@ -157,11 +159,11 @@ public class Metodos {
         } catch (FileNotFoundException ex) {
             System.out.println(ex.getMessage());
         }
-        
+
         try {
             out = new BufferedOutputStream(new FileOutputStream(archivoDestino));
         } catch (FileNotFoundException ex) {
-            
+
         }
         byte buffer[] = new byte[1024];
         int leidos;
@@ -172,9 +174,9 @@ public class Metodos {
             in.close();
             out.close();
         } catch (IOException ex) {
-            
+
         }
-        
+
     }
 
     //Comprueba que las cajas de textos de las fechas solo tengan fechas en formato dd/MM/yyyy y que no esten vacios
@@ -210,7 +212,7 @@ public class Metodos {
         return hora.matches("\\d\\d:\\d\\d:\\d\\d");
         //para meter los segundos añadir +00 tras el getText();
     }
-    
+
     public void rellenarTablaEntrenamiento(JTable tablaEntrenamientos) {
         DefaultTableModel model = (DefaultTableModel) tablaEntrenamientos.getModel();
         String sql = "select * from ENTRENAMIENTO";
@@ -218,7 +220,7 @@ public class Metodos {
         conectar();
         try {
             res = consulta.executeQuery(sql);
-            
+
             while (res.next()) {
                 model.addRow(new Object[]{
                     null,//res.getDate(1),
@@ -227,15 +229,46 @@ public class Metodos {
                     res.getString(4),
                     res.getString(5)
                 });
-            }            
+            }
         } catch (SQLException e) {
             System.out.println("Error");
         }
-        
+
     }
-    
+
+    public List<Configuracion> obtenerUsuario() throws SQLException {
+        Configuracion config;
+        List<Configuracion> usuarioList = new ArrayList<>();
+        conectar();
+        resultSet = consulta.executeQuery("select * from ESCALADOR");
+        try {
+
+            while (resultSet.next()) {
+                config = new Configuracion(
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getTimestamp(4),
+                        resultSet.getTimestamp(5));
+
+                usuarioList.add(config);
+
+            }
+        } catch (SQLException e) {
+            System.out.println("Error SQL.");
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        return usuarioList;
+    }
+
     public void insertarConfigEnDB(String nombre, String apellido, String fecha, String fechaFin) {
-        
+
     }
 
 }
