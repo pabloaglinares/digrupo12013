@@ -24,7 +24,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class Metodos {
-    //dd
 
     Connection conexion;
     Statement consulta;
@@ -47,7 +46,7 @@ public class Metodos {
         }
         try {
             
-            conexion = DriverManager.getConnection("jdbc:hsqldb:hsql://file/database/escalador.script.txt");//aqui
+            conexion = DriverManager.getConnection("jdbc:hsqldb:file:/database/escalada");//aqui
             consulta = conexion.createStatement();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -237,5 +236,8 @@ public class Metodos {
     
     }
 
+    public void insertarConfigEnDB(String nombre, String apellido, String fecha, String fechaFin){
+       
+    }
   
 }
