@@ -55,6 +55,7 @@ public class Metodos {
             System.out.println(e.getMessage());
         }
     }
+
     public List<Itinerario> obtenerListaItinerarios() {
         String sql = "select * from ITINERARIO";
         ResultSet resultSet;
@@ -262,13 +263,13 @@ public class Metodos {
     public boolean comprobarLetras(String texto) {
         return texto.matches("[a-zA-Z]*");
     }
-    
+
     public boolean comprobarNoEsCadenaVacia(String texto) {
         return "".equals(texto);
     }
-    
+
     //Este método se encarga de validar que el texto contenga sólo letras o números.
-    public boolean validarTextoNumeros(String texto){
+    public boolean validarTextoNumeros(String texto) {
         return texto.matches("[a-zA-Z\\d]*");
     }
 
@@ -371,6 +372,22 @@ public class Metodos {
             }
         }
         return pudoInsertarse;
+    }
+
+    public void deleteEntrenamiento(String texto) {
+        String sql = "DELETE FROM ENTRENAMIENTO WHERE DESCRPICION='" + texto + "'";
+        conectar();
+        try {
+            consulta.executeUpdate(sql);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
 }

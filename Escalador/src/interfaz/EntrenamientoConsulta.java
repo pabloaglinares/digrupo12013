@@ -9,63 +9,70 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import metodos.Metodos;
 
 public class EntrenamientoConsulta extends javax.swing.JDialog {
 
     Metodos metodos;
-    
+    DefaultTableModel defaultTableModel;
+
     public EntrenamientoConsulta(java.awt.Frame parent, boolean modal, Metodos metodos) throws SQLException {
         super(parent, modal);
         this.setResizable(false);
         this.metodos = metodos;
         initComponents();
         tabla();
+        rellenarTabla();
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         this.setTitle("Consulta entrenamientos realizados");
         //vaciarTabla();           
-        
+
     }
-    private void tabla() throws SQLException
-    {
-        DefaultTableModel defaultTableModel = new DefaultTableModel();
+
+    private void tabla() throws SQLException {
+        defaultTableModel = new DefaultTableModel();
         defaultTableModel.addColumn("Fecha");
         defaultTableModel.addColumn("Hora inicio");
         defaultTableModel.addColumn("Hora fin");
         defaultTableModel.addColumn("Tipo");
-        defaultTableModel.addColumn("Descripcion");   
+        defaultTableModel.addColumn("Descripcion");
         tablaEntrenamientos.setModel(defaultTableModel);
- 
-         
+
+    }
+
+    private void rellenarTabla() {
         List<Entrenamiento> listaEntrenamientos = null;
         try {
             listaEntrenamientos = metodos.obtenerListaEntrenamientos();
-        
-        
-       
-        String tipo, descripcion,horaInicio, horaFin,fecha;
-        
-        for(Entrenamiento e: listaEntrenamientos){
-            fecha=e.getFecha().toString();
-            tipo=e.getTipo();
-            descripcion=e.getDescripcion();
-            horaInicio=e.getHoraComienzo().toString();
-            horaFin=e.getHoraFin().toString();
-            String[] fila = {fecha,horaInicio,horaFin, tipo, descripcion};
-            defaultTableModel.addRow(fila);
-        }   
-            //formatear todos los datos a String
-            
-            //defaultTableModel.addRow(fila);
-            } catch (SQLException ex) {
+
+            String tipo, descripcion, horaInicio, horaFin, fecha;
+
+            for (Entrenamiento e : listaEntrenamientos) {
+                fecha = e.getFecha().toString();
+                tipo = e.getTipo();
+                descripcion = e.getDescripcion();
+                horaInicio = e.getHoraComienzo().toString();
+                horaFin = e.getHoraFin().toString();
+                String[] fila = {fecha, horaInicio, horaFin, tipo, descripcion};
+                defaultTableModel.addRow(fila);
+            }
+
+        } catch (SQLException ex) {
             System.out.println("Error SQL.");
             Logger.getLogger(EntrenamientoConsulta.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
-    
-    
+
+    private void vaciarTabla() {
+        DefaultTableModel modelo = (DefaultTableModel) tablaEntrenamientos.getModel();
+        int filas = tablaEntrenamientos.getRowCount();
+        for (int i = 0; i < filas; i++) {
+            modelo.removeRow(0);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -125,6 +132,11 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
         });
 
         botonBorrar.setText("Borrar");
+        botonBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBorrarActionPerformed(evt);
+            }
+        });
 
         botonEditar.setText("Editar");
         botonEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -170,8 +182,35 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
     }//GEN-LAST:event_botonSalirActionPerformed
 
     private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
-       
+        try {
+
+            int i = tablaEntrenamientos.getSelectedRow();
+            EntrenamientoNuevo entrenaNew = new EntrenamientoNuevo(
+                    this,
+                    true,
+                    metodos,
+                    tablaEntrenamientos.getValueAt(i, 4).toString(),
+                    tablaEntrenamientos.getValueAt(i, 0).toString(),
+                    tablaEntrenamientos.getValueAt(i, 2).toString(),
+                    tablaEntrenamientos.getValueAt(i, 1).toString(),
+                    tablaEntrenamientos.getValueAt(i, 3).toString());
+            entrenaNew.setVisible(true);
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(this, "Seleciona la fila de la tabla que desees editar");
+        }
     }//GEN-LAST:event_botonEditarActionPerformed
+
+    private void botonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBorrarActionPerformed
+        try {
+            int i = tablaEntrenamientos.getSelectedRow();
+            metodos.deleteEntrenamiento(tablaEntrenamientos.getValueAt(i, 4).toString());
+            vaciarTabla();
+            rellenarTabla();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(this, "Seleciona la fila de la tabla que desees borrar");
+        }
+    }//GEN-LAST:event_botonBorrarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonBorrar;
