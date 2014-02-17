@@ -209,7 +209,7 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
             fecha = new Timestamp(Dateini.getTime());
             fchFin = new Timestamp(Datefin.getTime());
         } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(this, "error en los datos\nLa fecha tiene el formato:\n"
+            JOptionPane.showMessageDialog(this, "Error en los datos\nLa fecha tiene el formato:\n"
                     + "31-12-1999 23:59");
         }
 

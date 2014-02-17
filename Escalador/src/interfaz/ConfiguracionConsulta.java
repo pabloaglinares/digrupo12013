@@ -3,6 +3,9 @@ package interfaz;
 import datos.Configuracion;
 import datos.Entrenamiento;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,14 +37,22 @@ public class ConfiguracionConsulta extends javax.swing.JDialog {
             for (Configuracion c : usuarioList) {
                 labelNombre.setText(c.getNombre());
                 labelApellidos.setText(c.getApellido());
-                labelFechaInicio.setText(c.getFechaFin().toString());
-                labelFechaFin.setText(c.getFechaFin().toString());
+                fecha(c);
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(ConfiguracionConsulta.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+
+    private void fecha(Configuracion c) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm");
+
+        Timestamp fechaIni = c.getFechaIni();
+        Timestamp fechaFin = c.getFechaFin();
+        labelFechaInicio.setText(dateFormat.format(fechaIni.getTime()));
+        labelFechaFin.setText(dateFormat.format(fechaFin.getTime()));
     }
 
     /**
