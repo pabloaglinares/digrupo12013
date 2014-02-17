@@ -1,7 +1,7 @@
 package interfaz;
 
-import datos.Entrenamiento;
-import datos.ItinerarioFin;
+
+import datos.Itinerario;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
@@ -18,8 +18,32 @@ public class ItinerarioConsulta extends javax.swing.JDialog {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         this.setTitle("Consulta de itinerarios");
+        tabla();
     }
-
+    private void tabla() //throws SQLException
+    {//String nombre, String localizacion,Date fecha, String via, String dificultad, String URL)
+        DefaultTableModel defaultTableModel = new DefaultTableModel();
+        defaultTableModel.addColumn("Nombre");
+        defaultTableModel.addColumn("Localizacion");
+        defaultTableModel.addColumn("Via");
+        defaultTableModel.addColumn("Dificultad");
+        TablaItinerario.setModel(defaultTableModel);
+ 
+         
+        List<Itinerario> listaItinerarios = null;
+        listaItinerarios = metodos.obtenerListaItinerarios();
+        String nombre, localizacion, via, dificultad, imagen;
+        for(Itinerario i: listaItinerarios){
+            nombre=i.getNombre();
+            localizacion=i.getLocalizacion();
+            dificultad=i.getDificultad();
+            via=i.getVia();
+            imagen=i.getURLimagen();
+            String[] fila = {nombre, localizacion,via, dificultad,imagen};
+            defaultTableModel.addRow(fila);
+        }
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

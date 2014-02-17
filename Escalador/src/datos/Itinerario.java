@@ -2,12 +2,12 @@ package datos;
 
 public class Itinerario {
     private int id; // p_itinerario
-    private String nombre, localizacion, via, dificultad;
+    private String nombre, localizacion, via, dificultad, URLimagen;
     //File fotoItinerario; //?
 
     // Constructor sin el id
     // Falta el atributo de la Foto
-    public Itinerario(String nombre, String localizacion, String via, String dificultad) {
+    public Itinerario(String nombre, String localizacion, String via, String dificultad, String URLimagen) {
         this.nombre = nombre;
         this.localizacion = localizacion;
         this.via = via;
@@ -16,7 +16,7 @@ public class Itinerario {
 
     // Constructor con el id
     // Falta el atributo de la Foto
-    public Itinerario(int id, String nombre, String localizacion, String via, String dificultad) {
+    public Itinerario(int id, String nombre, String localizacion, String via, String dificultad, String URLimagen) {
         this.id = id;
         this.nombre = nombre;
         this.localizacion = localizacion;
@@ -24,6 +24,14 @@ public class Itinerario {
         this.dificultad = dificultad;
     }
 
+    public String getURLimagen() {
+        return URLimagen;
+    }
+
+    public void setURLimagen(String URLimagen) {
+        this.URLimagen = URLimagen;
+    }
+    
     public int getId() {
         return id;
     }

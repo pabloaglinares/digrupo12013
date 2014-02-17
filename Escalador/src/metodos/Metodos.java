@@ -2,6 +2,7 @@ package metodos;
 
 import datos.Configuracion;
 import datos.Entrenamiento;
+import datos.Itinerario;
 import datos.ItinerarioFin;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -53,6 +54,35 @@ public class Metodos {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+    public List<Itinerario> obtenerListaItinerarios() {
+        String sql = "select * from ITINERARIO";
+        ResultSet resultSet;
+        conectar();
+        Itinerario itinerario;
+        List<Itinerario> listaItinerarios = new ArrayList<>();
+        try {
+            resultSet = consulta.executeQuery(sql);
+            while (resultSet.next()) {
+                itinerario = new Itinerario(
+                        resultSet.getString(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getString(5),
+                        resultSet.getString(6)
+                );
+                listaItinerarios.add(itinerario);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error SQL.");
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return listaItinerarios;
     }
 
     public List<ItinerarioFin> obtenerListaItinerFin() throws SQLException {
