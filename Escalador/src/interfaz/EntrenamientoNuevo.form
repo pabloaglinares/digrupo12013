@@ -6,6 +6,7 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -145,17 +146,17 @@
       <SubComponents>
         <Component class="javax.swing.JTextField" name="campoFecha">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Fecha"/>
+            <Property name="text" type="java.lang.String" value="Date"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="campoHoraInicio">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Hora_Inicio"/>
+            <Property name="text" type="java.lang.String" value="Time"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="campoHoraFin">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Hora_Fin"/>
+            <Property name="text" type="java.lang.String" value="Time"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="comboTipo">

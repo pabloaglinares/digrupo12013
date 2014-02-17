@@ -191,15 +191,17 @@ public class ItinerarioNuevo extends javax.swing.JDialog {
     private void cargafotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargafotoActionPerformed
 
         JFileChooser foto = new JFileChooser();
+        foto.setDialogTitle("Selecciona una foto");
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
                 "JPG & GIF Images", "jpg", "gif");
         foto.setFileFilter(filter);    
         int returnVal = foto.showOpenDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            rutafoto.setText(foto.getSelectedFile().getName());
-            File origen = foto.getSelectedFile();
-            File destino = new File("fotos//" + foto.getSelectedFile().getName());
-            metodos.copiarFotografia(origen, destino);
+            //rutafoto.setText(foto.getSelectedFile().getName());
+            rutafoto.setText(foto.getSelectedFile().getAbsolutePath());
+//            File origen = foto.getSelectedFile();
+//            File destino = new File("fotos//" + foto.getSelectedFile().getName());
+//            metodos.copiarFotografia(origen, destino);
 
         }
 

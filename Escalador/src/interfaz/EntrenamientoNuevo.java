@@ -16,8 +16,6 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         this.setTitle("Nuevo entrenamiento");
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,11 +46,11 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Entrenamiento"));
         jPanel1.setToolTipText("");
 
-        campoFecha.setText("Fecha");
+        campoFecha.setText("Date");
 
-        campoHoraInicio.setText("Hora_Inicio");
+        campoHoraInicio.setText("Time");
 
-        campoHoraFin.setText("Hora_Fin");
+        campoHoraFin.setText("Time");
 
         comboTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Físico", "Rocódromo", "Roca" }));
 
@@ -181,41 +179,44 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
     }//GEN-LAST:event_botonSalirActionPerformed
 
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
-        
+
         String fecha = this.campoFecha.getText();
         String horaInicio = this.campoHoraInicio.getText();
         String horaFin = this.campoHoraFin.getText();
-        String tipo = (String) this.comboTipo.getSelectedItem();
+        String tipo = this.comboTipo.getSelectedItem().toString();
         String descripcion = this.areaTextoDescripcion.getText();
-        boolean fechaValida, horaInicioValida, horaFinValida;
-        
-        fechaValida = metodos.comprobarFecha(fecha);
-        horaInicioValida = metodos.comprobarHora(horaInicio);
-        horaFinValida = metodos.comprobarHora(horaFin);
+//        boolean fechaValida, horaInicioValida, horaFinValida;
+//        
+//        fechaValida = metodos.comprobarFecha(fecha);
+//        horaInicioValida = metodos.comprobarHora(horaInicio);
+//        horaFinValida = metodos.comprobarHora(horaFin);
+
+    
         
         String mensaje;
-        
-        if(fechaValida && horaInicioValida && horaFinValida) {
-            boolean insercionCorrecta = metodos.insertarEntrenamientoEnDB(tipo, fecha, horaInicio, horaFin, descripcion);
-            if(insercionCorrecta) {
+
+//        if (fechaValida && horaInicioValida && horaFinValida) {
+            boolean insercionCorrecta = metodos.insertarEntrenamientoEnDB(fecha, horaInicio, horaFin, tipo, descripcion);
+            if (insercionCorrecta) {
                 mensaje = "El entrenamiento se insertó correctamente.";
             } else {
                 mensaje = "Error: No se ha insertado el entrenamiento.";
             }
-        } else {
-            mensaje = "Error en los datos introducidos:";
-            if(!fechaValida) {
-                mensaje += "\nLa fecha introducida no cumple el formato dd/mm/aaaa";
-            }
-            if(!horaInicioValida) {
-                mensaje += "\nLa hora de inicio no cumple el formato hh:mm";
-            }
-            if(!horaFinValida) {
-                mensaje += "\nLa hora de fin no cumple el formato hh:mm";
-            }
-        }
+//        } else {
+//            mensaje = "Error en los datos introducidos:";
+//            if (!fechaValida) {
+//                mensaje += "\nLa fecha introducida no cumple el formato dd/mm/aaaa";
+//            }
+//            if (!horaInicioValida) {
+//                mensaje += "\nLa hora de inicio no cumple el formato hh:mm";
+//            }
+//            if (!horaFinValida) {
+//                mensaje += "\nLa hora de fin no cumple el formato hh:mm";
+//            }
+//        }
         JOptionPane.showMessageDialog(this, mensaje);
-        
+        this.dispose();
+
     }//GEN-LAST:event_botonAceptarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

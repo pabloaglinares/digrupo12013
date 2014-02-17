@@ -11,11 +11,13 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -121,24 +123,24 @@ public class Metodos {
     /**
      * Inserta un nuevo entrenamiento en la BD y lo confirma con un booleano.
      *
-     * @param tipo
      * @param fecha
-     * @param horaInicio
+     * @param horaIni
      * @param horaFin
+     * @param tipo
      * @param descripcion
      * @return true si pudo insertar el nuevo entrenamiento, o false si no pudo.
      */
-    public boolean insertarEntrenamientoEnDB(String tipo, String fecha, String horaInicio, String horaFin, String descripcion) {
-        boolean pudoInsertarse = false;
+    public boolean insertarEntrenamientoEnDB(String fecha, String horaIni, String horaFin,String tipo, String descripcion) {
+        boolean pudoInsertarse;
         conectar();
-        String sql = "INSERT INTO entrenamiento (tipo, fecha, hora_inicio, hora_fin, descripcion) "
-                + "VALUES ('" + tipo + "', '" + fecha + "', '" + horaInicio
-                + "', '" + horaFin + "', '" + descripcion + "')";
+        String sql = "INSERT INTO entrenamiento (FECHA,HORA_COMIENZO,HORA_FIN,TIPO,DESCRIPCION) "
+                + "VALUES ('" + fecha + "', '" + horaIni + "', '" + horaFin
+                + "', '" + tipo + "', '" + descripcion + "')";
         try {
             consulta.executeUpdate(sql);
             pudoInsertarse = true;
         } catch (SQLException ex) {
-            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+            pudoInsertarse = false;
         } finally {
             try {
                 conexion.close();
