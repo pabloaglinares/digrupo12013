@@ -11,13 +11,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +22,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -234,10 +230,16 @@ public class Metodos {
      * @return
      */
     public boolean comprobarLetras(String texto) {
-        if (texto.length() == 0) {
-            return false;
-        }
         return texto.matches("[a-zA-Z]*");
+    }
+    
+    public boolean comprobarNoEsCadenaVacia(String texto) {
+        return "".equals(texto);
+    }
+    
+    //Este método se encarga de validar que el texto contenga sólo letras o números.
+    public boolean validarTextoNumeros(String texto){
+        return texto.matches("[a-zA-Z\\d]*");
     }
 
     // Comprueba que la hora se componga de dos pares de dígitos separados por el caracter dos puntos.
