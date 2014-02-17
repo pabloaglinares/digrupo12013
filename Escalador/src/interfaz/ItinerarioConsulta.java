@@ -25,21 +25,22 @@ public class ItinerarioConsulta extends javax.swing.JDialog {
         DefaultTableModel defaultTableModel = new DefaultTableModel();
         defaultTableModel.addColumn("Nombre");
         defaultTableModel.addColumn("Localizacion");
-        defaultTableModel.addColumn("Via");
+        defaultTableModel.addColumn("Tipo");
         defaultTableModel.addColumn("Dificultad");
+        defaultTableModel.addColumn("Foto");
         TablaItinerario.setModel(defaultTableModel);
  
          
         List<Itinerario> listaItinerarios = null;
         listaItinerarios = metodos.obtenerListaItinerarios();
-        String nombre, localizacion, via, dificultad, imagen;
+        String nombre, localizacion, tipo, dificultad, imagen;
         for(Itinerario i: listaItinerarios){
             nombre=i.getNombre();
             localizacion=i.getLocalizacion();
             dificultad=i.getDificultad();
-            via=i.getVia();
+            tipo=i.getTipo();
             imagen=i.getURLimagen();
-            String[] fila = {nombre, localizacion,via, dificultad,imagen};
+            String[] fila = {nombre, localizacion,tipo, dificultad,imagen};
             defaultTableModel.addRow(fila);
         }
         

@@ -9,20 +9,15 @@ import java.sql.Timestamp;
  */
 public class ItinerarioFin implements Serializable {
 
-    private int id;
+    private String nombre;
     private Timestamp fecha;
 
-    public ItinerarioFin(int id, Timestamp fecha) {
-        this.id = id;
-        this.fecha = fecha;
+    public String getNombre() {
+        return nombre;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public Timestamp getFecha() {
@@ -30,6 +25,11 @@ public class ItinerarioFin implements Serializable {
     }
 
     public void setFecha(Timestamp fecha) {
+        this.fecha = fecha;
+    }
+
+    public ItinerarioFin(String nombre, Timestamp fecha) {
+        this.nombre = nombre;
         this.fecha = fecha;
     }
 

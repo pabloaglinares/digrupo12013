@@ -27,7 +27,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class Metodos {
-
+    
     Connection conexion;
     Statement consulta;
     ResultSet resultSet;
@@ -40,7 +40,7 @@ public class Metodos {
     public Metodos() {
         ruta = System.getProperty("user.dir");
     }
-
+    
     public void conectar() {
         try {
             Class.forName("org.hsqldb.jdbcDriver");
@@ -48,14 +48,14 @@ public class Metodos {
             System.out.println(e.getMessage());
         }
         try {
-
+            
             conexion = DriverManager.getConnection("jdbc:hsqldb:file:database/escalada", "sa", "");//aqui
             consulta = conexion.createStatement();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
-
+    
     public List<Itinerario> obtenerListaItinerarios() {
         String sql = "select * from ITINERARIO";
         ResultSet resultSet;
@@ -66,9 +66,9 @@ public class Metodos {
             resultSet = consulta.executeQuery(sql);
             while (resultSet.next()) {
                 itinerario = new Itinerario(
-                        resultSet.getString(1),
                         resultSet.getString(2),
                         resultSet.getString(3),
+                        resultSet.getString(4),
                         resultSet.getString(5),
                         resultSet.getString(6)
                 );
@@ -85,22 +85,22 @@ public class Metodos {
         }
         return listaItinerarios;
     }
-
+    
     public List<ItinerarioFin> obtenerListaItinerFin() throws SQLException {
         ItinerarioFin itinerarioFin;
         List<ItinerarioFin> listaItinerarioFin = new ArrayList<>();
         conectar();
-        resultSet = consulta.executeQuery("select * from FECHA_ITINERARIO");
-
+        resultSet = consulta.executeQuery("select IT.NOMBRE,FI.FECHA from FECHA_ITINERARIO FI,ITINERARIO IT ORDER BY FECHA");
+        
         try {
-
+            
             while (resultSet.next()) {
                 itinerarioFin = new ItinerarioFin(
-                        resultSet.getInt(1),
+                        resultSet.getString(1),
                         resultSet.getTimestamp(2));
-
+                
                 listaItinerarioFin.add(itinerarioFin);
-
+                
             }
         } catch (SQLException e) {
             System.out.println("Error SQL.");
@@ -111,19 +111,19 @@ public class Metodos {
                 Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
+        
         return listaItinerarioFin;
     }
-
+    
     public List<Entrenamiento> obtenerListaEntrenamientos() throws SQLException {
-
+        
         Entrenamiento entrenamiento;
         List<Entrenamiento> listaEntrenamientos = new ArrayList<>();
         conectar();
-
+        
         resultSet = consulta.executeQuery("select * from ENTRENAMIENTO");
         try {
-
+            
             while (resultSet.next()) {
                 entrenamiento = new Entrenamiento(
                         resultSet.getDate(1),
@@ -133,7 +133,7 @@ public class Metodos {
                         resultSet.getString(5)
                 );
                 listaEntrenamientos.add(entrenamiento);
-
+                
             }
         } catch (SQLException e) {
             System.out.println("Error SQL.");
@@ -211,7 +211,7 @@ public class Metodos {
 //        return listaEntrenamientos;
 //    }
     public void copiarFotografia(File archivoOrigen, File archivoDestino) {
-
+        
         BufferedInputStream in = null;
         BufferedOutputStream out = null;
         try {
@@ -219,11 +219,11 @@ public class Metodos {
         } catch (FileNotFoundException ex) {
             System.out.println(ex.getMessage());
         }
-
+        
         try {
             out = new BufferedOutputStream(new FileOutputStream(archivoDestino));
         } catch (FileNotFoundException ex) {
-
+            
         }
         byte buffer[] = new byte[1024];
         int leidos;
@@ -234,9 +234,9 @@ public class Metodos {
             in.close();
             out.close();
         } catch (IOException ex) {
-
+            
         }
-
+        
     }
 
     //Comprueba que las cajas de textos de las fechas solo tengan fechas en formato dd/MM/yyyy y que no esten vacios
@@ -263,7 +263,7 @@ public class Metodos {
     public boolean comprobarLetras(String texto) {
         return texto.matches("[a-zA-Z]*");
     }
-
+    
     public boolean comprobarNoEsCadenaVacia(String texto) {
         return "".equals(texto);
     }
@@ -278,7 +278,7 @@ public class Metodos {
         return hora.matches("\\d\\d:\\d\\d:\\d\\d");
         //para meter los segundos añadir +00 tras el getText();
     }
-
+    
     public void rellenarTablaEntrenamiento(JTable tablaEntrenamientos) {
         DefaultTableModel model = (DefaultTableModel) tablaEntrenamientos.getModel();
         String sql = "select * from ENTRENAMIENTO";
@@ -286,7 +286,7 @@ public class Metodos {
         conectar();
         try {
             res = consulta.executeQuery(sql);
-
+            
             while (res.next()) {
                 model.addRow(new Object[]{
                     null,//res.getDate(1),
@@ -299,16 +299,16 @@ public class Metodos {
         } catch (SQLException e) {
             System.out.println("Error");
         }
-
+        
     }
-
+    
     public List<Configuracion> obtenerUsuario() throws SQLException {
         Configuracion config;
         List<Configuracion> usuarioList = new ArrayList<>();
         conectar();
         resultSet = consulta.executeQuery("select * from ESCALADOR");
         try {
-
+            
             while (resultSet.next()) {
                 config = new Configuracion(
                         resultSet.getInt(1),
@@ -316,9 +316,9 @@ public class Metodos {
                         resultSet.getString(3),
                         resultSet.getTimestamp(4),
                         resultSet.getTimestamp(5));
-
+                
                 usuarioList.add(config);
-
+                
             }
         } catch (SQLException e) {
             System.out.println("Error SQL.");
@@ -329,16 +329,16 @@ public class Metodos {
                 Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
+        
         return usuarioList;
     }
-
+    
     public boolean insertarConfigEnDB(String nombre, String apellido, Timestamp fecha, Timestamp fechaFin) {
         boolean pudoInsertarse;
         String sql = "UPDATE PUBLIC.ESCALADOR SET NOMBRE = '" + nombre + "',APELLIDO = '" + apellido + "',"
                 + "FECHA_INICIO ='" + fecha + "' ,"
                 + "FECHA_FIN ='" + fechaFin + "' WHERE P_ESCALADOR=1";
-
+        
         conectar();
         try {
             consulta.executeUpdate(sql);
@@ -354,7 +354,7 @@ public class Metodos {
         }
         return pudoInsertarse;
     }
-
+    
     public boolean insertarItinerarioEnDb(String nombre, String localizacion, String tipo, String dificultad, String fecha, String foto) {
         boolean pudoInsertarse;
         String sql = "INSERT INTO ITINERARIO";
@@ -373,7 +373,7 @@ public class Metodos {
         }
         return pudoInsertarse;
     }
-
+    
     public void deleteEntrenamiento(String texto) {
         String sql = "DELETE FROM ENTRENAMIENTO WHERE DESCRPICION='" + texto + "'";
         conectar();
@@ -389,5 +389,5 @@ public class Metodos {
             }
         }
     }
-
+    
 }

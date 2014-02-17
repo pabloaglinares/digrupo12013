@@ -25,7 +25,7 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
 
     private void tabla() {
         DefaultTableModel defaultTableModel = new DefaultTableModel();
-        defaultTableModel.addColumn("a_itinerario");
+        defaultTableModel.addColumn("Nombre");
         defaultTableModel.addColumn("Fecha");
         jTable1.setModel(defaultTableModel);
 
@@ -36,12 +36,12 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
         
         
        
-        String fk_key, fecha;
+        String nombre, fecha;
         
         for(ItinerarioFin e: listaItinerarioFin){
-            fk_key=Integer.toString(e.getId());
+            nombre=e.getNombre();
             fecha=e.getFecha().toString();
-            String[] fila = {fk_key,fecha};
+            String[] fila = {nombre,fecha};
             defaultTableModel.addRow(fila);
         }   
             //formatear todos los datos a String
