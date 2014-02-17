@@ -375,7 +375,7 @@ public class Metodos {
     }
     
     public void deleteEntrenamiento(String texto) {
-        String sql = "DELETE FROM ENTRENAMIENTO WHERE DESCRPICION='" + texto + "'";
+        String sql = "DELETE FROM ENTRENAMIENTO WHERE DESCRIPCION='" + texto + "'";
         conectar();
         try {
             consulta.executeUpdate(sql);
