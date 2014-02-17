@@ -198,9 +198,10 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
 //        if (fechaValida && horaInicioValida && horaFinValida) {
             boolean insercionCorrecta = metodos.insertarEntrenamientoEnDB(fecha, horaInicio, horaFin, tipo, descripcion);
             if (insercionCorrecta) {
-                mensaje = "El entrenamiento se insertó correctamente.";
+                this.dispose();
             } else {
                 mensaje = "Error: No se ha insertado el entrenamiento.";
+                JOptionPane.showMessageDialog(this, mensaje);
             }
 //        } else {
 //            mensaje = "Error en los datos introducidos:";
@@ -214,8 +215,8 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
 //                mensaje += "\nLa hora de fin no cumple el formato hh:mm";
 //            }
 //        }
-        JOptionPane.showMessageDialog(this, mensaje);
-        this.dispose();
+        
+        
 
     }//GEN-LAST:event_botonAceptarActionPerformed
 

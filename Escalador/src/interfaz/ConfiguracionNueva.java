@@ -1,7 +1,15 @@
 package interfaz;
 
 import java.awt.Image;
+
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import metodos.Metodos;
 import org.jvnet.substance.SubstanceLookAndFeel;
 import org.jvnet.substance.button.StandardButtonShaper;
@@ -19,10 +27,10 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
         this.setResizable(false);
         initComponents();
         this.metodos = metodos;
-        this.btnGuardar.putClientProperty(SubstanceLookAndFeel.BUTTON_SHAPER_PROPERTY,new StandardButtonShaper());//boton redondo
+        this.btnGuardar.putClientProperty(SubstanceLookAndFeel.BUTTON_SHAPER_PROPERTY, new StandardButtonShaper());//boton redondo
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         this.setTitle("Editar configuración");
-        
+
 //this.jButton2.putClientProperty(SubstanceLookAndFeel.setCurrentWatermark(new SubstanceImageWatermark("./src/fotos/climbing1.jpg")),new StandardButtonShaper());
     }
 
@@ -74,6 +82,7 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
             }
         });
 
+        inicio.setText("11-11-1999 11:11");
         inicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inicioActionPerformed(evt);
@@ -189,18 +198,27 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
     }//GEN-LAST:event_inicioActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        String nombre = this.nombre.getText();
-        String apellido = this.apellido.getText();
-        String fecha = this.inicio.getText();
-        String fchFin = this.fin.getText();
-        
-        //metodos.insertarConfigEnDB(nombre, apellido, fecha, fchFin);
-        this.nombre.setText("");
-        this.apellido.setText("");
-        this.inicio.setText("");
-        this.fin.setText("");
+        Timestamp fecha = null, fchFin = null;
+        String fei = this.inicio.getText();
+        String fef = this.fin.getText();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm");
 
+        try {
+            Date Dateini = (Date) dateFormat.parse(fei);
+            Date Datefin = (Date) dateFormat.parse(fef);
+            fecha = new Timestamp(Dateini.getTime());
+            fchFin = new Timestamp(Datefin.getTime());
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(this, "error en los datos\nLa fecha tiene el formato:\n"
+                    + "31-12-1999 23:59");
+        }
 
+        String nombreUsu = this.nombre.getText();
+        String apellidoUsu = this.apellido.getText();
+
+        if (metodos.insertarConfigEnDB(nombreUsu, apellidoUsu, fecha, fchFin)) {
+            this.dispose();
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoActionPerformed

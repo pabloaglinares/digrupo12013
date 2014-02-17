@@ -18,6 +18,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -70,7 +71,7 @@ public class Metodos {
                 itinerarioFin = new ItinerarioFin(
                         resultSet.getInt(1),
                         resultSet.getTimestamp(2));
- 
+
                 listaItinerarioFin.add(itinerarioFin);
 
             }
@@ -130,7 +131,7 @@ public class Metodos {
      * @param descripcion
      * @return true si pudo insertar el nuevo entrenamiento, o false si no pudo.
      */
-    public boolean insertarEntrenamientoEnDB(String fecha, String horaIni, String horaFin,String tipo, String descripcion) {
+    public boolean insertarEntrenamientoEnDB(String fecha, String horaIni, String horaFin, String tipo, String descripcion) {
         boolean pudoInsertarse;
         conectar();
         String sql = "INSERT INTO entrenamiento (FECHA,HORA_COMIENZO,HORA_FIN,TIPO,DESCRIPCION) "
@@ -299,8 +300,45 @@ public class Metodos {
         return usuarioList;
     }
 
-    public void insertarConfigEnDB(String nombre, String apellido, String fecha, String fechaFin) {
+    public boolean insertarConfigEnDB(String nombre, String apellido, Timestamp fecha, Timestamp fechaFin) {
+        boolean pudoInsertarse;
+        String sql = "UPDATE PUBLIC.ESCALADOR SET NOMBRE = '" + nombre + "',APELLIDO = '" + apellido + "',"
+                + "FECHA_INICIO ='" + fecha + "' ,"
+                + "FECHA_FIN ='" + fechaFin + "' WHERE P_ESCALADOR=1";
 
+        conectar();
+        try {
+            consulta.executeUpdate(sql);
+            pudoInsertarse = true;
+        } catch (SQLException ex) {
+            pudoInsertarse = false;
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return pudoInsertarse;
+    }
+
+    public boolean insertarItinerarioEnDb(String nombre, String localizacion, String tipo, String dificultad, String fecha, String foto) {
+        boolean pudoInsertarse;
+        String sql = "INSERT INTO ITINERARIO";
+        conectar();
+        try {
+            consulta.executeUpdate(sql);
+            pudoInsertarse = true;
+        } catch (SQLException ex) {
+            pudoInsertarse = false;
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return pudoInsertarse;
     }
 
 }
