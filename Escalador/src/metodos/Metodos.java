@@ -305,7 +305,7 @@ public class Metodos {
 
     public boolean insertarConfigEnDB(String nombre, String apellido, Timestamp fecha, Timestamp fechaFin) {
         boolean pudoInsertarse;
-        String sql = "UPDATE PUBLIC.ESCALADOR SET NOMBRE = '" + nombre + "',APELLIDO = '" + apellido + "',"
+        String sql = "UPDATE ESCALADOR SET NOMBRE = '" + nombre + "',APELLIDO = '" + apellido + "',"
                 + "FECHA_INICIO ='" + fecha + "' ,"
                 + "FECHA_FIN ='" + fechaFin + "' WHERE P_ESCALADOR=1";
 

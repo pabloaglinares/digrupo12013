@@ -36,8 +36,7 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
         mostrarUsuario();
 //this.jButton2.putClientProperty(SubstanceLookAndFeel.setCurrentWatermark(new SubstanceImageWatermark("./src/fotos/climbing1.jpg")),new StandardButtonShaper());
     }
-    
-    
+
     private void mostrarUsuario() {
         List<Configuracion> usuarioList = null;
         try {
@@ -243,8 +242,8 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
 
         String nombreUsu = this.nombre.getText();
         String apellidoUsu = this.apellido.getText();
-
-        if (metodos.insertarConfigEnDB(nombreUsu, apellidoUsu, fecha, fchFin)) {
+        boolean cerrar = metodos.insertarConfigEnDB(nombreUsu, apellidoUsu, fecha, fchFin);
+        if (cerrar) {
             this.dispose();
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
