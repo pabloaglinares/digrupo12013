@@ -11,14 +11,13 @@ import metodos.Metodos;
 public class EntrenamientoNuevo extends javax.swing.JDialog {
 
     Metodos metodos;
-    boolean edicion;
+    boolean edicion = false;
     String update;
 
-    public EntrenamientoNuevo(java.awt.Frame parent, boolean modal, Metodos metodos, boolean edicion) {
+    public EntrenamientoNuevo(java.awt.Frame parent, boolean modal, Metodos metodos) {
         super(parent, modal);
         initComponents();
         this.metodos = metodos;
-        this.edicion = edicion;
         this.setResizable(false);
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         this.setTitle("Nuevo entrenamiento");

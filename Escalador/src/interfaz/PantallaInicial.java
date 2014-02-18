@@ -259,7 +259,7 @@ public class PantallaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemConsultaConfiguracionActionPerformed
 
     private void menuItemNuevoEntrenamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemNuevoEntrenamientoActionPerformed
-        EntrenamientoNuevo entrenamientoNuevo = new EntrenamientoNuevo(this, true, metodos,false);
+        EntrenamientoNuevo entrenamientoNuevo = new EntrenamientoNuevo(this, true, metodos);
         entrenamientoNuevo.setVisible(true);
     }//GEN-LAST:event_menuItemNuevoEntrenamientoActionPerformed
 

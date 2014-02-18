@@ -16,8 +16,10 @@ public class ItinerarioFinNuevo extends javax.swing.JDialog {
         this.metodos = metodos;
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         this.setTitle("Itinerario terminado");
+        metodos.mostrarNombreIti(jComboBox1);
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,8 +40,6 @@ public class ItinerarioFinNuevo extends javax.swing.JDialog {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Nuevo itinerario realizado"));
 
         jLabel1.setText("Itinerario");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel2.setText("Fecha Fin");
 

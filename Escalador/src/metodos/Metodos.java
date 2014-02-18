@@ -25,6 +25,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
 public class Metodos {
@@ -91,7 +92,8 @@ public class Metodos {
         ItinerarioFin itinerarioFin;
         List<ItinerarioFin> listaItinerarioFin = new ArrayList<>();
         conectar();
-        resultSet = consulta.executeQuery("select IT.NOMBRE,FI.FECHA from FECHA_ITINERARIO FI,ITINERARIO IT ORDER BY FECHA");
+        resultSet = consulta.executeQuery("select IT.NOMBRE,FI.FECHA from FECHA_ITINERARIO FI,ITINERARIO IT "
+                + "where IT.P_ITINERARIO=FI.A_ITINERARIO  ORDER BY FECHA");
 
         try {
 
@@ -325,7 +327,7 @@ public class Metodos {
 
     public boolean insertarItinerarioEnDb(String nombre, String localizacion, String tipo, String dificultad, String foto) {
         boolean pudoInsertarse;
-        String sql = "INSERT INTO ITINERARIO (NOMBRE,LOCALIZACION,TIPO,DIFICULTAD,FOTO) values ('"+nombre+"','"+localizacion+"','"+tipo+"','"+dificultad+"','"+foto+"')";
+        String sql = "INSERT INTO ITINERARIO (NOMBRE,LOCALIZACION,TIPO,DIFICULTAD,FOTO) values ('" + nombre + "','" + localizacion + "','" + tipo + "','" + dificultad + "','" + foto + "')";
         conectar();
         try {
             consulta.executeUpdate(sql);
@@ -363,6 +365,25 @@ public class Metodos {
         conectar();
         try {
             consulta.executeUpdate(sql);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    public void mostrarNombreIti(JComboBox j) {
+        conectar();
+        String sql = "select NOMBRE FROM ITINERARIO";
+        try {
+            resultSet = consulta.executeQuery(sql);
+            while (resultSet.next()) {
+                j.addItem(resultSet.getString(1));
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
