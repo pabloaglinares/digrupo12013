@@ -171,7 +171,24 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
             }
         });
 
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
+            }
+        });
+
         jLabel1.setText("Desde");
+
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField2KeyReleased(evt);
+            }
+        });
 
         jLabel2.setText("Hasta");
 
@@ -299,6 +316,20 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
     private void jComboBox1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jComboBox1PropertyChange
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1PropertyChange
+
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+        filtro.setRowFilter(RowFilter.regexFilter(jTextField1.getText(), 1));
+        tablaEntrenamientos.setRowSorter(filtro);
+    }//GEN-LAST:event_jTextField1KeyReleased
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
+        filtro.setRowFilter(RowFilter.regexFilter(jTextField2.getText(), 2));
+        tablaEntrenamientos.setRowSorter(filtro);
+    }//GEN-LAST:event_jTextField2KeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonBorrar;
