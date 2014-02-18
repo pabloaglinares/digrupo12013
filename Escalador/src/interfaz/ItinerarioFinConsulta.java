@@ -1,11 +1,14 @@
 package interfaz;
 
-import datos.Entrenamiento;
 import datos.ItinerarioFin;
+import java.awt.Image;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import metodos.Metodos;
@@ -29,29 +32,29 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
         defaultTableModel.addColumn("Fecha");
         jTable1.setModel(defaultTableModel);
 
-        List<ItinerarioFin> listaItinerarioFin= null;
-        
-         try {
+        List<ItinerarioFin> listaItinerarioFin = null;
+
+        try {
             listaItinerarioFin = metodos.obtenerListaItinerFin();
-        
-        
-       
-        String nombre, fecha;
-        
-        for(ItinerarioFin e: listaItinerarioFin){
-            nombre=e.getNombre();
-            fecha=e.getFecha().toString();
-            String[] fila = {nombre,fecha};
-            defaultTableModel.addRow(fila);
-        }   
+
+            String nombre, fecha;
+
+            for (ItinerarioFin e : listaItinerarioFin) {
+                nombre = e.getNombre();
+                fecha = e.getFecha().toString();
+                String[] fila = {nombre, fecha};
+                defaultTableModel.addRow(fila);
+            }
             //formatear todos los datos a String
-            
+
             //defaultTableModel.addRow(fila);
-            } catch (SQLException ex) {
+        } catch (SQLException ex) {
             System.out.println("Error SQL.");
             Logger.getLogger(EntrenamientoConsulta.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -88,12 +91,17 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
         jButton1.setText("salir");
 
         jButton2.setText("ver foto");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("borrar");
 
         jButton4.setText("modificar");
 
-        jLabel1.setText("cargar foto");
+        jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,24 +119,21 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
                         .addComponent(jButton2)
                         .addGap(91, 91, 91))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addComponent(jLabel1)
-                        .addContainerGap(110, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(97, 97, 97)
-                        .addComponent(jLabel1)))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -140,6 +145,10 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+      
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

@@ -11,13 +11,17 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import metodos.Metodos;
 
 public class EntrenamientoConsulta extends javax.swing.JDialog {
 
     Metodos metodos;
     DefaultTableModel defaultTableModel;
+    TableRowSorter<TableModel> filtro;
 
     public EntrenamientoConsulta(java.awt.Frame parent, boolean modal, Metodos metodos) throws SQLException {
         super(parent, modal);
@@ -28,7 +32,7 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
         rellenarTabla();
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         this.setTitle("Consulta entrenamientos realizados");
-        //vaciarTabla();           
+        //vaciarTabla();  
 
     }
 
@@ -39,6 +43,7 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
         defaultTableModel.addColumn("Hora fin");
         defaultTableModel.addColumn("Tipo");
         defaultTableModel.addColumn("Descripcion");
+        filtro = new TableRowSorter<TableModel>(defaultTableModel);
         tablaEntrenamientos.setModel(defaultTableModel);
 
     }
@@ -57,6 +62,7 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
                 horaInicio = e.getHoraComienzo().toString();
                 horaFin = e.getHoraFin().toString();
                 String[] fila = {fecha, horaInicio, horaFin, tipo, descripcion};
+
                 defaultTableModel.addRow(fila);
             }
 
@@ -154,6 +160,16 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Filtros"));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tipo", "Físico", "Rocódromo", "Roca" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        jComboBox1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jComboBox1PropertyChange(evt);
+            }
+        });
 
         jLabel1.setText("Desde");
 
@@ -180,13 +196,14 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel1)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -226,6 +243,7 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+
         this.dispose();
     }//GEN-LAST:event_botonSalirActionPerformed
 
@@ -259,6 +277,28 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Seleciona la fila de la tabla que desees borrar");
         }
     }//GEN-LAST:event_botonBorrarActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        if (jComboBox1.getSelectedIndex() == 1) {
+            filtro.setRowFilter(RowFilter.regexFilter("Físico", 3));
+            tablaEntrenamientos.setRowSorter(filtro);
+        } else if (jComboBox1.getSelectedIndex() == 2) {
+            filtro.setRowFilter(RowFilter.regexFilter("Rocódromo", 3));
+            tablaEntrenamientos.setRowSorter(filtro);
+
+        } else if (jComboBox1.getSelectedIndex() == 3) {
+            filtro.setRowFilter(RowFilter.regexFilter("Roca", 3));
+            tablaEntrenamientos.setRowSorter(filtro);
+
+        } else {
+            filtro.setRowFilter(null);
+            tablaEntrenamientos.setRowSorter(filtro);
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jComboBox1PropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1PropertyChange
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonBorrar;

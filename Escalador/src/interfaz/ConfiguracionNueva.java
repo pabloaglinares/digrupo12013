@@ -1,11 +1,14 @@
 package interfaz;
 
+import datos.Configuracion;
 import java.awt.Image;
+import java.sql.SQLException;
 
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -30,8 +33,34 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
         this.btnGuardar.putClientProperty(SubstanceLookAndFeel.BUTTON_SHAPER_PROPERTY, new StandardButtonShaper());//boton redondo
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         this.setTitle("Editar configuración");
-
+        mostrarUsuario();
 //this.jButton2.putClientProperty(SubstanceLookAndFeel.setCurrentWatermark(new SubstanceImageWatermark("./src/fotos/climbing1.jpg")),new StandardButtonShaper());
+    }
+    
+    
+    private void mostrarUsuario() {
+        List<Configuracion> usuarioList = null;
+        try {
+            usuarioList = metodos.obtenerUsuario();
+            for (Configuracion c : usuarioList) {
+                nombre.setText(c.getNombre());
+                apellido.setText(c.getApellido());
+                fecha(c);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ConfiguracionConsulta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    private void fecha(Configuracion c) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm");
+
+        Timestamp fechaIni = c.getFechaIni();
+        Timestamp fechaFin = c.getFechaFin();
+        inicio.setText(dateFormat.format(fechaIni.getTime()));
+        fin.setText(dateFormat.format(fechaFin.getTime()));
     }
 
     /**

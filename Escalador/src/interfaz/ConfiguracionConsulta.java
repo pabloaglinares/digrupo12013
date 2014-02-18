@@ -206,6 +206,7 @@ public class ConfiguracionConsulta extends javax.swing.JDialog {
     private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
         ConfiguracionNueva ventanaParaEditar = new ConfiguracionNueva(this, true, metodos);
         ventanaParaEditar.setVisible(true);
+        mostrarUsuario();
     }//GEN-LAST:event_botonEditarActionPerformed
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
