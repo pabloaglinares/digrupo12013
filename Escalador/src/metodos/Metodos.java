@@ -180,6 +180,28 @@ public class Metodos {
         return pudoInsertarse;
     }
 
+    public boolean updateEntrenamiento(String fecha, String horaIni, String horaFin, String tipo, String descripcion,String update) {
+        boolean pudoInsertarse;
+        conectar();
+        String sql = "UPDATE entrenamiento SET FECHA='"+fecha+"', HORA_COMIENZO='"+horaIni+"',"
+                + "HORA_FIN='"+horaFin+"',TIPO='"+tipo+"', DESCRIPCION='"+descripcion+"' WHERE DESCRIPCION='"+update+"'";
+        try {
+            System.out.println(sql);
+            consulta.executeUpdate(sql);
+            pudoInsertarse = true;
+        } catch (SQLException ex) {
+            pudoInsertarse = false;
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return pudoInsertarse;
+
+    }
+
     public void copiarFotografia(File archivoOrigen, File archivoDestino) {
 
         BufferedInputStream in = null;
@@ -337,5 +359,4 @@ public class Metodos {
         }
     }
 
-   
 }

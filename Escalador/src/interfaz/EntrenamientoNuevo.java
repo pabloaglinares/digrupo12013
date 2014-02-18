@@ -11,18 +11,21 @@ import metodos.Metodos;
 public class EntrenamientoNuevo extends javax.swing.JDialog {
 
     Metodos metodos;
+    boolean edicion;
+    String update;
 
-    public EntrenamientoNuevo(java.awt.Frame parent, boolean modal, Metodos metodos) {
+    public EntrenamientoNuevo(java.awt.Frame parent, boolean modal, Metodos metodos, boolean edicion) {
         super(parent, modal);
         initComponents();
         this.metodos = metodos;
+        this.edicion = edicion;
         this.setResizable(false);
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         this.setTitle("Nuevo entrenamiento");
     }
 
     //constructor para cuando edita un entranamiento
-    public EntrenamientoNuevo(javax.swing.JDialog parent, boolean modal, Metodos metodos, String areaTextoDescripcion, String campoFecha, String campoHoraFin, String campoHoraInicio, String comboTipo) {
+    public EntrenamientoNuevo(javax.swing.JDialog parent, boolean modal, Metodos metodos, String areaTextoDescripcion, String campoFecha, String campoHoraFin, String campoHoraInicio, String comboTipo, boolean edicion, String update) {
         super(parent, modal);
         initComponents();
         this.metodos = metodos;
@@ -31,7 +34,8 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
         this.campoHoraFin.setText(campoHoraFin);
         this.comboTipo.setSelectedItem(comboTipo);
         this.areaTextoDescripcion.setText(areaTextoDescripcion);
-
+        this.edicion = edicion;
+        this.update=update;
     }
 
     /**
@@ -214,27 +218,22 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
 //        horaFinValida = metodos.comprobarHora(horaFin);
 
         String mensaje;
+        boolean insercionCorrecta = false;
 
-//        if (fechaValida && horaInicioValida && horaFinValida) {
-        boolean insercionCorrecta = metodos.insertarEntrenamientoEnDB(fecha, horaInicio, horaFin, tipo, descripcion);
+        if (edicion==false) {
+            insercionCorrecta = metodos.insertarEntrenamientoEnDB(fecha, horaInicio, horaFin, tipo, descripcion);
+        
+        }else{
+            insercionCorrecta= metodos.updateEntrenamiento(fecha, horaInicio, horaFin, tipo, descripcion, update);
+        }
+        
+        
         if (insercionCorrecta) {
             this.dispose();
         } else {
             mensaje = "Error: No se ha insertado el entrenamiento.";
             JOptionPane.showMessageDialog(this, mensaje);
         }
-//        } else {
-//            mensaje = "Error en los datos introducidos:";
-//            if (!fechaValida) {
-//                mensaje += "\nLa fecha introducida no cumple el formato dd/mm/aaaa";
-//            }
-//            if (!horaInicioValida) {
-//                mensaje += "\nLa hora de inicio no cumple el formato hh:mm";
-//            }
-//            if (!horaFinValida) {
-//                mensaje += "\nLa hora de fin no cumple el formato hh:mm";
-//            }
-//        }
 
 
     }//GEN-LAST:event_botonAceptarActionPerformed

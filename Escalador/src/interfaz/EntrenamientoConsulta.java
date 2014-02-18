@@ -276,8 +276,12 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
                     tablaEntrenamientos.getValueAt(i, 0).toString(),
                     tablaEntrenamientos.getValueAt(i, 2).toString(),
                     tablaEntrenamientos.getValueAt(i, 1).toString(),
-                    tablaEntrenamientos.getValueAt(i, 3).toString());
+                    tablaEntrenamientos.getValueAt(i, 3).toString(),
+                    true,
+                    tablaEntrenamientos.getValueAt(i, 4).toString());
             entrenaNew.setVisible(true);
+            vaciarTabla();
+            rellenarTabla();
 
         } catch (ArrayIndexOutOfBoundsException e) {
             JOptionPane.showMessageDialog(this, "Seleciona la fila de la tabla que desees editar");
@@ -327,8 +331,14 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
-        filtro.setRowFilter(RowFilter.regexFilter(jTextField2.getText(), 2));
-        tablaEntrenamientos.setRowSorter(filtro);
+        int horaIni = Integer.parseInt(jTextField1.getText().substring(0, 2));
+        int horaFin = Integer.parseInt(jTextField2.getText());
+        if (horaFin > horaIni) {
+            filtro.setRowFilter(RowFilter.regexFilter(jTextField2.getText(), 2));
+            tablaEntrenamientos.setRowSorter(filtro);
+
+        }
+
     }//GEN-LAST:event_jTextField2KeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
