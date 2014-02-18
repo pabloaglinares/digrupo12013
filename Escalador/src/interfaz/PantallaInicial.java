@@ -1,8 +1,10 @@
 package interfaz;
 
+import datos.Configuracion;
 import datos.ItinerarioFin;
 import java.awt.Image;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -23,8 +25,21 @@ public class PantallaInicial extends javax.swing.JFrame {
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
     this.menuConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/buscar.png")));
     this.menuConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/buscar.png")));
+    mostrarUsuario();
     }
+    private void mostrarUsuario() {
+        List<Configuracion> usuarioList = null;
+        try {
+            usuarioList = metodos.obtenerUsuario();
+            for (Configuracion c : usuarioList) {
+                etiquetaEscalador.setText(c.getNombre()+" "+c.getApellido());
+            }
 
+        } catch (SQLException ex) {
+            Logger.getLogger(ConfiguracionConsulta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
