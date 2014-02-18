@@ -23,8 +23,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 public class Metodos {
     
@@ -277,29 +275,6 @@ public class Metodos {
     public boolean comprobarHora(String hora) {
         return hora.matches("\\d\\d:\\d\\d:\\d\\d");
         //para meter los segundos añadir +00 tras el getText();
-    }
-    
-    public void rellenarTablaEntrenamiento(JTable tablaEntrenamientos) {
-        DefaultTableModel model = (DefaultTableModel) tablaEntrenamientos.getModel();
-        String sql = "select * from ENTRENAMIENTO";
-        ResultSet res;
-        conectar();
-        try {
-            res = consulta.executeQuery(sql);
-            
-            while (res.next()) {
-                model.addRow(new Object[]{
-                    null,//res.getDate(1),
-                    null,//res.getTime(2),
-                    null,//res.getTime(3),
-                    res.getString(4),
-                    res.getString(5)
-                });
-            }
-        } catch (SQLException e) {
-            System.out.println("Error");
-        }
-        
     }
     
     public List<Configuracion> obtenerUsuario() throws SQLException {
