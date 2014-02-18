@@ -47,7 +47,7 @@ public class ConfiguracionConsulta extends javax.swing.JDialog {
     }
 
     private void fecha(Configuracion c) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 
         Timestamp fechaIni = c.getFechaIni();
         Timestamp fechaFin = c.getFechaFin();

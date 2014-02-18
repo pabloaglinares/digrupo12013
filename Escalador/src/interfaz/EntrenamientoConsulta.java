@@ -1,11 +1,14 @@
 package interfaz;
 
 import datos.Entrenamiento;
-import java.sql.Date;
+import java.awt.Color;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Formatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -322,8 +325,15 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
     }//GEN-LAST:event_jComboBox1PropertyChange
 
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
-        filtro.setRowFilter(RowFilter.regexFilter(jTextField1.getText(), 1));
-        tablaEntrenamientos.setRowSorter(filtro);
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        Date horaInicio = null;
+        try {
+            horaInicio = sdf.parse(jTextField1.getText());
+            filtro.setRowFilter(RowFilter.dateFilter(RowFilter.ComparisonType.AFTER, horaInicio, 1));
+            tablaEntrenamientos.setRowSorter(filtro);
+        } catch (ParseException ex) {
+            jTextField1.setForeground(Color.red);
+        }
     }//GEN-LAST:event_jTextField1KeyReleased
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -335,6 +345,7 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
         int horaFin = Integer.parseInt(jTextField2.getText());
         if (horaFin > horaIni) {
             filtro.setRowFilter(RowFilter.regexFilter(jTextField2.getText(), 2));
+            filtro.setRowFilter(RowFilter.dateFilter(RowFilter.ComparisonType.AFTER, null, 1));
             tablaEntrenamientos.setRowSorter(filtro);
 
         }
