@@ -1,16 +1,17 @@
 package interfaz;
 
-
 import datos.Itinerario;
 import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import metodos.Metodos;
 
 public class ItinerarioConsulta extends javax.swing.JDialog {
 
     Metodos metodos;
-    
+    DefaultTableModel defaultTableModel;
+
     public ItinerarioConsulta(java.awt.Frame parent, boolean modal, Metodos metodos) {
         super(parent, modal);
         this.setResizable(false);
@@ -19,32 +20,44 @@ public class ItinerarioConsulta extends javax.swing.JDialog {
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         this.setTitle("Consulta de itinerarios");
         tabla();
+        rellenarTabla();
     }
+
     private void tabla() //throws SQLException
     {//String nombre, String localizacion,Date fecha, String via, String dificultad, String URL)
-        DefaultTableModel defaultTableModel = new DefaultTableModel();
+        defaultTableModel = new DefaultTableModel();
         defaultTableModel.addColumn("Nombre");
         defaultTableModel.addColumn("Localizacion");
         defaultTableModel.addColumn("Tipo");
         defaultTableModel.addColumn("Dificultad");
         defaultTableModel.addColumn("Foto");
         TablaItinerario.setModel(defaultTableModel);
- 
-         
+
+    }
+
+    private void rellenarTabla() {
         List<Itinerario> listaItinerarios = null;
         listaItinerarios = metodos.obtenerListaItinerarios();
         String nombre, localizacion, tipo, dificultad, imagen;
-        for(Itinerario i: listaItinerarios){
-            nombre=i.getNombre();
-            localizacion=i.getLocalizacion();
-            dificultad=i.getDificultad();
-            tipo=i.getTipo();
-            imagen=i.getURLimagen();
-            String[] fila = {nombre, localizacion,tipo, dificultad,imagen};
+        for (Itinerario i : listaItinerarios) {
+            nombre = i.getNombre();
+            localizacion = i.getLocalizacion();
+            dificultad = i.getDificultad();
+            tipo = i.getTipo();
+            imagen = i.getURLimagen();
+            String[] fila = {nombre, localizacion, tipo, dificultad, imagen};
             defaultTableModel.addRow(fila);
         }
-        
     }
+
+    private void vaciarTabla() {
+        DefaultTableModel modelo = (DefaultTableModel) TablaItinerario.getModel();
+        int filas = TablaItinerario.getRowCount();
+        for (int i = 0; i < filas; i++) {
+            modelo.removeRow(0);
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -98,6 +111,11 @@ public class ItinerarioConsulta extends javax.swing.JDialog {
         });
 
         jButton1.setText("Borrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Modificar");
 
@@ -158,10 +176,21 @@ public class ItinerarioConsulta extends javax.swing.JDialog {
 //        for(ItinerarioFin e : listaItinerarios) {
 //            model.addRow(new Object[]  e.getItinerario()});
 //        }
-    
+
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            int i = TablaItinerario.getSelectedRow();
+            metodos.deleteItinerario(TablaItinerario.getValueAt(i, 0).toString(),TablaItinerario.getValueAt(i, 1).toString());
+            vaciarTabla();
+            rellenarTabla();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(this, "Seleciona la fila de la tabla que desees borrar");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaItinerario;

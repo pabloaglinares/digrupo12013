@@ -180,13 +180,12 @@ public class Metodos {
         return pudoInsertarse;
     }
 
-    public boolean updateEntrenamiento(String fecha, String horaIni, String horaFin, String tipo, String descripcion,String update) {
+    public boolean updateEntrenamiento(String fecha, String horaIni, String horaFin, String tipo, String descripcion, String update) {
         boolean pudoInsertarse;
         conectar();
-        String sql = "UPDATE entrenamiento SET FECHA='"+fecha+"', HORA_COMIENZO='"+horaIni+"',"
-                + "HORA_FIN='"+horaFin+"',TIPO='"+tipo+"', DESCRIPCION='"+descripcion+"' WHERE DESCRIPCION='"+update+"'";
+        String sql = "UPDATE entrenamiento SET FECHA='" + fecha + "', HORA_COMIENZO='" + horaIni + "',"
+                + "HORA_FIN='" + horaFin + "',TIPO='" + tipo + "', DESCRIPCION='" + descripcion + "' WHERE DESCRIPCION='" + update + "'";
         try {
-            System.out.println(sql);
             consulta.executeUpdate(sql);
             pudoInsertarse = true;
         } catch (SQLException ex) {
@@ -324,9 +323,9 @@ public class Metodos {
         return pudoInsertarse;
     }
 
-    public boolean insertarItinerarioEnDb(String nombre, String localizacion, String tipo, String dificultad, String fecha, String foto) {
+    public boolean insertarItinerarioEnDb(String nombre, String localizacion, String tipo, String dificultad, String foto) {
         boolean pudoInsertarse;
-        String sql = "INSERT INTO ITINERARIO";
+        String sql = "INSERT INTO ITINERARIO (NOMBRE,LOCALIZACION,TIPO,DIFICULTAD,FOTO) values ('"+nombre+"','"+localizacion+"','"+tipo+"','"+dificultad+"','"+foto+"')";
         conectar();
         try {
             consulta.executeUpdate(sql);
@@ -345,6 +344,22 @@ public class Metodos {
 
     public void deleteEntrenamiento(String texto) {
         String sql = "DELETE FROM ENTRENAMIENTO WHERE DESCRIPCION='" + texto + "'";
+        conectar();
+        try {
+            consulta.executeUpdate(sql);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    public void deleteItinerario(String nombre, String localizacion) {
+        String sql = "DELETE FROM ITINERARIO WHERE NOMBRE='" + nombre + "', LOCALIZACION='" + localizacion + "'";
         conectar();
         try {
             consulta.executeUpdate(sql);

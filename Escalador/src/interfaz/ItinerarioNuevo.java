@@ -3,12 +3,14 @@ package interfaz;
 import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import metodos.Metodos;
 
 public class ItinerarioNuevo extends javax.swing.JDialog {
 
     Metodos metodos;
+    boolean edicion = false;
 
     public ItinerarioNuevo(java.awt.Frame parent, boolean modal, Metodos metodos) {
         super(parent, modal);
@@ -206,12 +208,24 @@ public class ItinerarioNuevo extends javax.swing.JDialog {
     private void altaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaActionPerformed
         String nombreIti = nombre.getText();
         String loca = localizacion.getText();
-        String iti= itinerario.getSelectedItem().toString();
-        String dific=dificultadnumero.getSelectedItem().toString()+dificultadletra.getSelectedItem().toString()+dificultadsimbolo.getSelectedItem().toString();
+        String iti = itinerario.getSelectedItem().toString();
+        String dific = dificultadnumero.getSelectedItem().toString() + dificultadletra.getSelectedItem().toString() + dificultadsimbolo.getSelectedItem().toString();
         String foto = rutafoto.getText();
-        
-        //metodos.inser
 
+        boolean insercionCorrecta = false;
+
+        if (edicion == false) {
+            insercionCorrecta = metodos.insertarItinerarioEnDb(nombreIti, loca, iti, dific, foto);
+        } else {
+
+        }
+
+        if (insercionCorrecta) {
+            this.dispose();
+        } else {
+
+            JOptionPane.showMessageDialog(this, "Error: No se ha insertado el itinerario.");
+        }
 
     }//GEN-LAST:event_altaActionPerformed
 

@@ -111,7 +111,6 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
             }
         });
 
-        inicio.setText("11-11-1999 11:11");
         inicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inicioActionPerformed(evt);
