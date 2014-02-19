@@ -3,10 +3,17 @@ package interfaz;
 import datos.Configuracion;
 import datos.ItinerarioFin;
 import java.awt.Image;
+import java.io.File;
+import java.net.URL;
+
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.help.HelpBroker;
+import javax.help.HelpSet;
+
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import metodos.Metodos;
@@ -19,6 +26,7 @@ public class PantallaInicial extends javax.swing.JFrame {
     
     public PantallaInicial() {
         initComponents();
+        ponLaAyuda();
         //this.
         //this.setResizable(false);
         setLocationRelativeTo(null);//abre la ventana en el centro de la pantalla
@@ -27,6 +35,30 @@ public class PantallaInicial extends javax.swing.JFrame {
     this.menuConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/buscar.png")));
     mostrarUsuario();
     }
+    
+    private void ponLaAyuda() 
+    {
+        try 
+        {
+            // Carga el fichero de ayuda
+            File fichero = new File("help"+File.separator+"help_set.hs");
+            URL hsURL = fichero.toURI().toURL();
+
+            // Crea el HelpSet y el HelpBroker
+            HelpSet helpset = new HelpSet(getClass().getClassLoader(), hsURL);
+            HelpBroker hb = helpset.createHelpBroker();
+
+            // Pone ayuda a item de menu al pulsarlo y a F1 en ventana
+            // principal y secundaria.
+           // hb.enableHelpOnButton(ayudaMenuItem, "ventana_principal", helpset);
+            hb.enableHelpKey(getRootPane(),"principal",helpset);
+           // hb.enableHelpOnButton(jButton1, "ventana_principal", helpset);
+           // hb.enableHelpOnButton(jButton2, "ventana_secundaria", helpset);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     private void mostrarUsuario() {
         List<Configuracion> usuarioList = null;
         try {

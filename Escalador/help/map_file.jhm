@@ -1,0 +1,11 @@
+<map version="1.0">
+   <mapID target="principal" url="html/principal.html" />
+   <mapID target="configuracionnueva" url="html/configuracion_nueva.html" />
+   <mapID target="entrenamientonuevo" url="html/entrenamiento_nuevo.html" />
+   <mapID target="itinearionuevo" url="html/itinerario_nuevo.html" />
+   <mapID target="itinerariorealizadonuevo" url="html/itinerario_fin_nuevo.html" />
+   <mapID target="configuracionconsulta" url="html/configuracion_consulta.html" />
+   <mapID target="entrenamientoconsulta" url="html/entrenamiento_consulta.html" />
+   <mapID target="itinerarioconsulta" url="html/itinerario_consulta.html" />
+   <mapID target="itinerariorealizadoconsulta" url="html/itinerario_fin_consulta.html" />
+</map>
