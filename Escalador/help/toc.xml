@@ -1,5 +1,5 @@
 <toc version="1.0">
-   <tocitem text="Ayuda aplicación escalador" target="principal">
+	<tocitem text="Ayuda aplicación escalador" target="principal">
       <tocitem text="Configuración nueva" target="configuracionnueva"/>
 	  <tocitem text="Entrenamiento nuevo" target="entrenamientonuevo"/>
       <tocitem text="Itineario nuevo" target="itinerarionuevo"/>
@@ -8,5 +8,5 @@
       <tocitem text="Entrenamiento consulta" target="entrenamientoconsulta"/>
 	  <tocitem text="Itinerario consulta" target="itinerarioconsulta"/>
       <tocitem text="Itineario realizado consulta" target="itinerariorealizadoconsulta"/>
-   </tocitem>
+    </tocitem>
 </toc>
