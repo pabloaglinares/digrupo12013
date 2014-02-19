@@ -228,7 +228,7 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
         Timestamp fecha = null, fchFin = null;
         String fei = this.inicio.getText();
         String fef = this.fin.getText();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 
         try {
             Date Dateini = (Date) dateFormat.parse(fei);

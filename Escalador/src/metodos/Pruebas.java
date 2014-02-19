@@ -51,8 +51,13 @@ public class Pruebas {
         try {
             resultSet = consulta.executeQuery(sql);
             while (resultSet.next()) {
-                horaComienzo =  resultSet.getDate(1);
-                horaFin = resultSet.getDate(2);
+                horaComienzo =  resultSet.getTime(1);
+                horaFin = resultSet.getTime(2);
+                long hIni=horaComienzo.getTime();
+                long hFin =horaFin.getTime();
+                System.out.println(horaComienzo);
+                System.out.println(horaFin);
+                System.out.println("Diferencia: "+(hFin-hIni));
 //                calendario
 //                System.out.println();
             }
@@ -60,6 +65,7 @@ public class Pruebas {
             System.out.println("Error SQL.");
         } finally {
             try {
+               
                 conexion.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);

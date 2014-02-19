@@ -329,8 +329,10 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
         Date horaInicio = null;
         try {
             horaInicio = sdf.parse(jTextField1.getText());
-            filtro.setRowFilter(RowFilter.dateFilter(RowFilter.ComparisonType.AFTER, horaInicio, 1));
+            
+            filtro.setRowFilter(RowFilter.dateFilter(RowFilter.ComparisonType.EQUAL.AFTER, horaInicio, 1));
             tablaEntrenamientos.setRowSorter(filtro);
+            jTextField1.setForeground(Color.white);
         } catch (ParseException ex) {
             jTextField1.setForeground(Color.red);
         }
