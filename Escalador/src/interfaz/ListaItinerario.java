@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package interfaz;
+
+import java.sql.Timestamp;
 
 /**
  *
@@ -15,6 +16,9 @@ public class ListaItinerario extends javax.swing.JDialog {
     /**
      * Creates new form ListaItinerario
      */
+    Timestamp fech = null;
+    Timestamp fech2 = null;
+
     public ListaItinerario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -136,8 +140,12 @@ public class ListaItinerario extends javax.swing.JDialog {
 
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
        //TimeStamp.valueOf (tuString) 
-       // TimesStamp fecha1=null;
-           //     TimeStamp.valueOf (tuString);
+        // TimesStamp fecha1=null;
+        //     TimeStamp.valueOf (tuString);
+        fech = Timestamp.valueOf(this.txtFecha1.getText());
+        fech2 = Timestamp.valueOf(this.txtFecha2.getText());
+
+
     }//GEN-LAST:event_btnGenerarActionPerformed
 
     /**
