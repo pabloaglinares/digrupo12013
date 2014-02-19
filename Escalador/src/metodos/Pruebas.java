@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Pruebas {
-    
+
     Connection conexion;
     Statement consulta;
     ResultSet resultSet;
@@ -21,7 +21,7 @@ public class Pruebas {
         Pruebas prueba = new Pruebas();
         System.out.println(prueba.getRendimiento());
     }
-    
+
 //    double puntuacionEntrenamiento = (SELECT SUM(e.hora_fin - e.hora_inicio) / 7
 //  FROM entrenamientos e, configuracion c
 //  WHERE e.fecha BETWEEN c.fecha_desde AND c.fecha_hasta) * 0,5; // obtiene las hora medias semanales
@@ -43,7 +43,9 @@ public class Pruebas {
 //double rendimiento = puntuacionEntrenamiento + puntuacionItinerariosRealizados;
     
     public int getRendimiento() {
-        String sql = "SELECT e.hora_comienzo, e.hora_fin FROM entrenamiento e";
+        String sql = "SELECT e.hora_comienzo, e.hora_fin " +
+                     "FROM entrenamiento e, escalador esc " +
+                     "WHERE e.fecha BETWEEN esc.fecha_inicio AND esc.fecha_fin";
         Date horaComienzo, horaFin;
 //        Calendar calendario = new ;
         int rendimiento = 0;
@@ -51,13 +53,13 @@ public class Pruebas {
         try {
             resultSet = consulta.executeQuery(sql);
             while (resultSet.next()) {
-                horaComienzo =  resultSet.getTime(1);
+                horaComienzo = resultSet.getTime(1);
                 horaFin = resultSet.getTime(2);
-                long hIni=horaComienzo.getTime();
-                long hFin =horaFin.getTime();
+                long horaInicioMilis = horaComienzo.getTime();
+                long horaFinMilis = horaFin.getTime();
                 System.out.println(horaComienzo);
                 System.out.println(horaFin);
-                System.out.println("Diferencia: "+(hFin-hIni));
+                System.out.println("Diferencia: " + (horaFinMilis - horaInicioMilis));
 //                calendario
 //                System.out.println();
             }
@@ -65,7 +67,7 @@ public class Pruebas {
             System.out.println("Error SQL.");
         } finally {
             try {
-               
+
                 conexion.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
@@ -73,7 +75,7 @@ public class Pruebas {
         }
         return rendimiento;
     }
-    
+
     public void conectar() {
         try {
             Class.forName("org.hsqldb.jdbcDriver");
@@ -81,7 +83,7 @@ public class Pruebas {
             System.out.println(e.getMessage());
         }
         try {
-            
+
             conexion = DriverManager.getConnection("jdbc:hsqldb:file:database/escalada", "sa", "");
             consulta = conexion.createStatement();
         } catch (SQLException e) {
