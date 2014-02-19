@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ListaItinerario" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="04e3ac2d-fedf-463b-893d-5c413720788f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fecha1" class="java.sql.Timestamp">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha2" class="java.sql.Timestamp">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     I.NOMBRE AS NOMBRE_ITINERARIO,f.fecha
+FROM
+     ITINERARIO AS I,FECHA_ITINERARIO F
+WHERE F.A_ITINERARIO=I.P_ITINERARIO AND F.FECHA Between $P{fecha1} AND $P{fecha2} order by I.NOMBRE ,f.fecha]]>
+	</queryString>
+	<field name="NOMBRE_ITINERARIO" class="java.lang.String"/>
+	<field name="FECHA" class="java.sql.Timestamp"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="76" height="102" uuid="5eabc33c-8bde-49aa-afad-c021c35b4c2c"/>
+				<imageExpression><![CDATA["C:\\Users\\paulina\\Desktop\\git\\grupo2\\digrupo12013\\Escalador\\src\\fotos\\clasica.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="93" y="38" width="184" height="20" uuid="1e851ab0-6231-4c10-9cfe-2a8a085d82ec"/>
+				<text><![CDATA[Lista Itinerarios de la  fecha]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="277" y="38" width="100" height="20" uuid="2baa9b41-8e7b-484e-adb7-4cc6010fad8d"/>
+				<textFieldExpression><![CDATA[$P{fecha1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="423" y="38" width="100" height="20" uuid="236360f5-ade4-4582-822e-cdc7b54ee12b"/>
+				<textFieldExpression><![CDATA[$P{fecha2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="377" y="38" width="46" height="20" uuid="eb926cc5-754f-4f60-a2fe-3682998b5626"/>
+				<text><![CDATA[      a]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="27" y="0" width="100" height="20" uuid="983e4b6d-048b-412d-a21c-4e9973fba8f4"/>
+				<text><![CDATA[Nombre de itinerario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="177" y="2" width="100" height="20" uuid="19bca324-5c71-4081-844e-c95713e02e12"/>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="13" y="39" width="286" height="1" forecolor="#003333" uuid="22eb56af-bd93-4781-a404-a1f59360cb51"/>
+				<graphicElement>
+					<pen lineStyle="Double"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="32" splitType="Stretch">
+			<textField>
+				<reportElement x="27" y="0" width="100" height="20" uuid="6ae5311e-657b-4b39-b75d-405c799d7223"/>
+				<textFieldExpression><![CDATA[$F{NOMBRE_ITINERARIO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="177" y="3" width="100" height="20" uuid="add3f220-1831-44b4-88d5-25cad956ee9d"/>
+				<textFieldExpression><![CDATA[$F{FECHA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="390" y="28" width="80" height="20" uuid="0b453888-a6a0-4594-9988-aa50c22c8237"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="470" y="28" width="40" height="20" uuid="e606f236-077d-4f61-80a7-d9156f40e81a"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
