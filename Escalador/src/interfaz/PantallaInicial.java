@@ -26,7 +26,7 @@ public class PantallaInicial extends javax.swing.JFrame {
     
     public PantallaInicial() {
         initComponents();
-        ponLaAyuda();
+       
         //this.
         //this.setResizable(false);
         setLocationRelativeTo(null);//abre la ventana en el centro de la pantalla
@@ -34,6 +34,7 @@ public class PantallaInicial extends javax.swing.JFrame {
     this.menuConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/buscar.png")));
     this.menuConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/buscar.png")));
     mostrarUsuario();
+     ponLaAyuda();
     }
     
     private void ponLaAyuda() 
@@ -52,7 +53,7 @@ public class PantallaInicial extends javax.swing.JFrame {
             // principal y secundaria.
            // hb.enableHelpOnButton(ayudaMenuItem, "ventana_principal", helpset);
             hb.enableHelpKey(getRootPane(),"principal",helpset);
-           // hb.enableHelpOnButton(jButton1, "ventana_principal", helpset);
+            hb.enableHelpOnButton(this.btnAyuda, "configuracionnueva", helpset);
            // hb.enableHelpOnButton(jButton2, "ventana_secundaria", helpset);
         } catch (Exception e) {
             e.printStackTrace();
@@ -97,6 +98,8 @@ public class PantallaInicial extends javax.swing.JFrame {
         menuItemConsultaEntrenamientos = new javax.swing.JMenuItem();
         menuItemConsultaItinerarios = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        ayuda = new javax.swing.JMenu();
+        btnAyuda = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -239,6 +242,22 @@ public class PantallaInicial extends javax.swing.JFrame {
 
         jMenuBar1.add(menuConsulta);
 
+        ayuda.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ayuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/new.png"))); // NOI18N
+        ayuda.setText("ayuda");
+
+        btnAyuda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
+        btnAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/mostrar-la-lista.png"))); // NOI18N
+        btnAyuda.setText("ayuda");
+        btnAyuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAyudaActionPerformed(evt);
+            }
+        });
+        ayuda.add(btnAyuda);
+
+        jMenuBar1.add(ayuda);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -311,6 +330,10 @@ public class PantallaInicial extends javax.swing.JFrame {
         itinerarioFinConsulta.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void btnAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAyudaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -359,6 +382,8 @@ public class PantallaInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu ayuda;
+    private javax.swing.JMenuItem btnAyuda;
     private javax.swing.JLabel etiquetaEscalador;
     private javax.swing.JLabel etiquetaRendimiento;
     private javax.swing.JLabel jLabel1;
