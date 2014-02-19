@@ -24,7 +24,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.JComboBox;
 
 public class Metodos {
 
@@ -374,13 +373,20 @@ public class Metodos {
         }
     }
 
-    public void mostrarNombreIti(JComboBox j) {
+    /**
+     * Este método por getListaNombresDeItinerarios.
+     * REGLA DE ORO PARA UNA BUENA SEPARACIÓN POR CAPAS:
+     * No debe haber ningún import de Swing en la capa de métodos.
+     * Como se ve, este método incumple esa regla
+     * por el import javax.swing.JComboBox;
+     */
+    public void mostrarNombreIti(/*JComboBox j*/) {
         conectar();
         String sql = "select NOMBRE FROM ITINERARIO";
         try {
             resultSet = consulta.executeQuery(sql);
             while (resultSet.next()) {
-                j.addItem(resultSet.getString(1));
+                //j.addItem(resultSet.getString(1));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -393,7 +399,20 @@ public class Metodos {
         }
     }
     
-    
+    public List<String> getListaNombresDeItinerarios() {
+        List<String> nombresDeItinerarios = new ArrayList<>();
+        String sql = "SELECT nombre FROM itinerario";
+        conectar();
+        try {
+            resultSet = consulta.executeQuery(sql);
+            while(resultSet.next()) {
+                nombresDeItinerarios.add(resultSet.getString(1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return nombresDeItinerarios;
+    }
 
     public int getIdItinerario(String nombre) {
         String sql = "SELECT P_ITINERARIO FROM ITINERARIO WHERE NOMBRE='" + nombre + "'";

@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import metodos.Metodos;
@@ -19,6 +20,9 @@ public class ItinerarioFinNuevo extends javax.swing.JDialog {
 
     /**
      * Creates new form ItinerarioFinNuevo
+     * @param parent
+     * @param modal
+     * @param metodos
      */
     public ItinerarioFinNuevo(java.awt.Frame parent, boolean modal, Metodos metodos) {
         super(parent, modal);
@@ -26,8 +30,16 @@ public class ItinerarioFinNuevo extends javax.swing.JDialog {
         this.metodos = metodos;
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         this.setTitle("Itinerario terminado");
-        metodos.mostrarNombreIti(jComboBox1);
+        rellenarComboBox();
+//        metodos.mostrarNombreIti(jComboBox1);
         jTextField1.setText(fecha);
+    }
+    
+    public final void rellenarComboBox() {
+        List<String> nombresItinerarios = metodos.getListaNombresDeItinerarios();
+        for(String nombre : nombresItinerarios) {
+            jComboBox1.addItem(nombre);
+        }
     }
 
     /**
