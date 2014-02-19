@@ -5,9 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,7 +17,7 @@ public class Pruebas {
 
     public static void main(String[] args) {
         Pruebas prueba = new Pruebas();
-        System.out.println(prueba.getRendimiento());
+        System.out.println(prueba.getRendimientoEntrenamiento());
     }
 
 //    double puntuacionEntrenamiento = (SELECT SUM(e.hora_fin - e.hora_inicio) / 7
@@ -42,32 +40,32 @@ public class Pruebas {
 //
 //double rendimiento = puntuacionEntrenamiento + puntuacionItinerariosRealizados;
     
-    public int getRendimiento() {
+    public double getRendimientoEntrenamiento() {
         String sql = "SELECT e.hora_comienzo, e.hora_fin " +
                      "FROM entrenamiento e, escalador esc " +
                      "WHERE e.fecha BETWEEN esc.fecha_inicio AND esc.fecha_fin";
         Date horaComienzo, horaFin;
-//        Calendar calendario = new ;
-        int rendimiento = 0;
+        long horaInicioMilis, horaFinMilis, totalEntrenamiento;
+        totalEntrenamiento = 0;
+        double rendimiento = 0.0;
         conectar();
         try {
             resultSet = consulta.executeQuery(sql);
             while (resultSet.next()) {
                 horaComienzo = resultSet.getTime(1);
                 horaFin = resultSet.getTime(2);
-                long horaInicioMilis = horaComienzo.getTime();
-                long horaFinMilis = horaFin.getTime();
-                System.out.println(horaComienzo);
-                System.out.println(horaFin);
-                System.out.println("Diferencia: " + (horaFinMilis - horaInicioMilis));
-//                calendario
-//                System.out.println();
+                horaInicioMilis = horaComienzo.getTime();
+                horaFinMilis = horaFin.getTime();
+                totalEntrenamiento += (horaFinMilis - horaInicioMilis);
+            }
+            rendimiento =  totalEntrenamiento * 0.5 / 7;
+            if(rendimiento > 5) {
+                rendimiento = 5;
             }
         } catch (SQLException e) {
             System.out.println("Error SQL.");
         } finally {
             try {
-
                 conexion.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
