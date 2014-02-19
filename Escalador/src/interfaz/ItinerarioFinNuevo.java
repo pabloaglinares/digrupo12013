@@ -12,10 +12,10 @@ import metodos.Metodos;
 public class ItinerarioFinNuevo extends javax.swing.JDialog {
     
     Metodos metodos;
-    boolean borrar = true;
     SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm dd-MM-yyyy");
     Timestamp fech = null;
-    String fecha = null;
+    Date FechaActual = new Date();
+    String fecha = dateFormat.format(FechaActual);
 
     /**
      * Creates new form ItinerarioFinNuevo
@@ -27,6 +27,7 @@ public class ItinerarioFinNuevo extends javax.swing.JDialog {
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         this.setTitle("Itinerario terminado");
         metodos.mostrarNombreIti(jComboBox1);
+        jTextField1.setText(fecha);
     }
 
     /**
@@ -53,7 +54,6 @@ public class ItinerarioFinNuevo extends javax.swing.JDialog {
 
         jLabel2.setText("Fecha Fin");
 
-        jTextField1.setText("23:59 12-12-1999");
         jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTextField1MouseClicked(evt);
@@ -141,10 +141,7 @@ public class ItinerarioFinNuevo extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextField1KeyTyped
 
     private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
-        if (borrar) {
-            jTextField1.setText(null);
-            borrar = false;
-        }
+
     }//GEN-LAST:event_jTextField1MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
