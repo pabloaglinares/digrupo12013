@@ -17,28 +17,32 @@ public class Pruebas {
 
     public static void main(String[] args) {
         Pruebas prueba = new Pruebas();
-        System.out.println(prueba.getRendimientoEntrenamiento());
+        System.out.println(prueba.getRendimiento());
     }
 
-//    double puntuacionEntrenamiento = (SELECT SUM(e.hora_fin - e.hora_inicio) / 7
-//  FROM entrenamientos e, configuracion c
-//  WHERE e.fecha BETWEEN c.fecha_desde AND c.fecha_hasta) * 0,5; // obtiene las hora medias semanales
-//  // y multiplico por 0,5 puntos de rendimiento que da cada hora semanal media entrenada
-//  // La tabla 'configuración' creo que se llama 'escalador' en la BD.
-//
-//if(puntuacionEntrenamiento > 5) {
-//  puntuacionEntrenamiento = 5; // la máxima puntuación por entrenar
-//}
-//
-//double puntuacionItinerariosRealizados = (SELECT COUNT(*)
-//  FROM itinerarios_realizados i, configuracion c
-//  WHERE i.fecha_fin BETWEEN c.fecha_desde AND c.fecha_hasta) * 0,25;
-//
-//if(puntuacionItinerariosRealizados > 5) {
-//  puntuacionItinerariosRealizados = 5; // la máxima puntuación resolver itinerarios
-//}
-//
-//double rendimiento = puntuacionEntrenamiento + puntuacionItinerariosRealizados;
+    public double getRendimiento() {
+        return getRendimientoEntrenamiento() + getRendimientoItinerariosRealizados();
+    }
+    
+    public double getRendimientoItinerariosRealizados() {
+        String sql = "SELECT COUNT(*) " +
+                     "FROM fecha_itinerario fit, escalador esc " +
+                     "WHERE fit.fecha BETWEEN esc.fecha_inicio AND esc.fecha_fin";
+        conectar();
+        double rendimiento = 0.0;
+        try {
+            resultSet = consulta.executeQuery(sql);
+            while(resultSet.next()) {
+                rendimiento = resultSet.getDouble(1) * 0.25 / 7;
+            }
+            if (rendimiento > 5) {
+                rendimiento = 5;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rendimiento;
+    }
     
     public double getRendimientoEntrenamiento() {
         String sql = "SELECT e.hora_comienzo, e.hora_fin " +
