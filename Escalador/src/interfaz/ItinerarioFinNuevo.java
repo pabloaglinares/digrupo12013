@@ -10,9 +10,12 @@ import javax.swing.JOptionPane;
 import metodos.Metodos;
 
 public class ItinerarioFinNuevo extends javax.swing.JDialog {
-
+    
     Metodos metodos;
     boolean borrar = true;
+    SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm dd-MM-yyyy");
+    Timestamp fech = null;
+    String fecha = null;
 
     /**
      * Creates new form ItinerarioFinNuevo
@@ -92,6 +95,11 @@ public class ItinerarioFinNuevo extends javax.swing.JDialog {
         );
 
         jButton1.setText("Alta");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -104,7 +112,7 @@ public class ItinerarioFinNuevo extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(91, 91, 91))
+                .addGap(60, 60, 60))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,24 +128,37 @@ public class ItinerarioFinNuevo extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
-        Timestamp fech = null;
-        String fecha = jTextField1.getText();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm dd-MM-yyyy");
+        
+        fecha = jTextField1.getText();
+        
         try {
             Date fechafin = (Date) dateFormat.parse(fecha);
             fech = new Timestamp(fechafin.getTime());
-             jTextField1.setForeground(Color.white);
+            jTextField1.setForeground(Color.white);
         } catch (ParseException ex) {
             jTextField1.setForeground(Color.red);
         }
     }//GEN-LAST:event_jTextField1KeyTyped
 
     private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
-        if(borrar){
+        if (borrar) {
             jTextField1.setText(null);
-            borrar=false;
+            borrar = false;
         }
     }//GEN-LAST:event_jTextField1MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (jTextField1.getForeground() == Color.white && jTextField1 != null) {
+            String id = jComboBox1.getSelectedItem().toString();
+            int idItinerario = metodos.getIdItinerario(id);
+            metodos.insertItinerarioFin(idItinerario, fech);
+            this.dispose();
+        } else {
+            jTextField1.setText(null);
+            JOptionPane.showMessageDialog(this, "Formato de fecha mal introducido\nEjemplo de fecha valida:\n23:59 12-12-1999");
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

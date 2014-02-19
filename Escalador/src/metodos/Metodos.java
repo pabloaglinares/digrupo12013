@@ -395,4 +395,41 @@ public class Metodos {
         }
     }
 
+    public int getIdItinerario(String nombre) {
+        String sql = "SELECT P_ITINERARIO FROM ITINERARIO WHERE NOMBRE='" + nombre + "'";
+        conectar();
+        int id = 0;
+        try {
+            resultSet = consulta.executeQuery(sql);
+            while (resultSet.next()) {
+                id = resultSet.getInt("P_ITINERARIO");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return id;
+    }
+
+    public void insertItinerarioFin(int id, Timestamp fecha) {
+        String sql = "INSERT INTO FECHA_ITINERARIO VALUES(" + id + ",'" + fecha + "')";
+        conectar();
+        try {
+            consulta.executeUpdate(sql);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }
 }
