@@ -36,7 +36,7 @@ public class ItinerarioFinNuevo extends javax.swing.JDialog {
     }
     
     public final void rellenarComboBox() {
-        List<String> nombresItinerarios = metodos.getListaNombresDeItinerarios();
+        List<String> nombresItinerarios = metodos.obtenerListaNombresDeItinerarios();
         for(String nombre : nombresItinerarios) {
             jComboBox1.addItem(nombre);
         }

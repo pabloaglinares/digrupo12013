@@ -1,19 +1,14 @@
 package interfaz;
 
 import datos.Configuracion;
-import datos.ItinerarioFin;
-import java.awt.Image;
 import java.io.File;
 import java.net.URL;
-
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.help.HelpBroker;
 import javax.help.HelpSet;
-
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import metodos.Metodos;
@@ -21,28 +16,31 @@ import org.jvnet.substance.SubstanceLookAndFeel;
 import org.jvnet.substance.watermark.SubstanceImageWatermark;
 
 public class PantallaInicial extends javax.swing.JFrame {
-    
+
     Metodos metodos = new Metodos();
-    
+
     public PantallaInicial() {
         initComponents();
-       
+
         //this.
         //this.setResizable(false);
         setLocationRelativeTo(null);//abre la ventana en el centro de la pantalla
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
-    this.menuConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/buscar.png")));
-    this.menuConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/buscar.png")));
-    mostrarUsuario();
-     ponLaAyuda();
+        this.menuConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/buscar.png")));
+        this.menuConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/buscar.png")));
+        mostrarUsuario();
+        ponLaAyuda();
+        ponElRendimiento();
     }
     
-    private void ponLaAyuda() 
-    {
-        try 
-        {
+    private void ponElRendimiento() {
+        etiquetaRendimiento.setText(Double.toString(metodos.getRendimiento()));
+    }
+
+    private void ponLaAyuda() {
+        try {
             // Carga el fichero de ayuda
-            File fichero = new File("help"+File.separator+"help_set.hs");
+            File fichero = new File("help" + File.separator + "help_set.hs");
             URL hsURL = fichero.toURI().toURL();
 
             // Crea el HelpSet y el HelpBroker
@@ -51,21 +49,21 @@ public class PantallaInicial extends javax.swing.JFrame {
 
             // Pone ayuda a item de menu al pulsarlo y a F1 en ventana
             // principal y secundaria.
-           // hb.enableHelpOnButton(ayudaMenuItem, "ventana_principal", helpset);
-            hb.enableHelpKey(getRootPane(),"principal",helpset);
+            // hb.enableHelpOnButton(ayudaMenuItem, "ventana_principal", helpset);
+            hb.enableHelpKey(getRootPane(), "principal", helpset);
             hb.enableHelpOnButton(this.btnAyuda, "configuracionnueva", helpset);
-           // hb.enableHelpOnButton(jButton2, "ventana_secundaria", helpset);
+            // hb.enableHelpOnButton(jButton2, "ventana_secundaria", helpset);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
     private void mostrarUsuario() {
         List<Configuracion> usuarioList = null;
         try {
             usuarioList = metodos.obtenerUsuario();
             for (Configuracion c : usuarioList) {
-                etiquetaEscalador.setText(c.getNombre()+" "+c.getApellido());
+                etiquetaEscalador.setText(c.getNombre() + " " + c.getApellido());
             }
 
         } catch (SQLException ex) {
@@ -73,6 +71,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         }
 
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -107,11 +106,11 @@ public class PantallaInicial extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Escalador");
+        jLabel1.setText("Escalador:");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Rendimiento");
+        jLabel2.setText("Rendimiento:");
 
         etiquetaEscalador.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         etiquetaEscalador.setForeground(new java.awt.Color(255, 255, 255));
@@ -265,7 +264,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(134, Short.MAX_VALUE)
+                .addContainerGap(129, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -281,15 +280,13 @@ public class PantallaInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuItemNuevoItinerarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemNuevoItinerarioActionPerformed
-        
-        
+
         ItinerarioNuevo itinerario = new ItinerarioNuevo(this, true, metodos);
         itinerario.setVisible(true);
     }//GEN-LAST:event_menuItemNuevoItinerarioActionPerformed
 
     private void menuItemNuevaConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemNuevaConfiguracionActionPerformed
-       
-        
+
         ConfiguracionNueva configuracionNueva = new ConfiguracionNueva(null, true, metodos);
         configuracionNueva.setVisible(true);
     }//GEN-LAST:event_menuItemNuevaConfiguracionActionPerformed
@@ -325,7 +322,7 @@ public class PantallaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        
+
         ItinerarioFinConsulta itinerarioFinConsulta = new ItinerarioFinConsulta(this, false, metodos);
         itinerarioFinConsulta.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
@@ -371,12 +368,12 @@ public class PantallaInicial extends javax.swing.JFrame {
 
         SubstanceLookAndFeel.setCurrentWatermark(new SubstanceImageWatermark("./src/fotos/climbing1.jpg"));//marca de agua
         SubstanceLookAndFeel.setImageWatermarkOpacity(new Float(0.4));//opacidad de marca de agua
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
                 new PantallaInicial().setVisible(true);
-                
+
             }
         });
     }
@@ -401,4 +398,6 @@ public class PantallaInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemNuevoEntrenamiento;
     private javax.swing.JMenuItem menuItemNuevoItinerario;
     // End of variables declaration//GEN-END:variables
+
+    
 }

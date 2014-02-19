@@ -84,6 +84,21 @@ public class Metodos {
         }
         return listaItinerarios;
     }
+    
+    public List<String> obtenerListaNombresDeItinerarios() {
+        List<String> nombresDeItinerarios = new ArrayList<>();
+        String sql = "SELECT nombre FROM itinerario";
+        conectar();
+        try {
+            resultSet = consulta.executeQuery(sql);
+            while(resultSet.next()) {
+                nombresDeItinerarios.add(resultSet.getString(1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return nombresDeItinerarios;
+    }
 
     public List<ItinerarioFin> obtenerListaItinerFin() throws SQLException {
         ItinerarioFin itinerarioFin;
@@ -373,47 +388,6 @@ public class Metodos {
         }
     }
 
-    /**
-     * Este método por getListaNombresDeItinerarios.
-     * REGLA DE ORO PARA UNA BUENA SEPARACIÓN POR CAPAS:
-     * No debe haber ningún import de Swing en la capa de métodos.
-     * Como se ve, este método incumple esa regla
-     * por el import javax.swing.JComboBox;
-     */
-    public void mostrarNombreIti(/*JComboBox j*/) {
-        conectar();
-        String sql = "select NOMBRE FROM ITINERARIO";
-        try {
-            resultSet = consulta.executeQuery(sql);
-            while (resultSet.next()) {
-                //j.addItem(resultSet.getString(1));
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } finally {
-            try {
-                conexion.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
-    
-    public List<String> getListaNombresDeItinerarios() {
-        List<String> nombresDeItinerarios = new ArrayList<>();
-        String sql = "SELECT nombre FROM itinerario";
-        conectar();
-        try {
-            resultSet = consulta.executeQuery(sql);
-            while(resultSet.next()) {
-                nombresDeItinerarios.add(resultSet.getString(1));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return nombresDeItinerarios;
-    }
-
     public int getIdItinerario(String nombre) {
         String sql = "SELECT P_ITINERARIO FROM ITINERARIO WHERE NOMBRE='" + nombre + "'";
         conectar();
@@ -451,8 +425,15 @@ public class Metodos {
         }
     }
 
+    /**
+     * Calcula el rendimiento y lo devuelve con precisión de dos decimales.
+     * @return 
+     */
     public double getRendimiento() {
-        return getRendimientoEntrenamiento() + getRendimientoItinerariosRealizados();
+        double rendimiento = getRendimientoEntrenamiento() + getRendimientoItinerariosRealizados();
+        rendimiento *= 100;
+        rendimiento = (Math.rint(rendimiento)) / 100;
+        return rendimiento;
     }
     
     public double getRendimientoItinerariosRealizados() {
