@@ -165,16 +165,17 @@ public class ListaItinerario extends javax.swing.JDialog {
         try {
             fech = Timestamp.valueOf(this.txtFecha1.getText());
             fech2 = Timestamp.valueOf(this.txtFecha2.getText());
+            
+
         } catch (IllegalArgumentException e) {
             JOptionPane.showMessageDialog(this, "Formato de fecha mal introducido\nEjemplo de fecha valida:\n23:59 12-12-1999");
         }
-
-        if (this.txtFecha1.getText() != null && this.txtFecha2.getText() != null) {
+if (this.txtFecha1.getText() != null && this.txtFecha2.getText() != null) {
             metodos.informe1(fech, fech2);
         } else {
             JOptionPane.showMessageDialog(this, "Falta campo por rellenar debe introducr los dos campos antes de dar al boton");
         }
-
+        
 
     }//GEN-LAST:event_btnGenerarActionPerformed
 
