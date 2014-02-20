@@ -1,6 +1,7 @@
 package interfaz;
 
 import java.awt.Color;
+import java.awt.Dialog;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,8 +17,9 @@ public class ItinerarioFinNuevo extends javax.swing.JDialog {
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
     Date FechaActual = new Date();
     String fecha = dateFormat.format(FechaActual);
-    Timestamp fech = new Timestamp(FechaActual.getTime());
-    boolean fechaModificada = false;
+    Timestamp fech = new Timestamp(FechaActual.getTime()),oldFecha;
+    boolean fechaModificada = false, edicion = false;
+    int oldId;
 
     /**
      * Creates new form ItinerarioFinNuevo
@@ -35,6 +37,20 @@ public class ItinerarioFinNuevo extends javax.swing.JDialog {
         rellenarComboBox();
 //        metodos.mostrarNombreIti(jComboBox1);
         jTextField1.setText(fecha);
+    }
+
+    public ItinerarioFinNuevo(javax.swing.JDialog parent, boolean modal, Metodos metodos, String nombre, String fecha, int id) {
+        super(parent, modal);
+        initComponents();
+        this.metodos = metodos;
+        setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
+        this.setTitle("Itinerario terminado");
+        rellenarComboBox();
+        jComboBox1.setSelectedItem(nombre);
+        jTextField1.setText(fecha);
+        oldId = id;
+        oldFecha = Timestamp.valueOf(fecha);
+        edicion = true;
     }
 
     public final void rellenarComboBox() {
@@ -170,8 +186,11 @@ public class ItinerarioFinNuevo extends javax.swing.JDialog {
         if (jTextField1.getForeground() == Color.white || fechaModificada == false) {
             String id = jComboBox1.getSelectedItem().toString();
             int idItinerario = metodos.getIdItinerario(id);
-
-            metodos.insertItinerarioFin(idItinerario, fech);
+            if (edicion == false) {
+                metodos.insertItinerarioFin(idItinerario, fech);
+            }else{
+                metodos.updateItiFin(idItinerario, fech, oldId, oldFecha);
+            }
             this.dispose();
         } else {
             jTextField1.setText(null);

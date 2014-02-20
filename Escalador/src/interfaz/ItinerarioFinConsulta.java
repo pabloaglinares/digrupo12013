@@ -123,6 +123,11 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
         });
 
         jButton4.setText("modificar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("jLabel1");
 
@@ -189,6 +194,23 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Seleciona la fila de la tabla que desees borrar");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        try {
+            int i = jTable1.getSelectedRow();
+            int id = metodos.getIdItinerario(jTable1.getValueAt(i, 0).toString());
+            Timestamp fecha = Timestamp.valueOf(jTable1.getValueAt(i, 1).toString());
+            ItinerarioFinNuevo itfin = new ItinerarioFinNuevo(this, rootPaneCheckingEnabled, metodos,
+                    jTable1.getValueAt(i, 0).toString(),
+                    jTable1.getValueAt(i, 1).toString(),
+                    id);
+            itfin.setVisible(true);
+            vaciarTabla();
+            rellenarTabla();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(this, "Seleciona la fila de la tabla que desees borrar");
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

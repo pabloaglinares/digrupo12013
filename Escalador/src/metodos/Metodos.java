@@ -244,6 +244,24 @@ public class Metodos {
 
     }
 
+    public void updateItiFin(int id, Timestamp fecha, int oldid, Timestamp oldFecha) {
+        conectar();
+        String sql = "UPDATE FECHA_ITINERARIO SET A_ITINERARIO=" + id + ", FECHA='" + fecha + "' "
+                + "WHERE A_ITINERARIO=" + oldid + " and fecha='" + oldFecha + "'";
+        try {
+            consulta.executeUpdate(sql);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }
+
     public void copiarFotografia(File archivoOrigen, File archivoDestino) {
 
         BufferedInputStream in = null;
