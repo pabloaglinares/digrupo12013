@@ -154,7 +154,7 @@
               </Border>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/fotos/new.png"/>
+              <Image iconType="3" name="/fotos/ayuda-cursor.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="ayuda        "/>
           </Properties>
@@ -165,7 +165,7 @@
                   <KeyStroke key="Ctrl+I"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/fotos/mostrar-la-lista.png"/>
+                  <Image iconType="3" name="/fotos/contenido-de-ayuda.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="ayuda"/>
               </Properties>
@@ -183,7 +183,7 @@
               </Border>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/fotos/new.png"/>
+              <Image iconType="3" name="/fotos/documento-grafico.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Informes                 "/>
           </Properties>
@@ -194,7 +194,7 @@
                   <KeyStroke key="Ctrl+I"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/fotos/mostrar-la-lista.png"/>
+                  <Image iconType="3" name="/fotos/el-informe.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Lista Itinerarios"/>
               </Properties>
