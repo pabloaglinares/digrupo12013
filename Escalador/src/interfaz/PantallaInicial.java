@@ -102,6 +102,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         INFORMES = new javax.swing.JMenu();
         btnINFORME1 = new javax.swing.JMenuItem();
         btnInformeEntrenamiento = new javax.swing.JMenuItem();
+        EntrenamientoAgrupado = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -283,6 +284,15 @@ public class PantallaInicial extends javax.swing.JFrame {
         });
         INFORMES.add(btnInformeEntrenamiento);
 
+        EntrenamientoAgrupado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/el-informe.png"))); // NOI18N
+        EntrenamientoAgrupado.setText("Entrenamiento por tipo");
+        EntrenamientoAgrupado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EntrenamientoAgrupadoActionPerformed(evt);
+            }
+        });
+        INFORMES.add(EntrenamientoAgrupado);
+
         jMenuBar1.add(INFORMES);
 
         setJMenuBar(jMenuBar1);
@@ -365,9 +375,14 @@ public class PantallaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_btnINFORME1ActionPerformed
 
     private void btnInformeEntrenamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInformeEntrenamientoActionPerformed
-        listaestrenamiento info2=new listaestrenamiento(this, false, metodos);
+        listaEstrenamiento info2=new listaEstrenamiento(this, false, metodos);
         info2.setVisible(true);
     }//GEN-LAST:event_btnInformeEntrenamientoActionPerformed
+
+    private void EntrenamientoAgrupadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrenamientoAgrupadoActionPerformed
+     listaEstrenamientoAgrupado info4=new listaEstrenamientoAgrupado(this, false, metodos);
+     info4.setVisible(true);
+    }//GEN-LAST:event_EntrenamientoAgrupadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -417,6 +432,7 @@ public class PantallaInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem EntrenamientoAgrupado;
     private javax.swing.JMenu INFORMES;
     private javax.swing.JMenu ayuda;
     private javax.swing.JMenuItem btnAyuda;

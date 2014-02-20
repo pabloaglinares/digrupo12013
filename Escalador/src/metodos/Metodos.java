@@ -562,4 +562,35 @@ public class Metodos {
         }
 
     }//informe2
+    public void informe4(Date fecha, Date fecha2) {
+
+        conectar();
+        String archivojasper = "src/informes/TipoDeSesionGrupo.jasper";//ruta
+        Map parametros = new HashMap();
+
+        parametros.put("date1", fecha);
+        parametros.put("date2", fecha2);
+        try {
+            JasperPrint print = JasperFillManager.fillReport(archivojasper, parametros, conexion);
+            
+            JasperExportManager.exportReportToPdfFile(print,"TipoDeSesionGrupo.pdf");
+            
+            File path = new File("TipoDeSesionGrupo.pdf");//referencia compruebo q existe lo puedo abrir en cualquier parete del proyecto
+            try {
+               
+                Desktop.getDesktop().open(path);//abre ese pdf
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, ex.toString(), "No exite el archivo", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (JRException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString(), "ERROR", JOptionPane.WARNING_MESSAGE);
+
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+
+    }//informe4
 }
