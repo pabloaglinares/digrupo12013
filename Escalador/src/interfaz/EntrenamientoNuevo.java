@@ -212,7 +212,7 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
         String descripcion = this.areaTextoDescripcion.getText();
 //        boolean fechaValida, horaInicioValida, horaFinValida;
 //        
-//        fechaValida = metodos.comprobarFecha(fecha);
+  //fechaValida = metodos.comprobarFecha(fecha);
 //        horaInicioValida = metodos.comprobarHora(horaInicio);
 //        horaFinValida = metodos.comprobarHora(horaFin);
 

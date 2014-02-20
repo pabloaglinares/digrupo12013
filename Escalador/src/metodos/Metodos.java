@@ -530,4 +530,36 @@ public class Metodos {
         }
 
     }//informe1
+    
+    public void informe2(Date fecha, Date fecha2) {
+
+        conectar();
+        String archivojasper = "src/informes/FechasSesiones.jasper";//ruta
+        Map parametros = new HashMap();
+
+        parametros.put("fecha1", fecha);
+        parametros.put("fecha2", fecha2);
+        try {
+            JasperPrint print = JasperFillManager.fillReport(archivojasper, parametros, conexion);
+            
+            JasperExportManager.exportReportToPdfFile(print,"FechasSesiones.pdf");
+            
+            File path = new File("FechasSesiones.pdf");//referencia compruebo q existe lo puedo abrir en cualquier parete del proyecto
+            try {
+               
+                Desktop.getDesktop().open(path);//abre ese pdf
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, ex.toString(), "No exite el archivo", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (JRException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString(), "ERROR", JOptionPane.WARNING_MESSAGE);
+
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+
+    }//informe2
 }
