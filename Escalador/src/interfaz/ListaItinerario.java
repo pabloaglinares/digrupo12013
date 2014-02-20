@@ -6,6 +6,8 @@
 package interfaz;
 
 import java.sql.Timestamp;
+import javax.swing.ImageIcon;
+import metodos.Metodos;
 
 /**
  *
@@ -16,12 +18,16 @@ public class ListaItinerario extends javax.swing.JDialog {
     /**
      * Creates new form ListaItinerario
      */
+     Metodos metodos;
     Timestamp fech = null;
     Timestamp fech2 = null;
 
-    public ListaItinerario(java.awt.Frame parent, boolean modal) {
+    public ListaItinerario(java.awt.Frame parent, boolean modal, Metodos metodos) {
         super(parent, modal);
         initComponents();
+        this.metodos = metodos;
+        setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
+        this.setTitle("Generar Informe1");
     }
 
     /**
@@ -144,6 +150,7 @@ public class ListaItinerario extends javax.swing.JDialog {
         //     TimeStamp.valueOf (tuString);
         fech = Timestamp.valueOf(this.txtFecha1.getText());
         fech2 = Timestamp.valueOf(this.txtFecha2.getText());
+        metodos.informe1(fech, fech2) ;
 
 
     }//GEN-LAST:event_btnGenerarActionPerformed
@@ -151,44 +158,7 @@ public class ListaItinerario extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListaItinerario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListaItinerario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListaItinerario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListaItinerario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                ListaItinerario dialog = new ListaItinerario(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGenerar;
