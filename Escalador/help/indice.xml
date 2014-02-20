@@ -1,10 +1,10 @@
-<index version="1.0">
-	<indexitem text="Ayuda aplicación escalador" target="principal"/>
-	<indexitem text="Configuración nueva" target="configuracionnueva"/>
+ï»¿<index version="1.0">
+	<indexitem text="Ayuda aplicaciÃ³n escalador" target="principal"/>
+	<indexitem text="ConfiguraciÃ³n nueva" target="configuracionnueva"/>
 	<indexitem text="Entrenamiento nuevo" target="entrenamientonuevo"/>
     <indexitem text="Itineario nuevo" target="itinerarionuevo"/>
 	<indexitem text="Itinerario realizado nuevo" target="itinerariorealizadonuevo"/>
-	<indexitem text="Configuración consulta" target="configuracionconsulta"/>
+	<indexitem text="ConfiguraciÃ³n consulta" target="configuracionconsulta"/>
     <indexitem text="Entrenamiento consulta" target="entrenamientoconsulta"/>
 	<indexitem text="Itinerario consulta" target="itinerarioconsulta"/>
     <indexitem text="Itinerario realizado consulta" target="itinerariorealizadoconsulta"/>
