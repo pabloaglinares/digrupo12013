@@ -182,7 +182,7 @@ public class ListaEntrenamiento extends javax.swing.JDialog {
 
         } catch (ParseException ex) {
 
-            ex.printStackTrace();
+          
             JOptionPane.showMessageDialog(this, "Formato de fecha mal introducido\nEjemplo de fecha valida:\n12-12-1999");
 
         } catch (IllegalArgumentException e) {
