@@ -153,7 +153,7 @@ public class PantallaInicial extends javax.swing.JFrame {
 
         menuItemNuevo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         menuItemNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/anadir-lapiz.png"))); // NOI18N
-        menuItemNuevo.setText("Nuevo");
+        menuItemNuevo.setText("Nuevo            ");
 
         menuItemNuevaConfiguracion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         menuItemNuevaConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/anadir-usuario1.png"))); // NOI18N
@@ -199,7 +199,7 @@ public class PantallaInicial extends javax.swing.JFrame {
 
         menuConsulta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         menuConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/file-search.png"))); // NOI18N
-        menuConsulta.setText(" Consulta");
+        menuConsulta.setText(" Consulta       ");
 
         menuItemConsultaConfiguracion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         menuItemConsultaConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/anadir-la-tabla.png"))); // NOI18N
@@ -245,7 +245,7 @@ public class PantallaInicial extends javax.swing.JFrame {
 
         ayuda.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ayuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/new.png"))); // NOI18N
-        ayuda.setText("ayuda");
+        ayuda.setText("ayuda        ");
 
         btnAyuda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
         btnAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/mostrar-la-lista.png"))); // NOI18N
@@ -261,11 +261,11 @@ public class PantallaInicial extends javax.swing.JFrame {
 
         INFORMES.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         INFORMES.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/new.png"))); // NOI18N
-        INFORMES.setText("ayuda");
+        INFORMES.setText("Informes                 ");
 
         btnINFORME1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
         btnINFORME1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/mostrar-la-lista.png"))); // NOI18N
-        btnINFORME1.setText("ayuda");
+        btnINFORME1.setText("Lista Itinerarios");
         btnINFORME1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnINFORME1ActionPerformed(evt);
@@ -282,14 +282,14 @@ public class PantallaInicial extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(129, Short.MAX_VALUE)
+                .addContainerGap(221, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(135, Short.MAX_VALUE)
+                .addContainerGap(187, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );

@@ -5,8 +5,11 @@
  */
 package interfaz;
 
+import java.awt.Color;
 import java.sql.Timestamp;
+import java.text.ParseException;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import metodos.Metodos;
 
 /**
@@ -18,7 +21,7 @@ public class ListaItinerario extends javax.swing.JDialog {
     /**
      * Creates new form ListaItinerario
      */
-     Metodos metodos;
+    Metodos metodos;
     Timestamp fech = null;
     Timestamp fech2 = null;
 
@@ -145,12 +148,15 @@ public class ListaItinerario extends javax.swing.JDialog {
     }//GEN-LAST:event_txtFecha2ActionPerformed
 
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
-       //TimeStamp.valueOf (tuString) 
-        // TimesStamp fecha1=null;
-        //     TimeStamp.valueOf (tuString);
         fech = Timestamp.valueOf(this.txtFecha1.getText());
         fech2 = Timestamp.valueOf(this.txtFecha2.getText());
-        metodos.informe1(fech, fech2) ;
+
+        if (this.txtFecha1.getText() != null && this.txtFecha2.getText() != null) {
+            metodos.informe1(fech, fech2);
+        } else {
+            metodos.informe1(fech, fech2);
+        }
+        JOptionPane.showMessageDialog(this, "Falta campo por rellenar debe introducr los dos campos antes de dar al boton");
 
 
     }//GEN-LAST:event_btnGenerarActionPerformed
@@ -158,7 +164,6 @@ public class ListaItinerario extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
-  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGenerar;
