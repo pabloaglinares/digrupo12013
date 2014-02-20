@@ -1,9 +1,7 @@
 package interfaz;
 
 import datos.Configuracion;
-import java.awt.Desktop;
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -13,7 +11,6 @@ import javax.help.HelpBroker;
 import javax.help.HelpSet;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import metodos.Metodos;
 import org.jvnet.substance.SubstanceLookAndFeel;
 import org.jvnet.substance.watermark.SubstanceImageWatermark;
@@ -35,7 +32,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         ponLaAyuda();
         ponElRendimiento();
     }
-    
+
     private void ponElRendimiento() {
         etiquetaRendimiento.setText(Double.toString(metodos.getRendimiento()));
     }
@@ -383,23 +380,23 @@ public class PantallaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAyudaActionPerformed
 
     private void btnINFORME1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnINFORME1ActionPerformed
-        ListaItinerario info1=new ListaItinerario(this, false, metodos);
+        ListaItinerario info1 = new ListaItinerario(this, false, metodos);
         info1.setVisible(true);
     }//GEN-LAST:event_btnINFORME1ActionPerformed
 
     private void btnInformeEntrenamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInformeEntrenamientoActionPerformed
-        listaEstrenamiento info2=new listaEstrenamiento(this, false, metodos);
+        ListaEntrenamiento info2 = new ListaEntrenamiento(this, false, metodos);
         info2.setVisible(true);
     }//GEN-LAST:event_btnInformeEntrenamientoActionPerformed
 
     private void EntrenamientoAgrupadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrenamientoAgrupadoActionPerformed
-     listaEstrenamientoAgrupado info4=new listaEstrenamientoAgrupado(this, false, metodos);
-     info4.setVisible(true);
+        ListaEntrenamientoAgrupado info4 = new ListaEntrenamientoAgrupado(this, false, metodos);
+        info4.setVisible(true);
     }//GEN-LAST:event_EntrenamientoAgrupadoActionPerformed
 
     private void btnGraficoItiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraficoItiActionPerformed
-       metodos.informe5();
-        
+        metodos.informe5();
+
     }//GEN-LAST:event_btnGraficoItiActionPerformed
 
     /**
@@ -475,5 +472,4 @@ public class PantallaInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemNuevoItinerario;
     // End of variables declaration//GEN-END:variables
 
-    
 }

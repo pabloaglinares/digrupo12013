@@ -21,14 +21,14 @@ import metodos.Metodos;
  *
  * @author paulina
  */
-public class listaEstrenamientoAgrupado extends javax.swing.JDialog {
+public class ListaEntrenamientoAgrupado extends javax.swing.JDialog {
 
     /**
      * Creates new form ListaItinerario
      */
     Metodos metodos;
 
-    public listaEstrenamientoAgrupado(java.awt.Frame parent, boolean modal, Metodos metodos) {
+    public ListaEntrenamientoAgrupado(java.awt.Frame parent, boolean modal, Metodos metodos) {
         super(parent, modal);
         initComponents();
         this.metodos = metodos;

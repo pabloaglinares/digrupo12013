@@ -21,14 +21,14 @@ import metodos.Metodos;
  *
  * @author paulina
  */
-public class listaEstrenamiento extends javax.swing.JDialog {
+public class ListaEntrenamiento extends javax.swing.JDialog {
 
     /**
      * Creates new form ListaItinerario
      */
     Metodos metodos;
 
-    public listaEstrenamiento(java.awt.Frame parent, boolean modal, Metodos metodos) {
+    public ListaEntrenamiento(java.awt.Frame parent, boolean modal, Metodos metodos) {
         super(parent, modal);
         initComponents();
         this.metodos = metodos;
@@ -182,6 +182,7 @@ public class listaEstrenamiento extends javax.swing.JDialog {
 
         } catch (ParseException ex) {
 
+            ex.printStackTrace();
             JOptionPane.showMessageDialog(this, "Formato de fecha mal introducido\nEjemplo de fecha valida:\n12-12-1999");
 
         } catch (IllegalArgumentException e) {
