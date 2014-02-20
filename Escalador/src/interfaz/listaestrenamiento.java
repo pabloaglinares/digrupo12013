@@ -33,7 +33,7 @@ public class listaestrenamiento extends javax.swing.JDialog {
         initComponents();
         this.metodos = metodos;
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
-        this.setTitle("Generar Informe1");
+        this.setTitle("Generar Informe2");
         this.txtFecha1.setText("19-02-0100 ");
         this.txtFecha2.setText("19-02-2015 ");
 
@@ -122,6 +122,11 @@ public class listaestrenamiento extends javax.swing.JDialog {
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtFecha1, txtFecha2});
 
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -186,6 +191,10 @@ public class listaestrenamiento extends javax.swing.JDialog {
 
 
     }//GEN-LAST:event_btnGenerarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+      dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments

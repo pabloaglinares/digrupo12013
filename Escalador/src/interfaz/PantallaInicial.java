@@ -101,6 +101,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         btnAyuda = new javax.swing.JMenuItem();
         INFORMES = new javax.swing.JMenu();
         btnINFORME1 = new javax.swing.JMenuItem();
+        btnInformeEntrenamiento = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -273,6 +274,15 @@ public class PantallaInicial extends javax.swing.JFrame {
         });
         INFORMES.add(btnINFORME1);
 
+        btnInformeEntrenamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/el-informe.png"))); // NOI18N
+        btnInformeEntrenamiento.setText("Lista Entrenamiento");
+        btnInformeEntrenamiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInformeEntrenamientoActionPerformed(evt);
+            }
+        });
+        INFORMES.add(btnInformeEntrenamiento);
+
         jMenuBar1.add(INFORMES);
 
         setJMenuBar(jMenuBar1);
@@ -354,6 +364,11 @@ public class PantallaInicial extends javax.swing.JFrame {
         info1.setVisible(true);
     }//GEN-LAST:event_btnINFORME1ActionPerformed
 
+    private void btnInformeEntrenamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInformeEntrenamientoActionPerformed
+        listaestrenamiento info2=new listaestrenamiento(this, false, metodos);
+        info2.setVisible(true);
+    }//GEN-LAST:event_btnInformeEntrenamientoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -406,6 +421,7 @@ public class PantallaInicial extends javax.swing.JFrame {
     private javax.swing.JMenu ayuda;
     private javax.swing.JMenuItem btnAyuda;
     private javax.swing.JMenuItem btnINFORME1;
+    private javax.swing.JMenuItem btnInformeEntrenamiento;
     private javax.swing.JLabel etiquetaEscalador;
     private javax.swing.JLabel etiquetaRendimiento;
     private javax.swing.JLabel jLabel1;
