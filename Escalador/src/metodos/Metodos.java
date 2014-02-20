@@ -223,7 +223,7 @@ public class Metodos {
 
     }
 
-    public boolean updateItinerario(String nombre,String loca,String tipo,String dific,String foto,int id) {
+    public boolean updateItinerario(String nombre, String loca, String tipo, String dific, String foto, int id) {
         boolean pudoInsertarse;
         conectar();
         String sql = "UPDATE ITINERARIO SET NOMBRE='" + nombre + "', LOCALIZACION='" + loca + "',"
@@ -401,8 +401,8 @@ public class Metodos {
         }
     }
 
-    public void deleteItinerario(String nombre, String localizacion) {
-        String sql = "DELETE FROM ITINERARIO WHERE NOMBRE='" + nombre + "', LOCALIZACION='" + localizacion + "'";
+    public void deleteItinerario(String nombre, int id) {
+        String sql = "DELETE FROM ITINERARIO WHERE P_ITINERARIO=" + id;
         conectar();
         try {
             consulta.executeUpdate(sql);

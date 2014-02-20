@@ -189,7 +189,8 @@ public class ItinerarioConsulta extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             int i = TablaItinerario.getSelectedRow();
-            metodos.deleteItinerario(TablaItinerario.getValueAt(i, 0).toString(),TablaItinerario.getValueAt(i, 1).toString());
+            int id = metodos.getIdItinerario(TablaItinerario.getValueAt(i, 0).toString());
+            metodos.deleteItinerario(TablaItinerario.getValueAt(i, 0).toString(),id);
             vaciarTabla();
             rellenarTabla();
         } catch (ArrayIndexOutOfBoundsException e) {
