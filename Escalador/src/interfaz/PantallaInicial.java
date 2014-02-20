@@ -99,6 +99,8 @@ public class PantallaInicial extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         ayuda = new javax.swing.JMenu();
         btnAyuda = new javax.swing.JMenuItem();
+        INFORMES = new javax.swing.JMenu();
+        btnINFORME1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -257,6 +259,22 @@ public class PantallaInicial extends javax.swing.JFrame {
 
         jMenuBar1.add(ayuda);
 
+        INFORMES.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        INFORMES.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/new.png"))); // NOI18N
+        INFORMES.setText("ayuda");
+
+        btnINFORME1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
+        btnINFORME1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/mostrar-la-lista.png"))); // NOI18N
+        btnINFORME1.setText("ayuda");
+        btnINFORME1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnINFORME1ActionPerformed(evt);
+            }
+        });
+        INFORMES.add(btnINFORME1);
+
+        jMenuBar1.add(INFORMES);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -331,6 +349,11 @@ public class PantallaInicial extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAyudaActionPerformed
 
+    private void btnINFORME1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnINFORME1ActionPerformed
+        ListaItinerario info1=new ListaItinerario(this, false, metodos);
+        info1.setVisible(true);
+    }//GEN-LAST:event_btnINFORME1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -379,8 +402,10 @@ public class PantallaInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu INFORMES;
     private javax.swing.JMenu ayuda;
     private javax.swing.JMenuItem btnAyuda;
+    private javax.swing.JMenuItem btnINFORME1;
     private javax.swing.JLabel etiquetaEscalador;
     private javax.swing.JLabel etiquetaRendimiento;
     private javax.swing.JLabel jLabel1;
