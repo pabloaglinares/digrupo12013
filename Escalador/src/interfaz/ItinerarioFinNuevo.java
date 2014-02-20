@@ -11,15 +11,17 @@ import javax.swing.JOptionPane;
 import metodos.Metodos;
 
 public class ItinerarioFinNuevo extends javax.swing.JDialog {
-    
+
     Metodos metodos;
-    SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm dd-MM-yyyy");
-    Timestamp fech = null;
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
     Date FechaActual = new Date();
     String fecha = dateFormat.format(FechaActual);
+    Timestamp fech = new Timestamp(FechaActual.getTime());
+    boolean fechaModificada = false;
 
     /**
      * Creates new form ItinerarioFinNuevo
+     *
      * @param parent
      * @param modal
      * @param metodos
@@ -34,11 +36,25 @@ public class ItinerarioFinNuevo extends javax.swing.JDialog {
 //        metodos.mostrarNombreIti(jComboBox1);
         jTextField1.setText(fecha);
     }
-    
+
     public final void rellenarComboBox() {
         List<String> nombresItinerarios = metodos.obtenerListaNombresDeItinerarios();
-        for(String nombre : nombresItinerarios) {
+        for (String nombre : nombresItinerarios) {
             jComboBox1.addItem(nombre);
+        }
+    }
+
+    private void comprobarFecha() {
+        try {
+            Date fechafin = (Date) dateFormat.parse(fecha);
+            if (jTextField1.getText().length() == 15) {
+                fech = new Timestamp(fechafin.getTime());
+                jTextField1.setForeground(Color.white);
+            } else {
+                jTextField1.setForeground(Color.red);
+            }
+        } catch (ParseException ex) {
+            jTextField1.setForeground(Color.red);
         }
     }
 
@@ -140,16 +156,10 @@ public class ItinerarioFinNuevo extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
-        
+
+        fechaModificada = true;
         fecha = jTextField1.getText();
-        
-        try {
-            Date fechafin = (Date) dateFormat.parse(fecha);
-            fech = new Timestamp(fechafin.getTime());
-            jTextField1.setForeground(Color.white);
-        } catch (ParseException ex) {
-            jTextField1.setForeground(Color.red);
-        }
+        comprobarFecha();
     }//GEN-LAST:event_jTextField1KeyTyped
 
     private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
@@ -157,14 +167,16 @@ public class ItinerarioFinNuevo extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextField1MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (jTextField1.getForeground() == Color.white && jTextField1 != null) {
+        if (jTextField1.getForeground() == Color.white || fechaModificada == false) {
             String id = jComboBox1.getSelectedItem().toString();
             int idItinerario = metodos.getIdItinerario(id);
+
             metodos.insertItinerarioFin(idItinerario, fech);
             this.dispose();
         } else {
             jTextField1.setText(null);
-            JOptionPane.showMessageDialog(this, "Formato de fecha mal introducido\nEjemplo de fecha valida:\n23:59 12-12-1999");
+            JOptionPane.showMessageDialog(this, "Error en los datos\nLa fecha tiene el formato:\n"
+                    + "31-12-1999 23:59");
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -5,17 +5,20 @@ import java.awt.Image;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import metodos.Metodos;
 
 public class ItinerarioFinConsulta extends javax.swing.JDialog {
 
     Metodos metodos;
+    DefaultTableModel defaultTableModel;
 
     public ItinerarioFinConsulta(java.awt.Frame parent, boolean modal, Metodos metodos) {
         super(parent, modal);
@@ -24,14 +27,18 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         this.setTitle("Consulta itinerarios realizados");
         tabla();
+        rellenarTabla();
     }
 
     private void tabla() {
-        DefaultTableModel defaultTableModel = new DefaultTableModel();
+        defaultTableModel = new DefaultTableModel();
         defaultTableModel.addColumn("Nombre");
         defaultTableModel.addColumn("Fecha");
         jTable1.setModel(defaultTableModel);
 
+    }
+
+    private void rellenarTabla() {
         List<ItinerarioFin> listaItinerarioFin = null;
 
         try {
@@ -54,7 +61,13 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
         }
     }
 
-
+    private void vaciarTabla() {
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        int filas = jTable1.getRowCount();
+        for (int i = 0; i < filas; i++) {
+            modelo.removeRow(0);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -103,6 +116,11 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
         });
 
         jButton3.setText("borrar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("modificar");
 
@@ -152,12 +170,25 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try {
+            int i = jTable1.getSelectedRow();
+            int id = metodos.getIdItinerario(null);
+            Timestamp fecha = Timestamp.valueOf(jTable1.getValueAt(i, 1).toString());
+            metodos.deleteItinerarioFin(id, fecha);
+            vaciarTabla();
+            rellenarTabla();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(this, "Seleciona la fila de la tabla que desees borrar");
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

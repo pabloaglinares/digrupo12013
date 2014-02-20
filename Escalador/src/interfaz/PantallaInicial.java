@@ -97,13 +97,13 @@ public class PantallaInicial extends javax.swing.JFrame {
         menuItemConsultaEntrenamientos = new javax.swing.JMenuItem();
         menuItemConsultaItinerarios = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        ayuda = new javax.swing.JMenu();
-        btnAyuda = new javax.swing.JMenuItem();
         INFORMES = new javax.swing.JMenu();
         btnINFORME1 = new javax.swing.JMenuItem();
         btnInformeEntrenamiento = new javax.swing.JMenuItem();
         EntrenamientoAgrupado = new javax.swing.JMenuItem();
         btnGraficoIti = new javax.swing.JMenuItem();
+        ayuda = new javax.swing.JMenu();
+        btnAyuda = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -246,22 +246,6 @@ public class PantallaInicial extends javax.swing.JFrame {
 
         jMenuBar1.add(menuConsulta);
 
-        ayuda.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        ayuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/ayuda-cursor.png"))); // NOI18N
-        ayuda.setText("ayuda        ");
-
-        btnAyuda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
-        btnAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/contenido-de-ayuda.png"))); // NOI18N
-        btnAyuda.setText("ayuda");
-        btnAyuda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAyudaActionPerformed(evt);
-            }
-        });
-        ayuda.add(btnAyuda);
-
-        jMenuBar1.add(ayuda);
-
         INFORMES.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         INFORMES.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/documento-grafico.png"))); // NOI18N
         INFORMES.setText("Informes                 ");
@@ -305,6 +289,22 @@ public class PantallaInicial extends javax.swing.JFrame {
 
         jMenuBar1.add(INFORMES);
 
+        ayuda.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ayuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/ayuda-cursor.png"))); // NOI18N
+        ayuda.setText("ayuda        ");
+
+        btnAyuda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
+        btnAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/contenido-de-ayuda.png"))); // NOI18N
+        btnAyuda.setText("ayuda");
+        btnAyuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAyudaActionPerformed(evt);
+            }
+        });
+        ayuda.add(btnAyuda);
+
+        jMenuBar1.add(ayuda);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -319,7 +319,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(187, Short.MAX_VALUE)
+                .addContainerGap(189, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );

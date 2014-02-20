@@ -92,14 +92,14 @@ public class Metodos {
         }
         return listaItinerarios;
     }
-    
+
     public List<String> obtenerListaNombresDeItinerarios() {
         List<String> nombresDeItinerarios = new ArrayList<>();
         String sql = "SELECT nombre FROM itinerario";
         conectar();
         try {
             resultSet = consulta.executeQuery(sql);
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 nombresDeItinerarios.add(resultSet.getString(1));
             }
         } catch (SQLException ex) {
@@ -396,6 +396,22 @@ public class Metodos {
         }
     }
 
+    public void deleteItinerarioFin(int id, Timestamp fecha) {
+        String sql = "DELETE FROM FECHA_ITINERARIO WHERE A_ITINERARIO=" + id + " AND FECHA='" + fecha + "'";
+        conectar();
+        try {
+            consulta.executeUpdate(sql);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
     public int getIdItinerario(String nombre) {
         String sql = "SELECT P_ITINERARIO FROM ITINERARIO WHERE NOMBRE='" + nombre + "'";
         conectar();
@@ -435,7 +451,8 @@ public class Metodos {
 
     /**
      * Calcula el rendimiento y lo devuelve con precisión de dos decimales.
-     * @return 
+     *
+     * @return
      */
     public double getRendimiento() {
         double rendimiento = getRendimientoEntrenamiento() + getRendimientoItinerariosRealizados();
@@ -443,16 +460,16 @@ public class Metodos {
         rendimiento = (Math.rint(rendimiento)) / 100;
         return rendimiento;
     }
-    
+
     public double getRendimientoItinerariosRealizados() {
-        String sql = "SELECT COUNT(*) " +
-                     "FROM fecha_itinerario fit, escalador esc " +
-                     "WHERE fit.fecha BETWEEN esc.fecha_inicio AND esc.fecha_fin";
+        String sql = "SELECT COUNT(*) "
+                + "FROM fecha_itinerario fit, escalador esc "
+                + "WHERE fit.fecha BETWEEN esc.fecha_inicio AND esc.fecha_fin";
         conectar();
         double rendimiento = 0.0;
         try {
             resultSet = consulta.executeQuery(sql);
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 rendimiento = resultSet.getDouble(1) * 0.25 / 7;
             }
             if (rendimiento > 5) {
@@ -463,11 +480,11 @@ public class Metodos {
         }
         return rendimiento;
     }
-    
+
     public double getRendimientoEntrenamiento() {
-        String sql = "SELECT e.hora_comienzo, e.hora_fin " +
-                     "FROM entrenamiento e, escalador esc " +
-                     "WHERE e.fecha BETWEEN esc.fecha_inicio AND esc.fecha_fin";
+        String sql = "SELECT e.hora_comienzo, e.hora_fin "
+                + "FROM entrenamiento e, escalador esc "
+                + "WHERE e.fecha BETWEEN esc.fecha_inicio AND esc.fecha_fin";
         Date horaComienzo, horaFin;
         long horaInicioMilis, horaFinMilis, totalEntrenamiento;
         totalEntrenamiento = 0;
@@ -482,8 +499,8 @@ public class Metodos {
                 horaFinMilis = horaFin.getTime();
                 totalEntrenamiento += (horaFinMilis - horaInicioMilis);
             }
-            rendimiento =  totalEntrenamiento * 0.5 / 7;
-            if(rendimiento > 5) {
+            rendimiento = totalEntrenamiento * 0.5 / 7;
+            if (rendimiento > 5) {
                 rendimiento = 5;
             }
         } catch (SQLException e) {
@@ -497,8 +514,7 @@ public class Metodos {
         }
         return rendimiento;
     }
-    
-    
+
     public void informe1(Timestamp fecha, Timestamp fecha2) {
 
         conectar();
@@ -509,12 +525,12 @@ public class Metodos {
         parametros.put("fecha2", fecha2);
         try {
             JasperPrint print = JasperFillManager.fillReport(archivojasper, parametros, conexion);
-            
-            JasperExportManager.exportReportToPdfFile(print,"ListaItinerario.pdf");
-            
+
+            JasperExportManager.exportReportToPdfFile(print, "ListaItinerario.pdf");
+
             File path = new File("ListaItinerario.pdf");//referencia compruebo q existe lo puedo abrir en cualquier parete del proyecto
             try {
-               
+
                 Desktop.getDesktop().open(path);//abre ese pdf
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(null, ex.toString(), "No exite el archivo", JOptionPane.WARNING_MESSAGE);
@@ -530,7 +546,7 @@ public class Metodos {
         }
 
     }//informe1
-    
+
     public void informe2(Date fecha, Date fecha2) {
 
         conectar();
@@ -541,12 +557,12 @@ public class Metodos {
         parametros.put("date2", fecha2);
         try {
             JasperPrint print = JasperFillManager.fillReport(archivojasper, parametros, conexion);
-            
-            JasperExportManager.exportReportToPdfFile(print,"FechasSesiones.pdf");
-            
+
+            JasperExportManager.exportReportToPdfFile(print, "FechasSesiones.pdf");
+
             File path = new File("FechasSesiones.pdf");//referencia compruebo q existe lo puedo abrir en cualquier parete del proyecto
             try {
-               
+
                 Desktop.getDesktop().open(path);//abre ese pdf
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(null, ex.toString(), "No exite el archivo", JOptionPane.WARNING_MESSAGE);
@@ -562,6 +578,7 @@ public class Metodos {
         }
 
     }//informe2
+
     public void informe4(Date fecha, Date fecha2) {
 
         conectar();
@@ -572,12 +589,12 @@ public class Metodos {
         parametros.put("date2", fecha2);
         try {
             JasperPrint print = JasperFillManager.fillReport(archivojasper, parametros, conexion);
-            
-            JasperExportManager.exportReportToPdfFile(print,"TipoDeSesionGrupo.pdf");
-            
+
+            JasperExportManager.exportReportToPdfFile(print, "TipoDeSesionGrupo.pdf");
+
             File path = new File("TipoDeSesionGrupo.pdf");//referencia compruebo q existe lo puedo abrir en cualquier parete del proyecto
             try {
-               
+
                 Desktop.getDesktop().open(path);//abre ese pdf
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(null, ex.toString(), "No exite el archivo", JOptionPane.WARNING_MESSAGE);
@@ -593,26 +610,25 @@ public class Metodos {
         }
 
     }//informe4
+
     public void informe5() {
 
         conectar();
         String archivojasper = "src/informes/GraficoItinerario.jasper";//ruta
-       
 
-        
         try {
-            JasperPrint print = JasperFillManager.fillReport(archivojasper,new HashMap(), conexion);
-            
-            JasperExportManager.exportReportToPdfFile(print,"GraficoItinerario.pdf");
-            
+            JasperPrint print = JasperFillManager.fillReport(archivojasper, new HashMap(), conexion);
+
+            JasperExportManager.exportReportToPdfFile(print, "GraficoItinerario.pdf");
+
             File path = new File("GraficoItinerario.pdf");//referencia compruebo q existe lo puedo abrir en cualquier parete del proyecto
             try {
-               
+
                 Desktop.getDesktop().open(path);//abre ese pdf
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(null, ex.toString(), "No exite el archivo", JOptionPane.WARNING_MESSAGE);
             }
-        } catch (JRException  |  NoClassDefFoundError | IllegalArgumentException ex) {
+        } catch (JRException | NoClassDefFoundError | IllegalArgumentException ex) {
             JOptionPane.showMessageDialog(null, ex.toString(), "ERROR", JOptionPane.WARNING_MESSAGE);
 
             try {
