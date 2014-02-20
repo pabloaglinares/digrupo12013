@@ -9,8 +9,9 @@ import metodos.Metodos;
 
 public class ItinerarioNuevo extends javax.swing.JDialog {
 
-    Metodos metodos;
+   Metodos metodos;
     boolean edicion = false;
+    int id;
 
     public ItinerarioNuevo(java.awt.Frame parent, boolean modal, Metodos metodos) {
         super(parent, modal);
@@ -22,6 +23,20 @@ public class ItinerarioNuevo extends javax.swing.JDialog {
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
     }
 
+    //constructor editar
+    public ItinerarioNuevo(javax.swing.JDialog parent, boolean modal, Metodos metodos, String nombre, String loca, String iti, String dific, String foto, int id) {
+        super(parent, modal);
+        initComponents();
+        this.metodos = metodos;
+        this.nombre.setText(nombre);
+        this.localizacion.setText(loca);
+        this.itinerario.setSelectedItem(iti);
+//        String d= dific;
+//        this.dificultadnumero.setSelectedItem(d.subSequence(WIDTH, WIDTH));
+        this.rutafoto.setText(foto);
+        this.id = id;
+        this.edicion = true;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -217,7 +232,7 @@ public class ItinerarioNuevo extends javax.swing.JDialog {
         if (edicion == false) {
             insercionCorrecta = metodos.insertarItinerarioEnDb(nombreIti, loca, iti, dific, foto);
         } else {
-
+            insercionCorrecta = metodos.updateItinerario(nombreIti, loca, iti, dific, foto, id);
         }
 
         if (insercionCorrecta) {

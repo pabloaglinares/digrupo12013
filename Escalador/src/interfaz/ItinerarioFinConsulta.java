@@ -180,7 +180,7 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
             int i = jTable1.getSelectedRow();
-            int id = metodos.getIdItinerario(null);
+            int id = metodos.getIdItinerario(jTable1.getValueAt(i, 0).toString());
             Timestamp fecha = Timestamp.valueOf(jTable1.getValueAt(i, 1).toString());
             metodos.deleteItinerarioFin(id, fecha);
             vaciarTabla();

@@ -118,6 +118,11 @@ public class ItinerarioConsulta extends javax.swing.JDialog {
         });
 
         jButton2.setText("Modificar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -191,6 +196,25 @@ public class ItinerarioConsulta extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Seleciona la fila de la tabla que desees borrar");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+          try {
+            int i = TablaItinerario.getSelectedRow();
+            int id=metodos.getIdItinerario(TablaItinerario.getValueAt(i, 0).toString());
+            ItinerarioNuevo it = new ItinerarioNuevo(this, rootPaneCheckingEnabled, metodos,
+                    TablaItinerario.getValueAt(i, 0).toString(),
+                    TablaItinerario.getValueAt(i, 1).toString(),
+                    TablaItinerario.getValueAt(i, 2).toString(),
+                    TablaItinerario.getValueAt(i, 3).toString(),
+                    TablaItinerario.getValueAt(i, 4).toString(),
+                    id);
+            it.setVisible(true);
+            vaciarTabla();
+            rellenarTabla();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(this, "Seleciona la fila de la tabla que desees editar");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaItinerario;

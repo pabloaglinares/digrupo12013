@@ -223,6 +223,27 @@ public class Metodos {
 
     }
 
+    public boolean updateItinerario(String nombre,String loca,String iti,String dific,String foto,int id) {
+        boolean pudoInsertarse;
+        conectar();
+        String sql = "UPDATE ITINERARIO SET NOMBRE='" + nombre + "', LOCALIZACION='" + loca + "',"
+                + "TIPO='" + iti + "',DIFICULTAD='" + dific + "', FOTO='" + foto + "' WHERE P_ITINEARIO=" + id;
+        try {
+            consulta.executeUpdate(sql);
+            pudoInsertarse = true;
+        } catch (SQLException ex) {
+            pudoInsertarse = false;
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return pudoInsertarse;
+
+    }
+
     public void copiarFotografia(File archivoOrigen, File archivoDestino) {
 
         BufferedInputStream in = null;
