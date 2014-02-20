@@ -509,9 +509,12 @@ public class Metodos {
         parametros.put("fecha2", fecha2);
         try {
             JasperPrint print = JasperFillManager.fillReport(archivojasper, parametros, conexion);
+            
             JasperExportManager.exportReportToPdfFile(print,"ListaItinerario.pdf");
+            
             File path = new File("ListaItinerario.pdf");//referencia compruebo q existe lo puedo abrir en cualquier parete del proyecto
             try {
+               
                 Desktop.getDesktop().open(path);//abre ese pdf
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(null, ex.toString(), "No exite el archivo", JOptionPane.WARNING_MESSAGE);

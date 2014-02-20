@@ -6,6 +6,9 @@
 package interfaz;
 
 import java.awt.Color;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import javax.swing.ImageIcon;
@@ -165,16 +168,18 @@ public class ListaItinerario extends javax.swing.JDialog {
         try {
             fech = Timestamp.valueOf(this.txtFecha1.getText());
             fech2 = Timestamp.valueOf(this.txtFecha2.getText());
-            
-
+            metodos.informe1(fech, fech2);
+            File path = new File("ListaItinerario.pdf");//referencia compruebo q existe lo puedo abrir en cualquier parete del proyecto
+            try {
+               
+                Desktop.getDesktop().open(path);//abre ese pdf
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, ex.toString(), "No exite el archivo", JOptionPane.WARNING_MESSAGE);
+            }
         } catch (IllegalArgumentException e) {
             JOptionPane.showMessageDialog(this, "Formato de fecha mal introducido\nEjemplo de fecha valida:\n23:59 12-12-1999");
         }
-if (this.txtFecha1.getText() != null && this.txtFecha2.getText() != null) {
-            metodos.informe1(fech, fech2);
-        } else {
-            JOptionPane.showMessageDialog(this, "Falta campo por rellenar debe introducr los dos campos antes de dar al boton");
-        }
+
         
 
     }//GEN-LAST:event_btnGenerarActionPerformed
