@@ -1,7 +1,9 @@
 package interfaz;
 
 import datos.Configuracion;
+import java.awt.Desktop;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -11,6 +13,7 @@ import javax.help.HelpBroker;
 import javax.help.HelpSet;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import metodos.Metodos;
 import org.jvnet.substance.SubstanceLookAndFeel;
 import org.jvnet.substance.watermark.SubstanceImageWatermark;
@@ -103,6 +106,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         btnINFORME1 = new javax.swing.JMenuItem();
         btnInformeEntrenamiento = new javax.swing.JMenuItem();
         EntrenamientoAgrupado = new javax.swing.JMenuItem();
+        btnGraficoIti = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -293,6 +297,15 @@ public class PantallaInicial extends javax.swing.JFrame {
         });
         INFORMES.add(EntrenamientoAgrupado);
 
+        btnGraficoIti.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/el-informe.png"))); // NOI18N
+        btnGraficoIti.setText("Grafico Itinerario por Dificultad");
+        btnGraficoIti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGraficoItiActionPerformed(evt);
+            }
+        });
+        INFORMES.add(btnGraficoIti);
+
         jMenuBar1.add(INFORMES);
 
         setJMenuBar(jMenuBar1);
@@ -384,6 +397,11 @@ public class PantallaInicial extends javax.swing.JFrame {
      info4.setVisible(true);
     }//GEN-LAST:event_EntrenamientoAgrupadoActionPerformed
 
+    private void btnGraficoItiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraficoItiActionPerformed
+       metodos.informe5();
+        
+    }//GEN-LAST:event_btnGraficoItiActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -436,6 +454,7 @@ public class PantallaInicial extends javax.swing.JFrame {
     private javax.swing.JMenu INFORMES;
     private javax.swing.JMenu ayuda;
     private javax.swing.JMenuItem btnAyuda;
+    private javax.swing.JMenuItem btnGraficoIti;
     private javax.swing.JMenuItem btnINFORME1;
     private javax.swing.JMenuItem btnInformeEntrenamiento;
     private javax.swing.JLabel etiquetaEscalador;

@@ -593,4 +593,34 @@ public class Metodos {
         }
 
     }//informe4
+    public void informe5() {
+
+        conectar();
+        String archivojasper = "src/informes/GraficoItinerario.jasper";//ruta
+       
+
+        
+        try {
+            JasperPrint print = JasperFillManager.fillReport(archivojasper,new HashMap(), conexion);
+            
+            JasperExportManager.exportReportToPdfFile(print,"GraficoItinerario.pdf");
+            
+            File path = new File("GraficoItinerario.pdf");//referencia compruebo q existe lo puedo abrir en cualquier parete del proyecto
+            try {
+               
+                Desktop.getDesktop().open(path);//abre ese pdf
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, ex.toString(), "No exite el archivo", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (JRException  |  NoClassDefFoundError | IllegalArgumentException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString(), "ERROR", JOptionPane.WARNING_MESSAGE);
+
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+
+    }//informe5
 }
