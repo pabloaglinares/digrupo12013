@@ -9,7 +9,7 @@ import metodos.Metodos;
 
 public class ItinerarioNuevo extends javax.swing.JDialog {
 
-   Metodos metodos;
+    Metodos metodos;
     boolean edicion = false;
     int id;
 
@@ -37,6 +37,7 @@ public class ItinerarioNuevo extends javax.swing.JDialog {
         this.id = id;
         this.edicion = true;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

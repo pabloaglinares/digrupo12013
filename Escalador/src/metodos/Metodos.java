@@ -223,11 +223,11 @@ public class Metodos {
 
     }
 
-    public boolean updateItinerario(String nombre,String loca,String iti,String dific,String foto,int id) {
+    public boolean updateItinerario(String nombre,String loca,String tipo,String dific,String foto,int id) {
         boolean pudoInsertarse;
         conectar();
         String sql = "UPDATE ITINERARIO SET NOMBRE='" + nombre + "', LOCALIZACION='" + loca + "',"
-                + "TIPO='" + iti + "',DIFICULTAD='" + dific + "', FOTO='" + foto + "' WHERE P_ITINEARIO=" + id;
+                + "TIPO='" + tipo + "',DIFICULTAD='" + dific + "', FOTO='" + foto + "' WHERE P_ITINERARIO=" + id;
         try {
             consulta.executeUpdate(sql);
             pudoInsertarse = true;

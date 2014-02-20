@@ -201,7 +201,7 @@ public class ItinerarioConsulta extends javax.swing.JDialog {
           try {
             int i = TablaItinerario.getSelectedRow();
             int id=metodos.getIdItinerario(TablaItinerario.getValueAt(i, 0).toString());
-            ItinerarioNuevo it = new ItinerarioNuevo(this, rootPaneCheckingEnabled, metodos,
+            ItinerarioNuevo it = new ItinerarioNuevo(this, true, metodos,
                     TablaItinerario.getValueAt(i, 0).toString(),
                     TablaItinerario.getValueAt(i, 1).toString(),
                     TablaItinerario.getValueAt(i, 2).toString(),
