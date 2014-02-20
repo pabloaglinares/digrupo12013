@@ -46,6 +46,7 @@ public class ItinerarioFinNuevo extends javax.swing.JDialog {
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         this.setTitle("Itinerario terminado");
         rellenarComboBox();
+//        FechaActual=
         jComboBox1.setSelectedItem(nombre);
         jTextField1.setText(fecha);
         oldId = id;
