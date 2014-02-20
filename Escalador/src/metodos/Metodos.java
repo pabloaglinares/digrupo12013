@@ -29,6 +29,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 
@@ -501,14 +502,14 @@ public class Metodos {
     public void informe1(Timestamp fecha, Timestamp fecha2) {
 
         conectar();
-        String archivojasper = "./informes/ListaItinerario.jasper";//ruta
+        String archivojasper = "src/informes/ListaItinerario.jasper";//ruta
         Map parametros = new HashMap();
 
         parametros.put("fecha1", fecha);
         parametros.put("fecha2", fecha2);
         try {
             JasperPrint print = JasperFillManager.fillReport(archivojasper, parametros, conexion);
-
+            JasperExportManager.exportReportToPdfFile(print,"ListaItinerario.pdf");
             File path = new File("ListaItinerario.pdf");//referencia compruebo q existe lo puedo abrir en cualquier parete del proyecto
             try {
                 Desktop.getDesktop().open(path);//abre ese pdf

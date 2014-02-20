@@ -31,6 +31,9 @@ public class ListaItinerario extends javax.swing.JDialog {
         this.metodos = metodos;
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         this.setTitle("Generar Informe1");
+        this.txtFecha1.setText("0100-02-19 09:43:00.000000000");
+         this.txtFecha2.setText("2015-02-19 09:43:00.000000000");
+        
     }
 
     /**
@@ -148,15 +151,29 @@ public class ListaItinerario extends javax.swing.JDialog {
     }//GEN-LAST:event_txtFecha2ActionPerformed
 
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
-        fech = Timestamp.valueOf(this.txtFecha1.getText());
-        fech2 = Timestamp.valueOf(this.txtFecha2.getText());
+      /*fecha = jTextField1.getText();
+        
+        try {
+            Date fechafin = (Date) dateFormat.parse(fecha);
+            fech = new Timestamp(fechafin.getTime());
+            jTextField1.setForeground(Color.white);
+        } catch (ParseException ex) {
+            jTextField1.setForeground(Color.red);
+        }*/
+        //2014-02-19 09:43:00.000000000
+        
+        try {
+            fech = Timestamp.valueOf(this.txtFecha1.getText());
+            fech2 = Timestamp.valueOf(this.txtFecha2.getText());
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, "Formato de fecha mal introducido\nEjemplo de fecha valida:\n23:59 12-12-1999");
+        }
 
         if (this.txtFecha1.getText() != null && this.txtFecha2.getText() != null) {
             metodos.informe1(fech, fech2);
         } else {
-            metodos.informe1(fech, fech2);
+            JOptionPane.showMessageDialog(this, "Falta campo por rellenar debe introducr los dos campos antes de dar al boton");
         }
-        JOptionPane.showMessageDialog(this, "Falta campo por rellenar debe introducr los dos campos antes de dar al boton");
 
 
     }//GEN-LAST:event_btnGenerarActionPerformed
