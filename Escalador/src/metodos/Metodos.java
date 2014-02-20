@@ -4,6 +4,7 @@ import datos.Configuracion;
 import datos.Entrenamiento;
 import datos.Itinerario;
 import datos.ItinerarioFin;
+import java.awt.Desktop;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -19,11 +20,17 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
 
 public class Metodos {
 
@@ -489,4 +496,34 @@ public class Metodos {
         }
         return rendimiento;
     }
+    
+    
+    public void informe1(Timestamp fecha, Timestamp fecha2) {
+
+        conectar();
+        String archivojasper = "./informes/ListaItinerario.jasper";//ruta
+        Map parametros = new HashMap();
+
+        parametros.put("fecha1", fecha);
+        parametros.put("fecha2", fecha2);
+        try {
+            JasperPrint print = JasperFillManager.fillReport(archivojasper, parametros, conexion);
+
+            File path = new File("ListaItinerario.pdf");//referencia compruebo q existe lo puedo abrir en cualquier parete del proyecto
+            try {
+                Desktop.getDesktop().open(path);//abre ese pdf
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, ex.toString(), "No exite el archivo", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (JRException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString(), "ERROR", JOptionPane.WARNING_MESSAGE);
+
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+
+    }//informe1
 }
