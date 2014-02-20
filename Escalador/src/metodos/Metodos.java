@@ -537,8 +537,8 @@ public class Metodos {
         String archivojasper = "src/informes/FechasSesiones.jasper";//ruta
         Map parametros = new HashMap();
 
-        parametros.put("fecha1", fecha);
-        parametros.put("fecha2", fecha2);
+        parametros.put("date1", fecha);
+        parametros.put("date2", fecha2);
         try {
             JasperPrint print = JasperFillManager.fillReport(archivojasper, parametros, conexion);
             
