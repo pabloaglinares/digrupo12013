@@ -4,7 +4,6 @@ import datos.Configuracion;
 import datos.Entrenamiento;
 import datos.Itinerario;
 import datos.ItinerarioFin;
-import java.awt.Desktop;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -25,9 +24,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -561,8 +557,7 @@ public class Metodos {
 
             
         } catch (JRException ex) {
-            JOptionPane.showMessageDialog(null, ex.toString(), "ERROR", JOptionPane.WARNING_MESSAGE);
-
+            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
             try {
                 conexion.close();
             } catch (SQLException e) {
@@ -587,7 +582,7 @@ public class Metodos {
 
             
         } catch (JRException ex) {
-            JOptionPane.showMessageDialog(null, ex.toString(), "ERROR", JOptionPane.WARNING_MESSAGE);
+            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
 
             try {
                 conexion.close();
@@ -612,7 +607,7 @@ public void informe3(Integer mes, Integer ano) {
 
             
         } catch (JRException ex) {
-            JOptionPane.showMessageDialog(null, ex.toString(), "ERROR", JOptionPane.WARNING_MESSAGE);
+            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
 
             try {
                 conexion.close();
@@ -637,7 +632,7 @@ public void informe3(Integer mes, Integer ano) {
 
             
         } catch (JRException ex) {
-            JOptionPane.showMessageDialog(null, ex.toString(), "ERROR", JOptionPane.WARNING_MESSAGE);
+            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
 
             try {
                 conexion.close();
@@ -660,7 +655,7 @@ public void informe3(Integer mes, Integer ano) {
 
            
         } catch (JRException | NoClassDefFoundError | IllegalArgumentException ex) {
-            JOptionPane.showMessageDialog(null, ex.toString(), "ERROR", JOptionPane.WARNING_MESSAGE);
+            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
 
             try {
                 conexion.close();
@@ -687,9 +682,7 @@ public void informe3(Integer mes, Integer ano) {
             conexion.close();
             
         }catch(SQLException e){     
-         
-            JOptionPane.showMessageDialog(null, e.toString(), "No se puede encontrar la imagen en la ruta especificada.", JOptionPane.WARNING_MESSAGE);
-            //Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, e);
         }
             return  imagenURL;
        
