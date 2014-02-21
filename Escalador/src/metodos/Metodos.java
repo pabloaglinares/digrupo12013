@@ -449,7 +449,7 @@ public class Metodos {
         }
     }
 
-    /**
+   /**
      * Calcula el rendimiento y lo devuelve con precisión de dos decimales.
      *
      * @return
@@ -470,7 +470,7 @@ public class Metodos {
         try {
             resultSet = consulta.executeQuery(sql);
             while (resultSet.next()) {
-                rendimiento = resultSet.getDouble(1) * 0.25 / 7;
+                rendimiento = resultSet.getDouble(1) * 0.25 / getNumeroDeSemanasConfiguradas();
             }
             if (rendimiento > 5) {
                 rendimiento = 5;
@@ -485,10 +485,14 @@ public class Metodos {
         String sql = "SELECT e.hora_comienzo, e.hora_fin "
                 + "FROM entrenamiento e, escalador esc "
                 + "WHERE e.fecha BETWEEN esc.fecha_inicio AND esc.fecha_fin";
+        
+        String sql2 = "SELECT fecha_inicio, fecha_fin FROM escalador";
+        
         Date horaComienzo, horaFin;
-        long horaInicioMilis, horaFinMilis, totalEntrenamiento;
-        totalEntrenamiento = 0;
+        long horaInicioMilis, horaFinMilis, milisegundosEntrenados;
+        milisegundosEntrenados = 0;
         double rendimiento = 0.0;
+        double horasEntrenadas = 0.0;
         conectar();
         try {
             resultSet = consulta.executeQuery(sql);
@@ -497,9 +501,11 @@ public class Metodos {
                 horaFin = resultSet.getTime(2);
                 horaInicioMilis = horaComienzo.getTime();
                 horaFinMilis = horaFin.getTime();
-                totalEntrenamiento += (horaFinMilis - horaInicioMilis);
+                milisegundosEntrenados += (horaFinMilis - horaInicioMilis);
             }
-            rendimiento = totalEntrenamiento * 0.5 / 7;
+
+            horasEntrenadas = milisegundosEntrenados / 1000 / 60 / 60;
+            rendimiento = horasEntrenadas * 0.5 / getNumeroDeSemanasConfiguradas();
             if (rendimiento > 5) {
                 rendimiento = 5;
             }
@@ -514,7 +520,32 @@ public class Metodos {
         }
         return rendimiento;
     }
-
+    
+    public double getNumeroDeSemanasConfiguradas () {
+        String sql2 = "SELECT fecha_inicio, fecha_fin FROM escalador";
+        long intervalo;
+        double semanasIntervalo = 0.0;
+        Date fechaInicio = null, fechaFin = null;
+        conectar();
+        try {
+            resultSet = consulta.executeQuery(sql2);
+            while (resultSet.next()) {
+                fechaInicio = resultSet.getTimestamp(1);
+                fechaFin = resultSet.getTimestamp(2);
+            }
+            
+            if(null == fechaFin) {
+                fechaFin = new Date();
+            }
+            
+            intervalo = fechaFin.getTime() - fechaInicio.getTime();
+            semanasIntervalo = intervalo / 1000 / 60 / 60 / 24 / 7;
+        } catch (SQLException ex) {
+            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return semanasIntervalo;
+    }
+    
     public void informe1(Timestamp fecha, Timestamp fecha2) {
 
         conectar();
