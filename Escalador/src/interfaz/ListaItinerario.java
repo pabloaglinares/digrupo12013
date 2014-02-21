@@ -14,6 +14,7 @@ import java.text.ParseException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import metodos.Metodos;
+import org.jvnet.substance.SubstanceLookAndFeel;
 
 /**
  *
@@ -35,8 +36,11 @@ public class ListaItinerario extends javax.swing.JDialog {
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         this.setTitle("Generar Informe1");
         this.txtFecha1.setText("0100-02-19 09:43:00.000000000");
-         this.txtFecha2.setText("2015-02-19 09:43:00.000000000");
-        
+        this.txtFecha2.setText("2015-02-19 09:43:00.000000000");
+        SubstanceLookAndFeel.setCurrentWatermark("org.jvnet.substance.watermark.SubstanceBinaryWatermark");
+        this.getContentPane().setBackground(Color.black);
+        this.setAlwaysOnTop(true);
+
     }
 
     /**
@@ -160,24 +164,24 @@ public class ListaItinerario extends javax.swing.JDialog {
     }//GEN-LAST:event_txtFecha2ActionPerformed
 
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
-      /*fecha = jTextField1.getText();
+        /*fecha = jTextField1.getText();
         
-        try {
-            Date fechafin = (Date) dateFormat.parse(fecha);
-            fech = new Timestamp(fechafin.getTime());
-            jTextField1.setForeground(Color.white);
-        } catch (ParseException ex) {
-            jTextField1.setForeground(Color.red);
-        }*/
+         try {
+         Date fechafin = (Date) dateFormat.parse(fecha);
+         fech = new Timestamp(fechafin.getTime());
+         jTextField1.setForeground(Color.white);
+         } catch (ParseException ex) {
+         jTextField1.setForeground(Color.red);
+         }*/
         //2014-02-19 09:43:00.000000000
-        
+
         try {
             fech = Timestamp.valueOf(this.txtFecha1.getText());
             fech2 = Timestamp.valueOf(this.txtFecha2.getText());
             metodos.informe1(fech, fech2);
             File path = new File("ListaItinerario.pdf");//referencia compruebo q existe lo puedo abrir en cualquier parete del proyecto
             try {
-               
+
                 Desktop.getDesktop().open(path);//abre ese pdf
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(null, ex.toString(), "No exite el archivo", JOptionPane.WARNING_MESSAGE);
@@ -186,12 +190,11 @@ public class ListaItinerario extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Formato de fecha mal introducido\nEjemplo de fecha valida:\n23:59 12-12-1999");
         }
 
-        
 
     }//GEN-LAST:event_btnGenerarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-     dispose();
+        dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     /**

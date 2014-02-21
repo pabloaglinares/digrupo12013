@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package interfaz;
 
+import java.awt.Color;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import metodos.Metodos;
+import org.jvnet.substance.SubstanceLookAndFeel;
 
 /**
  *
@@ -22,18 +23,22 @@ public class GraficoEntreamientoSemanal extends javax.swing.JDialog {
     /**
      * Creates new form GraficoEntreamientoSemanal
      */
-    
-     Metodos metodos;
+    Metodos metodos;
     Integer mes = null;
     Integer ano = null;
+
     public GraficoEntreamientoSemanal(java.awt.Frame parent, boolean modal, Metodos metodos) {
         super(parent, modal);
         initComponents();
+      SubstanceLookAndFeel.setCurrentWatermark("org.jvnet.substance.watermark.SubstanceMazeWatermark");
         this.metodos = metodos;
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         this.setTitle("Generar Informe 3");
         this.txtMes.setText("1");
-         this.txtAno.setText("2015");
+        this.txtAno.setText("2015");
+        this.getContentPane().setBackground(Color.black);
+        this.setAlwaysOnTop(true);
+
     }
 
     /**
@@ -155,13 +160,13 @@ public class GraficoEntreamientoSemanal extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
-       try {
+        try {
             mes = Integer.parseInt(this.txtMes.getText());
             ano = Integer.parseInt(this.txtAno.getText());
             metodos.informe3(mes, ano);
             File path = new File("GraficoEntrenamiento.pdf");//referencia compruebo q existe lo puedo abrir en cualquier parete del proyecto
             try {
-               
+
                 Desktop.getDesktop().open(path);//abre ese pdf
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(null, ex.toString(), "No exite el archivo", JOptionPane.WARNING_MESSAGE);
@@ -173,13 +178,12 @@ public class GraficoEntreamientoSemanal extends javax.swing.JDialog {
     }//GEN-LAST:event_btnGenerarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-       dispose();
+        dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
      */
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGenerar;

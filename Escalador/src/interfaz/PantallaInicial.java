@@ -394,6 +394,7 @@ public class PantallaInicial extends javax.swing.JFrame {
 
     private void btnINFORME1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnINFORME1ActionPerformed
         ListaItinerario info1 = new ListaItinerario(this, false, metodos);
+       // SubstanceLookAndFeel.setCurrentWatermark("org.jvnet.substance.watermark.SubstanceBinaryWatermark");
         info1.setVisible(true);
     }//GEN-LAST:event_btnINFORME1ActionPerformed
 

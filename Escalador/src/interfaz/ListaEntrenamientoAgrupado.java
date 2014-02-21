@@ -16,6 +16,7 @@ import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import metodos.Metodos;
+import org.jvnet.substance.SubstanceLookAndFeel;
 
 /**
  *
@@ -32,6 +33,7 @@ public class ListaEntrenamientoAgrupado extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.metodos = metodos;
+        SubstanceLookAndFeel.setCurrentWatermark("org.jvnet.substance.watermark.SubstanceMetalWallWatermark");
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         this.setTitle("Generar Informe4");
         this.txtFecha1.setText("19-02-0100 ");
