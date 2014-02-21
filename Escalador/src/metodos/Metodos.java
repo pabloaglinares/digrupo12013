@@ -694,4 +694,18 @@ public void informe3(Integer mes, Integer ano) {
             return  imagenURL;
        
     }
+    
+    public String getNombreYApellidoEscalador() {
+        conectar();
+        String nombre = "";
+        try {
+            resultSet = consulta.executeQuery("SELECT nombre, apellido FROM escalador");
+            while(resultSet.next()) {
+                nombre = resultSet.getString(1) + " " + resultSet.getString(2);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return nombre;
+    }
 }

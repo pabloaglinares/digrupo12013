@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Pruebas {
 
@@ -13,7 +15,8 @@ public class Pruebas {
     ResultSet resultSet;
 
     public static void main(String[] args) {
-        
+        Pruebas p = new Pruebas();
+        p.ejecutaPrueba();
     }
 
     public void conectar() {
@@ -23,11 +26,23 @@ public class Pruebas {
             System.out.println(e.getMessage());
         }
         try {
-
             conexion = DriverManager.getConnection("jdbc:hsqldb:file:database/escalada", "sa", "");
             consulta = conexion.createStatement();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        }
+    }
+
+    private void ejecutaPrueba() {
+        conectar();
+        String nombre = "";
+        try {
+            resultSet = consulta.executeQuery("SELECT nombre, apellido FROM escalador");
+            while(resultSet.next()) {
+                nombre = resultSet.getString(1) + " " + resultSet.getString(2);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
