@@ -566,7 +566,31 @@ public class Metodos {
         }
 
     }//informe2
+public void informe3(Integer mes, Integer ano) {
 
+        conectar();
+        String archivojasper = "src/informes/GraficoEntrenamiento.jasper";//ruta
+        Map parametros = new HashMap();
+
+        parametros.put("mes", mes);
+        parametros.put("ano", ano);
+        try {
+            JasperPrint print = JasperFillManager.fillReport(archivojasper, parametros, conexion);
+
+            JasperExportManager.exportReportToPdfFile(print, "GraficoEntrenamiento.pdf");
+
+            
+        } catch (JRException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString(), "ERROR", JOptionPane.WARNING_MESSAGE);
+
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+
+    }//informe4
     public void informe4(Date fecha, Date fecha2) {
 
         conectar();

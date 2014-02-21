@@ -3,14 +3,20 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="mes" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ano" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[2014]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[select week(fecha) as numSemana, SUM(
 	(hour(hora_fin) - hour(hora_comienzo)) +
 	(minute(hora_fin) - minute(hora_comienzo)) / 60.0
 ) as horas
 from entrenamiento
-where month(fecha) = 1
-and year(fecha) = 2014
+where month(fecha) =$P{mes}
+and year(fecha) = $P{ano}
 group by week(fecha)
 order by week(fecha)]]>
 	</queryString>
