@@ -52,10 +52,10 @@ public class PantallaInicial extends javax.swing.JFrame {
 
             // Pone ayuda a item de menu al pulsarlo y a F1 en ventana
             // principal y secundaria.
-            // hb.enableHelpOnButton(ayudaMenuItem, "ventana_principal", helpset);
+            
             hb.enableHelpKey(getRootPane(), "principal", helpset);
             hb.enableHelpOnButton(this.btnAyuda, "configuracionnueva", helpset);
-            // hb.enableHelpOnButton(jButton2, "ventana_secundaria", helpset);
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
