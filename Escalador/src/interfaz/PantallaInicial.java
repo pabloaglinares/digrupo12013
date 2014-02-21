@@ -34,6 +34,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         mostrarUsuario();
         ponLaAyuda();
         ponElRendimiento();
+        ponEnMarchaElHiloRendimiento();
     }
 
     private void ponElRendimiento() {
@@ -499,4 +500,20 @@ public class PantallaInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemNuevoItinerario;
     // End of variables declaration//GEN-END:variables
 
+        private void ponEnMarchaElHiloRendimiento() {
+        Thread t = new Thread() {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+			ponElRendimiento();
+                        Thread.sleep(60 * 1000);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(PantallaInicial.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        };
+        t.start();
+    }
 }
