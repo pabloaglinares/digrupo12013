@@ -238,9 +238,11 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
 
         try {
             Date Dateini = (Date) dateFormat.parse(fei);
-            Date Datefin = (Date) dateFormat.parse(fef);
             fecha = new Timestamp(Dateini.getTime());
-            fchFin = new Timestamp(Datefin.getTime());
+            if(!"".equals(fef)) {
+                Date Datefin = (Date) dateFormat.parse(fef);
+                fchFin = new Timestamp(Datefin.getTime());
+            }
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(this, "Error en los datos\nLa fecha tiene el formato:\n"
                     + "31-12-1999 23:59");
@@ -248,6 +250,7 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
 
         String nombreUsu = this.nombre.getText();
         String apellidoUsu = this.apellido.getText();
+        
         boolean cerrar = metodos.insertarConfigEnDB(nombreUsu, apellidoUsu, fecha, fchFin);
         if (cerrar) {
             this.dispose();
