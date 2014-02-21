@@ -2,6 +2,7 @@ package interfaz;
 
 import datos.Configuracion;
 import datos.Entrenamiento;
+import java.awt.Frame;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -16,12 +17,14 @@ import org.jvnet.substance.button.StandardButtonShaper;
 
 public class ConfiguracionConsulta extends javax.swing.JDialog {
     
+    Frame parent;
     Metodos metodos;
     
     public ConfiguracionConsulta(java.awt.Frame parent, boolean modal, Metodos metodos) {
         super(parent, modal);
         this.setResizable(false);//no se pueda cambiar tamaño
         this.metodos = metodos;
+        this.parent = parent;
         //this.botonSalir.putClientProperty(SubstanceLookAndFeel.BUTTON_SHAPER_PROPERTY,new StandardButtonShaper());
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
@@ -209,7 +212,7 @@ public class ConfiguracionConsulta extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
-        ConfiguracionNueva ventanaParaEditar = new ConfiguracionNueva(this, true, metodos);
+        ConfiguracionNueva ventanaParaEditar = new ConfiguracionNueva(parent, true, metodos);
         ventanaParaEditar.setVisible(true);
         mostrarUsuario();
     }//GEN-LAST:event_botonEditarActionPerformed

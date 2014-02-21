@@ -53,10 +53,9 @@ public class PantallaInicial extends javax.swing.JFrame {
 
             // Pone ayuda a item de menu al pulsarlo y a F1 en ventana
             // principal y secundaria.
-            
             hb.enableHelpKey(getRootPane(), "principal", helpset);
             hb.enableHelpOnButton(this.btnAyuda, "configuracionnueva", helpset);
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -395,7 +394,7 @@ public class PantallaInicial extends javax.swing.JFrame {
 
     private void btnINFORME1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnINFORME1ActionPerformed
         ListaItinerario info1 = new ListaItinerario(this, false, metodos);
-       // SubstanceLookAndFeel.setCurrentWatermark("org.jvnet.substance.watermark.SubstanceBinaryWatermark");
+        // SubstanceLookAndFeel.setCurrentWatermark("org.jvnet.substance.watermark.SubstanceBinaryWatermark");
         info1.setVisible(true);
     }//GEN-LAST:event_btnINFORME1ActionPerformed
 
@@ -411,19 +410,19 @@ public class PantallaInicial extends javax.swing.JFrame {
 
     private void btnGraficoItiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraficoItiActionPerformed
         metodos.informe5();
-         File path = new File("GraficoItinerario.pdf");//referencia compruebo q existe lo puedo abrir en cualquier parete del proyecto
-            try {
+        File path = new File("GraficoItinerario.pdf");//referencia compruebo q existe lo puedo abrir en cualquier parete del proyecto
+        try {
 
-                Desktop.getDesktop().open(path);//abre ese pdf
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, ex.toString(), "No exite el archivo", JOptionPane.WARNING_MESSAGE);
-            }
+            Desktop.getDesktop().open(path);//abre ese pdf
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString(), "No exite el archivo", JOptionPane.WARNING_MESSAGE);
+        }
 
     }//GEN-LAST:event_btnGraficoItiActionPerformed
 
     private void btnGraficoEntrenamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraficoEntrenamientoActionPerformed
-       GraficoEntreamientoSemanal info3=new GraficoEntreamientoSemanal(this, true, metodos);
-       info3.setVisible(true);
+        GraficoEntreamientoSemanal info3 = new GraficoEntreamientoSemanal(this, true, metodos);
+        info3.setVisible(true);
     }//GEN-LAST:event_btnGraficoEntrenamientoActionPerformed
 
     /**
@@ -500,20 +499,26 @@ public class PantallaInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemNuevoItinerario;
     // End of variables declaration//GEN-END:variables
 
-        private void ponEnMarchaElHiloRendimiento() {
+    private void ponEnMarchaElHiloRendimiento() {
         Thread t = new Thread() {
             @Override
             public void run() {
                 while (true) {
                     try {
-			ponElRendimiento();
-                        Thread.sleep(60 * 1000);
+                        ponElRendimiento();
+                        ponElNombreDelEscalador();
+                        Thread.sleep(10 * 1000);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(PantallaInicial.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             }
+
         };
         t.start();
+    }
+
+    private void ponElNombreDelEscalador() {
+        this.etiquetaEscalador.setText(metodos.getNombreYApellidoEscalador());
     }
 }

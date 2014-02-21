@@ -35,14 +35,15 @@ public class Pruebas {
 
     private void ejecutaPrueba() {
         conectar();
-        String nombre = "";
         try {
-            resultSet = consulta.executeQuery("SELECT nombre, apellido FROM escalador");
+            resultSet = consulta.executeQuery("SELECT  FROM ");
             while(resultSet.next()) {
-                nombre = resultSet.getString(1) + " " + resultSet.getString(2);
+                
             }
         } catch (SQLException ex) {
             Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    
 }

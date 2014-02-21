@@ -1,6 +1,7 @@
 package interfaz;
 
 import datos.Configuracion;
+import java.awt.Frame;
 import java.awt.Image;
 import java.sql.SQLException;
 
@@ -25,7 +26,7 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
      */
     Metodos metodos;
 
-    public ConfiguracionNueva(javax.swing.JDialog parent, boolean modal, Metodos metodos) {
+    public ConfiguracionNueva(java.awt.Frame parent, boolean modal, Metodos metodos) {
         super(parent, modal);
         this.setResizable(false);
         initComponents();
