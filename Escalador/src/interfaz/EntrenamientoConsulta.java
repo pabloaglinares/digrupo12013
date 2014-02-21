@@ -301,14 +301,14 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
     }//GEN-LAST:event_botonEditarActionPerformed
 
     private void botonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBorrarActionPerformed
-        try {
-            int i = tablaEntrenamientos.getSelectedRow();
-            metodos.deleteEntrenamiento(tablaEntrenamientos.getValueAt(i, 4).toString());
-            vaciarTabla();
-            rellenarTabla();
-        } catch (ArrayIndexOutOfBoundsException e) {
-            JOptionPane.showMessageDialog(this, "Seleciona la fila de la tabla que desees borrar");
-        }
+//        try {
+//            int i = tablaEntrenamientos.getSelectedRow();
+//            metodos.deleteEntrenamiento(tablaEntrenamientos.getValueAt(i, 4).toString());
+//            vaciarTabla();
+//            rellenarTabla();
+//        } catch (ArrayIndexOutOfBoundsException e) {
+//            JOptionPane.showMessageDialog(this, "Seleciona la fila de la tabla que desees borrar");
+//        }
     }//GEN-LAST:event_botonBorrarActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
