@@ -528,13 +528,7 @@ public class Metodos {
 
             JasperExportManager.exportReportToPdfFile(print, "ListaItinerario.pdf");
 
-            File path = new File("ListaItinerario.pdf");//referencia compruebo q existe lo puedo abrir en cualquier parete del proyecto
-            try {
-
-                Desktop.getDesktop().open(path);//abre ese pdf
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, ex.toString(), "No exite el archivo", JOptionPane.WARNING_MESSAGE);
-            }
+            
         } catch (JRException ex) {
             JOptionPane.showMessageDialog(null, ex.toString(), "ERROR", JOptionPane.WARNING_MESSAGE);
 
@@ -560,13 +554,7 @@ public class Metodos {
 
             JasperExportManager.exportReportToPdfFile(print, "FechasSesiones.pdf");
 
-            File path = new File("FechasSesiones.pdf");//referencia compruebo q existe lo puedo abrir en cualquier parete del proyecto
-            try {
-
-                Desktop.getDesktop().open(path);//abre ese pdf
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, ex.toString(), "No exite el archivo", JOptionPane.WARNING_MESSAGE);
-            }
+            
         } catch (JRException ex) {
             JOptionPane.showMessageDialog(null, ex.toString(), "ERROR", JOptionPane.WARNING_MESSAGE);
 
@@ -592,13 +580,7 @@ public class Metodos {
 
             JasperExportManager.exportReportToPdfFile(print, "TipoDeSesionGrupo.pdf");
 
-            File path = new File("TipoDeSesionGrupo.pdf");//referencia compruebo q existe lo puedo abrir en cualquier parete del proyecto
-            try {
-
-                Desktop.getDesktop().open(path);//abre ese pdf
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, ex.toString(), "No exite el archivo", JOptionPane.WARNING_MESSAGE);
-            }
+            
         } catch (JRException ex) {
             JOptionPane.showMessageDialog(null, ex.toString(), "ERROR", JOptionPane.WARNING_MESSAGE);
 
@@ -621,13 +603,7 @@ public class Metodos {
 
             JasperExportManager.exportReportToPdfFile(print, "GraficoItinerario.pdf");
 
-            File path = new File("GraficoItinerario.pdf");//referencia compruebo q existe lo puedo abrir en cualquier parete del proyecto
-            try {
-
-                Desktop.getDesktop().open(path);//abre ese pdf
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, ex.toString(), "No exite el archivo", JOptionPane.WARNING_MESSAGE);
-            }
+           
         } catch (JRException | NoClassDefFoundError | IllegalArgumentException ex) {
             JOptionPane.showMessageDialog(null, ex.toString(), "ERROR", JOptionPane.WARNING_MESSAGE);
 

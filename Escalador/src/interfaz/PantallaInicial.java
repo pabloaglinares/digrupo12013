@@ -1,7 +1,9 @@
 package interfaz;
 
 import datos.Configuracion;
+import java.awt.Desktop;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -11,6 +13,7 @@ import javax.help.HelpBroker;
 import javax.help.HelpSet;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import metodos.Metodos;
 import org.jvnet.substance.SubstanceLookAndFeel;
 import org.jvnet.substance.watermark.SubstanceImageWatermark;
@@ -396,6 +399,13 @@ public class PantallaInicial extends javax.swing.JFrame {
 
     private void btnGraficoItiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraficoItiActionPerformed
         metodos.informe5();
+         File path = new File("GraficoItinerario.pdf");//referencia compruebo q existe lo puedo abrir en cualquier parete del proyecto
+            try {
+
+                Desktop.getDesktop().open(path);//abre ese pdf
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, ex.toString(), "No exite el archivo", JOptionPane.WARNING_MESSAGE);
+            }
 
     }//GEN-LAST:event_btnGraficoItiActionPerformed
 
