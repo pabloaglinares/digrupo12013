@@ -6,6 +6,8 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import metodos.Metodos;
+import org.jvnet.substance.SubstanceLookAndFeel;
+import org.jvnet.substance.button.StandardButtonShaper;
 
 public class ItinerarioNuevo extends javax.swing.JDialog {
 
@@ -19,6 +21,7 @@ public class ItinerarioNuevo extends javax.swing.JDialog {
         this.metodos = metodos;
         //this.alta.setEnabled(false);
         initComponents();
+        this.alta.putClientProperty(SubstanceLookAndFeel.BUTTON_SHAPER_PROPERTY, new StandardButtonShaper());
         this.setTitle("Nuevo itinerario");
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
     }
@@ -102,6 +105,7 @@ public class ItinerarioNuevo extends javax.swing.JDialog {
             }
         });
 
+        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/salir-8.png"))); // NOI18N
         salir.setText("Salir");
         salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,6 +113,7 @@ public class ItinerarioNuevo extends javax.swing.JDialog {
             }
         });
 
+        alta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/guardar.png"))); // NOI18N
         alta.setText("Alta");
         alta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,7 +195,7 @@ public class ItinerarioNuevo extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(salir)
                     .addComponent(alta))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
