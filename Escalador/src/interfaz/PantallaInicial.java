@@ -61,7 +61,7 @@ public class PantallaInicial extends javax.swing.JFrame {
     private void mostrarUsuario() {
         List<Configuracion> usuarioList = null;
         try {
-            usuarioList = metodos.obtenerUsuario();
+            usuarioList = metodos.getUsuario();
             for (Configuracion c : usuarioList) {
                 etiquetaEscalador.setText(c.getNombre() + " " + c.getApellido());
             }

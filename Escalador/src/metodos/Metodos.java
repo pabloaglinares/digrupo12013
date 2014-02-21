@@ -63,7 +63,7 @@ public class Metodos {
         }
     }
 
-    public List<Itinerario> obtenerListaItinerarios() {
+    public List<Itinerario> getListaItinerarios() {
         String sql = "select * from ITINERARIO";
         ResultSet resultSet;
         conectar();
@@ -93,7 +93,7 @@ public class Metodos {
         return listaItinerarios;
     }
 
-    public List<String> obtenerListaNombresDeItinerarios() {
+    public List<String> getListaNombresDeItinerarios() {
         List<String> nombresDeItinerarios = new ArrayList<>();
         String sql = "SELECT nombre FROM itinerario";
         conectar();
@@ -108,7 +108,7 @@ public class Metodos {
         return nombresDeItinerarios;
     }
 
-    public List<ItinerarioFin> obtenerListaItinerFin() throws SQLException {
+    public List<ItinerarioFin> getListaItinerFin() throws SQLException {
         ItinerarioFin itinerarioFin;
         List<ItinerarioFin> listaItinerarioFin = new ArrayList<>();
         conectar();
@@ -138,7 +138,7 @@ public class Metodos {
         return listaItinerarioFin;
     }
 
-    public List<Entrenamiento> obtenerListaEntrenamientos() throws SQLException {
+    public List<Entrenamiento> getListaEntrenamientos() throws SQLException {
 
         Entrenamiento entrenamiento;
         List<Entrenamiento> listaEntrenamientos = new ArrayList<>();
@@ -291,47 +291,8 @@ public class Metodos {
 
     }
 
-    //Comprueba que las cajas de textos de las fechas solo tengan fechas en formato dd/MM/yyyy y que no esten vacios
-    public boolean comprobarFecha(String texto) {
-        boolean valido = false;
-        if (texto.length() == 0) {
-            valido = false;
-        } else {
-            Pattern patron = Pattern.compile("\\d\\d\\d\\d-\\d\\d-\\d\\d");
-            Matcher m = patron.matcher(texto);
-            if (m.matches()) {
-                valido = true;
-            }
-        }
-        return valido;
-    }
 
-    /**
-     * Comprueba que las palabras sólo contienen letras.
-     *
-     * @param texto
-     * @return
-     */
-    public boolean comprobarLetras(String texto) {
-        return texto.matches("[a-zA-Z]*");
-    }
-
-    public boolean comprobarNoEsCadenaVacia(String texto) {
-        return "".equals(texto);
-    }
-
-    //Este método se encarga de validar que el texto contenga sólo letras o números.
-    public boolean validarTextoNumeros(String texto) {
-        return texto.matches("[a-zA-Z\\d]*");
-    }
-
-    // Comprueba que la hora se componga de dos pares de dígitos separados por el caracter dos puntos.
-    public boolean comprobarHora(String hora) {
-        return hora.matches("\\d\\d:\\d\\d:\\d\\d");
-        //para meter los segundos añadir +00 tras el getText();
-    }
-
-    public List<Configuracion> obtenerUsuario() throws SQLException {
+    public List<Configuracion> getUsuario() throws SQLException {
         Configuracion config;
         List<Configuracion> usuarioList = new ArrayList<>();
         conectar();

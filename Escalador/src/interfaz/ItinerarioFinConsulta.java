@@ -42,7 +42,7 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
         List<ItinerarioFin> listaItinerarioFin = null;
 
         try {
-            listaItinerarioFin = metodos.obtenerListaItinerFin();
+            listaItinerarioFin = metodos.getListaItinerFin();
 
             String nombre, fecha;
 

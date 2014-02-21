@@ -40,7 +40,7 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
     private void mostrarUsuario() {
         List<Configuracion> usuarioList = null;
         try {
-            usuarioList = metodos.obtenerUsuario();
+            usuarioList = metodos.getUsuario();
             for (Configuracion c : usuarioList) {
                 nombre.setText(c.getNombre());
                 apellido.setText(c.getApellido());

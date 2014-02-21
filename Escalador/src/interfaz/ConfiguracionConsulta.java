@@ -33,7 +33,7 @@ public class ConfiguracionConsulta extends javax.swing.JDialog {
     private void mostrarUsuario() {
         List<Configuracion> usuarioList = null;
         try {
-            usuarioList = metodos.obtenerUsuario();
+            usuarioList = metodos.getUsuario();
             for (Configuracion c : usuarioList) {
                 labelNombre.setText(c.getNombre());
                 labelApellidos.setText(c.getApellido());

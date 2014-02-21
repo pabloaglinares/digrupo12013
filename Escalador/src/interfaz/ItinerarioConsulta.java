@@ -37,7 +37,7 @@ public class ItinerarioConsulta extends javax.swing.JDialog {
 
     private void rellenarTabla() {
         List<Itinerario> listaItinerarios = null;
-        listaItinerarios = metodos.obtenerListaItinerarios();
+        listaItinerarios = metodos.getListaItinerarios();
         String nombre, localizacion, tipo, dificultad, imagen;
         for (Itinerario i : listaItinerarios) {
             nombre = i.getNombre();

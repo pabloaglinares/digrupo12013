@@ -54,7 +54,7 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
     private void rellenarTabla() {
         List<Entrenamiento> listaEntrenamientos = null;
         try {
-            listaEntrenamientos = metodos.obtenerListaEntrenamientos();
+            listaEntrenamientos = metodos.getListaEntrenamientos();
 
             String tipo, descripcion, horaInicio, horaFin, fecha;
 
