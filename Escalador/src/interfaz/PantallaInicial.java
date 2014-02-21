@@ -105,6 +105,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         btnInformeEntrenamiento = new javax.swing.JMenuItem();
         EntrenamientoAgrupado = new javax.swing.JMenuItem();
         btnGraficoIti = new javax.swing.JMenuItem();
+        btnGraficoEntrenamiento = new javax.swing.JMenuItem();
         ayuda = new javax.swing.JMenu();
         btnAyuda = new javax.swing.JMenuItem();
 
@@ -290,6 +291,15 @@ public class PantallaInicial extends javax.swing.JFrame {
         });
         INFORMES.add(btnGraficoIti);
 
+        btnGraficoEntrenamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/el-informe.png"))); // NOI18N
+        btnGraficoEntrenamiento.setText("Grafico Entrenamiento Semanal/horas");
+        btnGraficoEntrenamiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGraficoEntrenamientoActionPerformed(evt);
+            }
+        });
+        INFORMES.add(btnGraficoEntrenamiento);
+
         jMenuBar1.add(INFORMES);
 
         ayuda.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -409,6 +419,11 @@ public class PantallaInicial extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnGraficoItiActionPerformed
 
+    private void btnGraficoEntrenamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraficoEntrenamientoActionPerformed
+       GraficoEntreamientoSemanal info3=new GraficoEntreamientoSemanal(this, true, metodos);
+       info3.setVisible(true);
+    }//GEN-LAST:event_btnGraficoEntrenamientoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -461,6 +476,7 @@ public class PantallaInicial extends javax.swing.JFrame {
     private javax.swing.JMenu INFORMES;
     private javax.swing.JMenu ayuda;
     private javax.swing.JMenuItem btnAyuda;
+    private javax.swing.JMenuItem btnGraficoEntrenamiento;
     private javax.swing.JMenuItem btnGraficoIti;
     private javax.swing.JMenuItem btnINFORME1;
     private javax.swing.JMenuItem btnInformeEntrenamiento;
