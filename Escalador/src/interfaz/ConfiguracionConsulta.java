@@ -15,9 +15,9 @@ import org.jvnet.substance.SubstanceLookAndFeel;
 import org.jvnet.substance.button.StandardButtonShaper;
 
 public class ConfiguracionConsulta extends javax.swing.JDialog {
-
+    
     Metodos metodos;
-
+    
     public ConfiguracionConsulta(java.awt.Frame parent, boolean modal, Metodos metodos) {
         super(parent, modal);
         this.setResizable(false);//no se pueda cambiar tamaño
@@ -29,7 +29,7 @@ public class ConfiguracionConsulta extends javax.swing.JDialog {
         // metodos.mostrarConfiguracion(jLabel1, labelApellidos,labelFechaInicio,labelFechaFin);
         mostrarUsuario();
     }
-
+    
     private void mostrarUsuario() {
         List<Configuracion> usuarioList = null;
         try {
@@ -39,20 +39,25 @@ public class ConfiguracionConsulta extends javax.swing.JDialog {
                 labelApellidos.setText(c.getApellido());
                 fecha(c);
             }
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(ConfiguracionConsulta.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
     }
-
+    
     private void fecha(Configuracion c) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-
-        Timestamp fechaIni = c.getFechaIni();
-        Timestamp fechaFin = c.getFechaFin();
-        labelFechaInicio.setText(dateFormat.format(fechaIni.getTime()));
-        labelFechaFin.setText(dateFormat.format(fechaFin.getTime()));
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+            
+            Timestamp fechaIni = c.getFechaIni();
+            Timestamp fechaFin = c.getFechaFin();
+            labelFechaInicio.setText(dateFormat.format(fechaIni.getTime()));
+            labelFechaFin.setText(dateFormat.format(fechaFin.getTime()));
+        } catch (NullPointerException ex) {
+            labelFechaInicio.setText(null);
+            labelFechaFin.setText(null);
+        }
     }
 
     /**

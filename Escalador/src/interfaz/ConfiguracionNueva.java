@@ -54,12 +54,17 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
     }
 
     private void fecha(Configuracion c) {
+        try{
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 
         Timestamp fechaIni = c.getFechaIni();
         Timestamp fechaFin = c.getFechaFin();
         inicio.setText(dateFormat.format(fechaIni.getTime()));
         fin.setText(dateFormat.format(fechaFin.getTime()));
+        }catch(NullPointerException ex){
+        inicio.setText(null);
+        fin.setText(null);
+        }
     }
 
     /**
