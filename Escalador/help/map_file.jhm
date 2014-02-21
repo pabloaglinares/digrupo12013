@@ -8,4 +8,8 @@
    <mapID target="entrenamientoconsulta" url="html/entrenamiento_consulta.html" />
    <mapID target="itinerarioconsulta" url="html/itinerario_consulta.html" />
    <mapID target="itinerariorealizadoconsulta" url="html/itinerario_fin_consulta.html" />
+   <mapID target="listaitinerario" url="html/lista_itinerario.html" />
+   <mapID target="listaentrenamiento" url="html/lista_entrenamiento.html" />
+   <mapID target="entrenamientotipo" url="html/entrenamiento_tipo.html" />
+   <mapID target="graficodificultad" url="html/grafico_dificultad.html" />
 </map>

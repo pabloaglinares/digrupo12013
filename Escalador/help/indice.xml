@@ -8,4 +8,8 @@
     <indexitem text="Entrenamiento consulta" target="entrenamientoconsulta"/>
 	<indexitem text="Itinerario consulta" target="itinerarioconsulta"/>
     <indexitem text="Itinerario realizado consulta" target="itinerariorealizadoconsulta"/>
+	<indexitem text="Lista itinerario" target="listaitinerario"/>
+	<indexitem text="Lista entrenamiento" target="listaentrenamiento"/>
+	<indexitem text="Entrenamiento tipo" target="entrenamientotipo"/>
+	<indexitem text="Grafico dificultadl" target="graficodificultad"/>
 </index>
