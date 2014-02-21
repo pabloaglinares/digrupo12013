@@ -639,4 +639,19 @@ public void informe3(Integer mes, Integer ano) {
         }
 
     }//informe5
+    //metodo para conseguir el directorio de la imagen
+    public String imagenURL(String URL){
+        String imagenURL=null;
+        String sql="SELECT i.URLimagen FROM ITINERARIOS i"
+                + "WHERE '"+URL+"'=i.URLimagen";
+        try{
+        resultSet = consulta.executeQuery(sql);
+        imagenURL= resultSet.getString(1);
+        }catch(SQLException e){
+             JOptionPane.showMessageDialog(null, e.toString(), "No se puede encontrar la imagen en la ruta especificada.", JOptionPane.WARNING_MESSAGE);
+        }
+        
+    return  imagenURL;
+
+    }
 }

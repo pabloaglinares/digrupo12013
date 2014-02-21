@@ -34,7 +34,7 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
         defaultTableModel = new DefaultTableModel();
         defaultTableModel.addColumn("Nombre");
         defaultTableModel.addColumn("Fecha");
-        jTable1.setModel(defaultTableModel);
+        tablaItinerarioFin.setModel(defaultTableModel);
 
     }
 
@@ -62,8 +62,8 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
     }
 
     private void vaciarTabla() {
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        int filas = jTable1.getRowCount();
+        DefaultTableModel modelo = (DefaultTableModel) tablaItinerarioFin.getModel();
+        int filas = tablaItinerarioFin.getRowCount();
         for (int i = 0; i < filas; i++) {
             modelo.removeRow(0);
         }
@@ -79,16 +79,15 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaItinerarioFin = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        buttonFoto = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaItinerarioFin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -99,7 +98,7 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaItinerarioFin);
 
         jButton1.setText("salir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -108,10 +107,10 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
             }
         });
 
-        jButton2.setText("ver foto");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonFoto.setText("ver foto");
+        buttonFoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                buttonFotoActionPerformed(evt);
             }
         });
 
@@ -129,43 +128,33 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
             }
         });
 
-        jLabel1.setText("jLabel1");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(96, 96, 96)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(35, 35, 35)
                         .addComponent(jButton3)
-                        .addGap(82, 82, 82)
-                        .addComponent(jButton4))
+                        .addGap(35, 35, 35)
+                        .addComponent(jButton4)
+                        .addGap(35, 35, 35)
+                        .addComponent(buttonFoto))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addGap(91, 91, 91))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
+                    .addComponent(buttonFoto)
                     .addComponent(jButton3)
                     .addComponent(jButton4))
                 .addGap(24, 24, 24))
@@ -174,9 +163,16 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void buttonFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFotoActionPerformed
+//        int filaSeleccionada=tablaItinerarioFin.getSelectedRow();
+//        String nombre = tablaItinerarioFin.getValueAt(filaSeleccionada,0).toString();
+//        String URL = metodos.imagenURL(nombre);
+        String URL="\\awesome.png";//Esto se quita, es solo de prueba :D
+        
+        ImagenDialog ImagenDialog = new ImagenDialog(null, true, URL);
+        ImagenDialog.setVisible(true);
+        
+    }//GEN-LAST:event_buttonFotoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
@@ -184,9 +180,9 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
-            int i = jTable1.getSelectedRow();
-            int id = metodos.getIdItinerario(jTable1.getValueAt(i, 0).toString());
-            Timestamp fecha = Timestamp.valueOf(jTable1.getValueAt(i, 1).toString());
+            int i = tablaItinerarioFin.getSelectedRow();
+            int id = metodos.getIdItinerario(tablaItinerarioFin.getValueAt(i, 0).toString());
+            Timestamp fecha = Timestamp.valueOf(tablaItinerarioFin.getValueAt(i, 1).toString());
             metodos.deleteItinerarioFin(id, fecha);
             vaciarTabla();
             rellenarTabla();
@@ -197,12 +193,12 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         try {
-            int i = jTable1.getSelectedRow();
-            int id = metodos.getIdItinerario(jTable1.getValueAt(i, 0).toString());
-            Timestamp fecha = Timestamp.valueOf(jTable1.getValueAt(i, 1).toString());
+            int i = tablaItinerarioFin.getSelectedRow();
+            int id = metodos.getIdItinerario(tablaItinerarioFin.getValueAt(i, 0).toString());
+            Timestamp fecha = Timestamp.valueOf(tablaItinerarioFin.getValueAt(i, 1).toString());
             ItinerarioFinNuevo itfin = new ItinerarioFinNuevo(this, rootPaneCheckingEnabled, metodos,
-                    jTable1.getValueAt(i, 0).toString(),
-                    jTable1.getValueAt(i, 1).toString(),
+                    tablaItinerarioFin.getValueAt(i, 0).toString(),
+                    tablaItinerarioFin.getValueAt(i, 1).toString(),
                     id);
             itfin.setVisible(true);
             vaciarTabla();
@@ -213,12 +209,11 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonFoto;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaItinerarioFin;
     // End of variables declaration//GEN-END:variables
 }
