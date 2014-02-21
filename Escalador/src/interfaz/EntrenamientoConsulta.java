@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import metodos.Metodos;
+import org.jvnet.substance.SubstanceLookAndFeel;
 
 public class EntrenamientoConsulta extends javax.swing.JDialog {
 
@@ -30,6 +31,7 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
         super(parent, modal);
         this.setResizable(false);
         this.metodos = metodos;
+        SubstanceLookAndFeel.setCurrentWatermark("org.jvnet.substance.watermark.SubstanceCopperplateEngravingWatermark");
         initComponents();
         tabla();
         rellenarTabla();

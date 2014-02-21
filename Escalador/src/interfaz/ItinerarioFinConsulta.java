@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import metodos.Metodos;
+import org.jvnet.substance.SubstanceLookAndFeel;
 
 public class ItinerarioFinConsulta extends javax.swing.JDialog {
 
@@ -24,6 +25,7 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.metodos = metodos;
+        SubstanceLookAndFeel.setCurrentWatermark("org.jvnet.substance.watermark.SubstanceKatakanaWatermark");
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         this.setTitle("Consulta itinerarios realizados");
         tabla();
