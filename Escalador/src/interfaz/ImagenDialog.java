@@ -7,31 +7,49 @@
 package interfaz;
 
 import java.awt.Dimension;
+import java.io.File;
+import java.util.concurrent.TimeUnit;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import metodos.Metodos;
 
 /**
  *
  * @author NanD
  */
 public class ImagenDialog extends javax.swing.JDialog {
-
+    Metodos metodos;
     /**
      * Creates new form ImagenDialog
      */
     public ImagenDialog(java.awt.Frame parent, boolean modal, String URL) {
         super(parent, modal);
+
         initComponents();
-        
-        URL="./awesome.png";//Esto se quita, es de prueba y para que os riais un poco :D
+          File imagen = new File(URL);  
+          
+        if(!imagen.exists()){     
+            
+           IMAGEN.setText("La imagen no ha podido encontrarse en el directorio especidicado, actualice los datos por favor.");
+
+        }else{           
         ImageIcon icon = new ImageIcon(URL);
         int ancho=icon.getIconHeight();
         int alto=icon.getIconWidth();
+                    
         setSize(ancho, alto);
         IMAGEN.setSize(alto,ancho);
         IMAGEN.setIcon(icon);
-        
+        }
     }
+//    public boolean checkFoto(String URL){
+//        ImageIcon icon = new ImageIcon(URL);
+//        int ancho=icon.getIconHeight();
+//        int alto=icon.getIconWidth();
+//        if(alto==0 || ancho==0){
+//        return false; 
+//        }else{return true;}
+//    }
         public void getSize(int ancho, int alto){
         setSize(ancho, alto);     
     }
@@ -49,17 +67,17 @@ public class ImagenDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(java.awt.Color.black);
 
-        IMAGEN.setOpaque(true);
+        IMAGEN.setText("La imagen no ha podido encontrarse en el directorio especidicado, actualice los datos por favor.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(IMAGEN, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(IMAGEN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(IMAGEN, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addComponent(IMAGEN, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
         );
 
         pack();

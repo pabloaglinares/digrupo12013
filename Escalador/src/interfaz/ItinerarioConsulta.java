@@ -76,6 +76,7 @@ public class ItinerarioConsulta extends javax.swing.JDialog {
         btnSalir = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        buttonFoto = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -126,22 +127,29 @@ public class ItinerarioConsulta extends javax.swing.JDialog {
             }
         });
 
+        buttonFoto.setText("Ver Foto");
+        buttonFoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonFotoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addComponent(btnSalir)
-                        .addGap(129, 129, 129)
+                        .addGap(55, 55, 55)
                         .addComponent(jButton1)
-                        .addGap(129, 129, 129)
-                        .addComponent(jButton2)))
+                        .addGap(71, 71, 71)
+                        .addComponent(jButton2)
+                        .addGap(59, 59, 59)
+                        .addComponent(buttonFoto)))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -156,7 +164,8 @@ public class ItinerarioConsulta extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton1)
-                    .addComponent(btnSalir))
+                    .addComponent(btnSalir)
+                    .addComponent(buttonFoto))
                 .addContainerGap())
         );
 
@@ -226,9 +235,23 @@ public class ItinerarioConsulta extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void buttonFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFotoActionPerformed
+       try {
+        int filaSeleccionada=TablaItinerario.getSelectedRow();
+        String URL = metodos.imagenURL(TablaItinerario.getValueAt(filaSeleccionada,4).toString());
+        //String URL="./awesome.png";//Esto se quita, es solo de prueba :D       
+        ImagenDialog ImagenDialog = new ImagenDialog(null, true, URL);
+        ImagenDialog.setVisible(true);       
+        
+        }catch(ArrayIndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(this, "La imagen ha sido borrada o su directorio ha sido modificado.");
+        }
+    }//GEN-LAST:event_buttonFotoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaItinerario;
     private javax.swing.JButton btnSalir;
+    private javax.swing.JButton buttonFoto;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
