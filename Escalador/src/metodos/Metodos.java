@@ -202,7 +202,8 @@ public class Metodos {
         boolean pudoInsertarse;
         conectar();
         String sql = "UPDATE entrenamiento SET FECHA='" + fecha + "', HORA_COMIENZO='" + horaIni + "',"
-                + "HORA_FIN='" + horaFin + "',TIPO='" + tipo + "', DESCRIPCION='" + descripcion + "' WHERE DESCRIPCION='" + update + "'";
+                + "HORA_FIN='" + horaFin + "',TIPO='" + tipo + "', DESCRIPCION='" + descripcion + 
+                "' WHERE FECHA='" + fecha + "' AND HORA_COMIENZO='" + horaIni + "'";
         try {
             consulta.executeUpdate(sql);
             pudoInsertarse = true;

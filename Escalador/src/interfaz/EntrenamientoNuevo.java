@@ -23,7 +23,7 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
         this.setTitle("Nuevo entrenamiento");
     }
 
-    //constructor para cuando edita un entranamiento
+    //constructor para cuando edita un entrenamiento
     public EntrenamientoNuevo(javax.swing.JDialog parent, boolean modal, Metodos metodos, String areaTextoDescripcion, String campoFecha, String campoHoraFin, String campoHoraInicio, String comboTipo, boolean edicion, String update) {
         super(parent, modal);
         initComponents();
