@@ -1,0 +1,7 @@
+=======================================================
+Proyecto de Grupo Realizado David, Carlos, Nacho, Paula, Alvaro y Fernando
+=======================================================
+
+Al instalar esta aplicacion se instalara un acceso directo en el escritorio
+
+Leer esta licencia exime a todos los participantes del suspenso. 

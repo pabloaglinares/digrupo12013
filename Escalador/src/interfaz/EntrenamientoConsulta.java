@@ -314,21 +314,21 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
     }//GEN-LAST:event_botonBorrarActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        if (jComboBox1.getSelectedIndex() == 1) {
-            filtro.setRowFilter(RowFilter.regexFilter("Físico", 3));
-            tablaEntrenamientos.setRowSorter(filtro);
-        } else if (jComboBox1.getSelectedIndex() == 2) {
-            filtro.setRowFilter(RowFilter.regexFilter("Rocódromo", 3));
-            tablaEntrenamientos.setRowSorter(filtro);
-
-        } else if (jComboBox1.getSelectedIndex() == 3) {
-            filtro.setRowFilter(RowFilter.regexFilter("Roca", 3));
-            tablaEntrenamientos.setRowSorter(filtro);
-
-        } else {
-            filtro.setRowFilter(null);
-            tablaEntrenamientos.setRowSorter(filtro);
-        }
+//        if (jComboBox1.getSelectedIndex() == 1) {
+//            filtro.setRowFilter(RowFilter.regexFilter("Físico", 3));
+//            tablaEntrenamientos.setRowSorter(filtro);
+//        } else if (jComboBox1.getSelectedIndex() == 2) {
+//            filtro.setRowFilter(RowFilter.regexFilter("Rocódromo", 3));
+//            tablaEntrenamientos.setRowSorter(filtro);
+//
+//        } else if (jComboBox1.getSelectedIndex() == 3) {
+//            filtro.setRowFilter(RowFilter.regexFilter("Roca", 3));
+//            tablaEntrenamientos.setRowSorter(filtro);
+//
+//        } else {
+//            filtro.setRowFilter(null);
+//            tablaEntrenamientos.setRowSorter(filtro);
+//        } 
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jComboBox1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jComboBox1PropertyChange
