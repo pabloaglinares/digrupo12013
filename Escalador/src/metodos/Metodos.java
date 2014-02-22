@@ -460,6 +460,12 @@ public class Metodos {
         if(numSemanas <= 0) {
             return 0.0;
         }
+        if (horasEntrenadas < 0) {
+            horasEntrenadas = 0.0;
+        }
+        if (numItinerariosFin < 0) {
+            numItinerariosFin = 0;
+        }
         return getRendimientoEntrenamiento(horasEntrenadas, numSemanas) + getRendimientoItinerariosRealizados(numItinerariosFin, numSemanas);
     }
     

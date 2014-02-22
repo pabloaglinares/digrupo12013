@@ -22,10 +22,16 @@ public class MetodosTest extends TestCase {
         super.tearDown();
     }
     
-    
+    /**
+     * Comprueba que el rendimiento sea igual a cero en el caso de no tener un
+     * número positivo de semanas, por pequeño que sea, ya que el rendimiento 
+     * se mide en relación al tiempo transcurrido.
+     */
     public void testGetRendimiento1() {
         rendimientoEsperado = 0;
-        rendimientoObtenido = instance.getRendimiento(0.0, 0, 0.0); //horas, itinerarios, semanas
-        assertEquals("Tres parámetros a cero: ", rendimientoEsperado, rendimientoObtenido);
+        rendimientoObtenido = instance.getRendimiento(100.0, 100, 0.0); //horas, itinerarios, semanas
+        assertEquals("Cero semanas: ", rendimientoEsperado, rendimientoObtenido);
+        rendimientoObtenido = instance.getRendimiento(100.0, 100, -0.01);
+        assertEquals("Cero semanas: ", rendimientoEsperado, rendimientoObtenido);
     }
 }
