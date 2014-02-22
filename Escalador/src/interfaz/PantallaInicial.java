@@ -36,9 +36,11 @@ public class PantallaInicial extends javax.swing.JFrame {
         ponElRendimiento();
         ponEnMarchaElHiloRendimiento();
     }
-
+    
     private void ponElRendimiento() {
-        etiquetaRendimiento.setText(Double.toString(metodos.getRendimiento()));
+        double rendimiento = metodos.getRendimientoConfigurado();
+        double redondeado = metodos.redondeoDosDecimales(rendimiento);
+        etiquetaRendimiento.setText(Double.toString(redondeado));
     }
 
     private void ponLaAyuda() {

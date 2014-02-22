@@ -134,7 +134,7 @@ public class Pruebas {
                 fechaFin = new Date();
             }
             intervalo = fechaFin.getTime() - fechaInicio.getTime();
-            semanasIntervalo = intervalo / 1000 / 60 / 60 / 24 / 7;
+            semanasIntervalo = intervalo / 1000.0 / 60.0 / 60.0 / 24.0 / 7.0;
         } catch (SQLException ex) {
             Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
         }
