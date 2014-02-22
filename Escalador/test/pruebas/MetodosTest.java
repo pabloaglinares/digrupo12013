@@ -6,6 +6,7 @@ import metodos.Metodos;
 public class MetodosTest extends TestCase {
     
     Metodos instance = new Metodos();
+    double rendimientoEsperado, rendimientoObtenido;
     
     public MetodosTest(String testName) {
         super(testName);
@@ -22,4 +23,9 @@ public class MetodosTest extends TestCase {
     }
     
     
+    public void testGetRendimiento1() {
+        rendimientoEsperado = 0;
+        rendimientoObtenido = instance.getRendimiento(0.0, 0, 0.0); //horas, itinerarios, semanas
+        assertEquals("Tres parámetros a cero: ", rendimientoEsperado, rendimientoObtenido);
+    }
 }

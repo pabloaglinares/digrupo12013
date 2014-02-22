@@ -457,6 +457,9 @@ public class Metodos {
     }
     
     public double getRendimiento(double horasEntrenadas, int numItinerariosFin, double numSemanas) {
+        if(numSemanas <= 0) {
+            return 0.0;
+        }
         return getRendimientoEntrenamiento(horasEntrenadas, numSemanas) + getRendimientoItinerariosRealizados(numItinerariosFin, numSemanas);
     }
     
