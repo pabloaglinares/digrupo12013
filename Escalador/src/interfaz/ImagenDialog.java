@@ -32,7 +32,8 @@ public class ImagenDialog extends javax.swing.JDialog {
             
            IMAGEN.setText("La imagen no ha podido encontrarse en el directorio especidicado, actualice los datos por favor.");
 
-        }else{           
+        }else{
+        IMAGEN.setText(null);
         ImageIcon icon = new ImageIcon(URL);
         int ancho=icon.getIconHeight();
         int alto=icon.getIconWidth();

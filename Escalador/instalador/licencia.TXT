@@ -1,5 +1,5 @@
 =======================================================
-Proyecto de Grupo Realizado David, Carlos, Nacho, Paula, Alvaro y Fernando
+Proyecto de Grupo Realizado por David, Carlos, Nacho, Paula, Alvaro y Fernando
 =======================================================
 
 Al instalar esta aplicacion se instalara un acceso directo en el escritorio
