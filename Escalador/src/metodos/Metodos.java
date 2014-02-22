@@ -638,7 +638,8 @@ public class Metodos {
         }
 
     }//informe2
-public void informe3(Integer mes, Integer ano) {
+    
+    public void informe3(Integer mes, Integer ano) {
 
         conectar();
         String archivojasper = "src/informes/GraficoEntrenamiento.jasper";//ruta
@@ -663,6 +664,7 @@ public void informe3(Integer mes, Integer ano) {
         }
 
     }//informe4
+    
     public void informe4(Date fecha, Date fecha2) {
 
         conectar();
@@ -711,6 +713,7 @@ public void informe3(Integer mes, Integer ano) {
         }
 
     }//informe5
+    
     //metodo para conseguir el directorio de la imagen
     public String imagenURL(String URL){
         String imagenURL=null;
