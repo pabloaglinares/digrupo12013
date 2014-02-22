@@ -366,7 +366,7 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextField2KeyReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JOptionPane.showMessageDialog(this, "Nacho termina el filtro");
+        JOptionPane.showMessageDialog(this, "Que alguien termine el filtro");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
