@@ -146,11 +146,8 @@
       <SubComponents>
         <Component class="javax.swing.JTextField" name="campoFecha">
           <Properties>
-            <Property name="text" type="java.lang.String" value="2014-12-30"/>
+            <Property name="text" type="java.lang.String" value="2014-02-01"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoFechaActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="campoHoraInicio">
           <Properties>
@@ -159,7 +156,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="campoHoraFin">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Time"/>
+            <Property name="text" type="java.lang.String" value="20:00:00"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="comboTipo">

@@ -1,8 +1,6 @@
 package interfaz;
 
 import datos.Configuracion;
-import java.awt.Frame;
-import java.awt.Image;
 import java.sql.SQLException;
 
 import java.sql.Timestamp;
@@ -17,7 +15,6 @@ import javax.swing.JOptionPane;
 import metodos.Metodos;
 import org.jvnet.substance.SubstanceLookAndFeel;
 import org.jvnet.substance.button.StandardButtonShaper;
-import org.jvnet.substance.watermark.SubstanceImageWatermark;
 
 public class ConfiguracionNueva extends javax.swing.JDialog {
 

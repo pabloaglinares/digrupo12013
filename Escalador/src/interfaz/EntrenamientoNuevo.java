@@ -1,11 +1,7 @@
 package interfaz;
 
-import java.awt.Dialog;
 import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import metodos.Metodos;
 
 public class EntrenamientoNuevo extends javax.swing.JDialog {
@@ -34,7 +30,7 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
         this.comboTipo.setSelectedItem(comboTipo);
         this.areaTextoDescripcion.setText(areaTextoDescripcion);
         this.edicion = edicion;
-        this.update=update;
+        this.update = update;
     }
 
     /**
@@ -66,16 +62,11 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Entrenamiento"));
         jPanel1.setToolTipText("");
 
-        campoFecha.setText("2014-12-30");
-        campoFecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoFechaActionPerformed(evt);
-            }
-        });
+        campoFecha.setText("2014-02-01");
 
         campoHoraInicio.setText("17:00:00");
 
-        campoHoraFin.setText("Time");
+        campoHoraFin.setText("20:00:00");
 
         comboTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Físico", "Rocódromo", "Roca" }));
 
@@ -212,21 +203,20 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
         String descripcion = this.areaTextoDescripcion.getText();
 //        boolean fechaValida, horaInicioValida, horaFinValida;
 //        
-  //fechaValida = metodos.comprobarFecha(fecha);
+        //fechaValida = metodos.comprobarFecha(fecha);
 //        horaInicioValida = metodos.comprobarHora(horaInicio);
 //        horaFinValida = metodos.comprobarHora(horaFin);
 
         String mensaje;
         boolean insercionCorrecta = false;
 
-        if (edicion==false) {
+        if (edicion == false) {
             insercionCorrecta = metodos.insertarEntrenamientoEnDB(fecha, horaInicio, horaFin, tipo, descripcion);
-        
-        }else{
-            insercionCorrecta= metodos.updateEntrenamiento(fecha, horaInicio, horaFin, tipo, descripcion, update);
+
+        } else {
+            insercionCorrecta = metodos.updateEntrenamiento(fecha, horaInicio, horaFin, tipo, descripcion, update);
         }
-        
-        
+
         if (insercionCorrecta) {
             this.dispose();
         } else {
@@ -236,10 +226,6 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
 
 
     }//GEN-LAST:event_botonAceptarActionPerformed
-
-    private void campoFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoFechaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoFechaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaTextoDescripcion;
