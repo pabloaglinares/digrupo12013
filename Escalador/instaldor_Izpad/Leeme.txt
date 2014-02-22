@@ -1,8 +1,0 @@
-Un fichero leeme.txt
-
-Información sobre la aplicación...
-
-SE INSTALARA UN ACCESO DIRECRO DE LA APLICACION
-Y EN TODOS LOS PROGRAMS EN INICIO
-
-
