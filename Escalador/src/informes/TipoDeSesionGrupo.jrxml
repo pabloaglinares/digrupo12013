@@ -99,10 +99,6 @@
 				<reportElement x="283" y="63" width="26" height="20" uuid="9741f514-cbf0-4d42-b51b-195f93756be8"/>
 				<text><![CDATA[    a]]></text>
 			</staticText>
-			<image>
-				<reportElement x="470" y="0" width="106" height="83" uuid="d32e5851-3ade-4ed5-9a8b-8bfd95213100"/>
-				<imageExpression><![CDATA["C:\\Users\\paulina\\Desktop\\git\\grupo2\\digrupo12013\\Escalador\\src\\fotos\\icono.jpg"]]></imageExpression>
-			</image>
 		</band>
 	</pageHeader>
 	<columnHeader>

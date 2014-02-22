@@ -28,6 +28,17 @@ order by week(fecha)]]>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
+	<title>
+		<band height="50">
+			<staticText>
+				<reportElement x="40" y="8" width="449" height="42" uuid="0b7785d9-8815-4903-bdb0-1400cacc14d4"/>
+				<textElement textAlignment="Center">
+					<font fontName="Baby Kruffy" size="18"/>
+				</textElement>
+				<text><![CDATA[Grafico  entrenamiento de horas por semana]]></text>
+			</staticText>
+		</band>
+	</title>
 	<summary>
 		<band height="303" splitType="Stretch">
 			<barChart>

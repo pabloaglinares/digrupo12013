@@ -19,7 +19,7 @@
 FROM
      "PUBLIC"."ENTRENAMIENTO" ENTRENAMIENTO
 where ENTRENAMIENTO."FECHA" Between $P{date1} AND $P{date2}
-order by ENTRENAMIENTO."FECHA" ]]>
+order by ENTRENAMIENTO."FECHA"]]>
 	</queryString>
 	<field name="FECHA" class="java.sql.Date"/>
 	<field name="HORA_COMIENZO" class="java.sql.Time"/>
@@ -31,10 +31,6 @@ order by ENTRENAMIENTO."FECHA" ]]>
 	</background>
 	<title>
 		<band height="112" splitType="Stretch">
-			<image>
-				<reportElement x="0" y="0" width="283" height="112" uuid="56a3dedf-3174-4bc0-81af-a304da1782e5"/>
-				<imageExpression><![CDATA["C:\\Users\\paulina\\Desktop\\git\\grupo2\\digrupo12013\\Escalador\\src\\fotos\\clasicaPirineosyalpes.jpg"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="100" y="36" width="517" height="41" forecolor="#003333" uuid="ea80c5ad-b0ee-41ee-b096-bcb859ea2d7c"/>
 				<textElement textAlignment="Justified">

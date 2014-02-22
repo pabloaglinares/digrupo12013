@@ -23,10 +23,6 @@ WHERE F.A_ITINERARIO=I.P_ITINERARIO AND F.FECHA Between $P{fecha1} AND $P{fecha2
 	</background>
 	<title>
 		<band height="102" splitType="Stretch">
-			<image>
-				<reportElement x="0" y="0" width="76" height="102" uuid="5eabc33c-8bde-49aa-afad-c021c35b4c2c"/>
-				<imageExpression><![CDATA["C:\\Users\\paulina\\Desktop\\git\\grupo2\\digrupo12013\\Escalador\\src\\fotos\\clasica.jpg"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="93" y="38" width="184" height="20" uuid="1e851ab0-6231-4c10-9cfe-2a8a085d82ec"/>
 				<text><![CDATA[Lista Itinerarios de la  fecha]]></text>

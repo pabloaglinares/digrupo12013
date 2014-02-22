@@ -10,7 +10,7 @@ SET WRITE_DELAY 10
 SET SCHEMA PUBLIC
 INSERT INTO ENTRENAMIENTO VALUES('2014-02-17','16:00:00','22:00:00','Roc\u00f3dromo','Mejorando tiempos.')
 INSERT INTO ENTRENAMIENTO VALUES('2014-01-01','10:00:00','20:00:00','Roca','Record.')
-INSERT INTO ESCALADOR VALUES(1,'Pepe','P\u00e9rez','2014-01-01 00:01:00.000000000','2014-01-07 23:59:00.000000000')
+INSERT INTO ESCALADOR VALUES(1,'Pepe','P\u00e9rez','2014-01-01 00:01:00.000000000','2014-02-28 14:05:00.000000000')
 INSERT INTO ITINERARIO VALUES(7,'NUEVO','NUEVO SITIO','Boulder','1a+','')
 INSERT INTO ITINERARIO VALUES(8,'prueba','sitio raro','Boulder','3b-','C:\Users\paulina\Desktop\git\grupo2\digrupo12013\Escalador\src\fotos\clasicaPirineosyalpes.jpg')
 INSERT INTO ITINERARIO VALUES(9,'xafas','safdasfasd','Via de Escalada','1a','./awesome.png')
