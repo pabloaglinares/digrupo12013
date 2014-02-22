@@ -328,7 +328,7 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
 //        } else {
 //            filtro.setRowFilter(null);
 //            tablaEntrenamientos.setRowSorter(filtro);
-//        }
+//        } 
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jComboBox1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jComboBox1PropertyChange
