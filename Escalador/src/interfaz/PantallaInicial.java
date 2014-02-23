@@ -462,7 +462,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceEbonyTheme");
         //        //"./src/fotos/climbing1.jpg"
 
-        SubstanceLookAndFeel.setCurrentWatermark(new SubstanceImageWatermark("src/fotos/climbing1.jpg"));//marca de agua
+        SubstanceLookAndFeel.setCurrentWatermark(new SubstanceImageWatermark("./fotos/climbing1.jpg"));//marca de agua
         SubstanceLookAndFeel.setImageWatermarkOpacity(new Float(0.4));//opacidad de marca de agua
 
         java.awt.EventQueue.invokeLater(new Runnable() {
