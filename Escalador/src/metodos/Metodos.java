@@ -601,7 +601,7 @@ public class Metodos {
 
         conectar();
         // String archivojasper="./src/ejercicio2/Facturas.jasper";
-        String archivojasper = "./src/informes/ListaItinerario.jasper";//ruta
+        String archivojasper = "./informes/ListaItinerario.jasper";//ruta
         Map parametros = new HashMap();
 
         parametros.put("fecha1", fecha);
@@ -627,7 +627,7 @@ public class Metodos {
 
         conectar();
          //String archivojasper="./src/ejercicio2/Facturas.jasper";
-        String archivojasper = "./src/informes/FechasSesiones.jasper";//ruta
+        String archivojasper = "./informes/FechasSesiones.jasper";//ruta
         Map parametros = new HashMap();
 
         parametros.put("date1", fecha);
@@ -654,7 +654,7 @@ public class Metodos {
 
         conectar();
         // String archivojasper="./src/ejercicio2/Facturas.jasper";
-        String archivojasper = "./src/informes/GraficoEntrenamiento.jasper";//ruta
+        String archivojasper = "./informes/GraficoEntrenamiento.jasper";//ruta
         Map parametros = new HashMap();
 
         parametros.put("mes", mes);
@@ -680,7 +680,7 @@ public class Metodos {
     public void informe4(Date fecha, Date fecha2) {
 
         conectar();
-        String archivojasper = "./src/informes/TipoDeSesionGrupo.jasper";//ruta
+        String archivojasper = "./informes/TipoDeSesionGrupo.jasper";//ruta
         Map parametros = new HashMap();
 
         parametros.put("date1", fecha);
@@ -706,7 +706,7 @@ public class Metodos {
     public void informe5() {
 
         conectar();
-        String archivojasper = "./src/informes/GraficoItinerario.jasper";//ruta
+        String archivojasper = "./informes/GraficoItinerario.jasper";//ruta
 
         try {
             JasperPrint print = JasperFillManager.fillReport(archivojasper, new HashMap(), conexion);
