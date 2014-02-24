@@ -256,7 +256,6 @@ public class PantallaInicial extends javax.swing.JFrame {
         INFORMES.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/documento-grafico.png"))); // NOI18N
         INFORMES.setText("Informes                 ");
 
-        btnINFORME1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
         btnINFORME1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/el-informe.png"))); // NOI18N
         btnINFORME1.setText("Lista Itinerarios");
         btnINFORME1.addActionListener(new java.awt.event.ActionListener() {
@@ -308,7 +307,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         ayuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/ayuda-cursor.png"))); // NOI18N
         ayuda.setText("ayuda        ");
 
-        btnAyuda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
+        btnAyuda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         btnAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/contenido-de-ayuda.png"))); // NOI18N
         btnAyuda.setText("ayuda");
         btnAyuda.addActionListener(new java.awt.event.ActionListener() {
