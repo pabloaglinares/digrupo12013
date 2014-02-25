@@ -762,4 +762,47 @@ public class Metodos {
         }
         return nombre;
     }
+    
+    public List<Entrenamiento> pasarFiltro(String tipo, String fecha_i, String fecha_f) throws SQLException {
+
+        Entrenamiento entrenamiento;
+        List<Entrenamiento> listaEntrenamientos = new ArrayList<>();
+        conectar();
+        
+        if("tipo".equals(tipo) && fecha_i!=null && fecha_f!=null){
+                   
+            resultSet = consulta.executeQuery("select * from ENTRENAMIENTO where FECHA=>'"+fecha_i+"' and "
+                + "FECHA=<'"+fecha_f+"'");
+        }else if(fecha_i==null){
+            resultSet = consulta.executeQuery("select * from ENTRENAMIENTO where "
+                    + "FECHA<='"+fecha_f+"' and TIPO='"+tipo+"'");
+        } else if(fecha_f==null){
+            resultSet = consulta.executeQuery("select * from ENTRENAMIENTO where FECHA=>'"+fecha_i+"' and TIPO='"+tipo+"'");
+        }   
+        
+        try {
+
+            while (resultSet.next()) {
+                entrenamiento = new Entrenamiento(
+                        resultSet.getDate(1),
+                        resultSet.getTime(2),
+                        resultSet.getTime(3),
+                        resultSet.getString(4),
+                        resultSet.getString(5)
+                );
+                listaEntrenamientos.add(entrenamiento);
+
+            }
+        } catch (SQLException e) {
+            System.out.println("Error SQL.");
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return listaEntrenamientos;
+    }
 }
