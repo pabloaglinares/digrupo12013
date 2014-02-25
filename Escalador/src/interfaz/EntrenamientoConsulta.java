@@ -84,12 +84,13 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
             modelo.removeRow(0);
         }
     }
-    private void rellenarTablaFiltrada(){
-    
-    List<Entrenamiento> listaEntrenamientos = null;
-        
-    try {
-            listaEntrenamientos = metodos.pasarFiltro(comboTipo.getSelectedItem().toString(),textFecha_i.getText(),textFecha_F.getText());;
+
+    private void rellenarTablaFiltrada() {
+
+        List<Entrenamiento> listaEntrenamientos = null;
+
+        try {
+            listaEntrenamientos = metodos.pasarFiltro(comboTipo.getSelectedItem().toString(), textFecha_i.getText(), textFecha_F.getText());;
 
             String tipo, descripcion, horaInicio, horaFin, fecha;
 
@@ -105,10 +106,11 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
             }
 
         } catch (SQLException ex) {
-            System.out.println("Error SQL.");
-            Logger.getLogger(EntrenamientoConsulta.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "error en el formato del tiempo\n23:59:59");
+            rellenarTabla();
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -338,21 +340,7 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
     }//GEN-LAST:event_botonBorrarActionPerformed
 
     private void comboTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTipoActionPerformed
-//        if (jComboBox1.getSelectedIndex() == 1) {
-//            filtro.setRowFilter(RowFilter.regexFilter("Físico", 3));
-//            tablaEntrenamientos.setRowSorter(filtro);
-//        } else if (jComboBox1.getSelectedIndex() == 2) {
-//            filtro.setRowFilter(RowFilter.regexFilter("Rocódromo", 3));
-//            tablaEntrenamientos.setRowSorter(filtro);
-//
-//        } else if (jComboBox1.getSelectedIndex() == 3) {
-//            filtro.setRowFilter(RowFilter.regexFilter("Roca", 3));
-//            tablaEntrenamientos.setRowSorter(filtro);
-//
-//        } else {
-//            filtro.setRowFilter(null);
-//            tablaEntrenamientos.setRowSorter(filtro);
-//        } 
+
     }//GEN-LAST:event_comboTipoActionPerformed
 
     private void comboTipoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_comboTipoPropertyChange
@@ -360,17 +348,7 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
     }//GEN-LAST:event_comboTipoPropertyChange
 
     private void textFecha_iKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFecha_iKeyReleased
-//        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-//        Date horaInicio = null;
-//        try {
-//            horaInicio = sdf.parse(jTextField1.getText());
-//            
-//            filtro.setRowFilter(RowFilter.dateFilter(RowFilter.ComparisonType.EQUAL.AFTER, horaInicio, 1));
-//            tablaEntrenamientos.setRowSorter(filtro);
-//            jTextField1.setForeground(Color.white);
-//        } catch (ParseException ex) {
-//            jTextField1.setForeground(Color.red);
-//        }
+
     }//GEN-LAST:event_textFecha_iKeyReleased
 
     private void textFecha_iActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFecha_iActionPerformed
@@ -378,20 +356,15 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
     }//GEN-LAST:event_textFecha_iActionPerformed
 
     private void textFecha_FKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFecha_FKeyReleased
-//        int horaIni = Integer.parseInt(jTextField1.getText().substring(0, 2));
-//        int horaFin = Integer.parseInt(jTextField2.getText());
-//        if (horaFin > horaIni) {
-//            filtro.setRowFilter(RowFilter.regexFilter(jTextField2.getText(), 2));
-//            filtro.setRowFilter(RowFilter.dateFilter(RowFilter.ComparisonType.AFTER, null, 1));
-//            tablaEntrenamientos.setRowSorter(filtro);
-//
-//        }
+
 
     }//GEN-LAST:event_textFecha_FKeyReleased
-    
+
     private void buttonFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFiltroActionPerformed
+
         vaciarTabla();
         rellenarTablaFiltrada();
+
     }//GEN-LAST:event_buttonFiltroActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
