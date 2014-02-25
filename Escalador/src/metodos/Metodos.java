@@ -779,7 +779,6 @@ public class Metodos {
         }else{
             sql = sql + "and HORA_FIN<='" + fecha_f + "'";
         }
-        System.out.println(sql);
         resultSet=consulta.executeQuery(sql);
   
         try {
