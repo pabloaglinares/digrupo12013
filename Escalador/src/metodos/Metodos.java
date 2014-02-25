@@ -203,8 +203,8 @@ public class Metodos {
         boolean pudoInsertarse;
         conectar();
         String sql = "UPDATE entrenamiento SET FECHA='" + fecha + "', HORA_COMIENZO='" + horaIni + "',"
-                + "HORA_FIN='" + horaFin + "',TIPO='" + tipo + "', DESCRIPCION='" + descripcion + 
-                "' WHERE FECHA='" + fecha + "' AND HORA_COMIENZO='" + horaIni + "'";
+                + "HORA_FIN='" + horaFin + "',TIPO='" + tipo + "', DESCRIPCION='" + descripcion
+                + "' WHERE FECHA='" + fecha + "' AND HORA_COMIENZO='" + horaIni + "'";
         try {
             consulta.executeUpdate(sql);
             pudoInsertarse = true;
@@ -288,7 +288,6 @@ public class Metodos {
         }
 
     }
-
 
     public List<Configuracion> getUsuario() throws SQLException {
         Configuracion config;
@@ -447,17 +446,18 @@ public class Metodos {
         }
     }
 
-   /**
+    /**
      * Redondea a dos decimales con método científico.
+     *
      * @param d
-     * @return 
+     * @return
      */
     public double redondeoDosDecimales(double d) {
         return Math.rint(d * 100) / 100;
     }
-    
+
     public double getRendimiento(double horasEntrenadas, int numItinerariosFin, double numSemanas) {
-        if(numSemanas <= 0) {
+        if (numSemanas <= 0) {
             return 0.0;
         }
         if (horasEntrenadas < 0) {
@@ -468,7 +468,7 @@ public class Metodos {
         }
         return getRendimientoEntrenamiento(horasEntrenadas, numSemanas) + getRendimientoItinerariosRealizados(numItinerariosFin, numSemanas);
     }
-    
+
     public int getNumeroItinerariosRealizados(Date desdeFecha, Date hastaFecha) {
         conectar();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -480,7 +480,7 @@ public class Metodos {
                 + "WHERE fecha BETWEEN '" + fechaInicio + "' AND '" + fechaFin + "'";
         try {
             resultSet = consulta.executeQuery(sql);
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 numeroItinerarios = resultSet.getInt(1);
             }
         } catch (SQLException ex) {
@@ -496,7 +496,7 @@ public class Metodos {
         }
         return rendimiento;
     }
-    
+
     public double getNumeroDeHorasEntrenadas(Date desdeFecha, Date hastaFecha) {
         conectar();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -532,8 +532,8 @@ public class Metodos {
         }
         return rendimiento;
     }
-    
-    public double getNumeroDeSemanasConfiguradas () {
+
+    public double getNumeroDeSemanasConfiguradas() {
         String sql = "SELECT fecha_inicio, fecha_fin FROM escalador";
         long intervalo;
         double semanasIntervalo = 0.0;
@@ -545,7 +545,7 @@ public class Metodos {
                 fechaInicio = resultSet.getTimestamp(1);
                 fechaFin = resultSet.getTimestamp(2);
             }
-            if(null == fechaFin) {
+            if (null == fechaFin) {
                 fechaFin = new Date();
             }
             intervalo = fechaFin.getTime() - fechaInicio.getTime();
@@ -555,15 +555,14 @@ public class Metodos {
         }
         return semanasIntervalo;
     }
-    
-    
+
     public Date getFechaInicioConfigurada() {
         String sql = "SELECT fecha_inicio FROM escalador";
         Date fechaInicio = null;
         conectar();
         try {
             resultSet = consulta.executeQuery(sql);
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 fechaInicio = resultSet.getDate(1);
             }
         } catch (SQLException ex) {
@@ -571,14 +570,14 @@ public class Metodos {
         }
         return fechaInicio;
     }
-    
+
     public Date getFechaFinConfigurada() {
         String sql = "SELECT fecha_fin FROM escalador";
         Date fechaFin = null;
         conectar();
         try {
             resultSet = consulta.executeQuery(sql);
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 fechaFin = resultSet.getDate(1);
             }
         } catch (SQLException ex) {
@@ -586,7 +585,7 @@ public class Metodos {
         }
         return fechaFin;
     }
-    
+
     public double getRendimientoConfigurado() {
         Date fechaInicio = getFechaInicioConfigurada();
         Date fechaFin = getFechaFinConfigurada();
@@ -596,7 +595,7 @@ public class Metodos {
         double rendimientoConfigurado = getRendimiento(horasEntrenadas, numItinerariosFin, numSemanas);
         return rendimientoConfigurado;
     }
-    
+
     public void informe1(Timestamp fecha, Timestamp fecha2) {
 
         conectar();
@@ -611,7 +610,6 @@ public class Metodos {
 
             JasperExportManager.exportReportToPdfFile(print, "ListaItinerario.pdf");
 
-            
         } catch (JRException ex) {
             Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
             try {
@@ -626,7 +624,7 @@ public class Metodos {
     public void informe2(Date fecha, Date fecha2) {
 
         conectar();
-         //String archivojasper="./src/ejercicio2/Facturas.jasper";
+        //String archivojasper="./src/ejercicio2/Facturas.jasper";
         String archivojasper = "./informes/FechasSesiones.jasper";//ruta
         Map parametros = new HashMap();
 
@@ -637,7 +635,6 @@ public class Metodos {
 
             JasperExportManager.exportReportToPdfFile(print, "FechasSesiones.pdf");
 
-            
         } catch (JRException ex) {
             Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
 
@@ -649,7 +646,7 @@ public class Metodos {
         }
 
     }//informe2
-    
+
     public void informe3(Integer mes, Integer ano) {
 
         conectar();
@@ -664,7 +661,6 @@ public class Metodos {
 
             JasperExportManager.exportReportToPdfFile(print, "GraficoEntrenamiento.pdf");
 
-            
         } catch (JRException ex) {
             Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
 
@@ -676,7 +672,7 @@ public class Metodos {
         }
 
     }//informe4
-    
+
     public void informe4(Date fecha, Date fecha2) {
 
         conectar();
@@ -690,7 +686,6 @@ public class Metodos {
 
             JasperExportManager.exportReportToPdfFile(print, "TipoDeSesionGrupo.pdf");
 
-            
         } catch (JRException ex) {
             Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
 
@@ -713,7 +708,6 @@ public class Metodos {
 
             JasperExportManager.exportReportToPdfFile(print, "GraficoItinerario.pdf");
 
-           
         } catch (JRException | NoClassDefFoundError | IllegalArgumentException ex) {
             Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
 
@@ -725,36 +719,36 @@ public class Metodos {
         }
 
     }//informe5
-    
+
     //metodo para conseguir el directorio de la imagen
-    public String imagenURL(String URL){
-        String imagenURL=null;
+    public String imagenURL(String URL) {
+        String imagenURL = null;
         conectar();
         System.out.println(URL);
-        String sql="SELECT FOTO FROM ITINERARIO  "
-                + "WHERE '"+URL+"'=FOTO";
-        try{
-            resultSet = consulta.executeQuery(sql);      
-           
-            while(resultSet.next()){                  
-                imagenURL= resultSet.getString(1);
+        String sql = "SELECT FOTO FROM ITINERARIO  "
+                + "WHERE '" + URL + "'=FOTO";
+        try {
+            resultSet = consulta.executeQuery(sql);
+
+            while (resultSet.next()) {
+                imagenURL = resultSet.getString(1);
             }
-                    
+
             conexion.close();
-            
-        }catch(SQLException e){     
+
+        } catch (SQLException e) {
             Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, e);
         }
-            return  imagenURL;
-       
+        return imagenURL;
+
     }
-    
+
     public String getNombreYApellidoEscalador() {
         conectar();
         String nombre = "";
         try {
             resultSet = consulta.executeQuery("SELECT nombre, apellido FROM escalador");
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 nombre = resultSet.getString(1) + " " + resultSet.getString(2);
             }
         } catch (SQLException ex) {
@@ -762,24 +756,30 @@ public class Metodos {
         }
         return nombre;
     }
-    
+
     public List<Entrenamiento> pasarFiltro(String tipo, String fecha_i, String fecha_f) throws SQLException {
 
         Entrenamiento entrenamiento;
         List<Entrenamiento> listaEntrenamientos = new ArrayList<>();
         conectar();
-        
-        if("tipo".equals(tipo) && fecha_i!=null && fecha_f!=null){
-                   
-            resultSet = consulta.executeQuery("select * from ENTRENAMIENTO where FECHA=>'"+fecha_i+"' and "
-                + "FECHA=<'"+fecha_f+"'");
-        }else if(fecha_i==null){
-            resultSet = consulta.executeQuery("select * from ENTRENAMIENTO where "
-                    + "FECHA<='"+fecha_f+"' and TIPO='"+tipo+"'");
-        } else if(fecha_f==null){
-            resultSet = consulta.executeQuery("select * from ENTRENAMIENTO where FECHA=>'"+fecha_i+"' and TIPO='"+tipo+"'");
-        }   
-        
+        String sql = "select * from ENTRENAMIENTO where ";
+        if (!"Tipo".equals(tipo)) {
+            sql = sql + "TIPO='" + tipo + "' and ";
+        }
+        if (fecha_i == null || "".equals(fecha_i)) {
+            sql = sql + "HORA_COMIENZO>='00:00:00'";
+        } else {
+            sql = sql + "HORA_COMIENZO>='" + fecha_i + "'";
+        }
+        if (fecha_f == null || "".equals(fecha_i)) {
+            sql = sql + "and HORA_FIN<='23:59:59'";
+        }else{
+            sql = sql + "and HORA_FIN<='" + fecha_f + "'";
+        }
+        System.out.println(sql);
+
+        resultSet=consulta.executeQuery(sql);
+  
         try {
 
             while (resultSet.next()) {
@@ -802,7 +802,7 @@ public class Metodos {
                 Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+
         return listaEntrenamientos;
     }
 }

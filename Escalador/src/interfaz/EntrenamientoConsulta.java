@@ -89,7 +89,7 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
     List<Entrenamiento> listaEntrenamientos = null;
         
     try {
-            listaEntrenamientos = metodos.pasarFiltro(comboTipo.getSelectedObjects().toString(),textFecha_i.getText(),textFecha_F.getText());;
+            listaEntrenamientos = metodos.pasarFiltro(comboTipo.getSelectedItem().toString(),textFecha_i.getText(),textFecha_F.getText());;
 
             String tipo, descripcion, horaInicio, horaFin, fecha;
 
@@ -390,6 +390,7 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
     }//GEN-LAST:event_textFecha_FKeyReleased
     
     private void buttonFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFiltroActionPerformed
+        vaciarTabla();
         rellenarTablaFiltrada();
     }//GEN-LAST:event_buttonFiltroActionPerformed
 
