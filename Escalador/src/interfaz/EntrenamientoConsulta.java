@@ -1,20 +1,12 @@
 package interfaz;
 
 import datos.Entrenamiento;
-import java.awt.Color;
 import java.sql.SQLException;
-import java.sql.Time;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.logging.Formatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -362,8 +354,8 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
 
     private void buttonFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFiltroActionPerformed
 
-        vaciarTabla();
-        rellenarTablaFiltrada();
+                    vaciarTabla();
+                    rellenarTablaFiltrada();
 
     }//GEN-LAST:event_buttonFiltroActionPerformed
 

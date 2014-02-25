@@ -763,20 +763,23 @@ public class Metodos {
         List<Entrenamiento> listaEntrenamientos = new ArrayList<>();
         conectar();
         String sql = "select * from ENTRENAMIENTO where ";
+        
         if (!"Tipo".equals(tipo)) {
             sql = sql + "TIPO='" + tipo + "' and ";
         }
+        
         if (fecha_i == null || "".equals(fecha_i)) {
             sql = sql + "HORA_COMIENZO>='00:00:00'";
         } else {
             sql = sql + "HORA_COMIENZO>='" + fecha_i + "'";
         }
-        if (fecha_f == null || "".equals(fecha_i)) {
+        
+        if (fecha_f == null || "".equals(fecha_f)) {
             sql = sql + "and HORA_FIN<='23:59:59'";
         }else{
             sql = sql + "and HORA_FIN<='" + fecha_f + "'";
         }
-
+        System.out.println(sql);
         resultSet=consulta.executeQuery(sql);
   
         try {
