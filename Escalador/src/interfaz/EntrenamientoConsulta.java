@@ -1,10 +1,14 @@
 package interfaz;
 
 import datos.Entrenamiento;
+import java.io.File;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.help.HelpBroker;
+import javax.help.HelpSet;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -30,7 +34,24 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         this.setTitle("Consulta entrenamientos realizados");
         //vaciarTabla();  
+        ponLaAyuda();
+    }
+    
+     private void ponLaAyuda() {
+        try {
+            // Carga el fichero de ayuda
+            File fichero = new File("help" + File.separator + "help_set.hs");
+            URL hsURL = fichero.toURI().toURL();
 
+            // Crea el HelpSet y el HelpBroker
+            HelpSet helpset = new HelpSet(getClass().getClassLoader(), hsURL);
+            HelpBroker hb = helpset.createHelpBroker();
+
+            hb.enableHelpKey(getRootPane(), "entrenamientoconsulta", helpset);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void tabla() throws SQLException {

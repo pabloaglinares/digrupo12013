@@ -1,6 +1,9 @@
 package interfaz;
 
 import java.io.File;
+import java.net.URL;
+import javax.help.HelpBroker;
+import javax.help.HelpSet;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -24,6 +27,7 @@ public class ItinerarioNuevo extends javax.swing.JDialog {
         this.alta.putClientProperty(SubstanceLookAndFeel.BUTTON_SHAPER_PROPERTY, new StandardButtonShaper());
         this.setTitle("Nuevo itinerario");
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
+        ponLaAyuda();
     }
 
     //constructor editar
@@ -39,8 +43,25 @@ public class ItinerarioNuevo extends javax.swing.JDialog {
         this.rutafoto.setText(foto);
         this.id = id;
         this.edicion = true;
+        ponLaAyuda();
     }
 
+     private void ponLaAyuda() {
+        try {
+            // Carga el fichero de ayuda
+            File fichero = new File("help" + File.separator + "help_set.hs");
+            URL hsURL = fichero.toURI().toURL();
+
+            // Crea el HelpSet y el HelpBroker
+            HelpSet helpset = new HelpSet(getClass().getClassLoader(), hsURL);
+            HelpBroker hb = helpset.createHelpBroker();
+
+            hb.enableHelpKey(getRootPane(), "itinerarionuevo", helpset);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

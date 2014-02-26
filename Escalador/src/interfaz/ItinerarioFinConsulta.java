@@ -2,13 +2,17 @@ package interfaz;
 
 import datos.ItinerarioFin;
 import java.awt.Image;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.help.HelpBroker;
+import javax.help.HelpSet;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -30,6 +34,24 @@ public class ItinerarioFinConsulta extends javax.swing.JDialog {
         this.setTitle("Consulta itinerarios realizados");
         tabla();
         rellenarTabla();
+        ponLaAyuda();
+    }
+    
+     private void ponLaAyuda() {
+        try {
+            // Carga el fichero de ayuda
+            File fichero = new File("help" + File.separator + "help_set.hs");
+            URL hsURL = fichero.toURI().toURL();
+
+            // Crea el HelpSet y el HelpBroker
+            HelpSet helpset = new HelpSet(getClass().getClassLoader(), hsURL);
+            HelpBroker hb = helpset.createHelpBroker();
+
+            hb.enableHelpKey(getRootPane(), "itinerariorealizadoconsulta", helpset);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void tabla() {

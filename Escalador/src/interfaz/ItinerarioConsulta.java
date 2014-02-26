@@ -1,7 +1,11 @@
 package interfaz;
 
 import datos.Itinerario;
+import java.io.File;
+import java.net.URL;
 import java.util.List;
+import javax.help.HelpBroker;
+import javax.help.HelpSet;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -23,6 +27,24 @@ public class ItinerarioConsulta extends javax.swing.JDialog {
         this.setTitle("Consulta de itinerarios");
         tabla();
         rellenarTabla();
+        ponLaAyuda();
+    }
+    
+       private void ponLaAyuda() {
+        try {
+            // Carga el fichero de ayuda
+            File fichero = new File("help" + File.separator + "help_set.hs");
+            URL hsURL = fichero.toURI().toURL();
+
+            // Crea el HelpSet y el HelpBroker
+            HelpSet helpset = new HelpSet(getClass().getClassLoader(), hsURL);
+            HelpBroker hb = helpset.createHelpBroker();
+
+            hb.enableHelpKey(getRootPane(), "itinerarioconsulta", helpset);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void tabla() //throws SQLException

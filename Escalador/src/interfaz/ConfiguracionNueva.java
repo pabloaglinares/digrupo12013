@@ -1,6 +1,8 @@
 package interfaz;
 
 import datos.Configuracion;
+import java.io.File;
+import java.net.URL;
 import java.sql.SQLException;
 
 import java.sql.Timestamp;
@@ -10,6 +12,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.help.HelpBroker;
+import javax.help.HelpSet;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import metodos.Metodos;
@@ -32,9 +36,27 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         this.setTitle("Editar configuración");
         mostrarUsuario();
+        ponLaAyuda();
 //this.jButton2.putClientProperty(SubstanceLookAndFeel.setCurrentWatermark(new SubstanceImageWatermark("./src/fotos/climbing1.jpg")),new StandardButtonShaper());
     }
 
+    
+     private void ponLaAyuda() {
+        try {
+            // Carga el fichero de ayuda
+            File fichero = new File("help" + File.separator + "help_set.hs");
+            URL hsURL = fichero.toURI().toURL();
+
+            // Crea el HelpSet y el HelpBroker
+            HelpSet helpset = new HelpSet(getClass().getClassLoader(), hsURL);
+            HelpBroker hb = helpset.createHelpBroker();
+
+            hb.enableHelpKey(getRootPane(), "configuracionnueva", helpset);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     private void mostrarUsuario() {
         List<Configuracion> usuarioList = null;
         try {
@@ -52,16 +74,16 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
     }
 
     private void fecha(Configuracion c) {
-        try{
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 
-        Timestamp fechaIni = c.getFechaIni();
-        Timestamp fechaFin = c.getFechaFin();
-        inicio.setText(dateFormat.format(fechaIni.getTime()));
-        fin.setText(dateFormat.format(fechaFin.getTime()));
-        }catch(NullPointerException ex){
-        inicio.setText(null);
-        fin.setText(null);
+            Timestamp fechaIni = c.getFechaIni();
+            Timestamp fechaFin = c.getFechaFin();
+            inicio.setText(dateFormat.format(fechaIni.getTime()));
+            fin.setText(dateFormat.format(fechaFin.getTime()));
+        } catch (NullPointerException ex) {
+            inicio.setText(null);
+            fin.setText(null);
         }
     }
 
@@ -236,7 +258,7 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
         try {
             Date Dateini = (Date) dateFormat.parse(fei);
             fecha = new Timestamp(Dateini.getTime());
-            if(!"".equals(fef)) {
+            if (!"".equals(fef)) {
                 Date Datefin = (Date) dateFormat.parse(fef);
                 fchFin = new Timestamp(Datefin.getTime());
             }
@@ -247,7 +269,7 @@ public class ConfiguracionNueva extends javax.swing.JDialog {
 
         String nombreUsu = this.nombre.getText();
         String apellidoUsu = this.apellido.getText();
-        
+
         boolean cerrar = metodos.insertarConfigEnDB(nombreUsu, apellidoUsu, fecha, fchFin);
         if (cerrar) {
             this.dispose();

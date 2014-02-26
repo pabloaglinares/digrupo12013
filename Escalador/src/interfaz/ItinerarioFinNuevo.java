@@ -2,11 +2,15 @@ package interfaz;
 
 import java.awt.Color;
 import java.awt.Dialog;
+import java.io.File;
+import java.net.URL;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import javax.help.HelpBroker;
+import javax.help.HelpSet;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import metodos.Metodos;
@@ -37,6 +41,7 @@ public class ItinerarioFinNuevo extends javax.swing.JDialog {
         rellenarComboBox();
 //        metodos.mostrarNombreIti(jComboBox1);
         jTextField1.setText(fecha);
+        ponLaAyuda();
     }
 
     public ItinerarioFinNuevo(javax.swing.JDialog parent, boolean modal, Metodos metodos, String nombre, String fecha, int id) {
@@ -52,6 +57,24 @@ public class ItinerarioFinNuevo extends javax.swing.JDialog {
         oldId = id;
         oldFecha = Timestamp.valueOf(fecha);
         edicion = true;
+        ponLaAyuda();
+    }
+    
+    private void ponLaAyuda() {
+        try {
+            // Carga el fichero de ayuda
+            File fichero = new File("help" + File.separator + "help_set.hs");
+            URL hsURL = fichero.toURI().toURL();
+
+            // Crea el HelpSet y el HelpBroker
+            HelpSet helpset = new HelpSet(getClass().getClassLoader(), hsURL);
+            HelpBroker hb = helpset.createHelpBroker();
+
+            hb.enableHelpKey(getRootPane(), "itinerariorealizadonuevo", helpset);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public final void rellenarComboBox() {

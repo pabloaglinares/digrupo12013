@@ -3,6 +3,8 @@ package interfaz;
 import datos.Configuracion;
 import datos.Entrenamiento;
 import java.awt.Frame;
+import java.io.File;
+import java.net.URL;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -10,6 +12,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.help.HelpBroker;
+import javax.help.HelpSet;
 import javax.swing.ImageIcon;
 import metodos.Metodos;
 import org.jvnet.substance.SubstanceLookAndFeel;
@@ -31,6 +35,23 @@ public class ConfiguracionConsulta extends javax.swing.JDialog {
         this.setTitle("Consulta configuración");
         // metodos.mostrarConfiguracion(jLabel1, labelApellidos,labelFechaInicio,labelFechaFin);
         mostrarUsuario();
+        ponLaAyuda();
+    }
+       private void ponLaAyuda() {
+        try {
+            // Carga el fichero de ayuda
+            File fichero = new File("help" + File.separator + "help_set.hs");
+            URL hsURL = fichero.toURI().toURL();
+
+            // Crea el HelpSet y el HelpBroker
+            HelpSet helpset = new HelpSet(getClass().getClassLoader(), hsURL);
+            HelpBroker hb = helpset.createHelpBroker();
+
+            hb.enableHelpKey(getRootPane(), "configuracionconsulta", helpset);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
     private void mostrarUsuario() {

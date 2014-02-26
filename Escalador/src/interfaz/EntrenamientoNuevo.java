@@ -1,5 +1,9 @@
 package interfaz;
 
+import java.io.File;
+import java.net.URL;
+import javax.help.HelpBroker;
+import javax.help.HelpSet;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import metodos.Metodos;
@@ -17,6 +21,7 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
         this.setResizable(false);
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         this.setTitle("Nuevo entrenamiento");
+        ponLaAyuda();
     }
 
     //constructor para cuando edita un entrenamiento
@@ -31,7 +36,26 @@ public class EntrenamientoNuevo extends javax.swing.JDialog {
         this.areaTextoDescripcion.setText(areaTextoDescripcion);
         this.edicion = edicion;
         this.update = update;
+        ponLaAyuda();
     }
+    
+        private void ponLaAyuda() {
+        try {
+            // Carga el fichero de ayuda
+            File fichero = new File("help" + File.separator + "help_set.hs");
+            URL hsURL = fichero.toURI().toURL();
+
+            // Crea el HelpSet y el HelpBroker
+            HelpSet helpset = new HelpSet(getClass().getClassLoader(), hsURL);
+            HelpBroker hb = helpset.createHelpBroker();
+
+            hb.enableHelpKey(getRootPane(), "entrenamientonuevo", helpset);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
