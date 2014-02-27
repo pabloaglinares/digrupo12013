@@ -262,8 +262,8 @@ public class ItinerarioConsulta extends javax.swing.JDialog {
         int filaSeleccionada=TablaItinerario.getSelectedRow();
         String URL = metodos.imagenURL(TablaItinerario.getValueAt(filaSeleccionada,4).toString());
         //String URL="./awesome.png";//Esto se quita, es solo de prueba :D       
-        ImagenDialog ImagenDialog = new ImagenDialog(null, true, URL);
-        ImagenDialog.setVisible(true);       
+        ImagenDialog imagenDialog = new ImagenDialog(null, true, URL);
+        imagenDialog.setVisible(true);       
         
         }catch(ArrayIndexOutOfBoundsException e) {
             JOptionPane.showMessageDialog(this, "La imagen ha sido borrada o su directorio ha sido modificado.");

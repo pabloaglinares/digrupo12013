@@ -1,16 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package interfaz;
 
-import java.awt.Dimension;
+import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.concurrent.TimeUnit;
-import javax.swing.Icon;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import metodos.Metodos;
 
 /**
@@ -18,29 +15,31 @@ import metodos.Metodos;
  * @author NanD
  */
 public class ImagenDialog extends javax.swing.JDialog {
+
     Metodos metodos;
+
     /**
      * Creates new form ImagenDialog
      */
     public ImagenDialog(java.awt.Frame parent, boolean modal, String URL) {
         super(parent, modal);
-
         initComponents();
-          File imagen = new File(URL);  
-          
-        if(!imagen.exists()){     
-            
-           IMAGEN.setText("La imagen no ha podido encontrarse en el directorio especidicado, actualice los datos por favor.");
+        
+        File imagen = new File(URL);
 
-        }else{
-        IMAGEN.setText(null);
-        ImageIcon icon = new ImageIcon(URL);
-        int ancho=icon.getIconHeight();
-        int alto=icon.getIconWidth();
-                    
-        setSize(ancho, alto);
-        IMAGEN.setSize(alto,ancho);
-        IMAGEN.setIcon(icon);
+        if (!imagen.exists()) {
+
+            IMAGEN.setText("La imagen no ha podido encontrarse en el directorio especidicado, actualice los datos por favor.");
+
+        } else {
+            IMAGEN.setText("");
+            ImageIcon icon = new ImageIcon(URL);
+            int ancho = (int)(icon.getIconHeight() * 1.1);
+            int alto = (int)(icon.getIconWidth() * 1.0);
+
+            setSize(ancho, alto);
+            IMAGEN.setSize(alto, ancho);
+            IMAGEN.setIcon(icon);
         }
     }
 //    public boolean checkFoto(String URL){
@@ -51,9 +50,11 @@ public class ImagenDialog extends javax.swing.JDialog {
 //        return false; 
 //        }else{return true;}
 //    }
-        public void getSize(int ancho, int alto){
-        setSize(ancho, alto);     
+
+    public void getSize(int ancho, int alto) {
+        setSize(ancho, alto);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,22 +68,30 @@ public class ImagenDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(java.awt.Color.black);
+        setName("dialogoImagen"); // NOI18N
 
-        IMAGEN.setText("La imagen no ha podido encontrarse en el directorio especidicado, actualice los datos por favor.");
+        IMAGEN.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        IMAGEN.setAlignmentY(0.0F);
+        IMAGEN.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        IMAGEN.setIconTextGap(0);
+        IMAGEN.setMaximumSize(new java.awt.Dimension(800, 800));
+        IMAGEN.setMinimumSize(new java.awt.Dimension(50, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(IMAGEN, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(IMAGEN, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(IMAGEN, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(IMAGEN, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         pack();
