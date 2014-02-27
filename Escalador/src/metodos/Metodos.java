@@ -481,7 +481,7 @@ public class Metodos {
                 numeroItinerarios = resultSet.getInt(1);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return numeroItinerarios;
     }
@@ -516,7 +516,7 @@ public class Metodos {
                 milisegundosEntrenados += (horaFinMilis - horaInicioMilis);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
         }
         horasEntrenadas = milisegundosEntrenados / 1000 / 60 / 60;
         return horasEntrenadas;
@@ -563,7 +563,7 @@ public class Metodos {
                 fechaInicio = resultSet.getDate(1);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return fechaInicio;
     }
@@ -578,7 +578,7 @@ public class Metodos {
                 fechaFin = resultSet.getDate(1);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return fechaFin;
     }
@@ -749,7 +749,7 @@ public class Metodos {
                 nombre = resultSet.getString(1) + " " + resultSet.getString(2);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return nombre;
     }
