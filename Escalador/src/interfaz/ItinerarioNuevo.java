@@ -228,7 +228,7 @@ public class ItinerarioNuevo extends javax.swing.JDialog {
         int returnVal = foto.showOpenDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             //rutafoto.setText(foto.getSelectedFile().getName());
-            rutafoto.setText(foto.getSelectedFile().getAbsolutePath());
+        rutafoto.setText(foto.getSelectedFile().getAbsolutePath());
 //            File origen = foto.getSelectedFile();
 //            File destino = new File("fotos//" + foto.getSelectedFile().getName());
 //            metodos.copiarFotografia(origen, destino);
@@ -249,6 +249,10 @@ public class ItinerarioNuevo extends javax.swing.JDialog {
         String iti = itinerario.getSelectedItem().toString();
         String dific = dificultadnumero.getSelectedItem().toString() + dificultadletra.getSelectedItem().toString() + dificultadsimbolo.getSelectedItem().toString();
         String foto = rutafoto.getText();
+        File fotoOriginal = new File(foto);
+        String rutaCopia = "src" + File.separator + "fotos" + File.separator + fotoOriginal.getName();
+        metodos.copiarFotografia(fotoOriginal, new File(rutaCopia));
+        foto = rutaCopia;
 
         boolean insercionCorrecta = false;
 
@@ -261,7 +265,6 @@ public class ItinerarioNuevo extends javax.swing.JDialog {
         if (insercionCorrecta) {
             this.dispose();
         } else {
-
             JOptionPane.showMessageDialog(this, "Error: No se ha insertado el itinerario.");
         }
 
