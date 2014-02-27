@@ -34,8 +34,8 @@ public class ImagenDialog extends javax.swing.JDialog {
         } else {
             IMAGEN.setText("");
             ImageIcon icon = new ImageIcon(URL);
-            int ancho = (int)(icon.getIconHeight() * 1.1);
-            int alto = (int)(icon.getIconWidth() * 1.0);
+            int ancho = icon.getIconHeight() + 10;
+            int alto = icon.getIconWidth() + 10;
 
             setSize(ancho, alto);
             IMAGEN.setSize(alto, ancho);
