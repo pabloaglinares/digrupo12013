@@ -35,8 +35,8 @@ public class ListaItinerario extends javax.swing.JDialog {
         this.metodos = metodos;
         setIconImage(new ImageIcon(getClass().getResource("/fotos/icono.png")).getImage());
         this.setTitle("Generar Informe1");
-        this.txtFecha1.setText("0100-02-19 09:43:00.000000000");
-        this.txtFecha2.setText("2015-02-19 09:43:00.000000000");
+        this.txtFecha1.setText("0100-02-19 09:43:00.0");
+        this.txtFecha2.setText("2015-02-19 09:43:00.0");
         SubstanceLookAndFeel.setCurrentWatermark("org.jvnet.substance.watermark.SubstanceBinaryWatermark");
         this.getContentPane().setBackground(Color.black);
         this.setAlwaysOnTop(true);
@@ -187,7 +187,7 @@ public class ListaItinerario extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null, ex.toString(), "No exite el archivo", JOptionPane.WARNING_MESSAGE);
             }
         } catch (IllegalArgumentException e) {
-            JOptionPane.showMessageDialog(this, "Formato de fecha mal introducido\nEjemplo de fecha valida:\n23:59 12-12-1999");
+            JOptionPane.showMessageDialog(this, "Formato de fecha mal introducido\nEjemplo de fecha valida:\n2015-02-19 09:43:00.0");
         }
 
 
