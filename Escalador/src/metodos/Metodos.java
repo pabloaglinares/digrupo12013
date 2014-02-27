@@ -1,9 +1,6 @@
 package metodos;
 
-import datos.Configuracion;
-import datos.Entrenamiento;
-import datos.Itinerario;
-import datos.ItinerarioFin;
+import datos.*;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -31,7 +28,7 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 
 public class Metodos {
-
+    
     Connection conexion;
     Statement consulta;
     ResultSet resultSet;
@@ -44,7 +41,7 @@ public class Metodos {
     public Metodos() {
         ruta = System.getProperty("user.dir");
     }
-
+    
     public void conectar() {
         try {
             Class.forName("org.hsqldb.jdbcDriver");
@@ -52,14 +49,14 @@ public class Metodos {
             System.out.println(e.getMessage());
         }
         try {
-
+            
             conexion = DriverManager.getConnection("jdbc:hsqldb:file:database/escalada", "sa", "");//aqui
             consulta = conexion.createStatement();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
-
+    
     public List<Itinerario> getListaItinerarios() {
         String sql = "select * from ITINERARIO";
         ResultSet resultSet;
@@ -89,7 +86,7 @@ public class Metodos {
         }
         return listaItinerarios;
     }
-
+    
     public List<String> getListaNombresDeItinerarios() {
         List<String> nombresDeItinerarios = new ArrayList<>();
         String sql = "SELECT nombre FROM itinerario";
@@ -104,23 +101,23 @@ public class Metodos {
         }
         return nombresDeItinerarios;
     }
-
+    
     public List<ItinerarioFin> getListaItinerFin() throws SQLException {
         ItinerarioFin itinerarioFin;
         List<ItinerarioFin> listaItinerarioFin = new ArrayList<>();
         conectar();
         resultSet = consulta.executeQuery("select IT.NOMBRE,FI.FECHA from FECHA_ITINERARIO FI,ITINERARIO IT "
                 + "where IT.P_ITINERARIO=FI.A_ITINERARIO  ORDER BY FECHA");
-
+        
         try {
-
+            
             while (resultSet.next()) {
                 itinerarioFin = new ItinerarioFin(
                         resultSet.getString(1),
                         resultSet.getTimestamp(2));
-
+                
                 listaItinerarioFin.add(itinerarioFin);
-
+                
             }
         } catch (SQLException e) {
             System.out.println("Error SQL.");
@@ -131,19 +128,19 @@ public class Metodos {
                 Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
+        
         return listaItinerarioFin;
     }
-
+    
     public List<Entrenamiento> getListaEntrenamientos() throws SQLException {
-
+        
         Entrenamiento entrenamiento;
         List<Entrenamiento> listaEntrenamientos = new ArrayList<>();
         conectar();
-
+        
         resultSet = consulta.executeQuery("select * from ENTRENAMIENTO");
         try {
-
+            
             while (resultSet.next()) {
                 entrenamiento = new Entrenamiento(
                         resultSet.getDate(1),
@@ -153,7 +150,7 @@ public class Metodos {
                         resultSet.getString(5)
                 );
                 listaEntrenamientos.add(entrenamiento);
-
+                
             }
         } catch (SQLException e) {
             System.out.println("Error SQL.");
@@ -198,7 +195,7 @@ public class Metodos {
         }
         return pudoInsertarse;
     }
-
+    
     public boolean updateEntrenamiento(String fecha, String horaIni, String horaFin, String tipo, String descripcion, String update) {
         boolean pudoInsertarse;
         conectar();
@@ -218,9 +215,9 @@ public class Metodos {
             }
         }
         return pudoInsertarse;
-
+        
     }
-
+    
     public boolean updateItinerario(String nombre, String loca, String tipo, String dific, String foto, int id) {
         boolean pudoInsertarse;
         conectar();
@@ -239,9 +236,9 @@ public class Metodos {
             }
         }
         return pudoInsertarse;
-
+        
     }
-
+    
     public void updateItiFin(int id, Timestamp fecha, int oldid, Timestamp oldFecha) {
         conectar();
         String sql = "UPDATE FECHA_ITINERARIO SET A_ITINERARIO=" + id + ", FECHA='" + fecha + "' "
@@ -257,11 +254,11 @@ public class Metodos {
                 Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
+        
     }
-
+    
     public void copiarFotografia(File archivoOrigen, File archivoDestino) {
-
+        
         BufferedInputStream in = null;
         BufferedOutputStream out = null;
         try {
@@ -269,11 +266,11 @@ public class Metodos {
         } catch (FileNotFoundException ex) {
             System.out.println(ex.getMessage());
         }
-
+        
         try {
             out = new BufferedOutputStream(new FileOutputStream(archivoDestino));
         } catch (FileNotFoundException ex) {
-
+            
         }
         byte buffer[] = new byte[1024];
         int leidos;
@@ -284,18 +281,18 @@ public class Metodos {
             in.close();
             out.close();
         } catch (IOException ex) {
-
+            
         }
-
+        
     }
-
+    
     public List<Configuracion> getUsuario() throws SQLException {
         Configuracion config;
         List<Configuracion> usuarioList = new ArrayList<>();
         conectar();
         resultSet = consulta.executeQuery("select * from ESCALADOR");
         try {
-
+            
             while (resultSet.next()) {
                 config = new Configuracion(
                         resultSet.getInt(1),
@@ -303,9 +300,9 @@ public class Metodos {
                         resultSet.getString(3),
                         resultSet.getTimestamp(4),
                         resultSet.getTimestamp(5));
-
+                
                 usuarioList.add(config);
-
+                
             }
         } catch (SQLException e) {
             System.out.println("Error SQL.");
@@ -316,16 +313,16 @@ public class Metodos {
                 Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
+        
         return usuarioList;
     }
-
+    
     public boolean insertarConfigEnDB(String nombre, String apellido, Timestamp fecha, Timestamp fechaFin) {
         boolean pudoInsertarse;
         String sql = "UPDATE ESCALADOR SET NOMBRE = '" + nombre + "',APELLIDO = '" + apellido + "',"
                 + "FECHA_INICIO ='" + fecha + "' ,"
                 + "FECHA_FIN ='" + fechaFin + "' WHERE P_ESCALADOR=1";
-
+        
         conectar();
         try {
             consulta.executeUpdate(sql);
@@ -341,7 +338,7 @@ public class Metodos {
         }
         return pudoInsertarse;
     }
-
+    
     public boolean insertarItinerarioEnDb(String nombre, String localizacion, String tipo, String dificultad, String foto) {
         boolean pudoInsertarse;
         String sql = "INSERT INTO ITINERARIO (NOMBRE,LOCALIZACION,TIPO,DIFICULTAD,FOTO) values ('" + nombre + "','" + localizacion + "','" + tipo + "','" + dificultad + "','" + foto + "')";
@@ -360,7 +357,7 @@ public class Metodos {
         }
         return pudoInsertarse;
     }
-
+    
     public void deleteEntrenamiento(String texto) {
         String sql = "DELETE FROM ENTRENAMIENTO WHERE DESCRIPCION='" + texto + "'";
         conectar();
@@ -376,7 +373,7 @@ public class Metodos {
             }
         }
     }
-
+    
     public void deleteItinerario(String nombre, int id) {
         String sql = "DELETE FROM ITINERARIO WHERE P_ITINERARIO=" + id;
         conectar();
@@ -392,7 +389,7 @@ public class Metodos {
             }
         }
     }
-
+    
     public void deleteItinerarioFin(int id, Timestamp fecha) {
         String sql = "DELETE FROM FECHA_ITINERARIO WHERE A_ITINERARIO=" + id + " AND FECHA='" + fecha + "'";
         conectar();
@@ -408,7 +405,7 @@ public class Metodos {
             }
         }
     }
-
+    
     public int getIdItinerario(String nombre) {
         String sql = "SELECT P_ITINERARIO FROM ITINERARIO WHERE NOMBRE='" + nombre + "'";
         conectar();
@@ -429,7 +426,7 @@ public class Metodos {
         }
         return id;
     }
-
+    
     public void insertItinerarioFin(int id, Timestamp fecha) {
         String sql = "INSERT INTO FECHA_ITINERARIO VALUES(" + id + ",'" + fecha + "')";
         conectar();
@@ -455,7 +452,7 @@ public class Metodos {
     public double redondeoDosDecimales(double d) {
         return Math.rint(d * 100) / 100;
     }
-
+    
     public double getRendimiento(double horasEntrenadas, int numItinerariosFin, double numSemanas) {
         if (numSemanas <= 0) {
             return 0.0;
@@ -468,7 +465,7 @@ public class Metodos {
         }
         return getRendimientoEntrenamiento(horasEntrenadas, numSemanas) + getRendimientoItinerariosRealizados(numItinerariosFin, numSemanas);
     }
-
+    
     public int getNumeroItinerariosRealizados(Date desdeFecha, Date hastaFecha) {
         conectar();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -488,7 +485,7 @@ public class Metodos {
         }
         return numeroItinerarios;
     }
-
+    
     public double getRendimientoItinerariosRealizados(int numItinerariosFin, double numSemanas) {
         double rendimiento = numItinerariosFin * 0.25 / numSemanas;
         if (rendimiento > 5) {
@@ -496,7 +493,7 @@ public class Metodos {
         }
         return rendimiento;
     }
-
+    
     public double getNumeroDeHorasEntrenadas(Date desdeFecha, Date hastaFecha) {
         conectar();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -524,7 +521,7 @@ public class Metodos {
         horasEntrenadas = milisegundosEntrenados / 1000 / 60 / 60;
         return horasEntrenadas;
     }
-
+    
     public double getRendimientoEntrenamiento(double horasEntrenadas, double numeroSemanas) {
         double rendimiento = horasEntrenadas * 0.5 / numeroSemanas;
         if (rendimiento > 5) {
@@ -532,7 +529,7 @@ public class Metodos {
         }
         return rendimiento;
     }
-
+    
     public double getNumeroDeSemanasConfiguradas() {
         String sql = "SELECT fecha_inicio, fecha_fin FROM escalador";
         long intervalo;
@@ -555,7 +552,7 @@ public class Metodos {
         }
         return semanasIntervalo;
     }
-
+    
     public Date getFechaInicioConfigurada() {
         String sql = "SELECT fecha_inicio FROM escalador";
         Date fechaInicio = null;
@@ -570,7 +567,7 @@ public class Metodos {
         }
         return fechaInicio;
     }
-
+    
     public Date getFechaFinConfigurada() {
         String sql = "SELECT fecha_fin FROM escalador";
         Date fechaFin = null;
@@ -585,7 +582,7 @@ public class Metodos {
         }
         return fechaFin;
     }
-
+    
     public double getRendimientoConfigurado() {
         Date fechaInicio = getFechaInicioConfigurada();
         Date fechaFin = getFechaFinConfigurada();
@@ -595,21 +592,21 @@ public class Metodos {
         double rendimientoConfigurado = getRendimiento(horasEntrenadas, numItinerariosFin, numSemanas);
         return rendimientoConfigurado;
     }
-
+    
     public void informe1(Timestamp fecha, Timestamp fecha2) {
-
+        
         conectar();
         // String archivojasper="./src/ejercicio2/Facturas.jasper";
         String archivojasper = "./informes/ListaItinerario.jasper";//ruta
         Map parametros = new HashMap();
-
+        
         parametros.put("fecha1", fecha);
         parametros.put("fecha2", fecha2);
         try {
             JasperPrint print = JasperFillManager.fillReport(archivojasper, parametros, conexion);
-
+            
             JasperExportManager.exportReportToPdfFile(print, "ListaItinerario.pdf");
-
+            
         } catch (JRException ex) {
             Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
             try {
@@ -618,106 +615,106 @@ public class Metodos {
                 Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, e);
             }
         }
-
+        
     }//informe1
 
     public void informe2(Date fecha, Date fecha2) {
-
+        
         conectar();
         //String archivojasper="./src/ejercicio2/Facturas.jasper";
         String archivojasper = "./informes/FechasSesiones.jasper";//ruta
         Map parametros = new HashMap();
-
+        
         parametros.put("date1", fecha);
         parametros.put("date2", fecha2);
         try {
             JasperPrint print = JasperFillManager.fillReport(archivojasper, parametros, conexion);
-
+            
             JasperExportManager.exportReportToPdfFile(print, "FechasSesiones.pdf");
-
+            
         } catch (JRException ex) {
             Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
-
+            
             try {
                 conexion.close();
             } catch (SQLException e) {
                 Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, e);
             }
         }
-
+        
     }//informe2
 
     public void informe3(Integer mes, Integer ano) {
-
+        
         conectar();
         // String archivojasper="./src/ejercicio2/Facturas.jasper";
         String archivojasper = "./informes/GraficoEntrenamiento.jasper";//ruta
         Map parametros = new HashMap();
-
+        
         parametros.put("mes", mes);
         parametros.put("ano", ano);
         try {
             JasperPrint print = JasperFillManager.fillReport(archivojasper, parametros, conexion);
-
+            
             JasperExportManager.exportReportToPdfFile(print, "GraficoEntrenamiento.pdf");
-
+            
         } catch (JRException ex) {
             Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
-
+            
             try {
                 conexion.close();
             } catch (SQLException e) {
                 Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, e);
             }
         }
-
+        
     }//informe4
 
     public void informe4(Date fecha, Date fecha2) {
-
+        
         conectar();
         String archivojasper = "./informes/TipoDeSesionGrupo.jasper";//ruta
         Map parametros = new HashMap();
-
+        
         parametros.put("date1", fecha);
         parametros.put("date2", fecha2);
         try {
             JasperPrint print = JasperFillManager.fillReport(archivojasper, parametros, conexion);
-
+            
             JasperExportManager.exportReportToPdfFile(print, "TipoDeSesionGrupo.pdf");
-
+            
         } catch (JRException ex) {
             Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
-
+            
             try {
                 conexion.close();
             } catch (SQLException e) {
                 Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, e);
             }
         }
-
+        
     }//informe4
 
     public void informe5() {
-
+        
         conectar();
         String archivojasper = "./informes/GraficoItinerario.jasper";//ruta
 
         try {
             JasperPrint print = JasperFillManager.fillReport(archivojasper, new HashMap(), conexion);
-
+            
             JasperExportManager.exportReportToPdfFile(print, "GraficoItinerario.pdf");
-
+            
         } catch (JRException | NoClassDefFoundError | IllegalArgumentException ex) {
             Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
-
+            
             try {
                 conexion.close();
             } catch (SQLException e) {
                 Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, e);
             }
         }
-
+        
     }//informe5
 
     //metodo para conseguir el directorio de la imagen
@@ -729,20 +726,20 @@ public class Metodos {
                 + "WHERE '" + URL + "'=FOTO";
         try {
             resultSet = consulta.executeQuery(sql);
-
+            
             while (resultSet.next()) {
                 imagenURL = resultSet.getString(1);
             }
-
+            
             conexion.close();
-
+            
         } catch (SQLException e) {
             Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, e);
         }
         return imagenURL;
-
+        
     }
-
+    
     public String getNombreYApellidoEscalador() {
         conectar();
         String nombre = "";
@@ -756,9 +753,9 @@ public class Metodos {
         }
         return nombre;
     }
-
-    public List<Entrenamiento> pasarFiltro(String tipo, String fecha_i, String fecha_f) throws SQLException {
-
+    
+    public List<Entrenamiento> pasarFiltro(String tipo, Date fecha_i, Date fecha_f) throws SQLException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Entrenamiento entrenamiento;
         List<Entrenamiento> listaEntrenamientos = new ArrayList<>();
         conectar();
@@ -767,22 +764,24 @@ public class Metodos {
         if (!"Tipo".equals(tipo)) {
             sql = sql + "TIPO='" + tipo + "' and ";
         }
+        sql = sql + "FECHA BETWEEN ";
         
         if (fecha_i == null || "".equals(fecha_i)) {
-            sql = sql + "HORA_COMIENZO>='00:00:00'";
+            sql = sql + "'1980-01-01' and ";
         } else {
-            sql = sql + "HORA_COMIENZO>='" + fecha_i + "'";
+            sql = sql + "'" + sdf.format(fecha_i) + "' and ";
         }
         
         if (fecha_f == null || "".equals(fecha_f)) {
-            sql = sql + "and HORA_FIN<='23:59:59'";
-        }else{
-            sql = sql + "and HORA_FIN<='" + fecha_f + "'";
+            sql = sql + "'2080-12-29'";
+        } else {
+            sql = sql + "'" +sdf.format(fecha_f) + "'";
         }
-        resultSet=consulta.executeQuery(sql);
-  
-        try {
+//        System.out.println(sql);
+        resultSet = consulta.executeQuery(sql);
 
+        try {
+            
             while (resultSet.next()) {
                 entrenamiento = new Entrenamiento(
                         resultSet.getDate(1),
@@ -792,7 +791,7 @@ public class Metodos {
                         resultSet.getString(5)
                 );
                 listaEntrenamientos.add(entrenamiento);
-
+                
             }
         } catch (SQLException e) {
             System.out.println("Error SQL.");
@@ -803,7 +802,7 @@ public class Metodos {
                 Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
+        
         return listaEntrenamientos;
     }
 }

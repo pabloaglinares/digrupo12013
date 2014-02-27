@@ -4,6 +4,9 @@ import datos.Entrenamiento;
 import java.io.File;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,8 +39,8 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
         //vaciarTabla();  
         ponLaAyuda();
     }
-    
-     private void ponLaAyuda() {
+
+    private void ponLaAyuda() {
         try {
             // Carga el fichero de ayuda
             File fichero = new File("help" + File.separator + "help_set.hs");
@@ -101,9 +104,18 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
     private void rellenarTablaFiltrada() {
 
         List<Entrenamiento> listaEntrenamientos = null;
+        Date fechai = null, fechaf = null;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
         try {
-            listaEntrenamientos = metodos.pasarFiltro(comboTipo.getSelectedItem().toString(), textFecha_i.getText(), textFecha_F.getText());;
+            if (!"".equals(textFecha_i.getText()) && textFecha_i.getText()!=null) {
+                fechai = (Date) sdf.parse(textFecha_i.getText());
+            }
+            if(!"".equals(textFecha_F.getText()) && textFecha_F.getText()!=null){
+                fechaf= (Date) sdf.parse(textFecha_F.getText());
+            }
+
+            listaEntrenamientos = metodos.pasarFiltro(comboTipo.getSelectedItem().toString(), fechai, fechaf);;
 
             String tipo, descripcion, horaInicio, horaFin, fecha;
 
@@ -118,8 +130,8 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
                 defaultTableModel.addRow(fila);
             }
 
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "error en el formato del tiempo\n23:59:59");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "error en el formato de la fecha\n29/12/2014");
             rellenarTabla();
         }
     }
@@ -260,8 +272,8 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(textFecha_F, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(buttonFiltro)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(buttonFiltro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -375,8 +387,8 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
 
     private void buttonFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFiltroActionPerformed
 
-                    vaciarTabla();
-                    rellenarTablaFiltrada();
+        vaciarTabla();
+        rellenarTablaFiltrada();
 
     }//GEN-LAST:event_buttonFiltroActionPerformed
 
