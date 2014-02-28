@@ -42,11 +42,7 @@
 	File /r lib
 	File /r database
 	File /r help
-	File FechasSesiones.jasper
-	File GraficoEntrenamiento.jasper
-	File GraficoItinerario.jasper
-	File ListaItinerario.jasper
-	File TipoDeSesionGrupo.jasper
+	File /r informes
 	
     WriteUninstaller "$INSTDIR\uninstall.exe"
 	
