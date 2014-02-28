@@ -249,10 +249,10 @@ public class ItinerarioNuevo extends javax.swing.JDialog {
         String iti = itinerario.getSelectedItem().toString();
         String dific = dificultadnumero.getSelectedItem().toString() + dificultadletra.getSelectedItem().toString() + dificultadsimbolo.getSelectedItem().toString();
         String foto = rutafoto.getText();
-        File fotoOriginal = new File(foto);
-        String rutaCopia = "src" + File.separator + "fotos" + File.separator + fotoOriginal.getName();
-        metodos.copiarFotografia(fotoOriginal, new File(rutaCopia));
-        foto = rutaCopia;
+        //File fotoOriginal = new File(foto);
+        //String rutaCopia = "src" + File.separator + "fotos" + File.separator + fotoOriginal.getName();
+        //metodos.copiarFotografia(fotoOriginal, new File(rutaCopia));
+        //foto = rutaCopia;
 
         boolean insercionCorrecta = false;
 
