@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="GraficoItinerario" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cffc11ac-3579-4fd1-b140-c4b67eb58d61">
+	<property name="ireport.zoom" value="1.2100000000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select  count(f.a_itinerario)as numeroItinerario,i.dificultad from itinerario i,fecha_itinerario f where i.p_itinerario=f.a_itinerario
+group by i.dificultad]]>
+	</queryString>
+	<field name="NUMEROITINERARIO" class="java.lang.Integer"/>
+	<field name="DIFICULTAD" class="java.lang.String"/>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="106" y="25" width="376" height="33" uuid="fa9d401c-d341-4d92-a19d-cbb4af1089b7"/>
+				<textElement>
+					<font fontName="Architects Daughter" size="18" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Grafico Itinerario por dificultad]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="27" splitType="Stretch"/>
+	</detail>
+	<summary>
+		<band height="292">
+			<barChart>
+				<chart>
+					<reportElement isPrintRepeatedValues="false" x="0" y="0" width="555" height="292" uuid="ef15cd4e-0b9b-43b7-a1e6-dab009ccc4ef"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["NUMERO DE ITINERARIO POR DIFICULTAD"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{DIFICULTAD}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{NUMEROITINERARIO}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel color="#009999">
+						<font isUnderline="true"/>
+					</itemLabel>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+		</band>
+	</summary>
+</jasperReport>

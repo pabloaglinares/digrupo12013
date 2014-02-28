@@ -4,7 +4,6 @@ import datos.Entrenamiento;
 import java.io.File;
 import java.net.URL;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -217,35 +216,8 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Filtros"));
 
         comboTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tipo", "Físico", "Rocódromo", "Roca" }));
-        comboTipo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboTipoActionPerformed(evt);
-            }
-        });
-        comboTipo.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                comboTipoPropertyChange(evt);
-            }
-        });
-
-        textFecha_i.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFecha_iActionPerformed(evt);
-            }
-        });
-        textFecha_i.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                textFecha_iKeyReleased(evt);
-            }
-        });
 
         jLabel1.setText("Desde");
-
-        textFecha_F.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                textFecha_FKeyReleased(evt);
-            }
-        });
 
         jLabel2.setText("Hasta");
 
@@ -363,27 +335,6 @@ public class EntrenamientoConsulta extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Seleciona la fila de la tabla que desees borrar");
         }
     }//GEN-LAST:event_botonBorrarActionPerformed
-
-    private void comboTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTipoActionPerformed
-
-    }//GEN-LAST:event_comboTipoActionPerformed
-
-    private void comboTipoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_comboTipoPropertyChange
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboTipoPropertyChange
-
-    private void textFecha_iKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFecha_iKeyReleased
-
-    }//GEN-LAST:event_textFecha_iKeyReleased
-
-    private void textFecha_iActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFecha_iActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFecha_iActionPerformed
-
-    private void textFecha_FKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFecha_FKeyReleased
-
-
-    }//GEN-LAST:event_textFecha_FKeyReleased
 
     private void buttonFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFiltroActionPerformed
 
